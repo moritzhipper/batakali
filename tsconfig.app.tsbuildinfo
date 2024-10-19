@@ -1,0 +1,1 @@
+{"root":["./src/App.tsx","./src/app.d.ts","./src/main.tsx","./src/utils.ts","./src/vite-env.d.ts","./src/assets/models/index.ts","./src/three/ape.tsx","./src/three/dof.tsx","./src/three/donut-elements.tsx","./src/three/donut.tsx","./src/three/icing.tsx","./src/three/raketevisuals.tsx","./src/three/utils.ts","./src/three/wrapper.tsx"],"errors":true,"version":"5.6.2"}

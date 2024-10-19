@@ -1,0 +1,30 @@
+body {
+  background-color: black;
+  margin: 0;
+  padding: 0;
+  box-sizing: content-box;
+
+  main {
+    width: 100%;
+    height: 100%;
+  }
+
+  h1 {
+    font-size: 5em;
+  }
+}
+
+.canvas-wrapper {
+  top: 0;
+  left: 0;
+  position: fixed;
+  width: 100vw;
+  height: 100dvh;
+}
+
+.debug {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
