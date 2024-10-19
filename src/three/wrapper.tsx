@@ -31,11 +31,7 @@ export const ThreeWrapper = () => {
         <button onClick={handleClick}>click</button>
       </div>
       <Canvas>
-        {/* <PerspectiveCamera
-          makeDefault
-          position={[0, 0, 0]}
-          // fov={50}
-        /> */}
+        {/* <Dof /> */}
         <CameraControls />
         <ambientLight intensity={0.7} />
         <directionalLight color="white" position={[10, 0, 10]} />

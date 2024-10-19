@@ -1,13 +1,5 @@
 import { Vector3 } from "three";
 
-export const randomInt = (min: number, max: number) =>
-  Math.floor(Math.random() * (max - min)) + min;
-
-export const randomFloat = (min: number, max: number) => {
-  const randomNumber = Math.random() * (max - min) + min;
-  return parseFloat(randomNumber.toFixed(3));
-};
-
 export const randomRadian = () => Math.random() * 2 * Math.PI;
 
 export const randomPositionInCylinder = (
@@ -42,4 +34,51 @@ export const randomPositionInSphere = (radius: number): Vector3 => {
   const z = distance * Math.cos(phi);
 
   return new Vector3(x, y, z);
+};
+
+// ducko stuff
+
+export const getRandomSprites = (
+  innerRadius: number,
+  outerRadius: number,
+  amount: number
+) => {
+  let sprites = [];
+
+  for (let i = 0; i < amount; i++) {
+    const randomPos = getRandomPositionInCircleLeaveInner(
+      outerRadius,
+      innerRadius
+    );
+    sprites.push({
+      ...randomPos,
+      rotation: 0,
+      type: ["shard1", "shard2", "feather"][randomInt(0, 3)],
+    });
+  }
+  return sprites;
+};
+
+export const randomFloat = (min: number, max: number) => {
+  const randomNumber = Math.random() * (max - min) + min;
+  return parseFloat(randomNumber.toFixed(3));
+};
+
+export const randomInt = (min: number, max: number) =>
+  Math.floor(Math.random() * (max - min)) + min;
+
+const getRandomPositionInCircleLeaveInner = (
+  outerRadius: number,
+  innerRadius: number
+) => {
+  const angle = Math.random() * 2 * Math.PI;
+
+  const distance = Math.sqrt(
+    Math.random() * (outerRadius ** 2 - innerRadius ** 2) + innerRadius ** 2
+  );
+
+  const x = distance * Math.cos(angle);
+  const y = distance * Math.sin(angle);
+
+  return { x, y };
 };
