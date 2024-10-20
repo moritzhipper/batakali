@@ -1,0 +1,12 @@
+.navbar-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 16px;
+  width: 100vw;
+  display: flex;
+  button.home {
+    font-size: 2em;
+    font-family: "BattleContinues";
+  }
+}

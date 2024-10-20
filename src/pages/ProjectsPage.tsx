@@ -13,7 +13,7 @@ export const ProjectsPage = () => {
     { name: "Project 2", tag: "synthwave" },
     { name: "Project 3", tag: "hardtechno" },
     { name: "Project 4", tag: "boombap" },
-    { name: "Project 5", tag: "rnb" },
+    { name: "Project 5", tag: "rnb" }
   ]
   const filter = [...new Set(projects.map((project) => project.tag))]
 
@@ -25,7 +25,7 @@ export const ProjectsPage = () => {
   useEffect(() => {
     const visibleProjects = projects.slice(
       pageCount * currentPage,
-      pageCount * currentPage + 4,
+      pageCount * currentPage + 4
     )
     setVisibleProjects(visibleProjects)
   }, [selectedFilter, currentPage])

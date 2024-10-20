@@ -3,6 +3,7 @@
   flex-direction: column;
   height: 100%;
   gap: 16px;
+  animation: fadeIn 0.3s ease-in-out;
 
   .projects-wrapper {
     display: grid;

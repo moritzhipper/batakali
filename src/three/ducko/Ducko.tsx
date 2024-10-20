@@ -142,6 +142,7 @@ const SpriteElement = ({ texture, position, height }: SpriteProps) => {
       <spriteMaterial
         map={texture}
         transparent
+        opacity={0}
         alphaTest={0.75}
         side={DoubleSide}
       />
