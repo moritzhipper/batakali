@@ -44,28 +44,48 @@ export const Ducko = memo(({ rotate }: DuckoProps) => {
   // distribute sprites randomly to three groups to allow rotation in different speeds
 
   // animate ducko szenechange
-  const shards1 = useRef<Group>(null)
-  const shards2 = useRef<Group>(null)
-  const shards3 = useRef<Group>(null)
+  const shardRefs = [
+    useRef<Group>(null),
+    useRef<Group>(null),
+    useRef<Group>(null),
+  ]
 
-  useFrame((state, delta) => {
-    if (rotate) {
-      shards1.current.rotateY(delta)
-    } else {
-      shards1.current.rotation.y = MathUtils.lerp(
-        shards1.current.rotation.y,
+  const rotateGroup = (amount: number) => {
+    shardRefs.forEach((shardGroup, i) => {
+      shardGroup.current.rotateY(amount + (i + 1) * 0.001)
+    })
+  }
+
+  const moveGroupsToInitialPosition = () => {
+    shardRefs.forEach((shardGroup) => {
+      shardGroup.current.rotation.y = MathUtils.lerp(
+        shardGroup.current.rotation.y,
         0,
         0.04,
       )
+    })
+  }
+
+  useFrame((state, delta) => {
+    if (rotate) {
+      rotateGroup(delta / 2)
+      // shards1.current.rotateY(delta)
+    } else {
+      moveGroupsToInitialPosition()
+      // shards1.current.rotation.y = MathUtils.lerp(
+      //   shards1.current.rotation.y,
+      //   0,
+      //   0.04,
+      // )
     }
   })
 
   return (
     <>
       <Image texture={duckTexture} x={0} y={0} rotation={0} height={5.5} />
-      <group ref={shards1}>{sprites1}</group>
-      <group ref={shards2}>{sprites2}</group>
-      <group ref={shards3}>{sprites3}</group>
+      <group ref={shardRefs[0]}>{sprites1}</group>
+      <group ref={shardRefs[1]}>{sprites2}</group>
+      <group ref={shardRefs[2]}>{sprites3}</group>
     </>
   )
 })
@@ -80,7 +100,7 @@ function distributeRandomly(
   // put instance randomly in one of three arrays as ImageComp
   items.forEach((spriteConfig) => {
     spriteConfig.instances.forEach((sprite) => {
-      const randomArray = randomInt(0, 2)
+      const randomArray = randomInt(0, 3)
       imageCompArrays[randomArray].push(
         <Image
           x={sprite.x}
@@ -92,7 +112,7 @@ function distributeRandomly(
       )
     })
   })
-
+  console.log(imageCompArrays)
   return imageCompArrays
 }
 
