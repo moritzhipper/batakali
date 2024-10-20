@@ -27,7 +27,6 @@ export const ProjectsPage = () => {
       pageCount * currentPage,
       pageCount * currentPage + 4,
     )
-    console.log(visibleProjects)
     setVisibleProjects(visibleProjects)
   }, [selectedFilter, currentPage])
 

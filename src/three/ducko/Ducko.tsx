@@ -1,3 +1,4 @@
+import { Float } from "@react-three/drei"
 import { useFrame, useLoader } from "@react-three/fiber"
 import { memo, useMemo, useRef } from "react"
 import { DoubleSide, Group, Texture, TextureLoader, Vector3 } from "three"
@@ -6,14 +7,7 @@ import duck from "../../assets/images/duck.png"
 import feather from "../../assets/images/feather.png"
 import shard1 from "../../assets/images/shard1.png"
 import shard2 from "../../assets/images/shard2.png"
-import { randomInt } from "../utils"
-import {
-  bigShards,
-  mediumShards,
-  smallShardsInner,
-  smallShardsOuter,
-  SpriteConfig,
-} from "./shards"
+import { getRandomPositionInSphereWithXBias, randomInt } from "../utils"
 
 type DuckoProps = {
   rotate: boolean
@@ -25,110 +19,76 @@ export const Ducko = memo(({ rotate }: DuckoProps) => {
   const textures = [
     useLoader(TextureLoader, feather),
     useLoader(TextureLoader, shard1),
-    useLoader(TextureLoader, shard2),
+    useLoader(TextureLoader, shard2)
   ]
 
-  const allShards = [
-    bigShards,
-    mediumShards,
-    smallShardsInner,
-    smallShardsOuter,
-  ]
+  const shardList = useMemo(
+    () => [
+      ...generateRandomSpriteElements(10, 1.1, textures, 3, 4),
+      ...generateRandomSpriteElements(15, 0.6, textures, 3, 5),
+      ...generateRandomSpriteElements(40, 0.5, textures, 4, 7)
+    ],
+    []
+  )
 
-  // hier useMemo nutzen
-  const spriteLists = useMemo(() => distributeRandomly(allShards, textures), [])
+  const shardRef = useRef<Group>(null)
 
   // animate ducko szenechange
-  const shardRefs = [
-    useRef<Group>(null),
-    useRef<Group>(null),
-    useRef<Group>(null),
-  ]
   const lerpSpeed = 0.4
   const minSize = new Vector3(0.7, 0.7, 0.7)
   const fullSize = new Vector3(1, 1, 1)
 
-  const showGroup = (amount: number) => {
-    shardRefs.forEach((shardGroup, i) => {
-      shardGroup.current.rotateY(amount + (i + 1) * 0.001)
-      shardGroup.current.scale.lerpVectors(
-        shardGroup.current.scale,
-        fullSize,
-        lerpSpeed,
-      )
-      shardGroup.current.traverse((child) => {
-        if (child.isSprite) {
-          child.material.opacity = lerp(child.material.opacity, 1, lerpSpeed)
-        }
-      })
+  const animateShards = (amount: number) => {
+    shardRef.current.rotateY(amount)
+
+    shardRef.current.scale.lerpVectors(
+      shardRef.current.scale,
+      fullSize,
+      lerpSpeed
+    )
+    shardRef.current.traverse((child) => {
+      if (child.isSprite) {
+        child.material.opacity = lerp(child.material.opacity, 1, lerpSpeed)
+      }
     })
   }
 
-  const hideGroup = () => {
-    shardRefs.forEach((shardGroup) => {
-      shardGroup.current.scale.lerpVectors(
-        shardGroup.current.scale,
-        minSize,
-        0.3,
-      )
-      shardGroup.current.traverse((child) => {
-        if (child.isSprite) {
-          child.material.opacity = lerp(child.material.opacity, 0, lerpSpeed)
-        }
-      })
+  const hideShards = () => {
+    shardRef.current.scale.lerpVectors(shardRef.current.scale, minSize, 0.3)
+    shardRef.current.traverse((child) => {
+      if (child.isSprite) {
+        child.material.opacity = lerp(child.material.opacity, 0, lerpSpeed)
+      }
     })
   }
 
   useFrame((state, delta) => {
     if (rotate) {
-      showGroup(delta / 2)
+      animateShards(delta / 30)
     } else {
-      hideGroup()
+      hideShards()
     }
   })
 
   return (
     <>
-      <ImageElement
-        texture={duckTexture}
-        x={0}
-        y={0}
-        rotation={0}
-        height={5.5}
-      />
-
-      <group ref={shardRefs[0]}>{spriteLists[0]}</group>
-      <group ref={shardRefs[1]}>{spriteLists[1]}</group>
-      <group ref={shardRefs[2]}>{spriteLists[2]}</group>
+      <Float speed={rotate ? 1 : 0} floatIntensity={1}>
+        <ImageElement
+          texture={duckTexture}
+          x={0}
+          y={0}
+          rotation={0}
+          height={5.5}
+        />
+      </Float>
+      <group ref={shardRef}>
+        <Float rotationIntensity={1.2} floatIntensity={2}>
+          {shardList}
+        </Float>
+      </group>
     </>
   )
 })
-
-function distributeRandomly(
-  items: SpriteConfig[],
-  textures: Texture[],
-): Array<JSX.Element[]> {
-  const imageCompArrays: Array<JSX.Element[]> = [[], [], []]
-
-  // assign height to instance
-  // put instance randomly in one of three arrays as ImageComp
-  items.forEach((spriteConfig) => {
-    spriteConfig.instances.forEach((sprite) => {
-      const randomArray = randomInt(0, 3)
-      imageCompArrays[randomArray].push(
-        <SpriteElement
-          x={sprite.x}
-          y={sprite.y}
-          texture={textures[sprite.textureIndex]}
-          height={spriteConfig.height}
-          key={imageCompArrays[randomArray].length}
-        />,
-      )
-    })
-  })
-  console.log(imageCompArrays)
-  return imageCompArrays
-}
 
 type ImageProps = {
   texture: Texture
@@ -165,18 +125,17 @@ const ImageElement = ({ texture, x, y, height, rotation }: ImageProps) => {
 
 type SpriteProps = {
   texture: Texture
-  x: number
-  y: number
+  position: Vector3
   height: number
 }
 
-const SpriteElement = ({ texture, x, y, height }: SpriteProps) => {
+const SpriteElement = ({ texture, position, height }: SpriteProps) => {
   const imageWidth = texture.image.width
   const imageHeight = texture.image.height
   const scaledWidth = (imageWidth / imageHeight) * height
 
   return (
-    <sprite scale={[scaledWidth, height, 1]} position={[x, y, 0]}>
+    <sprite scale={[scaledWidth, height, 1]} position={position}>
       <spriteMaterial
         map={texture}
         opacity={0}
@@ -187,10 +146,32 @@ const SpriteElement = ({ texture, x, y, height }: SpriteProps) => {
     </sprite>
   )
 }
-function showGroup(arg0: number) {
-  throw new Error("Function not implemented.")
-}
 
-function hideGroup() {
-  throw new Error("Function not implemented.")
+const generateRandomSpriteElements = (
+  amount: number,
+  height: number,
+  textures: Texture[],
+  innerRadius: number,
+  outerRadius: number
+): JSX.Element[] => {
+  const sprites = []
+
+  for (let i = 0; i < amount; i++) {
+    const randomPos = getRandomPositionInSphereWithXBias(
+      innerRadius,
+      outerRadius,
+      2
+    )
+    const randomTexture = textures[randomInt(0, textures.length)]
+
+    sprites.push(
+      <SpriteElement
+        position={randomPos}
+        height={height}
+        texture={randomTexture}
+      />
+    )
+  }
+
+  return sprites
 }
