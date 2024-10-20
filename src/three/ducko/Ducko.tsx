@@ -35,16 +35,16 @@ export const Ducko = memo(({ rotate }: DuckoProps) => {
 
   // animate ducko szenechange
   const lerpSpeed = 0.4
-  const minSize = new Vector3(0.7, 0.7, 0.7)
+  const lerpSpeedSlow = 0.07
+  const minSize = new Vector3(0.7, 0.7, 0.3)
   const fullSize = new Vector3(1, 1, 1)
 
   const animateShards = (amount: number) => {
     shardRef.current.rotateY(amount)
-
     shardRef.current.scale.lerpVectors(
       shardRef.current.scale,
       fullSize,
-      lerpSpeed
+      lerpSpeedSlow
     )
     shardRef.current.traverse((child) => {
       if (child.isSprite) {
@@ -54,10 +54,14 @@ export const Ducko = memo(({ rotate }: DuckoProps) => {
   }
 
   const hideShards = () => {
-    shardRef.current.scale.lerpVectors(shardRef.current.scale, minSize, 0.3)
+    shardRef.current.scale.lerpVectors(
+      shardRef.current.scale,
+      minSize,
+      lerpSpeedSlow
+    )
     shardRef.current.traverse((child) => {
       if (child.isSprite) {
-        child.material.opacity = lerp(child.material.opacity, 0, lerpSpeed)
+        child.material.opacity = lerp(child.material.opacity, 0, lerpSpeedSlow)
       }
     })
   }
@@ -72,7 +76,7 @@ export const Ducko = memo(({ rotate }: DuckoProps) => {
 
   return (
     <>
-      <Float speed={rotate ? 1 : 0} floatIntensity={1}>
+      <Float enabled={rotate}>
         <ImageElement
           texture={duckTexture}
           x={0}
@@ -82,9 +86,8 @@ export const Ducko = memo(({ rotate }: DuckoProps) => {
         />
       </Float>
       <group ref={shardRef}>
-        <Float rotationIntensity={1.2} floatIntensity={2}>
-          {shardList}
-        </Float>
+        {shardList}
+        <Float rotationIntensity={1.2} floatIntensity={2}></Float>
       </group>
     </>
   )
@@ -116,7 +119,7 @@ const ImageElement = ({ texture, x, y, height, rotation }: ImageProps) => {
       <meshBasicMaterial
         map={texture}
         transparent
-        alphaTest={0.1}
+        alphaTest={0.5}
         side={DoubleSide}
       />
     </mesh>
@@ -138,9 +141,8 @@ const SpriteElement = ({ texture, position, height }: SpriteProps) => {
     <sprite scale={[scaledWidth, height, 1]} position={position}>
       <spriteMaterial
         map={texture}
-        opacity={0}
         transparent
-        alphaTest={0.1}
+        alphaTest={0.75}
         side={DoubleSide}
       />
     </sprite>
