@@ -35,13 +35,7 @@ export const Ducko = memo(({ rotate }: DuckoProps) => {
   ]
 
   // hier useMemo nutzen
-
-  const [sprites1, sprites2, sprites3] = useMemo(
-    () => distributeRandomly(allShards, textures),
-    [],
-  )
-
-  // distribute sprites randomly to three groups to allow rotation in different speeds
+  const spriteLists = useMemo(() => distributeRandomly(allShards, textures), [])
 
   // animate ducko szenechange
   const shardRefs = [
@@ -53,6 +47,11 @@ export const Ducko = memo(({ rotate }: DuckoProps) => {
   const rotateGroup = (amount: number) => {
     shardRefs.forEach((shardGroup, i) => {
       shardGroup.current.rotateY(amount + (i + 1) * 0.001)
+      shardGroup.current.traverse((child) => {
+        if (child.isMesh) {
+          // child.lookAt(new Vector3(0, 0, -10))
+        }
+      })
     })
   }
 
@@ -69,23 +68,17 @@ export const Ducko = memo(({ rotate }: DuckoProps) => {
   useFrame((state, delta) => {
     if (rotate) {
       rotateGroup(delta / 2)
-      // shards1.current.rotateY(delta)
     } else {
       moveGroupsToInitialPosition()
-      // shards1.current.rotation.y = MathUtils.lerp(
-      //   shards1.current.rotation.y,
-      //   0,
-      //   0.04,
-      // )
     }
   })
 
   return (
     <>
       <Image texture={duckTexture} x={0} y={0} rotation={0} height={5.5} />
-      <group ref={shardRefs[0]}>{sprites1}</group>
-      <group ref={shardRefs[1]}>{sprites2}</group>
-      <group ref={shardRefs[2]}>{sprites3}</group>
+      <group ref={shardRefs[0]}>{spriteLists[0]}</group>
+      <group ref={shardRefs[1]}>{spriteLists[1]}</group>
+      <group ref={shardRefs[2]}>{spriteLists[2]}</group>
     </>
   )
 })
