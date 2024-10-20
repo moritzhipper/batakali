@@ -1,0 +1,31 @@
+.projects-page-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 16px;
+
+  .projects-wrapper {
+    display: grid;
+    flex: 1;
+    grid-template-columns: 1fr 1fr;
+
+    grid-gap: 16px;
+
+    .project {
+      padding: var(--distance-s);
+      border: 1px solid var(--accent-2);
+      border-radius: var(--radius-m);
+    }
+  }
+
+  .filter-wrapper {
+    display: flex;
+    gap: var(--distance-m);
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    gap: var(--distance-m);
+  }
+}

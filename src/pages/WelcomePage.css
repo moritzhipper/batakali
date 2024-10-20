@@ -1,6 +1,6 @@
 .lets-go {
-  color: black;
+  color: var(--accent-0);
   font-size: 3em;
-  text-shadow: -3px 4px 0px #fff;
+  text-shadow: -3px 4px 0px var(--accent-3);
   font-family: "BattleContinues";
 }

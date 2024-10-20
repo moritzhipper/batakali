@@ -1,0 +1,35 @@
+:root {
+  --base-0: #111;
+  --base-1: #333;
+  --base-2: #aaa;
+  --base-3: #ddd;
+
+  --accent-0: var(--base-0);
+  --accent-1: var(--base-1);
+  --accent-2: var(--base-2);
+  --accent-3: var(--base-3);
+
+  --distance-2xs: 2px;
+  --distance-xs: 4px;
+  --distance-s: 8px;
+  --distance-m: 16px;
+  --distance-l: 32px;
+  --distance-xl: 64px;
+
+  --radius-s: 4px;
+  --radius-m: 6px;
+  --radius-l: 10px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --accent-0: var(--base-3);
+    --accent-1: var(--base-2);
+    --accent-2: var(--base-1);
+    --accent-3: var(--base-0);
+
+    canvas {
+      filter: invert(1);
+    }
+  }
+}

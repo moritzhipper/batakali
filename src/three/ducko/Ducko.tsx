@@ -75,7 +75,13 @@ export const Ducko = memo(({ rotate }: DuckoProps) => {
 
   return (
     <>
-      <Image texture={duckTexture} x={0} y={0} rotation={0} height={5.5} />
+      <ImageElement
+        texture={duckTexture}
+        x={0}
+        y={0}
+        rotation={0}
+        height={5.5}
+      />
       <group ref={shardRefs[0]}>{spriteLists[0]}</group>
       <group ref={shardRefs[1]}>{spriteLists[1]}</group>
       <group ref={shardRefs[2]}>{spriteLists[2]}</group>
@@ -95,7 +101,7 @@ function distributeRandomly(
     spriteConfig.instances.forEach((sprite) => {
       const randomArray = randomInt(0, 3)
       imageCompArrays[randomArray].push(
-        <Image
+        <SpriteElement
           x={sprite.x}
           y={sprite.y}
           texture={textures[sprite.textureIndex]}
@@ -117,7 +123,7 @@ type ImageProps = {
   rotation?: number
 }
 
-const Image = ({ texture, x, y, height, rotation }: ImageProps) => {
+const ImageElement = ({ texture, x, y, height, rotation }: ImageProps) => {
   // either sets rotation from input or rotates it pointing to the center
   const actualRotation = rotation ?? Math.atan2(y, x) + 3 * (Math.PI / 2)
   const imageWidth = texture.image.width
@@ -139,5 +145,30 @@ const Image = ({ texture, x, y, height, rotation }: ImageProps) => {
         side={DoubleSide}
       />
     </mesh>
+  )
+}
+
+type SpriteProps = {
+  texture: Texture
+  x: number
+  y: number
+  height: number
+}
+
+const SpriteElement = ({ texture, x, y, height }: SpriteProps) => {
+  const imageWidth = texture.image.width
+  const imageHeight = texture.image.height
+
+  const scaledWidth = (imageWidth / imageHeight) * height
+
+  return (
+    <sprite scale={[scaledWidth, height, 1]} position={[x, y, 0]}>
+      <spriteMaterial
+        map={texture}
+        transparent
+        alphaTest={0.1}
+        side={DoubleSide}
+      />
+    </sprite>
   )
 }

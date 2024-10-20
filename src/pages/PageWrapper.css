@@ -1,7 +1,6 @@
 /* positioning */
 .page-wrapper {
   height: 100%;
-  box-sizing: border-box;
   animation: fadeIn 0.3s ease-in-out;
   animation-fill-mode: both;
 
