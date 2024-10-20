@@ -13,9 +13,9 @@ export const Dof = () => {
       />
       <EffectComposer>
         <DepthOfField
-          target={[0, 0, 0]}
+          target={[0, 0, 10]}
           focusDistance={10}
-          focalLength={0.03}
+          focalLength={0.08}
           bokehScale={5}
         />
       </EffectComposer>

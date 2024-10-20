@@ -1,28 +1,15 @@
-import { config, useSpring } from "@react-spring/three";
-import { CameraControls, Environment } from "@react-three/drei";
+import { Environment } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { useState } from "react";
+import { CameraDolly } from "./CameraDolly";
 import { Ducko } from "./ducko";
 
 export const ThreeWrapper = () => {
-  const [clicked, setClicked] = useState(true);
-
-  const springs = useSpring({
-    position: clicked ? [0, 0, 15] : [0, -20, 20],
-    fov: clicked ? 50 : 50,
-    lookAt: clicked ? [0, 0, 0] : [0, 0, 0],
-    config: config.gentle,
-  });
-
-  // const s = useSpring({
-  //   scale: clicked ? 0.8 : 1,
-  //   // Fun jelly-like animation
-  //   config: config.wobbly,
-  // });
+  const [duckoState, setDuckoState] = useState(0);
 
   const handleClick = () => {
-    console.log("clicked");
-    setClicked(!clicked);
+    console.log("duckostate: ", duckoState ? 0 : 1);
+    setDuckoState((state) => (state ? 0 : 1));
   };
 
   return (
@@ -32,7 +19,10 @@ export const ThreeWrapper = () => {
       </div>
       <Canvas>
         {/* <Dof /> */}
-        <CameraControls />
+
+        {/* <CameraControls /> */}
+
+        <CameraDolly positionIndex={duckoState} />
         <ambientLight intensity={0.7} />
         <directionalLight color="white" position={[10, 0, 10]} />
         <Environment preset="warehouse" />

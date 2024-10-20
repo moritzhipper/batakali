@@ -1,11 +1,12 @@
 import { useLoader } from "@react-three/fiber";
+import { memo } from "react";
 import { Texture, TextureLoader } from "three";
 import duck from "../assets/images/duck.png";
 import feather from "../assets/images/feather.png";
 import shard1 from "../assets/images/shard1.png";
 import shard2 from "../assets/images/shard2.png";
 
-export const Ducko = () => {
+export const Ducko = memo(() => {
   const duckTexture = useLoader(TextureLoader, duck);
   const textureMaps = {
     feather: useLoader(TextureLoader, feather),
@@ -23,6 +24,7 @@ export const Ducko = () => {
         key={i}
       />
     ));
+  console.log("rerendered duck");
 
   const bigSpriteElements = mapToShards(bigShards, 1.1);
   const mediumSpriteElements = mapToShards(mediumShards, 0.8);
@@ -38,7 +40,7 @@ export const Ducko = () => {
       {smallSpriteElementsOuter}
     </>
   );
-};
+});
 
 type ImageProps = {
   texture: Texture;
@@ -63,7 +65,7 @@ const Image = ({ texture, x, y, height, rotation }: ImageProps) => {
       rotation={[0, 0, actualRotation]}
     >
       <planeGeometry args={[1, 1]} />
-      <meshBasicMaterial map={texture} transparent alphaTest={0.08} />
+      <meshBasicMaterial map={texture} transparent alphaTest={0.1} />
     </mesh>
   );
 };
