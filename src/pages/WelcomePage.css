@@ -1,0 +1,7 @@
+.welcome-page-wrapper {
+  grid-row: 3 / 3;
+  place-self: center;
+  a {
+    font-size: 1.5em;
+  }
+}

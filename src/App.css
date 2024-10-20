@@ -1,30 +1,24 @@
 body {
-  background-color: white;
+  /* background-color: black;
+  canvas {
+    filter: invert(1);
+  } */
   margin: 0;
   padding: 0;
-  box-sizing: content-box;
 
   main {
     width: 100%;
-    height: 100%;
-  }
-
-  h1 {
-    font-size: 5em;
+    height: 100dvh;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
   }
 }
 
-.canvas-wrapper {
-  top: 0;
-  left: 0;
+.three-wrapper {
   position: fixed;
   width: 100vw;
   height: 100dvh;
-}
-
-.debug {
-  position: fixed;
   top: 0;
   left: 0;
-  z-index: 100;
+  z-index: -1;
 }
