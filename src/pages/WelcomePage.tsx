@@ -6,7 +6,7 @@ export const WelcomePage = () => {
   return (
     <PageWrapper type="third">
       <Link className="lets-go delayed-fade-in" to="/projects">
-        Lets Go
+        Angry Ducko
       </Link>
     </PageWrapper>
   )

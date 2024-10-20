@@ -1,12 +1,61 @@
 .navbar-wrapper {
   position: fixed;
-  top: 0;
-  left: 0;
-  padding: 16px;
-  width: 100vw;
-  display: flex;
-  button.home {
-    font-size: 2em;
+  z-index: 1;
+
+  .home {
+    &.small {
+      top: 0;
+      left: 0;
+      font-size: 2em;
+      transition: transform 0.3s ease-in-out;
+    }
+    &.big {
+      font-size: 3em;
+    }
+  }
+
+  .home.small,
+  .menu {
+    position: fixed;
+    z-index: 2;
+    padding: var(--distance-m);
+  }
+
+  .home,
+  .menu {
     font-family: "BattleContinues";
+  }
+
+  &.open {
+    .home.small {
+      visibility: hidden;
+    }
+    .menu {
+      transform: rotate(0deg);
+    }
+  }
+
+  .menu {
+    width: 32px;
+    height: 32px;
+    box-sizing: content-box;
+    top: 0;
+    right: 0;
+    transform: rotate(90deg);
+    font-family: "BattleContinues";
+    font-size: 1.5em;
+  }
+  .nav-items-wrapper {
+    z-index: 1;
+    box-sizing: border-box;
+    display: flex;
+    padding: var(--distance-l) var(--distance-m);
+    width: 100vw;
+    flex-direction: column;
+    gap: var(--distance-m);
+    height: 100dvh;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
   }
 }
