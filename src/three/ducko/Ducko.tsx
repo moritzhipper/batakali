@@ -1,6 +1,7 @@
 import { useFrame, useLoader } from "@react-three/fiber"
 import { memo, useMemo, useRef } from "react"
-import { DoubleSide, Group, MathUtils, Texture, TextureLoader } from "three"
+import { DoubleSide, Group, Texture, TextureLoader, Vector3 } from "three"
+import { lerp } from "three/src/math/MathUtils.js"
 import duck from "../../assets/images/duck.png"
 import feather from "../../assets/images/feather.png"
 import shard1 from "../../assets/images/shard1.png"
@@ -43,33 +44,46 @@ export const Ducko = memo(({ rotate }: DuckoProps) => {
     useRef<Group>(null),
     useRef<Group>(null),
   ]
+  const lerpSpeed = 0.4
+  const minSize = new Vector3(0.7, 0.7, 0.7)
+  const fullSize = new Vector3(1, 1, 1)
 
-  const rotateGroup = (amount: number) => {
+  const showGroup = (amount: number) => {
     shardRefs.forEach((shardGroup, i) => {
       shardGroup.current.rotateY(amount + (i + 1) * 0.001)
+      shardGroup.current.scale.lerpVectors(
+        shardGroup.current.scale,
+        fullSize,
+        lerpSpeed,
+      )
       shardGroup.current.traverse((child) => {
-        if (child.isMesh) {
-          // child.lookAt(new Vector3(0, 0, -10))
+        if (child.isSprite) {
+          child.material.opacity = lerp(child.material.opacity, 1, lerpSpeed)
         }
       })
     })
   }
 
-  const moveGroupsToInitialPosition = () => {
+  const hideGroup = () => {
     shardRefs.forEach((shardGroup) => {
-      shardGroup.current.rotation.y = MathUtils.lerp(
-        shardGroup.current.rotation.y,
-        0,
-        0.04,
+      shardGroup.current.scale.lerpVectors(
+        shardGroup.current.scale,
+        minSize,
+        0.3,
       )
+      shardGroup.current.traverse((child) => {
+        if (child.isSprite) {
+          child.material.opacity = lerp(child.material.opacity, 0, lerpSpeed)
+        }
+      })
     })
   }
 
   useFrame((state, delta) => {
     if (rotate) {
-      rotateGroup(delta / 2)
+      showGroup(delta / 2)
     } else {
-      moveGroupsToInitialPosition()
+      hideGroup()
     }
   })
 
@@ -82,6 +96,7 @@ export const Ducko = memo(({ rotate }: DuckoProps) => {
         rotation={0}
         height={5.5}
       />
+
       <group ref={shardRefs[0]}>{spriteLists[0]}</group>
       <group ref={shardRefs[1]}>{spriteLists[1]}</group>
       <group ref={shardRefs[2]}>{spriteLists[2]}</group>
@@ -158,17 +173,24 @@ type SpriteProps = {
 const SpriteElement = ({ texture, x, y, height }: SpriteProps) => {
   const imageWidth = texture.image.width
   const imageHeight = texture.image.height
-
   const scaledWidth = (imageWidth / imageHeight) * height
 
   return (
     <sprite scale={[scaledWidth, height, 1]} position={[x, y, 0]}>
       <spriteMaterial
         map={texture}
+        opacity={0}
         transparent
         alphaTest={0.1}
         side={DoubleSide}
       />
     </sprite>
   )
+}
+function showGroup(arg0: number) {
+  throw new Error("Function not implemented.")
+}
+
+function hideGroup() {
+  throw new Error("Function not implemented.")
 }

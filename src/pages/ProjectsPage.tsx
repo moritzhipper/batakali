@@ -53,7 +53,7 @@ export const ProjectsPage = () => {
         </div>
         <div className="projects-wrapper">
           {visibleProjects.map((project) => (
-            <Project {...project} />
+            <Project {...project} key={project.name} />
           ))}
         </div>
         <div className="pagination">
