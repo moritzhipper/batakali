@@ -27,7 +27,7 @@ export const ThreeWrapper = () => {
 
       <CameraDolly positionIndex={duckoState} />
       <ambientLight intensity={0.7} />
-      <directionalLight color="white" position={[10, 0, 10]} />
+      <directionalLight color="white" position={[0, 0, 10]} />
       <Environment preset="warehouse" />
       <Ducko />
     </Canvas>

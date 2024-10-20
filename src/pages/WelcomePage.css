@@ -1,7 +1,6 @@
-.welcome-page-wrapper {
-  grid-row: 3 / 3;
-  place-self: center;
-  a {
-    font-size: 1.5em;
-  }
+.lets-go {
+  color: black;
+  font-size: 3em;
+  text-shadow: -3px 4px 0px #fff;
+  font-family: "BattleContinues";
 }

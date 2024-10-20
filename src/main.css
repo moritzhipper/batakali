@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "BattleContinues";
+  src: url(./assets/fonts/TheBattleCont.ttf) format("truetype");
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -8,6 +13,14 @@
 }
 
 #root {
+  margin: 0;
+}
+
+h1 {
+  font-weight: bold;
+  font-family: "BattleContinues";
+  text-align: center;
+  font-size: 2.5em;
   margin: 0;
 }
 

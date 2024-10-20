@@ -1,9 +1,10 @@
+import { PageWrapper } from "./PageWrapper";
 import "./ProjectsPage.css";
 
 export const ProjectsPage = () => {
   return (
-    <div className="projects-page-wrapper">
+    <PageWrapper type="half">
       <h1>Projects</h1>
-    </div>
+    </PageWrapper>
   );
 };

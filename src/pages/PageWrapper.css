@@ -1,0 +1,43 @@
+/* positioning */
+.page-wrapper {
+  height: 100%;
+  box-sizing: border-box;
+  animation: fadeIn 0.3s ease-in-out;
+  animation-fill-mode: both;
+
+  &.full {
+    backdrop-filter: blur(10px);
+  }
+
+  &.half,
+  &.third {
+    animation-delay: 0.3s;
+    display: grid;
+  }
+
+  &.half {
+    grid-template-rows: 1fr 1fr;
+
+    .content {
+      grid-row: 2 / 2;
+    }
+  }
+
+  &.third {
+    grid-template-rows: 1fr 1fr 1fr;
+    place-items: center;
+
+    .content {
+      grid-row: 3 / 3;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
