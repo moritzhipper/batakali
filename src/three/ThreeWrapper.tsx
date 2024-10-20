@@ -3,7 +3,7 @@ import { Canvas } from "@react-three/fiber";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { CameraDolly } from "./CameraDolly";
-import { Ducko } from "./Ducko";
+import { Ducko } from "./ducko/Ducko";
 
 export const ThreeWrapper = () => {
   const [duckoState, setDuckoState] = useState(0);
@@ -29,7 +29,7 @@ export const ThreeWrapper = () => {
       <ambientLight intensity={0.7} />
       <directionalLight color="white" position={[0, 0, 10]} />
       <Environment preset="warehouse" />
-      <Ducko />
+      <Ducko rotate={duckoState === 1} />
     </Canvas>
   );
 };
