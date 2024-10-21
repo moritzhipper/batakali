@@ -8,6 +8,7 @@
 - wenn play: shards pulsieren im beat (wenns geht, sogar in sync mit tatsäclichem audio)
 - auf vollbildseite: ducko in der mitte, shards fliegen
 - lookat auf maus?
+- anstatt fog lieber opacity basiert auf distance?: https://stackoverflow.com/questions/52425575/is-it-possible-to-let-fog-interact-with-the-materials-opacity
 
 ### light
 

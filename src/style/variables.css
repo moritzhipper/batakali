@@ -40,7 +40,7 @@
     --accent-3: var(--base-0);
 
     canvas {
-      filter: invert(1);
+      filter: brightness(0.5);
     }
   }
 }

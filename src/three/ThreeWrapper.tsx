@@ -25,7 +25,7 @@ export const ThreeWrapper = () => {
       {/* <Dof /> */}
       <CameraDolly positionIndex={duckoState} />
       {/* <ambientLight intensity={0.7} /> */}
-      <pointLight position={[0, 3, 3]} intensity={100} color={"white"} />
+      <pointLight position={[0, 3, 3]} intensity={100} color={"transparent"} />
       {/* <directionalLight
         color="black"
         intensity={70}
