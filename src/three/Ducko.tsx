@@ -15,7 +15,8 @@ type DuckoProps = {
 
 export const Ducko = memo(({ rotate }: DuckoProps) => {
   // setup Ducko
-  const duckTexture = useLoader(TextureLoader, duck)
+  let duckTexture = useLoader(TextureLoader, duck)
+
   const textures = [
     useLoader(TextureLoader, feather),
     useLoader(TextureLoader, shard1),
@@ -86,8 +87,7 @@ export const Ducko = memo(({ rotate }: DuckoProps) => {
         />
       </Float>
       <group ref={shardRef}>
-        {shardList}
-        <Float rotationIntensity={1.2} floatIntensity={2}></Float>
+        <Float>{shardList}</Float>
       </group>
     </>
   )
@@ -116,7 +116,7 @@ const ImageElement = ({ texture, x, y, height, rotation }: ImageProps) => {
       rotation={[0, 0, actualRotation]}
     >
       <planeGeometry args={[1, 1]} />
-      <meshBasicMaterial
+      <meshStandardMaterial
         map={texture}
         transparent
         alphaTest={0.5}

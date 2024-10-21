@@ -9,6 +9,10 @@
 - auf vollbildseite: ducko in der mitte, shards fliegen
 - lookat auf maus?
 
+### light
+
+- sprites reflektieren kein licht -> alle shards mit lookat und standard material ausstatten?
+
 ### Navbar
 
 - hidden auf start: auf start oben schrift, unten 'lets go'
