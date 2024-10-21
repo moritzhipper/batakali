@@ -2,7 +2,7 @@ import { Canvas } from "@react-three/fiber"
 import { useEffect, useState } from "react"
 import { useLocation } from "react-router-dom"
 import { CameraDolly } from "./CameraDolly"
-import { Ducko } from "./ducko/Ducko"
+import { Ducko } from "./Ducko"
 
 export const ThreeWrapper = () => {
   const [duckoState, setDuckoState] = useState(0)

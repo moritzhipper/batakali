@@ -1,11 +1,16 @@
 import { a, config, useTransition } from "@react-spring/web"
-import { useState } from "react"
-import { Link } from "react-router-dom"
-import "./NavBar.css"
+import { useEffect, useState } from "react"
+import { Link, useLocation } from "react-router-dom"
+import "./NavBarMobile.css"
 
 export const NavBar = () => {
+  const location = useLocation()
   const [open, setOpen] = useState(false)
   const toggle = () => setOpen((open) => !open)
+
+  useEffect(() => {
+    setOpen(false)
+  }, [location])
 
   const transGoalHome = "translate(30px, 30px) scale(1.4)"
   const transitionHome = useTransition(open, {
@@ -46,7 +51,7 @@ export const NavBar = () => {
 
   return (
     <>
-      <div className="navbar-wrapper">
+      <div className="navbar-mobile-wrapper">
         {transitionHome((style, open) => (
           <>
             {!open && (
@@ -72,7 +77,9 @@ export const NavBar = () => {
                   <Link className="home big" to="/">
                     Angry Ducko
                   </Link>
+                  <Link to="/projects">projekte</Link>
                   <Link to="/about">about</Link>
+                  <Link to="/duck">duck</Link>
                   <Link to="/impressum">impressum</Link>
                   <Link to="/datenschutz">datenschutz</Link>
                 </a.div>

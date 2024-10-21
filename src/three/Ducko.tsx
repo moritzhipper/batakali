@@ -3,11 +3,11 @@ import { useFrame, useLoader } from "@react-three/fiber"
 import { memo, useMemo, useRef } from "react"
 import { DoubleSide, Group, Texture, TextureLoader, Vector3 } from "three"
 import { lerp } from "three/src/math/MathUtils.js"
-import duck from "../../assets/images/duck.png"
-import feather from "../../assets/images/feather.png"
-import shard1 from "../../assets/images/shard1.png"
-import shard2 from "../../assets/images/shard2.png"
-import { getRandomPositionInSphereWithXBias, randomInt } from "../utils"
+import duck from "../assets/images/duck.png"
+import feather from "../assets/images/feather.png"
+import shard1 from "../assets/images/shard1.png"
+import shard2 from "../assets/images/shard2.png"
+import { getRandomPositionInSphereWithXBias, randomInt } from "./utils"
 
 type DuckoProps = {
   rotate: boolean

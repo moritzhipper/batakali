@@ -13,6 +13,16 @@
 
 - hidden auf start: auf start oben schrift, unten 'lets go'
 - nach gerätegröße fragen: je nachdem entweder vollbild oder in reihe
+- auf desktop einfach andere componente einblenden
+- auf startseite garnicht anzeigen
+- home link ist hinter blurred layer :(
+- css aufräumen
+
+## Style
+
+- alle schriften und links bewusst stylen
+- irgendwie accent colors durchsichtig machen für blur effekte
+- besseres font pairing
 
 ## Anforderung bild
 

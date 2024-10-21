@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom"
 import "./App.css"
-import { NavBar } from "./NavBar"
+import { NavBarWrapper } from "./nav-bar/NavBarWrapper"
 import { AboutPage } from "./pages/AboutPage"
 import { ProjectsPage } from "./pages/ProjectsPage"
 import { WelcomePage } from "./pages/WelcomePage"
@@ -12,7 +12,7 @@ function App() {
       <div className="three-wrapper">
         <ThreeWrapper />
       </div>
-      <NavBar />
+      <NavBarWrapper />
       <main>
         <Routes>
           <Route element={<WelcomePage />} path="/" />
