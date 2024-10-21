@@ -7,6 +7,12 @@
 - auf page: shards fliegen von mitte in pos, drehen minimal
 - wenn play: shards pulsieren im beat (wenns geht, sogar in sync mit tatsäclichem audio)
 - auf vollbildseite: ducko in der mitte, shards fliegen
+- lookat auf maus?
+
+### Navbar
+
+- hidden auf start: auf start oben schrift, unten 'lets go'
+- nach gerätegröße fragen: je nachdem entweder vollbild oder in reihe
 
 ## Anforderung bild
 

@@ -24,8 +24,8 @@ export const Ducko = memo(({ rotate }: DuckoProps) => {
 
   const shardList = useMemo(
     () => [
-      ...generateRandomSpriteElements(10, 1.1, textures, 3, 4),
-      ...generateRandomSpriteElements(15, 0.6, textures, 3, 5),
+      ...generateRandomSpriteElements(20, 1.1, textures, 3, 4),
+      ...generateRandomSpriteElements(20, 0.6, textures, 3, 5),
       ...generateRandomSpriteElements(40, 0.5, textures, 4, 7)
     ],
     []

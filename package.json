@@ -12,11 +12,13 @@
   },
   "dependencies": {
     "@react-spring/three": "^9.7.4",
+    "@react-spring/web": "^9.7.5",
     "@react-three/drei": "^9.112.0",
     "@react-three/fiber": "^8.17.7",
     "@react-three/flex": "^1.0.1",
     "@react-three/postprocessing": "^2.16.2",
     "leva": "^0.9.35",
+    "postcss-custom-media": "^11.0.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.27.0",

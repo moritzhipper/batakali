@@ -15,10 +15,21 @@
   --distance-m: 16px;
   --distance-l: 32px;
   --distance-xl: 64px;
+  --distance-2xl: 128px;
 
   --radius-s: 4px;
   --radius-m: 6px;
   --radius-l: 10px;
+
+  --font-size-m: 1em;
+  --font-size-l: 1.1em;
+  --font-size-xl: 1.4em;
+  --font-size-2xl: 2em;
+  --font-size-3xl: 2.8em;
+
+  --animation-duration-s: 0.2s;
+  --animation-duration-m: 0.3s;
+  --animation-duration-l: 0.6s;
 }
 
 @media (prefers-color-scheme: dark) {
