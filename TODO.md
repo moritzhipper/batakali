@@ -23,6 +23,8 @@ für alle animationen speing mit der selben confug nutzen
 - auf startseite garnicht anzeigen
 - home link ist hinter blurred layer :(
 - css aufräumen
+- mobil: unten name + github lik + link zu keiner websute
+-desktop: rechts name + link + libk zu website
 
 ## Style
 
