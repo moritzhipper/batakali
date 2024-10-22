@@ -1,0 +1,5 @@
+.navbar-wrapper {
+  animation: fadeIn var(--animation-duration-m) ease-in-out;
+  animation-delay: var(--animation-duration-m);
+  animation-fill-mode: backwards;
+}

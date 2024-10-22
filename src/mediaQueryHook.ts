@@ -1,15 +1,15 @@
-import { useRef, useSyncExternalStore } from "react"
+import { useSyncExternalStore } from "react"
 
 export const useMediaQuery = (query: string) => {
-  const mediaQuery = useRef(window.matchMedia(query))
+  const media = window.matchMedia(query)
 
   return useSyncExternalStore(
     (callback) => {
-      mediaQuery.current.addEventListener("change", callback)
+      media.addEventListener("change", callback)
       return () => {
-        mediaQuery.current.removeEventListener("change", callback)
+        media.removeEventListener("change", callback)
       }
     },
-    () => mediaQuery.current.matches
+    () => media.matches
   )
 }

@@ -1,0 +1,14 @@
+.navbar-wrapper.desktop {
+  position: fixed;
+  width: 100%;
+  display: flex;
+  padding: var(--distance-m);
+  gap: var(--distance-m);
+  align-items: center;
+  box-sizing: border-box;
+
+  .home {
+    font-family: "BattleContinues";
+    font-size: var(--font-size-xl);
+  }
+}

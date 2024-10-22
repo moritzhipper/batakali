@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { Link, useLocation } from "react-router-dom"
 import "./NavBarMobile.css"
 
-export const NavBar = () => {
+export const NavBarMobile = () => {
   const location = useLocation()
   const [open, setOpen] = useState(false)
   const toggle = () => setOpen((open) => !open)
@@ -32,7 +32,7 @@ export const NavBar = () => {
     config: config.stiff
   })
 
-  const transGoalLinks = "translate(-50px, -50px) scale(0.8)"
+  const transGoalLinks = "translate(-20px, -20px) scale(1)"
   const transitionLinks = useTransition(open, {
     from: {
       opacity: 0,
@@ -51,7 +51,7 @@ export const NavBar = () => {
 
   return (
     <>
-      <div className="navbar-mobile-wrapper">
+      <div className="navbar-wrapper mobile">
         {transitionHome((style, open) => (
           <>
             {!open && (
@@ -80,8 +80,20 @@ export const NavBar = () => {
                   <Link to="/projects">projekte</Link>
                   <Link to="/about">about</Link>
                   <Link to="/duck">duck</Link>
-                  <Link to="/impressum">impressum</Link>
-                  <Link to="/datenschutz">datenschutz</Link>
+
+                  <div className="bottom">
+                    <div className="me">
+                      <a href="https://moritzhipper.me">🌐</a>
+                      <a
+                        className="github-logo "
+                        href="https://github.com/moritzhipper/angry-ducko"
+                      ></a>
+                    </div>
+                    <div className="legal">
+                      <Link to="/impressum">impressum</Link>
+                      <Link to="/datenschutz">datenschutz</Link>
+                    </div>
+                  </div>
                 </a.div>
               </a.div>
             )}

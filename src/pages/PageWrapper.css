@@ -1,8 +1,9 @@
 /* positioning */
 .page-wrapper {
   height: 100%;
-  animation: fadeIn 0.3s ease-in-out;
-  animation-fill-mode: both;
+  animation: fadeIn var(--animation-duration-m) ease-in-out;
+  animation-delay: var(--animation-duration-m);
+  animation-fill-mode: backwards;
 
   &.full {
     backdrop-filter: blur(10px);
@@ -10,7 +11,6 @@
 
   &.half,
   &.third {
-    animation-delay: 0.3s;
     display: grid;
   }
 
@@ -29,14 +29,5 @@
     .content {
       grid-row: 3 / 3;
     }
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
   }
 }

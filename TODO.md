@@ -9,8 +9,10 @@
 - auf vollbildseite: ducko in der mitte, shards fliegen
 - lookat auf maus?
 - anstatt fog lieber opacity basiert auf distance?: https://stackoverflow.com/questions/52425575/is-it-possible-to-let-fog-interact-with-the-materials-opacity
-für alle animationen speing mit der selben confug nutzen
+  für alle animationen speing mit der selben confug nutzen
 - diese gute touchinteraktion lib von pmndrs für projects
+- rotation über useframe ausschalten, da Float das auch kann
+- die shards in sichtbarkeit animieren auch über springs?
 
 ### light
 
@@ -25,7 +27,7 @@ für alle animationen speing mit der selben confug nutzen
 - home link ist hinter blurred layer :(
 - css aufräumen
 - mobil: unten name + github lik + link zu keiner websute
--desktop: rechts name + link + libk zu website
+  -desktop: rechts name + link + libk zu website
 
 ## Style
 
