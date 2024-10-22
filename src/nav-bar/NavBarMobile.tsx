@@ -51,7 +51,7 @@ export const NavBarMobile = () => {
 
   return (
     <>
-      <div className="navbar-wrapper mobile">
+      <div className="navbar-wrapper mobile delayed-fade-in">
         {transitionHome((style, open) => (
           <>
             {!open && (
@@ -74,12 +74,18 @@ export const NavBarMobile = () => {
                   className="nav-items"
                   style={{ transform: style.transform }}
                 >
-                  <Link className="home big" to="/">
+                  <Link className="big-ducko-print" to="/">
                     Angry Ducko
                   </Link>
-                  <Link to="/projects">projekte</Link>
-                  <Link to="/about">about</Link>
-                  <Link to="/duck">duck</Link>
+                  <Link className="page" to="/projects">
+                    projekte
+                  </Link>
+                  <Link className="page" to="/about">
+                    about
+                  </Link>
+                  <Link className="page" to="/duck">
+                    duck
+                  </Link>
 
                   <div className="bottom">
                     <div className="me">

@@ -14,6 +14,10 @@
 - rotation über useframe ausschalten, da Float das auch kann
 - die shards in sichtbarkeit animieren auch über springs?
 - in duckostate lookat und cameraposition integrieren: mit springValue dann transitions regeln
+- wenn nur duckopage, dann langsame kamerafahrt and ducko heran und um ducko herum
+- state aufbauen als record, der routenkeys beinhaltet
+- vollbildseiten mit semitransparentem hintergrund
+- farben css für links und so alles
 
 ### light
 

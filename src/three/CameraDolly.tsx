@@ -28,7 +28,7 @@ export const CameraDolly = ({ positionIndex }: Props) => {
   const { position, lookAt } = useSpring({
     position: cameraSettings[positionIndex].position,
     lookAt: cameraSettings[positionIndex].lookAt,
-    config: { tension: 250, friction: 26 }
+    config: { tension: 250, friction: 36 }
   })
 
   return (

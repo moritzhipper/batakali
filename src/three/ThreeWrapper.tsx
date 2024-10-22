@@ -54,7 +54,7 @@ export const ThreeWrapper = () => {
       <fog attach="fog" args={["white", 0, 25]} />
       {/* <Dof /> */}
       <CameraDolly positionIndex={cameraPositionIndex} />
-      <pointLight position={[3, 4, 3]} intensity={40} color={"white"} />
+      <pointLight position={[3, 4, 3]} intensity={100} color={"white"} />
       <Ducko showShards={shardsVisible} />
     </Canvas>
   )

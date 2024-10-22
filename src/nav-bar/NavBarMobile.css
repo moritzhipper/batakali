@@ -19,6 +19,7 @@
   }
 
   .menu {
+    color: var(--accent-1);
     margin-left: auto;
     transition: transform var(--animation-duration-s) ease-out;
     width: 26px;
@@ -49,14 +50,17 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: var(--distance-m);
+      gap: var(--distance-l);
       padding: var(--distance-xl) var(--distance-l);
       height: 100%;
       box-sizing: border-box;
 
       .home.big {
-        font-size: var(--font-size-3xl);
         margin-bottom: var(--distance-l);
+      }
+
+      .page {
+        font-size: var(--font-size-xl);
       }
 
       .bottom {

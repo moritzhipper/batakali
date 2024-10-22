@@ -1,5 +1,5 @@
 .navbar-wrapper.desktop {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -9,16 +9,21 @@
   align-items: center;
   box-sizing: border-box;
   transition: background-color var(--animation-duration-s) ease-in-out;
-  background: linear-gradient(180deg, transparent 0%, transparent 100%);
 
   .home {
     font-family: "BattleContinues";
     font-size: var(--font-size-xl);
   }
 
-  &:hover,
-  &:focus-within {
-    background: linear-gradient(180deg, var(--accent-3) 5%, transparent 100%);
-    /* background-color: var(--accent-3); */
+  .page {
+    font-size: var(--font-size-l);
+  }
+
+  a:not(.home) {
+    font-weight: 300;
+  }
+
+  .impressum {
+    margin-left: auto;
   }
 }

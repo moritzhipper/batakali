@@ -1,12 +1,8 @@
 /* positioning */
 .page-wrapper {
   height: 100%;
-  animation: fadeIn var(--animation-duration-m) ease-in-out;
-  animation-delay: var(--animation-duration-m);
-  animation-fill-mode: backwards;
 
   &.full {
-    backdrop-filter: blur(10px);
   }
 
   &.half,

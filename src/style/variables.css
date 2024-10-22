@@ -45,7 +45,7 @@
     --accent-3: var(--base-0);
 
     canvas {
-      filter: brightness(0.5);
+      filter: brightness(0.6);
     }
 
     .github-logo {

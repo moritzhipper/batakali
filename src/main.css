@@ -15,7 +15,7 @@ body {
     justify-content: center;
     height: 100dvh;
     main {
-      width: 900px;
+      width: 1200px;
     }
   }
 }
@@ -38,6 +38,7 @@ h1 {
 a {
   text-decoration: none;
   font-weight: bold;
+  color: var(--accent-1);
 }
 
 button {
@@ -52,6 +53,18 @@ button {
     cursor: initial;
     opacity: 0.7;
   }
+}
+
+.big-ducko-print {
+  font-size: var(--font-size-3xl);
+  text-shadow: -3px 4px 0px var(--accent-3);
+  font-family: "BattleContinues";
+}
+
+.delayed-fade-in {
+  animation: fadeIn var(--animation-duration-l) ease-in-out;
+  animation-delay: var(--animation-duration-l);
+  animation-fill-mode: backwards;
 }
 
 @keyframes fadeIn {

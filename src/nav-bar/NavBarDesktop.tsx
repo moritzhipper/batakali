@@ -3,13 +3,19 @@ import "./NavBarDesktop.css"
 
 export const NavBarDesktop = () => {
   return (
-    <div className="navbar-wrapper desktop">
+    <div className="navbar-wrapper desktop delayed-fade-in">
       <Link className="home" to="/">
         AD
       </Link>
-      <Link to="/projects">projects</Link>
-      <Link to="/about">about</Link>
-      <Link to="/duck">duck</Link>
+      <Link className="page" to="/projects">
+        projects
+      </Link>
+      <Link className="page" to="/about">
+        about
+      </Link>
+      <Link className="page" to="/duck">
+        duck
+      </Link>
 
       <Link className="legal impressum" to="/imprint">
         impressum
