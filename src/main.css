@@ -1,21 +1,31 @@
 @import "./style/variables";
+@import "./style/layout";
 
 @font-face {
   font-family: "BattleContinues";
   src: url(./assets/fonts/TheBattleCont.ttf) format("truetype");
 }
 
-body,
-:root {
+body {
+  width: 100%;
   margin: 0;
   padding: 0;
+  #root {
+    display: flex;
+    justify-content: center;
+    height: 100dvh;
+    main {
+      width: 900px;
+    }
+  }
 }
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   color-scheme: light dark;
   color: var(--accent-0);
-  /* background-color: var(--accent-3); */
+  display: flex;
+  justify-content: center;
 }
 
 h1 {

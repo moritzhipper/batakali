@@ -5,7 +5,7 @@ import { NavBarMobile } from "./NavBarMobile"
 import "./NavBarWrapper.css"
 
 export const NavBarWrapper = () => {
-  const isMobile = useMediaQuery("(max-width: 768px)")
+  const isMobile = useMediaQuery("(max-width: 700px)")
   const isOnWelcomePage = useLocation().pathname === "/"
 
   if (isOnWelcomePage) {

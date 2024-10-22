@@ -1,5 +1,7 @@
 .navbar-wrapper.mobile {
   position: fixed;
+  top: 0;
+  left: 0;
   z-index: 2;
   padding: var(--distance-m);
   width: 100%;

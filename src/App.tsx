@@ -12,8 +12,8 @@ function App() {
       <div className="three-wrapper">
         <ThreeWrapper />
       </div>
-      <NavBarWrapper />
       <main>
+        <NavBarWrapper />
         <Routes>
           <Route element={<WelcomePage />} path="/" />
           <Route element={<ProjectsPage />} path="/projects" />
