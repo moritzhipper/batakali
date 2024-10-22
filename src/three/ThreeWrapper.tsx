@@ -25,7 +25,7 @@ export const ThreeWrapper = () => {
       {/* <Dof /> */}
       <CameraDolly positionIndex={duckoState} />
       {/* <ambientLight intensity={0.7} /> */}
-      <pointLight position={[0, 3, 3]} intensity={100} color={"transparent"} />
+      <pointLight position={[0, 4, 3]} intensity={40} color={"white"} />
       {/* <directionalLight
         color="black"
         intensity={70}
@@ -42,7 +42,6 @@ export const ThreeWrapper = () => {
         <sphereGeometry args={[1, 16, 16]} />
         <meshStandardMaterial color="hotpink" transparent />
       </mesh> */}
-      fog
       <Ducko rotate={duckoState === 1} />
     </Canvas>
   )

@@ -43,6 +43,7 @@
     width: 100vw;
     height: 100dvh;
     background: linear-gradient(180deg, var(--accent-3) 5%, transparent 100%);
+    backdrop-filter: blur(10px);
 
     .nav-items {
       display: flex;
