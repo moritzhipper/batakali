@@ -90,8 +90,8 @@ export const NavBarMobile = () => {
                       ></a>
                     </div>
                     <div className="legal">
-                      <Link to="/impressum">impressum</Link>
-                      <Link to="/datenschutz">datenschutz</Link>
+                      <Link to="/imprint">impressum</Link>
+                      <Link to="/privacy">datenschutz</Link>
                     </div>
                   </div>
                 </a.div>

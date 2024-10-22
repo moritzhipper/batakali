@@ -10,10 +10,10 @@ export const NavBarDesktop = () => {
       <Link to="/about">about</Link>
       <Link to="/duck">duck</Link>
 
-      <Link className="legal impressum" to="/impressum">
+      <Link className="legal impressum" to="/imprint">
         impressum
       </Link>
-      <Link className="legal" to="/datenschutz">
+      <Link className="legal" to="/privacy">
         datenschutz
       </Link>
       <a className="me" href="https://moritzhipper.me">
