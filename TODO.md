@@ -9,6 +9,7 @@
 - auf vollbildseite: ducko in der mitte, shards fliegen
 - lookat auf maus?
 - anstatt fog lieber opacity basiert auf distance?: https://stackoverflow.com/questions/52425575/is-it-possible-to-let-fog-interact-with-the-materials-opacity
+für alle animationen speing mit der selben confug nutzen
 
 ### light
 
