@@ -15,6 +15,10 @@ const cameraSettings = [
   {
     position: [0, -4, 10],
     lookAt: [0, -2, 0]
+  },
+  {
+    position: [-3, -1, 4],
+    lookAt: [0, 0, 0]
   }
 ]
 

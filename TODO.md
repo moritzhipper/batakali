@@ -13,6 +13,7 @@
 - diese gute touchinteraktion lib von pmndrs für projects
 - rotation über useframe ausschalten, da Float das auch kann
 - die shards in sichtbarkeit animieren auch über springs?
+- in duckostate lookat und cameraposition integrieren: mit springValue dann transitions regeln
 
 ### light
 

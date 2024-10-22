@@ -7,6 +7,7 @@ export const NavBarDesktop = () => {
       <Link className="home" to="/">
         AD
       </Link>
+      <Link to="/projects">projects</Link>
       <Link to="/about">about</Link>
       <Link to="/duck">duck</Link>
 

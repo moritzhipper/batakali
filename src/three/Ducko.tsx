@@ -10,10 +10,10 @@ import shard2 from "../assets/images/shard2.png"
 import { getRandomPositionInSphereWithXBias, randomInt } from "./utils"
 
 type DuckoProps = {
-  rotate: boolean
+  showShards: boolean
 }
 
-export const Ducko = memo(({ rotate }: DuckoProps) => {
+export const Ducko = memo(({ showShards }: DuckoProps) => {
   // setup Ducko
   let duckTexture = useLoader(TextureLoader, duck)
 
@@ -68,7 +68,7 @@ export const Ducko = memo(({ rotate }: DuckoProps) => {
   }
 
   useFrame((state, delta) => {
-    if (rotate) {
+    if (showShards) {
       animateShards(delta / 30)
     } else {
       hideShards()
@@ -77,7 +77,7 @@ export const Ducko = memo(({ rotate }: DuckoProps) => {
 
   return (
     <>
-      <Float enabled={rotate}>
+      <Float enabled={showShards}>
         <ImageElement
           texture={duckTexture}
           x={0}
