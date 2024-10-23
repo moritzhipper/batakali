@@ -19,6 +19,10 @@
 - vollbildseiten mit semitransparentem hintergrund
 - farben css für links und so alles
 
+
+- kickimpat führt inputfunction, die entweder di shard hart auf 1.1 scaliert oder dieses doppellerp
+- in use frame dann der lerp zürck auf 1?
+
 ### light
 
 - sprites reflektieren kein licht -> alle shards mit lookat und standard material ausstatten?
