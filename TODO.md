@@ -18,6 +18,7 @@
 - state aufbauen als record, der routenkeys beinhaltet
 - vollbildseiten mit semitransparentem hintergrund
 - farben css für links und so alles
+- instatt diese strixh zwischen links unten ein graffiti l?
 
 
 - kickimpat führt inputfunction, die entweder di shard hart auf 1.1 scaliert oder dieses doppellerp
