@@ -18,10 +18,11 @@
 
   a:not(.home) {
     font-size: var(--font-size-l);
+    font-weight: 400;
+    padding-bottom: 4px;
   }
 
   a:not(.home) {
-    font-weight: 400;
   }
 
   .impressum {

@@ -146,8 +146,8 @@ const ImageElement = ({ texture, x, y, height, rotation }: ImageProps) => {
 
 const center = new Vector3(0, 0, 0)
 export const getOpacityFromDistanceToCenter = (positionObj: Vector3) => {
-  const min = 4
-  const max = 10
+  const min = 4.5
+  const max = 12
 
   const distance = positionObj.distanceTo(center)
   if (distance <= min) return 1
