@@ -7,10 +7,23 @@
 
   .projects-wrapper {
     display: grid;
-    flex: 1;
-    grid-template-columns: 1fr 1fr;
+    grid-auto-columns: 100%;
+    grid-auto-flow: column;
+    gap: 16px;
 
-    grid-gap: 16px;
+    border: 1px solid var(--accent-2);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    flex: 1;
+
+    .projects-page {
+      scroll-snap-align: start;
+      display: grid;
+      width: 100%;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      grid-gap: 16px;
+    }
 
     .project {
       padding: var(--distance-s);

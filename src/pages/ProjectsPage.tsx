@@ -21,6 +21,8 @@ export const ProjectsPage = () => {
   const [currentPage, setCurrentPage] = useState(0)
   const [visibleProjects, setVisibleProjects] = useState(projects)
   const [selectedFilter, setSelectedFilter] = useState<string[]>([])
+  const pages = mapToPages(projects)
+  console.log(pages)
 
   useEffect(() => {
     const visibleProjects = projects.slice(
@@ -51,8 +53,8 @@ export const ProjectsPage = () => {
           ))}
         </div>
         <div className="projects-wrapper">
-          {visibleProjects.map((project) => (
-            <Project {...project} key={project.name} />
+          {pages.map((projects: Project[], i: number) => (
+            <ProjectSubPage projects={projects} key={i} />
           ))}
         </div>
         <div className="pagination">
@@ -69,10 +71,25 @@ export const ProjectsPage = () => {
   )
 }
 
-const Project = ({ name, tag }: Project) => {
+type ProjectsPageProps = {
+  projects: Project[]
+}
+const ProjectSubPage = ({ projects }: ProjectsPageProps) => {
   return (
-    <div className="project">
-      <div>{name}</div>
+    <div className="projects-page">
+      {projects.map((projects) => (
+        <div className="project">{projects.name}</div>
+      ))}
     </div>
   )
+}
+
+const mapToPages = (arr: Project[], pageSize = 4): Project[][] => {
+  const result: Project[][] = []
+
+  for (let i = 0; i < arr.length; i += pageSize) {
+    result.push(arr.slice(i, i + pageSize))
+  }
+
+  return result
 }
