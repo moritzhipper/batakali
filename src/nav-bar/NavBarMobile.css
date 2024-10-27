@@ -55,12 +55,9 @@
       height: 100%;
       box-sizing: border-box;
 
-      .home.big {
-        margin-bottom: var(--distance-l);
-      }
-
       .page {
         font-size: var(--font-size-xl);
+        font-weight: 400;
       }
 
       .bottom {
@@ -75,7 +72,7 @@
           padding: 0 var(--distance-s);
           opacity: 0.5;
           a {
-            font-weight: 300;
+            font-weight: 400;
           }
         }
 
