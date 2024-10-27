@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { useLocation } from "react-router-dom"
 import { CameraDolly } from "./CameraDolly"
 import { Ducko } from "./Ducko"
-import { getConfigForRoute } from "./sceneConfig"
+import { getConfigForRoute } from "./scene-config"
 
 export const ThreeWrapper = () => {
   const [activeSzene, setActiveSzene] = useState(getConfigForRoute())

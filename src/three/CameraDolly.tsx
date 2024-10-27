@@ -1,8 +1,9 @@
-import { a, config, useSpringValue } from "@react-spring/three"
+import { a, useSpringValue } from "@react-spring/three"
 import { PerspectiveCamera } from "@react-three/drei"
 import { PerspectiveCameraProps, useThree } from "@react-three/fiber"
 import { useEffect, useMemo } from "react"
-import { CameraConfig, getConfigForRoute } from "./sceneConfig"
+import { springConfig } from "../page-config"
+import { CameraConfig, getConfigForRoute } from "./scene-config"
 
 type Props = {
   cameraConfig: CameraConfig
@@ -12,13 +13,8 @@ export const CameraDolly = ({ cameraConfig }: Props) => {
   const AnimatedCamera = useMemo(() => a(CameraWrapper), [])
   const initSzene = useMemo(() => getConfigForRoute(), [])
 
-  const positionSpring = useSpringValue(initSzene.camera.position, {
-    config: config.default
-  })
-
-  const lookAtSpring = useSpringValue(initSzene.camera.lookAt, {
-    config: config.default
-  })
+  const positionSpring = useSpringValue(initSzene.camera.position, springConfig)
+  const lookAtSpring = useSpringValue(initSzene.camera.lookAt, springConfig)
 
   useEffect(() => {
     lookAtSpring.start(cameraConfig.lookAt)
