@@ -5,36 +5,38 @@
   gap: 16px;
   animation: fadeIn 0.3s ease-in-out;
 
-  .projects-wrapper {
-    display: grid;
-    grid-auto-columns: 100%;
-    grid-auto-flow: column;
-    gap: 16px;
-
-    border: 1px solid var(--accent-2);
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
+  .project-wrapper {
+    display: flex;
+    justify-content: center;
     flex: 1;
 
-    .projects-page {
-      scroll-snap-align: start;
-      display: grid;
-      width: 100%;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr 1fr;
-      grid-gap: 16px;
-    }
-
     .project {
+      aspect-ratio: 1;
+      object-fit: contain;
+      box-sizing: border-box;
       padding: var(--distance-s);
       border: 1px solid var(--accent-2);
-      border-radius: var(--radius-m);
+      border-radius: var(--radius-l);
+      display: grid;
+      place-items: center;
+      background-color: rgb(from var(--accent-3) r g b / 0.9);
     }
   }
 
   .filter-wrapper {
     display: flex;
+    justify-content: center;
     gap: var(--distance-m);
+
+    button {
+      transition: opacity var(--animation-duration-s);
+    }
+
+    &:has(.selected) {
+      :not(.selected) {
+        opacity: 0.5;
+      }
+    }
   }
 
   .pagination {
