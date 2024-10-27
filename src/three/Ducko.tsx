@@ -1,7 +1,14 @@
 import { Float } from "@react-three/drei"
 import { useFrame, useLoader } from "@react-three/fiber"
 import { memo, useMemo, useRef } from "react"
-import { DoubleSide, Group, Texture, TextureLoader, Vector3 } from "three"
+import {
+  DoubleSide,
+  Group,
+  SpriteMaterial,
+  Texture,
+  TextureLoader,
+  Vector3
+} from "three"
 import { lerp } from "three/src/math/MathUtils.js"
 import duck from "../assets/images/duck.png"
 import feather from "../assets/images/feather.png"
@@ -15,6 +22,8 @@ type Props = {
 }
 
 export const Ducko = memo(({ duckoConfig }: Props) => {
+  const { animateFloating, shardsVisible } = duckoConfig
+
   // setup Ducko
   let duckTexture = useLoader(TextureLoader, duck)
   const shardRef = useRef<Group>(null)
@@ -30,29 +39,34 @@ export const Ducko = memo(({ duckoConfig }: Props) => {
 
   const shardList = useMemo(
     () => [
-      ...generateRandomSpriteElements(20, 1.1, textures, 3, 4),
-      ...generateRandomSpriteElements(20, 0.6, textures, 3, 5),
-      ...generateRandomSpriteElements(40, 0.5, textures, 4, 7)
+      ...generateRandomSpriteElements(10, 1.5, textures, 3, 4),
+      ...generateRandomSpriteElements(20, 0.9, textures, 3, 5),
+      ...generateRandomSpriteElements(50, 0.5, textures, 4, 7),
+      ...generateRandomSpriteElements(50, 0.5, textures, 7, 8)
     ],
     []
   )
 
-  // animate ducko szenechange
-  const lerpSpeed = 0.4
-  const lerpSpeedSlow = 0.07
-  const minSize = new Vector3(0.7, 0.7, 0.3)
+  // animate ducko szenechange -> Smaller is slower
+  const lerpSpeedShow = 0.1
+  const lerpSpeedHide = 0.2
+  const minSize = new Vector3(0.7, 0.7, 0.7)
   const fullSize = new Vector3(1, 1, 1)
 
-  const animateShards = (amount: number) => {
-    shardRef.current.rotateY(amount)
+  const showShards = () => {
     shardRef.current.scale.lerpVectors(
       shardRef.current.scale,
       fullSize,
-      lerpSpeedSlow
+      lerpSpeedShow
     )
+
     shardRef.current.traverse((child) => {
       if (child.isSprite) {
-        child.material.opacity = lerp(child.material.opacity, 1, lerpSpeed)
+        child.material.opacity = lerp(
+          child.material.opacity,
+          getOpacityFromDistanceToCenter(child.position),
+          lerpSpeedShow
+        )
       }
     })
   }
@@ -61,18 +75,19 @@ export const Ducko = memo(({ duckoConfig }: Props) => {
     shardRef.current.scale.lerpVectors(
       shardRef.current.scale,
       minSize,
-      lerpSpeedSlow
+      lerpSpeedHide
     )
     shardRef.current.traverse((child) => {
       if (child.isSprite) {
-        child.material.opacity = lerp(child.material.opacity, 0, lerpSpeedSlow)
+        child.material.opacity = lerp(child.material.opacity, 0, lerpSpeedHide)
       }
     })
   }
 
-  useFrame((state, delta) => {
-    if (duckoConfig.shardsVisible) {
-      animateShards(delta / 30)
+  useFrame((_, delta) => {
+    if (shardsVisible) {
+      showShards()
+      shardRef.current.rotateY(delta / 30)
     } else {
       hideShards()
     }
@@ -80,7 +95,7 @@ export const Ducko = memo(({ duckoConfig }: Props) => {
 
   return (
     <>
-      <Float enabled={duckoConfig.animateFloating}>
+      <Float enabled={animateFloating}>
         <ImageElement
           texture={duckTexture}
           x={0}
@@ -122,11 +137,24 @@ const ImageElement = ({ texture, x, y, height, rotation }: ImageProps) => {
       <meshStandardMaterial
         map={texture}
         transparent
-        alphaTest={0.5}
         side={DoubleSide}
+        alphaToCoverage={true}
       />
     </mesh>
   )
+}
+
+const center = new Vector3(0, 0, 0)
+export const getOpacityFromDistanceToCenter = (positionObj: Vector3) => {
+  const min = 4
+  const max = 10
+
+  const distance = positionObj.distanceTo(center)
+  if (distance <= min) return 1
+  if (distance >= max) return 0
+
+  // Map distance between min and max to a value between 1 and 0
+  return (max - distance) / (max - min)
 }
 
 type SpriteProps = {
@@ -140,16 +168,19 @@ const SpriteElement = ({ texture, position, height }: SpriteProps) => {
   const imageHeight = texture.image.height
   const scaledWidth = (imageWidth / imageHeight) * height
 
+  const spreteMat = new SpriteMaterial({
+    map: texture,
+    opacity: 0,
+    alphaToCoverage: true,
+    side: DoubleSide
+  })
+
   return (
-    <sprite scale={[scaledWidth, height, 1]} position={position}>
-      <spriteMaterial
-        map={texture}
-        transparent
-        opacity={0}
-        alphaTest={0.75}
-        side={DoubleSide}
-      />
-    </sprite>
+    <sprite
+      scale={[scaledWidth, height, 1]}
+      position={position}
+      material={spreteMat}
+    />
   )
 }
 

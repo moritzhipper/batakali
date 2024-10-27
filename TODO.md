@@ -54,3 +54,13 @@
 - keine spezifische Ausrichtung
 - format: manche höher als lang, manche länger als hoch, manche ungefähr gleich hoch wie lang
 - typen: glassplitter, steinsplitter, zerfledderte federn, andere splittertypen
+
+## Optimization
+
+- restrict framerate?
+- don set transparency in useFrame
+
+## Notes
+
+- Making sprite transparent: remove alphaTest, set color to 0xffffff, set transparent to true
+  - Problem arising: when overlapping with mesh, a weird rectangle is shown where the transparent sprite would be
