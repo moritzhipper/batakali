@@ -7,21 +7,26 @@ import duck from "../assets/images/duck.png"
 import feather from "../assets/images/feather.png"
 import shard1 from "../assets/images/shard1.png"
 import shard2 from "../assets/images/shard2.png"
+import { DuckoConfig } from "../types"
 import { getRandomPositionInSphereWithXBias, randomInt } from "./utils"
 
-type DuckoProps = {
-  showShards: boolean
+type Props = {
+  duckoConfig: DuckoConfig
 }
 
-export const Ducko = memo(({ showShards }: DuckoProps) => {
+export const Ducko = memo(({ duckoConfig }: Props) => {
   // setup Ducko
   let duckTexture = useLoader(TextureLoader, duck)
+  const shardRef = useRef<Group>(null)
 
-  const textures = [
-    useLoader(TextureLoader, feather),
-    useLoader(TextureLoader, shard1),
-    useLoader(TextureLoader, shard2)
-  ]
+  const textures = useMemo(
+    () => [
+      useLoader(TextureLoader, feather),
+      useLoader(TextureLoader, shard1),
+      useLoader(TextureLoader, shard2)
+    ],
+    []
+  )
 
   const shardList = useMemo(
     () => [
@@ -31,8 +36,6 @@ export const Ducko = memo(({ showShards }: DuckoProps) => {
     ],
     []
   )
-
-  const shardRef = useRef<Group>(null)
 
   // animate ducko szenechange
   const lerpSpeed = 0.4
@@ -68,7 +71,7 @@ export const Ducko = memo(({ showShards }: DuckoProps) => {
   }
 
   useFrame((state, delta) => {
-    if (showShards) {
+    if (duckoConfig.shardsVisible) {
       animateShards(delta / 30)
     } else {
       hideShards()
@@ -77,7 +80,7 @@ export const Ducko = memo(({ showShards }: DuckoProps) => {
 
   return (
     <>
-      <Float enabled={showShards}>
+      <Float enabled={duckoConfig.animateFloating}>
         <ImageElement
           texture={duckTexture}
           x={0}

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { useLocation } from "react-router-dom"
 import { CameraDolly } from "./CameraDolly"
 import { Ducko } from "./Ducko"
-import { getConfigForRoute } from "./scene-config"
+import { getConfigForRoute } from "./animation-utils"
 
 export const ThreeWrapper = () => {
   const [activeSzene, setActiveSzene] = useState(getConfigForRoute())
@@ -20,7 +20,7 @@ export const ThreeWrapper = () => {
       {/* <Dof /> */}
       <CameraDolly cameraConfig={activeSzene.camera} />
       <pointLight position={[3, 4, 3]} intensity={100} color={"white"} />
-      <Ducko showShards={activeSzene.shardsVisible} />
+      <Ducko duckoConfig={activeSzene.ducko} />
     </Canvas>
   )
 }

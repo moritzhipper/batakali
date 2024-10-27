@@ -3,7 +3,7 @@ import { PerspectiveCamera } from "@react-three/drei"
 import { PerspectiveCameraProps, useThree } from "@react-three/fiber"
 import { useEffect, useMemo } from "react"
 import { springConfig } from "../page-config"
-import { CameraConfig, getConfigForRoute } from "./scene-config"
+import { CameraConfig, getConfigForRoute } from "./animation-utils"
 
 type Props = {
   cameraConfig: CameraConfig
