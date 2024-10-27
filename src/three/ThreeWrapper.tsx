@@ -1,9 +1,9 @@
 import { Canvas } from "@react-three/fiber"
 import { useEffect, useState } from "react"
 import { useLocation } from "react-router-dom"
+import { getConfigForRoute } from "./animation-utils"
 import { CameraDolly } from "./CameraDolly"
 import { Ducko } from "./Ducko"
-import { getConfigForRoute } from "./animation-utils"
 
 export const ThreeWrapper = () => {
   const [activeSzene, setActiveSzene] = useState(getConfigForRoute())

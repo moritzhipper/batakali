@@ -87,15 +87,17 @@ const getRandomPositionInCircleLeaveInner = (
  * Generates a random position inside a sphere with a bias towards the X-axis.
  * @param minRadius - The minimum distance from the origin.
  * @param maxRadius - The maximum distance from the origin.
- * @param xBiasFactor - A factor to increase bias towards the X-axis (default is 0.5, adjust for more/less bias).
+ * @param yBias - A factor to increase bias towards the Y-axis. Range os 0 - 1.
  * @returns A 3D vector representing the random position with X-axis bias.
  */
 export const getRandomPositionInSphereWithXBias = (
   minRadius: number,
   maxRadius: number,
-  xBias: number = 0.5
+  yBias: number
 ): Vector3 => {
-  const randomRadius = Math.random() * (maxRadius - minRadius) + minRadius
+  const scaledMinRadius = minRadius * yBias
+  const randomRadius =
+    Math.random() * (maxRadius - scaledMinRadius) + scaledMinRadius
   const theta = Math.random() * Math.PI * 2 // Random angle in the XY plane
   const phi = Math.acos(2 * Math.random() - 1) // Random angle from the Z-axis
 
@@ -105,7 +107,7 @@ export const getRandomPositionInSphereWithXBias = (
   let z = randomRadius * Math.cos(phi)
 
   // Apply bias to the X-axis by scaling up the x value
-  x *= xBias
+  y *= yBias
 
   return new Vector3(x, y, z)
 }

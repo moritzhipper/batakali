@@ -24,7 +24,6 @@ type Props = {
 export const Ducko = memo(({ duckoConfig }: Props) => {
   const { animateFloating, shardsVisible } = duckoConfig
 
-  // setup Ducko
   let duckTexture = useLoader(TextureLoader, duck)
   const shardRef = useRef<Group>(null)
 
@@ -39,18 +38,18 @@ export const Ducko = memo(({ duckoConfig }: Props) => {
 
   const shardList = useMemo(
     () => [
-      ...generateRandomSpriteElements(10, 1.5, textures, 3, 4),
-      ...generateRandomSpriteElements(20, 0.9, textures, 3, 5),
-      ...generateRandomSpriteElements(50, 0.5, textures, 4, 7),
-      ...generateRandomSpriteElements(50, 0.5, textures, 7, 8)
+      ...generateRandomSpriteElements(10, 1.5, textures, 5, 6),
+      ...generateRandomSpriteElements(20, 0.9, textures, 5, 7),
+      ...generateRandomSpriteElements(50, 0.5, textures, 6, 9),
+      ...generateRandomSpriteElements(50, 0.5, textures, 8, 10)
     ],
     []
   )
 
   // animate ducko szenechange -> Smaller is slower
-  const lerpSpeedShow = 0.1
-  const lerpSpeedHide = 0.2
-  const minSize = new Vector3(0.7, 0.7, 0.7)
+  const lerpSpeedShow = 0.07
+  const lerpSpeedHide = 0.1
+  const minSize = new Vector3(0.5, 0.1, 0.5)
   const fullSize = new Vector3(1, 1, 1)
 
   const showShards = () => {
@@ -87,7 +86,7 @@ export const Ducko = memo(({ duckoConfig }: Props) => {
   useFrame((_, delta) => {
     if (shardsVisible) {
       showShards()
-      shardRef.current.rotateY(delta / 30)
+      shardRef.current.rotateY(delta / 20)
     } else {
       hideShards()
     }
@@ -197,7 +196,7 @@ const generateRandomSpriteElements = (
     const randomPos = getRandomPositionInSphereWithXBias(
       innerRadius,
       outerRadius,
-      2
+      0.7
     )
     const randomTexture = textures[randomInt(0, textures.length)]
 
