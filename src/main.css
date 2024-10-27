@@ -6,10 +6,20 @@
   src: url(./assets/fonts/TheBattleCont.ttf) format("truetype");
 }
 
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  color-scheme: light dark;
+  display: flex;
+  justify-content: center;
+}
+
 body {
   width: 100%;
   margin: 0;
   padding: 0;
+  background-color: var(--accent-3);
+  color: var(--accent-0);
+
   #root {
     display: flex;
     justify-content: center;
@@ -18,14 +28,6 @@ body {
       width: 1200px;
     }
   }
-}
-
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  color-scheme: light dark;
-  color: var(--accent-0);
-  display: flex;
-  justify-content: center;
 }
 
 h1 {
@@ -57,6 +59,7 @@ button {
 .big-ducko-print {
   font-size: var(--font-size-3xl);
   text-shadow: -3px 4px 0px var(--accent-3);
+  font-weight: bold;
   font-family: "BattleContinues";
 }
 

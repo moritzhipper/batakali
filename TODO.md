@@ -4,22 +4,12 @@
 - Cameramovement auch per Lerp umsetzen?
 - with zustand state auslesen (wie inf fiber doku)
 - Beleuchtung sichtbar machen
-- auf welcome: oben angry ducko, unten lets go, keine shards
-- auf page: shards fliegen von mitte in pos, drehen minimal
 - wenn play: shards pulsieren im beat (wenns geht, sogar in sync mit tatsäclichem audio)
-- auf vollbildseite: ducko in der mitte, shards fliegen
 - lookat auf maus?
-- anstatt fog lieber opacity basiert auf distance?: https://stackoverflow.com/questions/52425575/is-it-possible-to-let-fog-interact-with-the-materials-opacity
-  für alle animationen speing mit der selben confug nutzen
-- diese gute touchinteraktion lib von pmndrs für projects
-- rotation über useframe ausschalten, da Float das auch kann
-- die shards in sichtbarkeit animieren auch über springs?
-- in duckostate lookat und cameraposition integrieren: mit springValue dann transitions regeln
-- wenn nur duckopage, dann langsame kamerafahrt and ducko heran und um ducko herum
-- state aufbauen als record, der routenkeys beinhaltet
-- vollbildseiten mit semitransparentem hintergrund
-- farben css für links und so alles
 
+- diese gute touchinteraktion lib von pmndrs für projects
+- wenn nur duckopage, dann langsame kamerafahrt and ducko heran und um ducko herum?
+- farben css für links und so alles
 - kickimpat führt inputfunction, die entweder di shard hart auf 1.1 scaliert oder dieses doppellerp
 - in use frame dann der lerp zürck auf 1?
 

@@ -1,7 +1,7 @@
 import { config } from "@react-spring/three"
 import { DeepPartial, DuckoSzeneConfig } from "./types"
 
-export const springConfig = { config: config.gentle }
+export const springConfig = { config: config.slow }
 
 export const duckoSzenes: Record<string, DeepPartial<DuckoSzeneConfig>> = {
   "/": {
@@ -21,14 +21,17 @@ export const duckoSzenes: Record<string, DeepPartial<DuckoSzeneConfig>> = {
     }
   },
   "/about": {
+    ducko: {
+      shardsVisible: false
+    },
     camera: {
-      position: [-2, -1, 3],
+      position: [-2, 1, 3],
       lookAt: [0, 0, 0]
     }
   },
   "/duck": {
     camera: {
-      position: [0, 0, 8],
+      position: [0, 0, 12],
       lookAt: [0, 0, 0]
     }
   },

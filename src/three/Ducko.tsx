@@ -39,18 +39,23 @@ export const Ducko = memo(({ duckoConfig }: Props) => {
   const shardList = useMemo(
     () => [
       ...generateRandomSpriteElements(10, 1.5, textures, 5, 6),
-      ...generateRandomSpriteElements(20, 0.9, textures, 5, 7),
-      ...generateRandomSpriteElements(50, 0.5, textures, 6, 9),
-      ...generateRandomSpriteElements(50, 0.5, textures, 8, 10)
+      ...generateRandomSpriteElements(30, 0.9, textures, 5, 7),
+      ...generateRandomSpriteElements(30, 0.7, textures, 6, 9),
+      ...generateRandomSpriteElements(80, 0.5, textures, 9, 20)
     ],
     []
   )
 
   // animate ducko szenechange -> Smaller is slower
-  const lerpSpeedShow = 0.07
+  const lerpSpeedShow = 0.09
   const lerpSpeedHide = 0.1
-  const minSize = new Vector3(0.5, 0.1, 0.5)
+  const minSize = new Vector3(0.5, 0.3, 0.5)
   const fullSize = new Vector3(1, 1, 1)
+  const center = new Vector3(0, 0, 0)
+
+  const getOpacityFromDistanceToCenter = (positionObj: Vector3) => {
+    return 1 - positionObj.distanceTo(center) / 25
+  }
 
   const showShards = () => {
     shardRef.current.scale.lerpVectors(
@@ -143,19 +148,6 @@ const ImageElement = ({ texture, x, y, height, rotation }: ImageProps) => {
   )
 }
 
-const center = new Vector3(0, 0, 0)
-export const getOpacityFromDistanceToCenter = (positionObj: Vector3) => {
-  const min = 4.5
-  const max = 12
-
-  const distance = positionObj.distanceTo(center)
-  if (distance <= min) return 1
-  if (distance >= max) return 0
-
-  // Map distance between min and max to a value between 1 and 0
-  return (max - distance) / (max - min)
-}
-
 type SpriteProps = {
   texture: Texture
   position: Vector3
@@ -196,7 +188,7 @@ const generateRandomSpriteElements = (
     const randomPos = getRandomPositionInSphereWithXBias(
       innerRadius,
       outerRadius,
-      0.7
+      0.65
     )
     const randomTexture = textures[randomInt(0, textures.length)]
 
