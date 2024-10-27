@@ -1,6 +1,7 @@
-import { a, config, useTransition } from "@react-spring/web"
+import { a, useTransition } from "@react-spring/web"
 import { useEffect, useState } from "react"
 import { Link, useLocation } from "react-router-dom"
+import { springConfig } from "../page-config"
 import "./NavBarMobile.css"
 
 export const NavBarMobile = () => {
@@ -29,7 +30,7 @@ export const NavBarMobile = () => {
       opacity: 0,
       transform: transGoalHome
     },
-    config: config.stiff
+    ...springConfig
   })
 
   const transGoalLinks = "translate(-20px, -20px) scale(1)"
@@ -46,7 +47,7 @@ export const NavBarMobile = () => {
       opacity: 0,
       transform: transGoalLinks
     },
-    config: config.stiff
+    ...springConfig
   })
 
   return (

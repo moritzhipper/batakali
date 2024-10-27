@@ -1,5 +1,6 @@
 # ToDo
 
+- opacity der shards beim generieren einfach vom abstand zur mitte abhängig machen? alternativ in useFrame vom abstand zur cam
 - Cameramovement auch per Lerp umsetzen?
 - with zustand state auslesen (wie inf fiber doku)
 - Beleuchtung sichtbar machen
@@ -18,8 +19,6 @@
 - state aufbauen als record, der routenkeys beinhaltet
 - vollbildseiten mit semitransparentem hintergrund
 - farben css für links und so alles
-- instatt diese strixh zwischen links unten ein graffiti l?
-
 
 - kickimpat führt inputfunction, die entweder di shard hart auf 1.1 scaliert oder dieses doppellerp
 - in use frame dann der lerp zürck auf 1?
@@ -27,17 +26,6 @@
 ### light
 
 - sprites reflektieren kein licht -> alle shards mit lookat und standard material ausstatten?
-
-### Navbar
-
-- hidden auf start: auf start oben schrift, unten 'lets go'
-- nach gerätegröße fragen: je nachdem entweder vollbild oder in reihe
-- auf desktop einfach andere componente einblenden
-- auf startseite garnicht anzeigen
-- home link ist hinter blurred layer :(
-- css aufräumen
-- mobil: unten name + github lik + link zu keiner websute
-  -desktop: rechts name + link + libk zu website
 
 ## Style
 
@@ -66,3 +54,13 @@
 - keine spezifische Ausrichtung
 - format: manche höher als lang, manche länger als hoch, manche ungefähr gleich hoch wie lang
 - typen: glassplitter, steinsplitter, zerfledderte federn, andere splittertypen
+
+## Optimization
+
+- restrict framerate?
+- don set transparency in useFrame
+
+## Notes
+
+- Making sprite transparent: remove alphaTest, set color to 0xffffff, set transparent to true
+  - Problem arising: when overlapping with mesh, a weird rectangle is shown where the transparent sprite would be

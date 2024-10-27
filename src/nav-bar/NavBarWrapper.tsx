@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom"
-import { useMediaQuery } from "../mediaQueryHook"
+import { useMediaQuery } from "../use-media-hook"
 import { NavBarDesktop } from "./NavBarDesktop"
 import { NavBarMobile } from "./NavBarMobile"
 

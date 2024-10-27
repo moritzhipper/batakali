@@ -12,6 +12,7 @@
   .menu {
     font-family: "BattleContinues";
     z-index: 3;
+    font-weight: bold;
   }
 
   .home.small {
