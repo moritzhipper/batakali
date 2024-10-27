@@ -1,26 +1,29 @@
-import { a, useSpringValue } from "@react-spring/three"
+import { a, config, useSpringValue } from "@react-spring/three"
 import { PerspectiveCamera } from "@react-three/drei"
 import { PerspectiveCameraProps, useThree } from "@react-three/fiber"
 import { useEffect, useMemo } from "react"
-import { CameraConfig, duckoSzenes } from "./sceneConfig"
+import { CameraConfig, getConfigForRoute } from "./sceneConfig"
 
 type Props = {
-  config: CameraConfig
+  cameraConfig: CameraConfig
 }
 
-export const CameraDolly = ({ config }: Props) => {
+export const CameraDolly = ({ cameraConfig }: Props) => {
   const AnimatedCamera = useMemo(() => a(CameraWrapper), [])
+  const initSzene = useMemo(() => getConfigForRoute(), [])
 
-  const positionSpring = useSpringValue(
-    duckoSzenes[0].camera.position,
-    config.stiff
-  )
-  const lookAtSpring = useSpringValue(duckoSzenes[0].camera.lookAt)
+  const positionSpring = useSpringValue(initSzene.camera.position, {
+    config: config.default
+  })
+
+  const lookAtSpring = useSpringValue(initSzene.camera.lookAt, {
+    config: config.default
+  })
 
   useEffect(() => {
-    lookAtSpring.start(config.lookAt)
-    positionSpring.start(config.position)
-  }, [config])
+    lookAtSpring.start(cameraConfig.lookAt)
+    positionSpring.start(cameraConfig.position)
+  }, [cameraConfig])
 
   return (
     <>

@@ -13,9 +13,10 @@
   .home {
     font-family: "BattleContinues";
     font-size: var(--font-size-xl);
+    font-weight: bold;
   }
 
-  .page {
+  a:not(.home) {
     font-size: var(--font-size-l);
   }
 
