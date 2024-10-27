@@ -1,40 +1,31 @@
-import { a, useSpring } from "@react-spring/three"
+import { a, useSpringValue } from "@react-spring/three"
 import { PerspectiveCamera } from "@react-three/drei"
 import { PerspectiveCameraProps, useThree } from "@react-three/fiber"
-import { useMemo } from "react"
+import { useEffect, useMemo } from "react"
+import { CameraConfig, duckoSzenes } from "./sceneConfig"
 
 type Props = {
-  positionIndex: number
+  config: CameraConfig
 }
 
-const cameraSettings = [
-  {
-    position: [0, 0, 10],
-    lookAt: [0, 0, 0]
-  },
-  {
-    position: [0, -4, 10],
-    lookAt: [0, -2, 0]
-  },
-  {
-    position: [-3, -1, 4],
-    lookAt: [0, 0, 0]
-  }
-]
-
-export const CameraDolly = ({ positionIndex }: Props) => {
+export const CameraDolly = ({ config }: Props) => {
   const AnimatedCamera = useMemo(() => a(CameraWrapper), [])
 
-  const { position, lookAt } = useSpring({
-    position: cameraSettings[positionIndex].position,
-    lookAt: cameraSettings[positionIndex].lookAt,
-    config: { tension: 250, friction: 36 }
-  })
+  const positionSpring = useSpringValue(
+    duckoSzenes[0].camera.position,
+    config.stiff
+  )
+  const lookAtSpring = useSpringValue(duckoSzenes[0].camera.lookAt)
+
+  useEffect(() => {
+    lookAtSpring.start(config.lookAt)
+    positionSpring.start(config.position)
+  }, [config])
 
   return (
     <>
       <PerspectiveCamera makeDefault far={100} near={0.01} />
-      <AnimatedCamera position={position} lookAt={lookAt} />
+      <AnimatedCamera position={positionSpring} lookAt={lookAtSpring} />
     </>
   )
 }
