@@ -5,7 +5,7 @@
   touch-action: none;
 
   position: relative;
-  overflow-x: hidden;
+  overflow: hidden;
 
   .project {
     position: absolute;
@@ -14,10 +14,12 @@
     object-fit: contain;
     box-sizing: border-box;
     padding: var(--distance-s);
-    border: 1px solid var(--accent-2);
+    border: 3px solid var(--accent-2);
     border-radius: var(--radius-l);
     display: grid;
     place-items: center;
-    background-color: rgb(from var(--accent-3) r g b / 0.9);
+    background-color: var(--accent-3);
+
+    /* background-color: rgb(from var(--accent-3) r g b / 0.9); */
   }
 }
