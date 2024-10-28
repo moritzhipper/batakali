@@ -1,17 +1,27 @@
 # ToDo
 
-- opacity der shards beim generieren einfach vom abstand zur mitte abhängig machen? alternativ in useFrame vom abstand zur cam
 - Cameramovement auch per Lerp umsetzen?
 - with zustand state auslesen (wie inf fiber doku)
 - Beleuchtung sichtbar machen
 - wenn play: shards pulsieren im beat (wenns geht, sogar in sync mit tatsäclichem audio)
-- lookat auf maus?
 
 - diese gute touchinteraktion lib von pmndrs für projects
 - wenn nur duckopage, dann langsame kamerafahrt and ducko heran und um ducko herum?
 - farben css für links und so alles
 - kickimpat führt inputfunction, die entweder di shard hart auf 1.1 scaliert oder dieses doppellerp
 - in use frame dann der lerp zürck auf 1?
+
+### Project selector
+
+- bei seitenbesuch: nur tags sahen
+- wenn tag selectiert: scrollbare liste der projekte
+- on scroll und drag selektierten track ändern
+- selecting other genres only reorders tracks but doesnt remove them
+
+### Duck Page
+
+- als header titel von now playing
+- unten share und download button
 
 ### light
 

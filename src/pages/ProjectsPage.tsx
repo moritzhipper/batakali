@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { PageWrapper } from "./PageWrapper"
 import "./ProjectsPage.css"
 
@@ -7,59 +7,62 @@ type Project = {
   tag: string
 }
 
+type FilterItem = {
+  tag: string
+  selected: boolean
+}
+
+const projects = [
+  { name: "born into this", tag: "rnb" },
+  { name: "no name", tag: "synthwave" },
+  { name: "run", tag: "hardtechno" },
+  { name: "water", tag: "boombap" },
+  { name: "sleep", tag: "rnb" }
+]
+
 export const ProjectsPage = () => {
-  const projects = [
-    { name: "Project 1", tag: "rnb" },
-    { name: "Project 2", tag: "synthwave" },
-    { name: "Project 3", tag: "hardtechno" },
-    { name: "Project 4", tag: "boombap" },
-    { name: "Project 5", tag: "rnb" }
-  ]
-  const filter = [...new Set(projects.map((project) => project.tag))]
-
-  const pageCount = Math.ceil(projects.length / 4)
-  const [currentPage, setCurrentPage] = useState(0)
-  const [visibleProjects, setVisibleProjects] = useState(projects)
-  const [selectedFilter, setSelectedFilter] = useState<string[]>([])
-
-  useEffect(() => {
-    const visibleProjects = projects.slice(
-      pageCount * currentPage,
-      pageCount * currentPage + 4
-    )
-    setVisibleProjects(visibleProjects)
-  }, [selectedFilter, currentPage])
+  const filterList = mapToFilterList(projects)
+  const [projectIndex, setProjectIndex] = useState(0)
+  const [filter, updateFilter] = useState<FilterItem[]>(filterList)
 
   const nextPage = () => {
-    setCurrentPage((currentPage) => currentPage + 1)
+    setProjectIndex((index) => index + 1)
   }
 
   const prevPage = () => {
-    setCurrentPage((currentPage) => currentPage - 1)
+    setProjectIndex((index) => index - 1)
   }
 
-  const hasPrevPage = currentPage > 0
-  const hasNextPage = currentPage < pageCount - 1
+  const toggleFilter = (tag: string) => {
+    updateFilter((list) => toggleFilterByTag(list, tag))
+  }
+
+  const hasPrevPage = projectIndex > 0
+  const hasNextPage = projectIndex < projects.length - 1
 
   return (
     <PageWrapper type="half">
       <div className="projects-page-wrapper">
         <h1>Projects</h1>
         <div className="filter-wrapper">
-          {filter.map((filter) => (
-            <div>{filter}</div>
+          {filter.map(({ tag, selected }) => (
+            <button
+              className={selected ? "selected" : ""}
+              key={tag}
+              onClick={() => toggleFilter(tag)}
+            >
+              {tag}
+            </button>
           ))}
         </div>
-        <div className="projects-wrapper">
-          {visibleProjects.map((project) => (
-            <Project {...project} key={project.name} />
-          ))}
+        <div className="project-wrapper">
+          <Project project={projects[projectIndex]} />
         </div>
         <div className="pagination">
           <button onClick={prevPage} disabled={!hasPrevPage}>
             prev
           </button>
-          <div className="page-indicator">{currentPage + 1}</div>
+          <div className="page-indicator">{projectIndex + 1}</div>
           <button onClick={nextPage} disabled={!hasNextPage}>
             next
           </button>
@@ -69,10 +72,21 @@ export const ProjectsPage = () => {
   )
 }
 
-const Project = ({ name, tag }: Project) => {
-  return (
-    <div className="project">
-      <div>{name}</div>
-    </div>
-  )
+type ProjectProps = {
+  project: Project
 }
+
+const Project = ({ project }: ProjectProps) => {
+  return <div className="project">{project.name}</div>
+}
+
+const mapToFilterList = (projects: Project[]): FilterItem[] =>
+  [...new Set(projects.map((project) => project.tag))].map((tag) => ({
+    tag,
+    selected: false
+  }))
+
+const toggleFilterByTag = (filterList: FilterItem[], tag: string) =>
+  filterList.map((item) =>
+    item.tag === tag ? { ...item, selected: !item.selected } : item
+  )

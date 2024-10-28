@@ -1,7 +1,7 @@
 import { config } from "@react-spring/three"
 import { DeepPartial, DuckoSzeneConfig } from "./types"
 
-export const springConfig = { config: config.slow }
+export const springConfig = { config: config.gentle }
 
 export const duckoSzenes: Record<string, DeepPartial<DuckoSzeneConfig>> = {
   "/": {
