@@ -17,6 +17,8 @@
 - wenn tag selectiert: scrollbare liste der projekte
 - on scroll und drag selektierten track ändern
 - selecting other genres only reorders tracks but doesnt remove them
+- project selector auslagern mit der smotthen selektionslogik drin
+- springConfig zu gesten hinzufügen
 
 ### Duck Page
 

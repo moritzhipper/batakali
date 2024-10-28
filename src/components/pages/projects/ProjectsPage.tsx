@@ -1,11 +1,7 @@
 import { useState } from "react"
-import { PageWrapper } from "./PageWrapper"
+import { PageWrapper } from "../PageWrapper"
+import { ProjectSelector } from "./ProjectSelector"
 import "./ProjectsPage.css"
-
-type Project = {
-  name: string
-  tag: string
-}
 
 type FilterItem = {
   tag: string
@@ -55,9 +51,7 @@ export const ProjectsPage = () => {
             </button>
           ))}
         </div>
-        <div className="project-wrapper">
-          <Project project={projects[projectIndex]} />
-        </div>
+        <ProjectSelector />
         <div className="pagination">
           <button onClick={prevPage} disabled={!hasPrevPage}>
             prev
@@ -70,14 +64,6 @@ export const ProjectsPage = () => {
       </div>
     </PageWrapper>
   )
-}
-
-type ProjectProps = {
-  project: Project
-}
-
-const Project = ({ project }: ProjectProps) => {
-  return <div className="project">{project.name}</div>
 }
 
 const mapToFilterList = (projects: Project[]): FilterItem[] =>

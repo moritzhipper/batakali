@@ -2,7 +2,7 @@ import { a, useSpringValue } from "@react-spring/three"
 import { PerspectiveCamera } from "@react-three/drei"
 import { PerspectiveCameraProps, useThree } from "@react-three/fiber"
 import { useEffect, useMemo } from "react"
-import { springConfig } from "../page-config"
+import { springConfig } from "../../angry-ducko-config"
 import { CameraConfig, getConfigForRoute } from "./animation-utils"
 
 type Props = {

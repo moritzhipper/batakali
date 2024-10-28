@@ -1,5 +1,5 @@
-import { duckoSzenes } from "../page-config"
-import { DuckoSzeneConfig } from "../types"
+import { duckoSzenes } from "../../angry-ducko-config"
+import { DuckoSzeneConfig } from "../../types"
 
 export const getConfigForRoute = (route?: string): DuckoSzeneConfig => {
   if (!route) return defaultSzene
