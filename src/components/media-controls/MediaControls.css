@@ -1,0 +1,6 @@
+.media-controls-wrapper {
+  img {
+    display: inline-block;
+    height: 32px;
+  }
+}

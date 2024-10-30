@@ -1,15 +1,1 @@
-@import "viewports";
-
 /* responsive layout*/
-
-@media (--viewport-m) {
-  main {
-    padding: var(--distance-l);
-  }
-}
-
-@media (--viewport-s) {
-  main {
-    padding: var(--distance-m);
-  }
-}

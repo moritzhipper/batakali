@@ -3,6 +3,8 @@ import { useGesture } from "@use-gesture/react"
 import { useRef } from "react"
 import { springConfig } from "../../../angry-ducko-config"
 import { Project } from "../../../types"
+import { useMediaQuery } from "../../../use-media-hook"
+import { PlaySVG } from "../../media-controls/svg/play-large-fill"
 import "./ProjectSelector.css"
 
 const projects: Project[] = [
@@ -14,8 +16,10 @@ const projects: Project[] = [
 ]
 
 export const ProjectSelector = () => {
+  const isMobile = useMediaQuery("(max-width: 700px)")
+
   const projectCount = projects.length
-  const itemOffset = 400
+  const itemOffset = isMobile ? 100 : 120
 
   const currentIndex = useRef(0)
   const scrollPosition = useRef(0)
@@ -33,6 +37,7 @@ export const ProjectSelector = () => {
     const rounded = Math.round(num) * -1
     return Math.max(0, Math.min(rounded, projectCount - 1))
   }
+
   // works
   const getRelativeOffsetForCurrentIndex = (index: number) => {
     return (index - currentIndex.current) * itemOffset
@@ -42,20 +47,22 @@ export const ProjectSelector = () => {
     currentIndex.current = toIndex(getTrueScrollPos(offsetX) / itemOffset)
 
     api.start((i) => {
-      let offset = 0
+      let offset = i * itemOffset + getTrueScrollPos(offsetX)
+      // prohibit scroll on last list item
       if (
-        currentIndex.current === projectCount - 1 ||
-        currentIndex.current === 0
+        (currentIndex.current === projectCount - 1 && offsetX < 0) ||
+        (currentIndex.current === 0 && offsetX > 0)
       ) {
         offset = getRelativeOffsetForCurrentIndex(i)
-      } else {
-        offset = i * itemOffset + getTrueScrollPos(offsetX)
       }
+
+      const hide = currentIndex.current > i || currentIndex.current < i - 2
+
       return {
         x: offset,
         scale: 1 - getDistanceToSelection(i) * 0.2,
-        rotateZ: getDistanceToSelection(i) * 10,
-        opacity: currentIndex.current > i ? 0 : 1
+        rotateZ: getDistanceToSelection(i) * 5,
+        opacity: hide ? 0 : 1
       }
     })
   }
@@ -100,7 +107,9 @@ export const ProjectSelector = () => {
             }}
             key={i}
           >
-            {projects[i].name}
+            <div className="name">{projects[i].name}</div>
+            <PlaySVG />
+            <div className="tag">{projects[i].tag}</div>
           </a.div>
         ))}
       </div>

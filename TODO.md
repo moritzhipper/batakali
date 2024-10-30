@@ -66,3 +66,7 @@
 
 - Making sprite transparent: remove alphaTest, set color to 0xffffff, set transparent to true
   - Problem arising: when overlapping with mesh, a weird rectangle is shown where the transparent sprite would be
+
+## icons from here
+
+https://remixicon.com/

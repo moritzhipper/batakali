@@ -18,23 +18,12 @@ const projects = [
 
 export const ProjectsPage = () => {
   const filterList = mapToFilterList(projects)
-  const [projectIndex, setProjectIndex] = useState(0)
+
   const [filter, updateFilter] = useState<FilterItem[]>(filterList)
-
-  const nextPage = () => {
-    setProjectIndex((index) => index + 1)
-  }
-
-  const prevPage = () => {
-    setProjectIndex((index) => index - 1)
-  }
 
   const toggleFilter = (tag: string) => {
     updateFilter((list) => toggleFilterByTag(list, tag))
   }
-
-  const hasPrevPage = projectIndex > 0
-  const hasNextPage = projectIndex < projects.length - 1
 
   return (
     <PageWrapper type="half">
@@ -52,15 +41,6 @@ export const ProjectsPage = () => {
           ))}
         </div>
         <ProjectSelector />
-        <div className="pagination">
-          <button onClick={prevPage} disabled={!hasPrevPage}>
-            prev
-          </button>
-          <div className="page-indicator">{projectIndex + 1}</div>
-          <button onClick={nextPage} disabled={!hasNextPage}>
-            next
-          </button>
-        </div>
       </div>
     </PageWrapper>
   )
