@@ -4,7 +4,7 @@ import { useRef } from "react"
 import { springConfig } from "../../../angry-ducko-config"
 import { Project } from "../../../types"
 import { useMediaQuery } from "../../../use-media-hook"
-import { PlaySVG } from "../../media-controls/svg/play-large-fill"
+import { PlaySVG } from "../../media-controls/svg/PlaySVG"
 import "./ProjectSelector.css"
 
 const projects: Project[] = [
@@ -56,12 +56,12 @@ export const ProjectSelector = () => {
         offset = getRelativeOffsetForCurrentIndex(i)
       }
 
-      const hide = currentIndex.current > i || currentIndex.current < i - 2
+      const hide = currentIndex.current > i || currentIndex.current < i - 3
 
       return {
         x: offset,
         scale: 1 - getDistanceToSelection(i) * 0.2,
-        rotateZ: getDistanceToSelection(i) * 5,
+        rotateZ: getDistanceToSelection(i) * 2,
         opacity: hide ? 0 : 1
       }
     })

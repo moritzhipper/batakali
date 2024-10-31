@@ -1,4 +1,6 @@
 import { useState } from "react"
+import { Project } from "../../../types"
+import { MediaControls } from "../../media-controls/MediaControls"
 import { PageWrapper } from "../PageWrapper"
 import { ProjectSelector } from "./ProjectSelector"
 import "./ProjectsPage.css"
@@ -41,6 +43,7 @@ export const ProjectsPage = () => {
           ))}
         </div>
         <ProjectSelector />
+        <MediaControls />
       </div>
     </PageWrapper>
   )

@@ -12,16 +12,14 @@
   .project {
     position: absolute;
     height: calc(100% - var(--distance-m) * 2);
-    /* max-width: calc(100% - var(--distance-l) * 2); */
     aspect-ratio: 1;
     box-sizing: border-box;
     padding: var(--distance-m) calc(var(--distance-m) + var(--distance-s));
     border: 1px solid var(--accent-2);
-    border-radius: var(--radius-l);
+    border-radius: var(--radius-m);
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    background-color: var(--accent-3);
 
     .name {
       align-self: start;
