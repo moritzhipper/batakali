@@ -22,15 +22,13 @@ export const ProjectSelector = () => {
   const itemOffset = isMobile ? 100 : 120
 
   const currentIndex = useRef(0)
-  const scrollPosition = useRef(0)
+  const currentScrollPos = useRef(0)
 
-  const getTrueScrollPos = (offsetX: number) => {
-    return offsetX + scrollPosition.current
-  }
+  const getTrueScrollPos = (offset: number) => offset + currentScrollPos.current
 
-  const getDistanceToSelection = (i: number) => {
-    return Math.abs(i - currentIndex.current)
-  }
+  // returns percentage of offset between 0 and maxDistance
+  const getPercentByDistance = (offset: number, maxDistance: number) =>
+    offset / (itemOffset * maxDistance)
 
   // maps scroll position to itemIndex
   const toIndex = (num: number) => {
@@ -43,44 +41,39 @@ export const ProjectSelector = () => {
     return (index - currentIndex.current) * itemOffset
   }
 
+  const getStyle = (i: number, offset: number) => {
+    let offsetX = i * itemOffset + getTrueScrollPos(offset)
+    // prohibit scroll on last list item
+    if (
+      (currentIndex.current === projectCount - 1 && offset < 0) ||
+      (currentIndex.current === 0 && offset > 0)
+    ) {
+      offsetX = getRelativeOffsetForCurrentIndex(i)
+    }
+
+    const hideBody = currentIndex.current > i || currentIndex.current < i - 2
+    const hideButtons = currentIndex.current !== i
+    return {
+      x: offsetX,
+      scale: 1 - getPercentByDistance(offsetX, 3),
+      rotateZ: getPercentByDistance(offsetX, 3) * 10,
+      opacityBody: hideBody ? 0 : 1,
+      opacityButtons: hideButtons ? 0 : 1
+    }
+  }
+
   const scroll = (offsetX: number) => {
     currentIndex.current = toIndex(getTrueScrollPos(offsetX) / itemOffset)
-
-    api.start((i) => {
-      let offset = i * itemOffset + getTrueScrollPos(offsetX)
-      // prohibit scroll on last list item
-      if (
-        (currentIndex.current === projectCount - 1 && offsetX < 0) ||
-        (currentIndex.current === 0 && offsetX > 0)
-      ) {
-        offset = getRelativeOffsetForCurrentIndex(i)
-      }
-
-      const hide = currentIndex.current > i || currentIndex.current < i - 3
-
-      return {
-        x: offset,
-        scale: 1 - getDistanceToSelection(i) * 0.2,
-        rotateZ: getDistanceToSelection(i) * 2,
-        opacity: hide ? 0 : 1
-      }
-    })
+    api.start((i) => getStyle(i, offsetX))
   }
 
   const snap = () => {
-    scrollPosition.current = currentIndex.current * itemOffset * -1
-
-    api.start((i) => ({
-      x: getRelativeOffsetForCurrentIndex(i)
-    }))
+    currentScrollPos.current = currentIndex.current * itemOffset * -1
+    api.start((i) => getStyle(i, 0))
   }
 
   const [props, api] = useSprings(projectCount, (i) => ({
-    x: i * itemOffset,
-    scale: 1,
-    rotateZ: 0,
-    opacity: 1,
-    display: "block",
+    ...getStyle(i, 0),
     ...springConfig
   }))
 
@@ -95,20 +88,22 @@ export const ProjectSelector = () => {
   return (
     <>
       <div className="project-wrapper" {...bind()}>
-        {props.map(({ x, scale, rotateZ, opacity, display }, i) => (
+        {props.map(({ x, scale, rotateZ, opacityBody, opacityButtons }, i) => (
           <a.div
             className="project"
             style={{
               x,
               scale,
               rotateZ,
-              opacity,
+              opacity: opacityBody,
               zIndex: projectCount - i
             }}
             key={i}
           >
             <div className="name">{projects[i].name}</div>
-            <PlaySVG />
+            <a.div className="play-button" style={{ opacity: opacityButtons }}>
+              <PlaySVG />
+            </a.div>
             <div className="tag">{projects[i].tag}</div>
           </a.div>
         ))}

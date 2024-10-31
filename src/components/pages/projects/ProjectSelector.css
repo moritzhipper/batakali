@@ -28,5 +28,9 @@
     .tag {
       align-self: end;
     }
+
+    .play-button {
+      align-self: center;
+    }
   }
 }
