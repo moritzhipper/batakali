@@ -1,25 +1,16 @@
+
 import { a, useSprings } from "@react-spring/web"
 import { useGesture } from "@use-gesture/react"
 import { useRef } from "react"
 import { springConfig } from "../../../angry-ducko-config"
-import { Project } from "../../../types"
+import { projectList } from "../../../project-list"
 import { useMediaQuery } from "../../../use-media-hook"
 import { PlaySVG } from "../../media-controls/svg/PlaySVG"
 import "./ProjectSelector.css"
 
-const projects: Project[] = [
-  { name: "born into this", tag: "rnb" },
-  { name: "no name", tag: "synthwave" },
-  { name: "run", tag: "hardtechno" },
-  { name: "no name", tag: "synthwave" },
-  { name: "run", tag: "hardtechno" },
-  { name: "water", tag: "boombap" },
-  { name: "sleep", tag: "rnb" }
-]
-
 export const ProjectSelector = () => {
   const isMobile = useMediaQuery("(max-width: 700px)")
-  const projectCount = projects.length
+  const projectCount = projectList.length
   const itemOffset = isMobile ? 40 : 80
   const dragScale = isMobile ? 0.4 : 1
   const wheelScale = 0.2
@@ -116,11 +107,11 @@ export const ProjectSelector = () => {
               onFocus={() => focusCard(i)}
             >
               <a.div className="content" style={{ opacity: opacityContent }}>
-                <div className="name">{projects[i].name}</div>
+                <div className="name">{projectList[i].name}</div>
                 <button>
                   <PlaySVG />
                 </button>
-                <div className="tag">{projects[i].tag}</div>
+                <div className="tag">{projectList[i].tag}</div>
               </a.div>
             </a.div>
           )

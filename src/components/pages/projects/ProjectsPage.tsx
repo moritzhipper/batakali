@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { projectList } from "../../../project-list"
 import { Project } from "../../../types"
 import { PageWrapper } from "../PageWrapper"
 import { ProjectSelector } from "./ProjectSelector"
@@ -9,17 +10,8 @@ type FilterItem = {
   selected: boolean
 }
 
-const projects = [
-  { name: "born into this", tag: "rnb" },
-  { name: "no name", tag: "synthwave" },
-  { name: "run", tag: "hardtechno" },
-  { name: "water", tag: "boombap" },
-  { name: "ded", tag: "ambient" },
-  { name: "sleep", tag: "rnb" }
-]
-
 export const ProjectsPage = () => {
-  const filterList = mapToFilterList(projects)
+  const filterList = mapToFilterList(projectList)
 
   const [filter, updateFilter] = useState<FilterItem[]>(filterList)
 

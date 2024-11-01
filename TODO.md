@@ -15,6 +15,7 @@
 - bei seitenbesuch: nur tags zeigen
 - wenn tag selectiert: scrollbare liste der projekte
 - on scroll und drag selektierten track ändern
+- nur die items animieren, die sichtbar sind, für alle anderen return getStyle standardwerte
 
 ### Duck Page
 
@@ -26,6 +27,8 @@
 - alle schriften und links bewusst stylen
 - irgendwie accent colors durchsichtig machen für blur effekte
 - besseres font pairing
+
+im building a react app with functional components. in the bakcground of the app there is an animated graphik. the app should allow playing of audio, so that the animated background can react to specific audiocues with an animation. the playing of the audio is initiated in another component. how could i buidl a service or srevice like entity, which allows to start the audio and stream a lot of data to the graphic in the background?
 
 ## Anforderung bild
 
