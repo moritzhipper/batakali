@@ -8,12 +8,7 @@ export const NavBarWrapper = () => {
   const isMobile = useMediaQuery("(max-width: 700px)")
   const isOnWelcomePage = useLocation().pathname === "/"
 
-  if (isOnWelcomePage) {
-    return <></>
-  }
-
-  if (isMobile) {
-    return <NavBarMobile />
-  }
+  if (isOnWelcomePage) return null
+  if (isMobile) return <NavBarMobile />
   return <NavBarDesktop />
 }

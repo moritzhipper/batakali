@@ -5,29 +5,21 @@
 - Beleuchtung sichtbar machen
 - wenn play: shards pulsieren im beat (wenns geht, sogar in sync mit tatsäclichem audio)
 
-- diese gute touchinteraktion lib von pmndrs für projects
 - wenn nur duckopage, dann langsame kamerafahrt and ducko heran und um ducko herum?
-- farben css für links und so alles
-- kickimpat führt inputfunction, die entweder di shard hart auf 1.1 scaliert oder dieses doppellerp
+- kickimpackt führt inputfunction, die entweder di shard hart auf 1.1 scaliert oder dieses doppellerp
 - in use frame dann der lerp zürck auf 1?
 
 ### Project selector
 
-- bei seitenbesuch: nur tags sahen
+- selecting other genres only reorders tracks but doesnt remove them
+- bei seitenbesuch: nur tags zeigen
 - wenn tag selectiert: scrollbare liste der projekte
 - on scroll und drag selektierten track ändern
-- selecting other genres only reorders tracks but doesnt remove them
-- project selector auslagern mit der smotthen selektionslogik drin
-- springConfig zu gesten hinzufügen
 
 ### Duck Page
 
 - als header titel von now playing
 - unten share und download button
-
-### light
-
-- sprites reflektieren kein licht -> alle shards mit lookat und standard material ausstatten?
 
 ## Style
 

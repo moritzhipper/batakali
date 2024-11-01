@@ -1,6 +1,5 @@
 import { useState } from "react"
 import { Project } from "../../../types"
-import { MediaControls } from "../../media-controls/MediaControls"
 import { PageWrapper } from "../PageWrapper"
 import { ProjectSelector } from "./ProjectSelector"
 import "./ProjectsPage.css"
@@ -15,6 +14,7 @@ const projects = [
   { name: "no name", tag: "synthwave" },
   { name: "run", tag: "hardtechno" },
   { name: "water", tag: "boombap" },
+  { name: "ded", tag: "ambient" },
   { name: "sleep", tag: "rnb" }
 ]
 
@@ -43,7 +43,7 @@ export const ProjectsPage = () => {
           ))}
         </div>
         <ProjectSelector />
-        <MediaControls />
+        {/* <MediaControls /> */}
       </div>
     </PageWrapper>
   )

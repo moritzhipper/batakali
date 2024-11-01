@@ -7,30 +7,44 @@
   position: relative;
   overflow: hidden;
   box-sizing: content-box;
-  padding: var(--distance-m);
 
   .project {
     position: absolute;
-    height: calc(100% - var(--distance-m) * 2);
+    height: calc(100% - var(--distance-l) * 2);
     aspect-ratio: 1;
+
+    max-width: 100%;
     box-sizing: border-box;
-    padding: var(--distance-m) calc(var(--distance-m) + var(--distance-s));
-    border: 1px solid var(--accent-2);
-    border-radius: var(--radius-m);
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
+    border-radius: var(--radius-s);
+    border: solid var(--accent-2);
+    border-width: 1px 1px 1px 12px;
 
-    .name {
-      align-self: start;
-    }
+    overflow: hidden;
 
-    .tag {
-      align-self: end;
-    }
+    .content {
+      height: 100%;
+      box-sizing: border-box;
+      padding: var(--distance-m) calc(var(--distance-m) + var(--distance-s));
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      background-color: var(--accent-3);
+      background-color: rgb(from var(--accent-3) r g b / 0.9);
+      user-select: none;
+      cursor: grab;
 
-    .play-button {
-      align-self: center;
+      .name {
+        align-self: start;
+      }
+
+      .tag {
+        align-self: end;
+      }
+
+      button {
+        align-self: center;
+        color: var(--accent-1);
+      }
     }
   }
 }
