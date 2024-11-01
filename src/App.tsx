@@ -1,20 +1,17 @@
 import { Route, Routes } from "react-router-dom"
-import "./App.css"
-import { NavBarWrapper } from "./nav-bar/NavBarWrapper"
-import { AboutPage } from "./pages/AboutPage"
-import { DuckPage } from "./pages/DuckPage"
-import { ImprintPage } from "./pages/ImprintPage"
-import { PrivacyPage } from "./pages/PrivacyPage"
-import { ProjectsPage } from "./pages/ProjectsPage"
-import { WelcomePage } from "./pages/WelcomePage"
-import { ThreeWrapper } from "./three/ThreeWrapper"
+import { NavBarWrapper } from "./components/nav-bar/NavBarWrapper"
+import { AboutPage } from "./components/pages/AboutPage"
+import { DuckPage } from "./components/pages/DuckPage"
+import { ImprintPage } from "./components/pages/ImprintPage"
+import { PrivacyPage } from "./components/pages/PrivacyPage"
+import { ProjectsPage } from "./components/pages/projects/ProjectsPage"
+import { WelcomePage } from "./components/pages/WelcomePage"
+import { ThreeWrapper } from "./components/three/ThreeWrapper"
 
 function App() {
   return (
     <>
-      <div className="three-wrapper">
-        <ThreeWrapper />
-      </div>
+      <ThreeWrapper />
       <main>
         <NavBarWrapper />
         <Routes>

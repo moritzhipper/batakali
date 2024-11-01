@@ -1,7 +1,7 @@
 import { a, useTransition } from "@react-spring/web"
 import { useEffect, useState } from "react"
 import { Link, useLocation } from "react-router-dom"
-import { springConfig } from "../page-config"
+import { springConfig } from "../../angry-ducko-config"
 import "./NavBarMobile.css"
 
 export const NavBarMobile = () => {

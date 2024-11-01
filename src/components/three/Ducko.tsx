@@ -10,11 +10,11 @@ import {
   Vector3
 } from "three"
 import { lerp } from "three/src/math/MathUtils.js"
-import duck from "../assets/images/duck.png"
-import feather from "../assets/images/feather.png"
-import shard1 from "../assets/images/shard1.png"
-import shard2 from "../assets/images/shard2.png"
-import { DuckoConfig } from "../types"
+import duck from "../../assets/images/duck.png"
+import feather from "../../assets/images/feather.png"
+import shard1 from "../../assets/images/shard1.png"
+import shard2 from "../../assets/images/shard2.png"
+import { DuckoConfig } from "../../types"
 import { getRandomPositionInSphereWithXBias, randomInt } from "./utils"
 
 type Props = {
@@ -48,8 +48,8 @@ export const Ducko = memo(({ duckoConfig }: Props) => {
 
   // animate ducko szenechange -> Smaller is slower
   const lerpSpeedShow = 0.09
-  const lerpSpeedHide = 0.1
-  const minSize = new Vector3(0.5, 0.3, 0.5)
+  const lerpSpeedHide = 0.17
+  const minSize = new Vector3(0.7, 0.5, 0.7)
   const fullSize = new Vector3(1, 1, 1)
   const center = new Vector3(0, 0, 0)
 

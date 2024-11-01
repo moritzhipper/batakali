@@ -16,3 +16,9 @@ export type DuckoSzeneConfig = {
   ducko: DuckoConfig
   camera: CameraConfig
 }
+
+export type Project = {
+  name: string
+  tag: string
+  fileName?: string
+}
