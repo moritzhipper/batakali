@@ -17,6 +17,13 @@
 - on scroll und drag selektierten track ändern
 - nur die items animieren, die sichtbar sind, für alle anderen return getStyle standardwerte
 
+### Audio Service
+
+- projectlist aus einer quelle -> keine doppelten imports
+- aus dem service auslesbar: wenn kick kommt a la chatgpt lösung
+  aktuell selektierte datei
+- alle selektierbaren dateien
+
 ### Duck Page
 
 - als header titel von now playing
