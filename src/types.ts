@@ -22,9 +22,3 @@ export type Project = {
   tag: string
   fileName?: string
 }
-
-export type MediaContext = {
-  isPlaying: boolean
-  currentProject: Project
-  projectList: Project[]
-}

@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { projectList } from "../../../project-list"
+import { useMediaStore } from "../../../porject-media-store"
 import { Project } from "../../../types"
 import { PageWrapper } from "../PageWrapper"
 import { ProjectReel } from "./ProjectReel"
@@ -11,14 +11,18 @@ type FilterItem = {
 }
 
 export const ProjectsPage = () => {
+  const { projectList, selectProject } = useMediaStore()
   const filterList = mapToFilterList(projectList)
 
   const [filter, updateFilter] = useState<FilterItem[]>(filterList)
-  // const [filteredProjects, updateFilteredProjects] = useState<Project[]>(
-  //   projectList
-  // )
+
   const toggleFilter = (tag: string) => {
     updateFilter((list) => toggleFilterByTag(list, tag))
+  }
+
+  const play = (name: string) => {
+    console.log(name)
+    selectProject(name)
   }
 
   return (
@@ -36,7 +40,7 @@ export const ProjectsPage = () => {
             </button>
           ))}
         </div>
-        <ProjectReel projects={projectList} />
+        <ProjectReel projects={projectList} play={play} />
         {/* <MediaControls /> */}
       </div>
     </PageWrapper>

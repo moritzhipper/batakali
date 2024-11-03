@@ -23,6 +23,8 @@
 - aus dem service auslesbar: wenn kick kommt a la chatgpt lösung
   aktuell selektierte datei
 - alle selektierbaren dateien
+- play setzt aktiven track und spielt direkt
+- move audioanalyzing to webworker?
 
 ### Duck Page
 

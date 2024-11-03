@@ -9,9 +9,10 @@ import "./ProjectReel.css"
 
 type Props = {
   projects: Project[]
+  play: (name: string) => void
 }
 
-export const ProjectReel = ({ projects }: Props) => {
+export const ProjectReel = ({ projects, play }: Props) => {
   const isMobile = useMediaQuery("(max-width: 700px)")
   const projectCount = projects.length
   const itemOffset = isMobile ? 40 : 80
@@ -111,7 +112,7 @@ export const ProjectReel = ({ projects }: Props) => {
             >
               <a.div className="content" style={{ opacity: opacityContent }}>
                 <div className="name">{projects[i].name}</div>
-                <button>
+                <button onClick={() => play(projects[i].name)}>
                   <PlaySVG />
                 </button>
                 <div className="tag">{projects[i].tag}</div>
