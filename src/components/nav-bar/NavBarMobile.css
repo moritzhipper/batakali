@@ -55,9 +55,14 @@
       height: 100%;
       box-sizing: border-box;
 
+      .big-ducko-print {
+        margin-bottom: auto;
+      }
+
       .page {
         font-size: var(--font-size-xl);
         font-weight: 400;
+        justify-self: center;
       }
 
       .bottom {
