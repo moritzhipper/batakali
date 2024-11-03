@@ -6,6 +6,9 @@
   width: 100%;
   display: flex;
   box-sizing: border-box;
+  a {
+    /* text-shadow: none; */
+  }
 
   .home,
   .menu {
@@ -60,8 +63,9 @@
       }
 
       .page {
-        font-size: var(--font-size-xl);
-        font-weight: 400;
+        font-size: var(--font-size-2xl);
+        font-weight: 300;
+
         justify-self: center;
       }
 

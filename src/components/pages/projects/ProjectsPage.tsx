@@ -2,7 +2,7 @@ import { useState } from "react"
 import { projectList } from "../../../project-list"
 import { Project } from "../../../types"
 import { PageWrapper } from "../PageWrapper"
-import { ProjectSelector } from "./ProjectSelector"
+import { ProjectReel } from "./ProjectReel"
 import "./ProjectsPage.css"
 
 type FilterItem = {
@@ -14,7 +14,9 @@ export const ProjectsPage = () => {
   const filterList = mapToFilterList(projectList)
 
   const [filter, updateFilter] = useState<FilterItem[]>(filterList)
-
+  // const [filteredProjects, updateFilteredProjects] = useState<Project[]>(
+  //   projectList
+  // )
   const toggleFilter = (tag: string) => {
     updateFilter((list) => toggleFilterByTag(list, tag))
   }
@@ -34,7 +36,7 @@ export const ProjectsPage = () => {
             </button>
           ))}
         </div>
-        <ProjectSelector />
+        <ProjectReel projects={projectList} />
         {/* <MediaControls /> */}
       </div>
     </PageWrapper>

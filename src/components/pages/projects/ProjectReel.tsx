@@ -1,16 +1,19 @@
-
 import { a, useSprings } from "@react-spring/web"
 import { useGesture } from "@use-gesture/react"
 import { useRef } from "react"
 import { springConfig } from "../../../angry-ducko-config"
-import { projectList } from "../../../project-list"
+import { Project } from "../../../types"
 import { useMediaQuery } from "../../../use-media-hook"
 import { PlaySVG } from "../../media-controls/svg/PlaySVG"
-import "./ProjectSelector.css"
+import "./ProjectReel.css"
 
-export const ProjectSelector = () => {
+type Props = {
+  projects: Project[]
+}
+
+export const ProjectReel = ({ projects }: Props) => {
   const isMobile = useMediaQuery("(max-width: 700px)")
-  const projectCount = projectList.length
+  const projectCount = projects.length
   const itemOffset = isMobile ? 40 : 80
   const dragScale = isMobile ? 0.4 : 1
   const wheelScale = 0.2
@@ -57,17 +60,17 @@ export const ProjectSelector = () => {
     }
   }
 
-  const scroll = (offset: number) => {
+  const scroll = (offset: number): void => {
     currentIndex.current = toIndex(getTrueScrollPos(offset) / itemOffset)
     api.start((i) => getStyle(i, offset))
   }
 
-  const snap = () => {
+  const snap = (): void => {
     currentScrollPos.current = currentIndex.current * itemOffset * -1
     api.start((i) => getStyle(i, 0))
   }
 
-  const focusCard = (i: number) => {
+  const focusCard = (i: number): void => {
     currentIndex.current = i
     currentScrollPos.current = currentIndex.current * itemOffset * -1
     api.start((i) => getStyle(i, 0))
@@ -87,7 +90,7 @@ export const ProjectSelector = () => {
 
   return (
     <>
-      <div className="project-wrapper" {...bind()}>
+      <div className="project-reel-wrapper" {...bind()}>
         {props.map(
           (
             { x, scale, rotateZ, opacityBody, opacityContent, pointerEvents },
@@ -107,11 +110,11 @@ export const ProjectSelector = () => {
               onFocus={() => focusCard(i)}
             >
               <a.div className="content" style={{ opacity: opacityContent }}>
-                <div className="name">{projectList[i].name}</div>
+                <div className="name">{projects[i].name}</div>
                 <button>
                   <PlaySVG />
                 </button>
-                <div className="tag">{projectList[i].tag}</div>
+                <div className="tag">{projects[i].tag}</div>
               </a.div>
             </a.div>
           )
