@@ -11,6 +11,7 @@
 
 ### Project selector
 
+- seite das erste mal besuchen: erstmal nur genres zeigen, wenn genre gewählt, tracks präsentieren
 - selecting other genres only reorders tracks but doesnt remove them
 - bei seitenbesuch: nur tags zeigen
 - wenn tag selectiert: scrollbare liste der projekte
@@ -19,13 +20,10 @@
 
 ### Audio Service
 
-- projectlist aus einer quelle -> keine doppelten imports
-- aus dem service auslesbar: wenn kick kommt a la chatgpt lösung
-  aktuell selektierte datei
 - alle selektierbaren dateien
 - play setzt aktiven track und spielt direkt
-- move audioanalyzing to webworker?
 - check: rerender of ducko only when selected inputs change -> no rerender when route changes
+- rerendering of ducko checken
 
 ### Duck Page
 

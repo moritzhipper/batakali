@@ -4,7 +4,7 @@ import { Project } from "./types"
 
 type MediaStore = {
   isPlaying: boolean
-  selectedProject: Project
+  selectedProject: Project | null
   projectList: Project[]
   selectProject: (name: string) => void
   playPause: () => void

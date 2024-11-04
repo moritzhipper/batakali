@@ -53,17 +53,16 @@ export const Ducko = memo(({ duckoConfig }: Props) => {
   const lerpSpeedShow = 0.09
   const lerpSpeedHide = 0.17
   const minSize = new Vector3(0.7, 0.5, 0.7)
-  const fullSize = new Vector3(1, 1, 1)
   const center = new Vector3(0, 0, 0)
 
   const getOpacityFromDistanceToCenter = (positionObj: Vector3) => {
-    return 1 - positionObj.distanceTo(center) / 25
+    return 1 - positionObj.distanceTo(center) / 14
   }
 
   const showShards = () => {
     shardRef.current.scale.lerpVectors(
       shardRef.current.scale,
-      fullSize,
+      getScalar(1 + audioImpactRef * 0.15),
       lerpSpeedShow
     )
 
@@ -100,14 +99,6 @@ export const Ducko = memo(({ duckoConfig }: Props) => {
     } else {
       hideShards()
     }
-    shardRef.current.scale.lerpVectors(
-      shardRef.current.scale,
-      getScalar(1 + audioImpactRef * 0.4),
-      lerpSpeedShow
-    )
-
-    // shardRef.current.scale.setScalar(1 + audioImpactRef * 0.1)
-    // console.log(audioImpactRef)
   })
 
   return (

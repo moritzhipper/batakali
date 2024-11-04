@@ -7,22 +7,19 @@ export const useAudioImpactAnalyzer = () => {
   const analyzerRef = useRef<AnalyserNode>()
   const sourceRef = useRef<MediaElementAudioSourceNode>()
   const animationFrameIdRef = useRef<number>()
+
   const { selectedProject } = useMediaStore()
 
   // hook outputs, when loudness exceeds this threshold
-  const loudnessThreshold = 110
-  const fftSize = 128
-  const frequencyBandFocus = 20
+  const fftSize = 32
 
-  const normalizeLoudness = (loudness: number) => {
-    return (loudness - loudnessThreshold) / (255 - loudnessThreshold)
-  }
+  const getLoudness = (bands: Uint8Array) =>
+    bands.reduce((sum, value) => sum + value, 0) / bands.length / 255
 
   useEffect(() => {
     // initialize audio
-    if (!selectedProject) return
+    if (!selectedProject || !selectedProject.fileName) return
     const audio = new Audio(selectedProject.fileName)
-
     audioContextRef.current = new AudioContext()
     analyzerRef.current = audioContextRef.current.createAnalyser()
     sourceRef.current = audioContextRef.current.createMediaElementSource(audio)
@@ -38,15 +35,12 @@ export const useAudioImpactAnalyzer = () => {
     // compute audio impact
     const tick = () => {
       analyzerRef.current?.getByteFrequencyData(dataArray)
-      // wenn schwelle erreicht, set ausführen
-      if (dataArray[frequencyBandFocus] > loudnessThreshold) {
-        setAudioData(normalizeLoudness(dataArray[frequencyBandFocus]))
-        // console.log(normalizeLoudness(dataArray[frequencyBandFocus]))
-      }
+      setAudioData(getLoudness(dataArray))
       animationFrameIdRef.current = requestAnimationFrame(tick)
     }
 
     audio.play()
+
     tick()
 
     return () => {
