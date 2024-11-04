@@ -20,11 +20,6 @@ export const ProjectsPage = () => {
     updateFilter((list) => toggleFilterByTag(list, tag))
   }
 
-  const play = (name: string) => {
-    console.log(name)
-    selectProject(name)
-  }
-
   return (
     <PageWrapper type="half">
       <div className="projects-page-wrapper">
@@ -40,7 +35,7 @@ export const ProjectsPage = () => {
             </button>
           ))}
         </div>
-        <ProjectReel projects={projectList} play={play} />
+        <ProjectReel projects={projectList} play={selectProject} />
         {/* <MediaControls /> */}
       </div>
     </PageWrapper>

@@ -25,6 +25,7 @@
 - alle selektierbaren dateien
 - play setzt aktiven track und spielt direkt
 - move audioanalyzing to webworker?
+- check: rerender of ducko only when selected inputs change -> no rerender when route changes
 
 ### Duck Page
 

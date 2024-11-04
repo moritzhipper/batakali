@@ -15,6 +15,7 @@ import feather from "../../assets/images/feather.png"
 import shard1 from "../../assets/images/shard1.png"
 import shard2 from "../../assets/images/shard2.png"
 import { DuckoConfig } from "../../types"
+import { useAudioImpactAnalyzer } from "./use-kick-analyzer"
 import { getRandomPositionInSphereWithXBias, randomInt } from "./utils"
 
 type Props = {
@@ -24,9 +25,11 @@ type Props = {
 export const Ducko = memo(({ duckoConfig }: Props) => {
   const { animateFloating, shardsVisible } = duckoConfig
 
-  let duckTexture = useLoader(TextureLoader, duck)
   const shardRef = useRef<Group>(null)
 
+  const audioImpactRef = useAudioImpactAnalyzer()
+
+  const duckTexture = useMemo(() => useLoader(TextureLoader, duck), [])
   const textures = useMemo(
     () => [
       useLoader(TextureLoader, feather),
@@ -88,6 +91,8 @@ export const Ducko = memo(({ duckoConfig }: Props) => {
     })
   }
 
+  const getScalar = (scalar: number) => new Vector3(scalar, scalar, scalar)
+
   useFrame((_, delta) => {
     if (shardsVisible) {
       showShards()
@@ -95,6 +100,14 @@ export const Ducko = memo(({ duckoConfig }: Props) => {
     } else {
       hideShards()
     }
+    shardRef.current.scale.lerpVectors(
+      shardRef.current.scale,
+      getScalar(1 + audioImpactRef * 0.4),
+      lerpSpeedShow
+    )
+
+    // shardRef.current.scale.setScalar(1 + audioImpactRef * 0.1)
+    // console.log(audioImpactRef)
   })
 
   return (
