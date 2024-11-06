@@ -2,8 +2,7 @@
   display: grid;
   place-items: center;
   touch-action: none;
-  flex: 1;
-
+  height: 100%;
   position: relative;
   overflow: hidden;
   box-sizing: content-box;

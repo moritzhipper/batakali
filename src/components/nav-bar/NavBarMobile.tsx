@@ -81,11 +81,11 @@ export const NavBarMobile = () => {
                   <Link className="page" to="/projects">
                     projekte
                   </Link>
+                  <Link className="page" to="/duck">
+                    ducko
+                  </Link>
                   <Link className="page" to="/about">
                     about
-                  </Link>
-                  <Link className="page" to="/duck">
-                    duck
                   </Link>
 
                   <div className="bottom">

@@ -1,0 +1,78 @@
+/*
+* https://remixicon.com
+* https://github.com/Remix-Design/RemixIcon
+* Copyright RemixIcon.com
+* Released under the Apache License Version 2.0
+*/
+
+@font-face {
+  font-family: "remixicon";
+  src: url("./../assets/fonts/remixicon.ttf?t=1730911112947") format("truetype");
+  font-display: swap;
+}
+
+[class^="ri-"],
+[class*="ri-"] {
+  font-family: "remixicon" !important;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.ri-lg {
+  font-size: 1.3333em;
+  line-height: 0.75em;
+  vertical-align: -0.0667em;
+}
+.ri-xl {
+  font-size: 1.5em;
+  line-height: 0.6666em;
+  vertical-align: -0.075em;
+}
+
+.ri-s {
+  font-size: 18px;
+}
+.ri-m {
+  font-size: 24px;
+}
+.ri-l {
+  font-size: 32px;
+}
+
+.ri-play-large-fill:before {
+  content: "\f508";
+}
+.ri-pause-large-line:before {
+  content: "\f507";
+}
+.ri-repeat-line:before {
+  content: "\f074";
+}
+.ri-skip-forward-line:before {
+  content: "\f144";
+}
+.ri-skip-back-line:before {
+  content: "\f140";
+}
+.ri-replay-10-line:before {
+  content: "\f352";
+}
+.ri-forward-10-line:before {
+  content: "\f32b";
+}
+.ri-share-fill:before {
+  content: "\f0f7";
+}
+.ri-filter-2-fill:before {
+  content: "\ed22";
+}
+.ri-arrow-left-wide-line:before {
+  content: "\f494";
+}
+.ri-arrow-right-wide-line:before {
+  content: "\f496";
+}
+.ri-list-check-2:before {
+  content: "\eeb9";
+}

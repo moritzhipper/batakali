@@ -2,31 +2,31 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  animation: fadeIn 0.3s ease-in-out;
+  .project-selector {
+    position: relative;
+    flex: 1;
+  }
+  .reel-wrapper {
+    height: 100%;
+    width: 100%;
+
+    /* opacity: 0.6; */
+    /* transform: rotateX(20deg); */
+    transform-origin: bottom center;
+  }
   h1 {
-    margin-bottom: var(--distance-m);
+    position: relative;
+    align-self: center;
+    /* margin-bottom: var(--distance-l); */
   }
-
-  .filter-wrapper {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: var(--distance-m);
-
-    button {
-      transition: opacity var(--animation-duration-s);
-    }
-
-    &:has(.selected) {
-      :not(.selected) {
-        opacity: 0.5;
-      }
-    }
-  }
-
-  .pagination {
-    display: flex;
-    justify-content: center;
-    gap: var(--distance-m);
+  button.filter {
+    /* font-family: "BattleContinues"; */
+    z-index: 100;
+    position: absolute;
+    transform: rotate(20deg);
+    bottom: -8px;
+    right: -32px;
+    opacity: 0.3;
+    /* margin-top: var(--distance-m); */
   }
 }

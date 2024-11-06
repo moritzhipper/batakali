@@ -5,7 +5,7 @@ export const DuckPage = () => {
   const { selectedProject } = useMediaStore()
   return (
     <PageWrapper type="full">
-      <h1>{selectedProject.name}</h1>
+      <h1>{selectedProject?.name || "Ducko"}</h1>
     </PageWrapper>
   )
 }
