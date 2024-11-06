@@ -26,6 +26,11 @@
     transform: rotate(20deg);
     bottom: -8px;
     right: -32px;
-    opacity: 0.3;
+    opacity: 0.4;
+    transition: scale var(--animation-duration-s) ease-in-out;
+    &.open {
+      scale: 1.2;
+      opacity: 1;
+    }
   }
 }

@@ -1,5 +1,5 @@
 import { a, useTransition } from "@react-spring/web"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { springConfig } from "../../../angry-ducko-config"
 import { useMediaStore } from "../../../porject-media-store"
 import { Icon } from "../../Icon"
@@ -9,10 +9,14 @@ import "./ProjectsPage.css"
 import { TagSelector } from "./TagSelector"
 
 export const ProjectsPage = () => {
-  const { projectList, selectProject, selectTag } = useMediaStore()
   const [showFilter, setShowFilter] = useState(true)
+  const { selectedTag } = useMediaStore()
 
   const toggleFilter = () => setShowFilter((show) => !show)
+
+  useEffect(() => {
+    setShowFilter(false)
+  }, [selectedTag])
 
   const filterStyle = {
     opacity: 0,
@@ -33,7 +37,10 @@ export const ProjectsPage = () => {
       <div className="projects-page-wrapper">
         <h1>
           Projects
-          <button className="filter" onClick={toggleFilter}>
+          <button
+            className={"filter " + (showFilter ? "open" : "")}
+            onClick={toggleFilter}
+          >
             <Icon type="filter-2-fill" />
           </button>
         </h1>
@@ -41,11 +48,7 @@ export const ProjectsPage = () => {
           {transitionFilter((style, show) => (
             <>
               <a.div className="project-selector" style={{ ...style }}>
-                {show ? (
-                  <TagSelector projects={projectList} selectTag={selectTag} />
-                ) : (
-                  <ProjectReel projects={projectList} play={selectProject} />
-                )}
+                {show ? <TagSelector /> : <ProjectReel />}
               </a.div>
             </>
           ))}

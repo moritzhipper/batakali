@@ -1,20 +1,25 @@
-import { Project } from "../../../types"
+import { useMemo } from "react"
+import { useMediaStore } from "../../../porject-media-store"
 import "./TagSelector.css"
 
-type Props = {
-  projects: Project[]
-  selectTag: (tag: string) => void
-}
+export const TagSelector = () => {
+  const { projectList, selectedTag, selectTag } = useMediaStore()
 
-export const TagSelector = ({ projects, selectTag }: Props) => {
-  const tagList = [...new Set(projects.map((project) => project.tag))].sort()
+  const tagList = useMemo(
+    () => [...new Set(projectList.map((project) => project.tag))].sort(),
+    []
+  )
 
   return (
     <div className="tag-selector-wrapper">
       <div className="header">sort by tag</div>
       <div className="tags">
         {tagList.map((tag) => (
-          <button onClick={() => selectTag(tag)} key={tag}>
+          <button
+            className={tag === selectedTag ? "selected" : ""}
+            onClick={() => selectTag(tag)}
+            key={tag}
+          >
             {tag}
           </button>
         ))}

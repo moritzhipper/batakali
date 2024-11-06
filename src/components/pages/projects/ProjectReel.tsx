@@ -2,19 +2,16 @@ import { a, useSprings } from "@react-spring/web"
 import { useGesture } from "@use-gesture/react"
 import { useRef } from "react"
 import { springConfig } from "../../../angry-ducko-config"
-import { Project } from "../../../types"
+import { useMediaStore } from "../../../porject-media-store"
 import { useMediaQuery } from "../../../use-media-hook"
 import { PlaySVG } from "../../media-controls/svg/PlaySVG"
 import "./ProjectReel.css"
 
-type Props = {
-  projects: Project[]
-  play: (name: string) => void
-}
+export const ProjectReel = () => {
+  const { projectList, selectProject } = useMediaStore()
 
-export const ProjectReel = ({ projects, play }: Props) => {
   const isMobile = useMediaQuery("(max-width: 700px)")
-  const projectCount = projects.length
+  const projectCount = projectList.length
   const itemOffset = isMobile ? 40 : 80
   const dragScale = isMobile ? 0.4 : 1
   const wheelScale = 0.2
@@ -111,11 +108,11 @@ export const ProjectReel = ({ projects, play }: Props) => {
               onFocus={() => focusCard(i)}
             >
               <a.div className="content" style={{ opacity: opacityContent }}>
-                <div className="name">{projects[i].name}</div>
-                <button onClick={() => play(projects[i].name)}>
+                <div className="name">{projectList[i].name}</div>
+                <button onClick={() => selectProject(projectList[i].name)}>
                   <PlaySVG />
                 </button>
-                <div className="tag">{projects[i].tag}</div>
+                <div className="tag">{projectList[i].tag}</div>
               </a.div>
             </a.div>
           )

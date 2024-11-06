@@ -11,13 +11,11 @@
     position: absolute;
     height: calc(100% - var(--distance-l) * 2);
     aspect-ratio: 1;
-
     max-width: 100%;
     box-sizing: border-box;
     border-radius: var(--radius-s);
     border: solid var(--accent-2);
     border-width: 1px 1px 1px 12px;
-
     overflow: hidden;
 
     .content {
