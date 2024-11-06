@@ -17,6 +17,7 @@
 - wenn tag selectiert: scrollbare liste der projekte
 - on scroll und drag selektierten track ändern
 - nur die items animieren, die sichtbar sind, für alle anderen return getStyle standardwerte
+- auf desktop beide nebeneinander, auf mobile filterbutton
 
 ### Audio Service
 

@@ -2,19 +2,17 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  /* width: 100%; */
 
-  .project-selector {
+  .selector-wrapper {
     position: relative;
     flex: 1;
-    display: grid;
-    .tag-selector-wrapper {
-      place-self: center;
-    }
   }
-  .reel-wrapper {
-    height: 100%;
+  .project-selector {
+    position: absolute;
+    box-sizing: border-box;
     width: 100%;
-    transform-origin: bottom center;
+    height: 100%;
   }
 
   h1 {
@@ -29,27 +27,5 @@
     bottom: -8px;
     right: -32px;
     opacity: 0.3;
-  }
-
-  .tag-selector-wrapper {
-    position: absolute;
-    top: 0;
-
-    z-index: 100;
-    height: 100%;
-    aspect-ratio: 1;
-    padding: var(--distance-l);
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    gap: var(--distance-m);
-
-    button {
-      margin: 0;
-      padding: 0;
-      font-weight: 300;
-      font-size: var(--font-size-xl);
-    }
   }
 }

@@ -1,4 +1,4 @@
-import { a, useSpring, useTransition } from "@react-spring/web"
+import { a, useTransition } from "@react-spring/web"
 import { useState } from "react"
 import { springConfig } from "../../../angry-ducko-config"
 import { useMediaStore } from "../../../porject-media-store"
@@ -6,13 +6,13 @@ import { Icon } from "../../Icon"
 import { PageWrapper } from "../PageWrapper"
 import { ProjectReel } from "./ProjectReel"
 import "./ProjectsPage.css"
+import { TagSelector } from "./TagSelector"
 
 export const ProjectsPage = () => {
   const { projectList, selectProject, selectTag } = useMediaStore()
   const [showFilter, setShowFilter] = useState(true)
 
   const toggleFilter = () => setShowFilter((show) => !show)
-  const tagList = [...new Set(projectList.map((project) => project.tag))].sort()
 
   const filterStyle = {
     opacity: 0,
@@ -28,13 +28,6 @@ export const ProjectsPage = () => {
     ...springConfig
   })
 
-  const reelStyle = useSpring({
-    opacity: showFilter ? 0.5 : 1,
-    translateY: showFilter ? 0 : 0,
-    pointerEvents: showFilter ? "none" : "all",
-    ...springConfig
-  })
-
   return (
     <PageWrapper type="half">
       <div className="projects-page-wrapper">
@@ -44,23 +37,16 @@ export const ProjectsPage = () => {
             <Icon type="filter-2-fill" />
           </button>
         </h1>
-        <div className="project-selector">
+        <div className="selector-wrapper">
           {transitionFilter((style, show) => (
             <>
-              {show && (
-                <a.div className="tag-selector-wrapper" style={{ ...style }}>
-                  {tagList.map((tag) => (
-                    <button onClick={() => selectTag(tag)} key={tag}>
-                      {tag}
-                    </button>
-                  ))}
-                </a.div>
-              )}
-              {!show && (
-                <a.div className="reel-wrapper" style={{ ...style }}>
+              <a.div className="project-selector" style={{ ...style }}>
+                {show ? (
+                  <TagSelector projects={projectList} selectTag={selectTag} />
+                ) : (
                   <ProjectReel projects={projectList} play={selectProject} />
-                </a.div>
-              )}
+                )}
+              </a.div>
             </>
           ))}
         </div>

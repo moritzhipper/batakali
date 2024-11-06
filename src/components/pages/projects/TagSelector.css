@@ -1,0 +1,32 @@
+.tag-selector-wrapper {
+  box-sizing: border-box;
+  padding: var(--distance-l);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  .header {
+    place-self: start;
+    margin-top: var(--distance-s);
+    margin-right: var(--distance-m);
+    opacity: 0.4;
+    font-size: var(--font-size-xl);
+    writing-mode: vertical-rl;
+    text-orientation: sideways;
+    rotate: -180deg;
+  }
+
+  .tags {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    /* justify-content: space-between; */
+    gap: var(--distance-m);
+    overflow-y: auto;
+  }
+
+  button {
+    margin: 0;
+    padding: 0;
+    font-weight: 300;
+    font-size: var(--font-size-xl);
+  }
+}
