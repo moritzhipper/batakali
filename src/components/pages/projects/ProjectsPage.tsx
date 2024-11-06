@@ -4,13 +4,14 @@ import { Icon } from "../../Icon"
 import { PageWrapper } from "../PageWrapper"
 import { ProjectReel } from "./ProjectReel"
 import "./ProjectsPage.css"
-import { TagSelector } from "./TagSelector"
 
 export const ProjectsPage = () => {
   const { projectList, selectProject, selectTag } = useMediaStore()
   const [showFilter, setShowFilter] = useState(false)
 
   const toggleFilter = () => setShowFilter((show) => !show)
+
+  const tagList = [...new Set(projectList.map((project) => project.tag))].sort()
 
   return (
     <PageWrapper type="half">
@@ -23,13 +24,16 @@ export const ProjectsPage = () => {
         </h1>
         <div className="project-selector">
           {showFilter && (
-            <TagSelector projects={projectList} selectTag={selectTag} />
+            <div className="tag-selector-wrapper">
+              {tagList.map((tag) => (
+                <button onClick={() => selectTag(tag)} key={tag}>
+                  {tag}
+                </button>
+              ))}
+            </div>
           )}
-          <div className="reel-wrapper">
-            <ProjectReel projects={projectList} play={selectProject} />
-          </div>
+          <ProjectReel projects={projectList} play={selectProject} />
         </div>
-        {/* <MediaControls /> */}
       </div>
     </PageWrapper>
   )

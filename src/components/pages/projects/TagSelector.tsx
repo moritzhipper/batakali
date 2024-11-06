@@ -9,11 +9,9 @@ type Props = {
 export const TagSelector = ({ projects, selectTag }: Props) => {
   const tagList = [...new Set(projects.map((project) => project.tag))].sort()
 
-  return (
-    <div className="tag-selector-wrapper">
-      {tagList.map((tag) => (
-        <button onClick={() => selectTag(tag)}>{tag}</button>
-      ))}
-    </div>
-  )
+  return tagList.map((tag) => (
+    <button onClick={() => selectTag(tag)} key={tag}>
+      {tag}
+    </button>
+  ))
 }
