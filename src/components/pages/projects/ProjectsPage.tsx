@@ -1,4 +1,4 @@
-import { a, useTransition } from "@react-spring/web"
+import { a, useSpring, useTransition } from "@react-spring/web"
 import { useEffect, useState } from "react"
 import { springConfig } from "../../../angry-ducko-config"
 import { useMediaStore } from "../../../porject-media-store"
@@ -17,47 +17,44 @@ export const ProjectsPage = () => {
   }, [])
 
   const playerStyle = {
-    opacity: 0,
-    height: "0%"
+    opacity: 0
   }
 
   const transitionPlayer = useTransition(showPlayer, {
     from: playerStyle,
     enter: {
-      opacity: 1,
-      height: "50%"
+      opacity: 1
     },
     leave: playerStyle,
     ...springConfig
   })
 
+  const { translateY } = useSpring({
+    translateY: showPlayer ? "50%" : "0%",
+    ...springConfig
+  })
+
   return (
-    <div className="page-wrapper projects" onClick={togglePlayer}>
-      {transitionPlayer((style, show) => (
-        <>
-          {show && (
-            <a.div
-              className="controls-wrapper"
-              style={{ opacity: style.opacity }}
-            >
-              <MediaControls />
+    <div className="page-wrapper projects">
+      <a.div className="wrap-all" style={{ translateY }}>
+        {transitionPlayer((style, show) =>
+          show ? (
+            <>
               <button
                 className="ri-arrow-up-wide-line"
                 onClick={togglePlayer}
               />
-            </a.div>
-          )}
-        </>
-      ))}
-      {transitionPlayer((style, show) => (
-        <>
-          {!show && (
+              <a.div className="controls-wrapper" style={{ ...style }}>
+                <MediaControls />
+              </a.div>
+            </>
+          ) : (
             <a.div className="content" style={{ ...style }}>
               <SelectionElements />
             </a.div>
-          )}
-        </>
-      ))}
+          )
+        )}
+      </a.div>
     </div>
   )
 }
