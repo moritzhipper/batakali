@@ -15,29 +15,16 @@
 [class*="ri-"] {
   font-family: "remixicon" !important;
   font-style: normal;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-.ri-lg {
-  font-size: 1.3333em;
-  line-height: 0.75em;
-  vertical-align: -0.0667em;
-}
-.ri-xl {
-  font-size: 1.5em;
-  line-height: 0.6666em;
-  vertical-align: -0.075em;
+  font-size: 24px;
+  font-weight: normal;
 }
 
 .ri-s {
   font-size: 18px;
 }
-.ri-m {
-  font-size: 24px;
-}
+
 .ri-l {
-  font-size: 32px;
+  font-size: 40px;
 }
 
 .ri-play-large-fill:before {
@@ -75,4 +62,31 @@
 }
 .ri-list-check-2:before {
   content: "\eeb9";
+}
+.ri-pantone-fill:before {
+  content: "\efc6";
+}
+.ri-github-fill:before {
+  content: "\edca";
+}
+.ri-download-fill:before {
+  content: "\ec59";
+}
+.ri-skip-back-fill:before {
+  content: "\f13f";
+}
+.ri-skip-forward-fill:before {
+  content: "\f143";
+}
+.ri-repeat-2-line:before {
+  content: "\f072";
+}
+.ri-repeat-one-line:before {
+  content: "\f076";
+}
+.ri-download-2-line:before {
+  content: "\ec54";
+}
+.ri-download-line:before {
+  content: "\ec5a";
 }

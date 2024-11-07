@@ -1,4 +1,5 @@
 @import "./style/variables";
+@import "./style/page-wrapper";
 @import "./style/layout";
 @import "./style/remixicon";
 
@@ -31,6 +32,11 @@ body {
     }
   }
 }
+h1,
+button,
+p {
+  text-shadow: 1px 1px 3px var(--accent-3);
+}
 
 h1 {
   font-family: "BattleContinues";
@@ -52,7 +58,6 @@ button {
   font-weight: bold;
   cursor: pointer;
   color: var(--accent-0);
-  text-shadow: 1px 1px 3px var(--accent-3);
 
   &:disabled {
     cursor: initial;
@@ -67,10 +72,15 @@ button {
   font-family: "BattleContinues";
 }
 
-.delayed-fade-in {
+.delayed-fade-in,
+.page-wrapper {
   animation: fadeIn var(--animation-duration-l) ease-in-out;
   animation-delay: var(--animation-duration-l);
   animation-fill-mode: backwards;
+}
+
+.page-wrapper {
+  height: 100%;
 }
 
 @keyframes fadeIn {

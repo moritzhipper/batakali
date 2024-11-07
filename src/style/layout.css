@@ -1,1 +1,14 @@
+@import "./viewports";
+
 /* responsive layout*/
+@media (--viewport-m) {
+  .page-wrapper:not(.projects) {
+    padding: var(--distance-l);
+  }
+}
+
+@media (--viewport-s) {
+  .page-wrapper:not(.projects) {
+    padding: var(--distance-m);
+  }
+}

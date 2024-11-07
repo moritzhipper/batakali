@@ -1,9 +1,7 @@
-import { PageWrapper } from "./PageWrapper"
-
 export const ImprintPage = () => {
   return (
-    <PageWrapper type="full">
+    <div className="page-wrapper">
       <h1>Impressum</h1>
-    </PageWrapper>
+    </div>
   )
 }

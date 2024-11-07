@@ -4,12 +4,14 @@ import { Project } from "./types"
 
 type MediaStore = {
   isPlaying: boolean
+  isRepeating: boolean
   selectedProject: Project | null
   projectList: Project[]
   selectedTag: string | null
   selectProject: (name: string) => void
   selectTag: (name: string) => void
-  playPause: () => void
+  togglePlay: () => void
+  toggleRepeat: () => void
 }
 
 export const useMediaStore = create<MediaStore>((set) => ({
@@ -17,6 +19,7 @@ export const useMediaStore = create<MediaStore>((set) => ({
   selectedProject: null,
   projectList: projectList,
   selectedTag: null,
+  isRepeating: false,
   selectProject: (name: string) =>
     set((state) => ({
       ...state,
@@ -28,7 +31,9 @@ export const useMediaStore = create<MediaStore>((set) => ({
       selectedTag: name,
       projectList: prioritizeProjectsByTag(name, state.projectList)
     })),
-  playPause: () => set((state) => ({ ...state, isPlaying: !state.isPlaying }))
+  togglePlay: () => set((state) => ({ ...state, isPlaying: !state.isPlaying })),
+  toggleRepeat: () =>
+    set((state) => ({ ...state, isRepeating: !state.isRepeating }))
 }))
 
 const findByName = (

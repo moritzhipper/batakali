@@ -18,6 +18,9 @@
 - on scroll und drag selektierten track ändern
 - nur die items animieren, die sichtbar sind, für alle anderen return getStyle standardwerte
 - auf desktop beide nebeneinander, auf mobile filterbutton
+  -text shadow styles konsolidieren
+  -pagestyles per module und mixin (postcss kann das)
+- farbe: wichtige elemente weiß, nicht so wichtige grau
 
 ### Audio Service
 

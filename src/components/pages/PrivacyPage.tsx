@@ -1,9 +1,7 @@
-import { PageWrapper } from "./PageWrapper"
-
 export const PrivacyPage = () => {
   return (
-    <PageWrapper type="full">
+    <div className="page-wrapper">
       <h1>Datenschutz</h1>
-    </PageWrapper>
+    </div>
   )
 }
