@@ -11,11 +11,23 @@
 
 ### Project selector
 
+- seite das erste mal besuchen: erstmal nur genres zeigen, wenn genre gewählt, tracks präsentieren
 - selecting other genres only reorders tracks but doesnt remove them
 - bei seitenbesuch: nur tags zeigen
 - wenn tag selectiert: scrollbare liste der projekte
 - on scroll und drag selektierten track ändern
 - nur die items animieren, die sichtbar sind, für alle anderen return getStyle standardwerte
+- auf desktop beide nebeneinander, auf mobile filterbutton
+  -text shadow styles konsolidieren
+  -pagestyles per module und mixin (postcss kann das)
+- farbe: wichtige elemente weiß, nicht so wichtige grau
+
+### Audio Service
+
+- alle selektierbaren dateien
+- play setzt aktiven track und spielt direkt
+- check: rerender of ducko only when selected inputs change -> no rerender when route changes
+- rerendering of ducko checken
 
 ### Duck Page
 

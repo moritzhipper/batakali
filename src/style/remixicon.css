@@ -1,0 +1,92 @@
+/*
+* https://remixicon.com
+* https://github.com/Remix-Design/RemixIcon
+* Copyright RemixIcon.com
+* Released under the Apache License Version 2.0
+*/
+
+@font-face {
+  font-family: "remixicon";
+  src: url("./../assets/fonts/remixicon.ttf?t=1730911112947") format("truetype");
+  font-display: swap;
+}
+
+[class^="ri-"],
+[class*="ri-"] {
+  font-family: "remixicon" !important;
+  font-style: normal;
+  font-size: 24px;
+  font-weight: normal;
+}
+
+.ri-s {
+  font-size: 18px;
+}
+
+.ri-l {
+  font-size: 40px;
+}
+
+.ri-play-large-fill:before {
+  content: "\f508";
+}
+.ri-pause-large-line:before {
+  content: "\f507";
+}
+.ri-repeat-line:before {
+  content: "\f074";
+}
+.ri-skip-forward-line:before {
+  content: "\f144";
+}
+.ri-skip-back-line:before {
+  content: "\f140";
+}
+.ri-replay-10-line:before {
+  content: "\f352";
+}
+.ri-forward-10-line:before {
+  content: "\f32b";
+}
+.ri-share-fill:before {
+  content: "\f0f7";
+}
+.ri-filter-2-fill:before {
+  content: "\ed22";
+}
+.ri-arrow-left-wide-line:before {
+  content: "\f494";
+}
+.ri-arrow-right-wide-line:before {
+  content: "\f496";
+}
+.ri-list-check-2:before {
+  content: "\eeb9";
+}
+.ri-pantone-fill:before {
+  content: "\efc6";
+}
+.ri-github-fill:before {
+  content: "\edca";
+}
+.ri-download-fill:before {
+  content: "\ec59";
+}
+.ri-skip-back-fill:before {
+  content: "\f13f";
+}
+.ri-skip-forward-fill:before {
+  content: "\f143";
+}
+.ri-repeat-2-line:before {
+  content: "\f072";
+}
+.ri-repeat-one-line:before {
+  content: "\f076";
+}
+.ri-download-2-line:before {
+  content: "\ec54";
+}
+.ri-download-line:before {
+  content: "\ec5a";
+}

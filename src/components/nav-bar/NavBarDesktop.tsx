@@ -10,11 +10,11 @@ export const NavBarDesktop = () => {
       <Link className="page" to="/projects">
         projects
       </Link>
+      <Link className="page" to="/duck">
+        ducko
+      </Link>
       <Link className="page" to="/about">
         about
-      </Link>
-      <Link className="page" to="/duck">
-        duck
       </Link>
 
       <Link className="legal impressum" to="/imprint">

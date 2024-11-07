@@ -6,6 +6,9 @@
   width: 100%;
   display: flex;
   box-sizing: border-box;
+  a {
+    /* text-shadow: none; */
+  }
 
   .home,
   .menu {
@@ -43,7 +46,7 @@
     left: 0;
     width: 100vw;
     height: 100dvh;
-    background: linear-gradient(180deg, var(--accent-3) 5%, transparent 100%);
+    background: linear-gradient(180deg, var(--accent-3) 5%, transparent);
     backdrop-filter: blur(10px);
 
     .nav-items {
@@ -55,9 +58,15 @@
       height: 100%;
       box-sizing: border-box;
 
+      .big-ducko-print {
+        margin-bottom: auto;
+      }
+
       .page {
-        font-size: var(--font-size-xl);
-        font-weight: 400;
+        font-size: var(--font-size-2xl);
+        font-weight: 300;
+
+        justify-self: center;
       }
 
       .bottom {

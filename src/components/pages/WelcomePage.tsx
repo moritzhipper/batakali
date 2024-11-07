@@ -1,12 +1,11 @@
 import { Link } from "react-router-dom"
-import { PageWrapper } from "./PageWrapper"
 
 export const WelcomePage = () => {
   return (
-    <PageWrapper type="third">
+    <div className="page-wrapper welcome">
       <Link className="big-ducko-print" to="/projects">
         Angry Ducko
       </Link>
-    </PageWrapper>
+    </div>
   )
 }

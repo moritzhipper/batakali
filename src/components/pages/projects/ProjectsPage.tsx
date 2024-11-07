@@ -1,53 +1,57 @@
-import { useState } from "react"
-import { projectList } from "../../../project-list"
-import { Project } from "../../../types"
-import { PageWrapper } from "../PageWrapper"
-import { ProjectSelector } from "./ProjectSelector"
+import { a, useTransition } from "@react-spring/web"
+import { useEffect, useState } from "react"
+import { springConfig } from "../../../angry-ducko-config"
+import { useMediaStore } from "../../../porject-media-store"
+import { ProjectReel } from "./ProjectReel"
 import "./ProjectsPage.css"
-
-type FilterItem = {
-  tag: string
-  selected: boolean
-}
+import { TagSelector } from "./TagSelector"
 
 export const ProjectsPage = () => {
-  const filterList = mapToFilterList(projectList)
+  const [showFilter, setShowFilter] = useState(true)
+  const { selectedTag } = useMediaStore()
 
-  const [filter, updateFilter] = useState<FilterItem[]>(filterList)
+  const toggleFilter = () => setShowFilter((show) => !show)
 
-  const toggleFilter = (tag: string) => {
-    updateFilter((list) => toggleFilterByTag(list, tag))
+  useEffect(() => {
+    setShowFilter(false)
+  }, [selectedTag])
+
+  const filterStyle = {
+    opacity: 0,
+    translateY: 40
   }
+  const transitionFilter = useTransition(showFilter, {
+    from: filterStyle,
+    enter: {
+      opacity: 1,
+      translateY: 0
+    },
+    leave: filterStyle,
+    ...springConfig
+  })
 
   return (
-    <PageWrapper type="half">
-      <div className="projects-page-wrapper">
-        <h1>Projects</h1>
-        <div className="filter-wrapper">
-          {filter.map(({ tag, selected }) => (
-            <button
-              className={selected ? "selected" : ""}
-              key={tag}
-              onClick={() => toggleFilter(tag)}
-            >
-              {tag}
-            </button>
+    <div className="page-wrapper projects">
+      <div className="content">
+        <h1>
+          Projects
+          <button
+            className={
+              "filter ri-filter-2-fill ri-m " + (showFilter ? "open" : "")
+            }
+            onClick={toggleFilter}
+          />
+        </h1>
+        <div className="selector-wrapper">
+          {transitionFilter((style, show) => (
+            <>
+              <a.div className="project-selector" style={{ ...style }}>
+                {show ? <TagSelector /> : <ProjectReel />}
+              </a.div>
+            </>
           ))}
         </div>
-        <ProjectSelector />
-        {/* <MediaControls /> */}
       </div>
-    </PageWrapper>
+    </div>
   )
 }
-
-const mapToFilterList = (projects: Project[]): FilterItem[] =>
-  [...new Set(projects.map((project) => project.tag))].map((tag) => ({
-    tag,
-    selected: false
-  }))
-
-const toggleFilterByTag = (filterList: FilterItem[], tag: string) =>
-  filterList.map((item) =>
-    item.tag === tag ? { ...item, selected: !item.selected } : item
-  )

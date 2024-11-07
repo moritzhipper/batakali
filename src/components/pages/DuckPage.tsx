@@ -1,9 +1,12 @@
-import { PageWrapper } from "./PageWrapper"
+import { useMediaStore } from "../../porject-media-store"
+import { MediaControls } from "../media-controls/MediaControls"
 
 export const DuckPage = () => {
+  const { selectedProject } = useMediaStore()
   return (
-    <PageWrapper type="full">
-      <h1>666</h1>
-    </PageWrapper>
+    <div className="page-wrapper ducko">
+      <h1>{selectedProject?.name || "Ducko"}</h1>
+      <MediaControls />
+    </div>
   )
 }
