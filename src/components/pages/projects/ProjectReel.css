@@ -8,10 +8,14 @@
   box-sizing: content-box;
 
   .project {
+    --dimension: calc(100% - var(--distance-l) * 2);
+
     position: absolute;
-    height: calc(100% - var(--distance-l) * 2);
+    height: var(--dimension);
+    object-fit: cover;
+
     aspect-ratio: 1;
-    max-width: 100%;
+    max-width: var(--dimension);
     box-sizing: border-box;
     border-radius: var(--radius-s);
     border: solid var(--accent-2);
@@ -26,7 +30,6 @@
       justify-content: space-between;
       flex-direction: column;
       background-color: var(--accent-3);
-      background-color: rgb(from var(--accent-3) r g b / 0.9);
       user-select: none;
       cursor: grab;
 

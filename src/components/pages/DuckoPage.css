@@ -1,0 +1,34 @@
+.page-wrapper.ducko {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  align-items: center;
+  /* place-items: center; */
+  /* justify-content: space-between; */
+  .buttons {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .bottom {
+    overflow: hidden;
+    width: 100%;
+    display: flex;
+    position: relative;
+    .reels-wrapper {
+      height: 50dvh;
+      aspect-ratio: 1;
+    }
+  }
+
+  .show-projects {
+    color: var(--accent-1);
+    span {
+      display: block;
+      transform: rotate(90deg);
+    }
+  }
+}

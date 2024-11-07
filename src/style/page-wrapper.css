@@ -13,12 +13,5 @@
     }
   }
   &.projects {
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-  }
-  &.ducko {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
   }
 }

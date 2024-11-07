@@ -4,7 +4,6 @@ import { useRef } from "react"
 import { springConfig } from "../../../angry-ducko-config"
 import { useMediaStore } from "../../../porject-media-store"
 import { useMediaQuery } from "../../../use-media-hook"
-import { Icon } from "../../Icon"
 import "./ProjectReel.css"
 
 export const ProjectReel = () => {
@@ -110,7 +109,7 @@ export const ProjectReel = () => {
               <a.div className="content" style={{ opacity: opacityContent }}>
                 <div className="name">{projectList[i].name}</div>
                 <button onClick={() => selectProject(projectList[i].name)}>
-                  <Icon type="play-large-fill" size="l" />
+                  <span className="ri-play-large-fill ri-l" />
                 </button>
                 <div className="tag">{projectList[i].tag}</div>
               </a.div>

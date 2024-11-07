@@ -1,7 +1,16 @@
 .page-wrapper.projects {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+
+  .controls-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+  }
+
   .content {
-    position: relative;
-    grid-row: 2/2;
     display: flex;
     flex-direction: column;
 
@@ -9,6 +18,8 @@
       position: relative;
       flex: 1;
       .project-selector {
+        aspect-ratio: 1;
+        max-width: 100%;
         position: absolute;
         box-sizing: border-box;
         width: 100%;

@@ -2,13 +2,13 @@
 
 /* responsive layout*/
 @media (--viewport-m) {
-  .page-wrapper:not(.projects) {
+  .page-wrapper {
     padding: var(--distance-l);
   }
 }
 
 @media (--viewport-s) {
-  .page-wrapper:not(.projects) {
+  .page-wrapper {
     padding: var(--distance-m);
   }
 }

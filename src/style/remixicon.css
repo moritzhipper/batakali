@@ -15,19 +15,21 @@
 [class*="ri-"] {
   font-family: "remixicon" !important;
   font-style: normal;
-  font-size: 24px;
+  font-size: 28px;
   font-weight: normal;
 }
 
 .ri-s {
-  font-size: 18px;
+  font-size: 20px;
 }
 
 .ri-l {
-  font-size: 40px;
+  font-size: 48px;
 }
 
 .ri-play-large-fill:before {
+  margin-right: -3px;
+  margin-left: 3px;
   content: "\f508";
 }
 .ri-pause-large-line:before {
@@ -89,4 +91,10 @@
 }
 .ri-download-line:before {
   content: "\ec5a";
+}
+.ri-arrow-up-wide-line:before {
+  content: "\f498";
+}
+.ri-arrow-down-wide-line:before {
+  content: "\f492";
 }
