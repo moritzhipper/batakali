@@ -1,4 +1,3 @@
-
 import { a, useSprings } from "@react-spring/web"
 import { useGesture } from "@use-gesture/react"
 import { useRef } from "react"
@@ -45,7 +44,7 @@ export const ProjectSelector = () => {
       offsetX = getRelativeOffsetForCurrentIndex(i)
     }
 
-    const pointerEvents = currentIndex.current !== i ? "none" : "all"
+    const noInteract = currentIndex.current !== i
     const hideBody = currentIndex.current > i || currentIndex.current < i - 2
     return {
       x: offsetX,
@@ -53,7 +52,7 @@ export const ProjectSelector = () => {
       rotateZ: getPercentByDistance(offsetX, 3) * 5,
       opacityContent: 1 - getPercentByDistance(offsetX, 1),
       opacityBody: hideBody ? 0 : 1,
-      pointerEvents
+      noInteract
     }
   }
 
@@ -90,7 +89,7 @@ export const ProjectSelector = () => {
       <div className="project-wrapper" {...bind()}>
         {props.map(
           (
-            { x, scale, rotateZ, opacityBody, opacityContent, pointerEvents },
+            { x, scale, rotateZ, opacityBody, opacityContent, noInteract },
             i
           ) => (
             <a.div
@@ -101,7 +100,7 @@ export const ProjectSelector = () => {
                 rotateZ,
                 opacity: opacityBody,
                 zIndex: projectCount - i,
-                pointerEvents
+                pointerEvents: noInteract ? "none" : "auto"
               }}
               key={i}
               onFocus={() => focusCard(i)}

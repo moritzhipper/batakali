@@ -13,7 +13,7 @@ export const ProjectsPage = () => {
   const togglePlayer = () => setShowPlayer((show) => !show)
 
   useEffect(() => {
-    setShowPlayer(false)
+    // setShowPlayer(false)
   }, [])
 
   const playerStyle = {
@@ -90,13 +90,13 @@ export const SelectionElements = () => {
   return (
     <>
       <h1>
+        <span>Projects</span>
         {true && (
           <button className="hide">
             <span className="ri-play-large-fill" />
             <span className="ri-pause-large-line" />
           </button>
         )}
-        <span>Projects</span>
         <button
           className={"filter ri-filter-2-fill " + (showFilter ? "open" : "")}
           onClick={toggleFilter}

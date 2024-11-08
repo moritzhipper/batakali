@@ -50,7 +50,7 @@
 
         &.hide {
           span {
-            font-size: 20px;
+            font-size: 21px;
           }
           transform: translate(-35px, 15px) rotate(25deg);
           left: 0;
