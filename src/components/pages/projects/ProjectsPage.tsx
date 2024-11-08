@@ -40,11 +40,11 @@ export const ProjectsPage = () => {
         {transitionPlayer((style, show) =>
           show ? (
             <>
-              <button
-                className="ri-arrow-up-wide-line"
-                onClick={togglePlayer}
-              />
               <a.div className="controls-wrapper" style={{ ...style }}>
+                <button
+                  className="ri-arrow-up-wide-line"
+                  onClick={togglePlayer}
+                />
                 <MediaControls />
               </a.div>
             </>
@@ -90,11 +90,15 @@ export const SelectionElements = () => {
   return (
     <>
       <h1>
-        Projects
+        {true && (
+          <button className="hide">
+            <span className="ri-play-large-fill" />
+            <span className="ri-pause-large-line" />
+          </button>
+        )}
+        <span>Projects</span>
         <button
-          className={
-            "filter ri-filter-2-fill ri-m " + (showFilter ? "open" : "")
-          }
+          className={"filter ri-filter-2-fill " + (showFilter ? "open" : "")}
           onClick={toggleFilter}
         />
       </h1>
