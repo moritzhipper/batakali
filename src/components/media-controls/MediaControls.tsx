@@ -1,4 +1,4 @@
-import { useMediaStore } from "../../porject-media-store"
+import { useMediaStore } from "../../state/porject-media-store"
 import "./MediaControls.css"
 export const MediaControls = () => {
   const { isPlaying, isRepeating, togglePlay, toggleRepeat } = useMediaStore()

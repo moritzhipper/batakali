@@ -1,4 +1,4 @@
-import { useMediaStore } from "../../porject-media-store"
+import { useMediaStore } from "../../state/porject-media-store"
 import { MediaControls } from "../media-controls/MediaControls"
 import "./DuckoPage.css"
 

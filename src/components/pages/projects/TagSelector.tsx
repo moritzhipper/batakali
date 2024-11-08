@@ -1,5 +1,5 @@
 import { useMemo } from "react"
-import { useMediaStore } from "../../../porject-media-store"
+import { useMediaStore } from "../../../state/porject-media-store"
 import "./TagSelector.css"
 
 export const TagSelector = () => {

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react"
-import { useMediaStore } from "../../porject-media-store"
+import { useMediaStore } from "../../state/porject-media-store"
 
 export const useAudioImpactAnalyzer = () => {
   const [audioData, setAudioData] = useState(0)

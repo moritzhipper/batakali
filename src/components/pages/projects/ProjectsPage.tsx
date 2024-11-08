@@ -1,7 +1,8 @@
 import { a, useSpring, useTransition } from "@react-spring/web"
 import { useEffect, useState } from "react"
 import { springConfig } from "../../../angry-ducko-config"
-import { useMediaStore } from "../../../porject-media-store"
+import { useMediaStore } from "../../../state/porject-media-store"
+import { useSzeneState } from "../../../state/szene-state"
 import { MediaControls } from "../../media-controls/MediaControls"
 import { ProjectReel } from "./ProjectReel"
 import "./ProjectsPage.css"
@@ -9,8 +10,16 @@ import { TagSelector } from "./TagSelector"
 
 export const ProjectsPage = () => {
   const [playerVisible, setPlayerVisible] = useState(false)
-
   const togglePlayer = () => setPlayerVisible((show) => !show)
+  const { setActiveSzene } = useSzeneState()
+
+  useEffect(() => {
+    if (playerVisible) {
+      setActiveSzene("duck")
+    } else {
+      setActiveSzene("/projects")
+    }
+  }, [playerVisible])
 
   const transitionPlayer = useTransition(playerVisible, {
     from: { opacity: 0 },
@@ -25,25 +34,23 @@ export const ProjectsPage = () => {
   })
 
   return (
-    <div className="page-wrapper projects">
-      <a.div className="wrap-all" style={{ translateY }}>
-        {transitionPlayer((style, show) =>
-          show ? (
-            <a.div className="controls-wrapper" style={{ ...style }}>
-              <MediaControls />
-              <button
-                className="hide ri-arrow-up-wide-line"
-                onClick={togglePlayer}
-              />
-            </a.div>
-          ) : (
-            <a.div className="content" style={{ ...style }}>
-              <SelectionElements onHide={togglePlayer} />
-            </a.div>
-          )
-        )}
-      </a.div>
-    </div>
+    <a.div className="page-wrapper projects" style={{ translateY }}>
+      {transitionPlayer((style, show) =>
+        show ? (
+          <a.div className="controls-wrapper" style={{ ...style }}>
+            <MediaControls />
+            <button
+              className="hide ri-arrow-up-wide-line"
+              onClick={togglePlayer}
+            />
+          </a.div>
+        ) : (
+          <a.div className="content" style={{ ...style }}>
+            <SelectionElements onHide={togglePlayer} />
+          </a.div>
+        )
+      )}
+    </a.div>
   )
 }
 
@@ -60,7 +67,7 @@ export const SelectionElements = ({ onHide }: SelectionElementsProps) => {
     setShowFilter(false)
   }, [selectedTag])
 
-  const filterStyle = {
+  const hiddenElementStyle = {
     opacity: 0,
     translateY: 40
   }
@@ -70,12 +77,12 @@ export const SelectionElements = ({ onHide }: SelectionElementsProps) => {
       opacity: 1,
       translateY: 0
     },
-    from: filterStyle,
+    from: hiddenElementStyle,
     enter: {
       opacity: 1,
       translateY: 0
     },
-    leave: filterStyle,
+    leave: hiddenElementStyle,
     ...springConfig
   })
 

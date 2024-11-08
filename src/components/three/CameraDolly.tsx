@@ -3,7 +3,7 @@ import { PerspectiveCamera } from "@react-three/drei"
 import { PerspectiveCameraProps, useThree } from "@react-three/fiber"
 import { useEffect, useMemo } from "react"
 import { springConfig } from "../../angry-ducko-config"
-import { CameraConfig, getConfigForRoute } from "./animation-utils"
+import { CameraConfig } from "../../types"
 
 type Props = {
   cameraConfig: CameraConfig
@@ -11,10 +11,8 @@ type Props = {
 
 export const CameraDolly = ({ cameraConfig }: Props) => {
   const AnimatedCamera = useMemo(() => a(CameraWrapper), [])
-  const initSzene = useMemo(() => getConfigForRoute(), [])
-
-  const positionSpring = useSpringValue(initSzene.camera.position, springConfig)
-  const lookAtSpring = useSpringValue(initSzene.camera.lookAt, springConfig)
+  const positionSpring = useSpringValue(cameraConfig.position, springConfig)
+  const lookAtSpring = useSpringValue(cameraConfig.lookAt, springConfig)
 
   useEffect(() => {
     lookAtSpring.start(cameraConfig.lookAt)

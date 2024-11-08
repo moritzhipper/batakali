@@ -1,6 +1,6 @@
 import { create } from "zustand"
-import { projectList } from "./project-list"
-import { Project } from "./types"
+import { projectList } from "../project-list"
+import { Project } from "../types"
 
 type MediaStore = {
   isPlaying: boolean

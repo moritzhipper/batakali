@@ -1,17 +1,11 @@
 # ToDo
 
-- Cameramovement auch per Lerp umsetzen?
-- with zustand state auslesen (wie inf fiber doku)
 - Beleuchtung sichtbar machen
 - wenn play: shards pulsieren im beat (wenns geht, sogar in sync mit tatsäclichem audio)
-
 - wenn nur duckopage, dann langsame kamerafahrt and ducko heran und um ducko herum?
-- kickimpackt führt inputfunction, die entweder di shard hart auf 1.1 scaliert oder dieses doppellerp
-- in use frame dann der lerp zürck auf 1?
 
 ### Project selector
 
-- selecting other genres only reorders tracks but doesnt remove them
 - nur die items animieren, die sichtbar sind, für alle anderen return getStyle standardwerte
 - auf desktop beide nebeneinander, auf mobile filterbutton
   -text shadow styles konsolidieren
@@ -19,6 +13,7 @@
 - farbe: wichtige elemente weiß, nicht so wichtige grau
 
 - archivpage: kein play, nur download und infos
+- wenn media player sichtbar -> oben aktuell spielenden titel einblenden
 
 ### Audio Service
 
@@ -34,6 +29,7 @@
 - alle schriften und links bewusst stylen
 - irgendwie accent colors durchsichtig machen für blur effekte
 - besseres font pairing
+- page-wrapper-style.css entfernens
 
 ## Anforderung bild
 

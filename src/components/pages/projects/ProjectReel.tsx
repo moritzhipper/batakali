@@ -2,7 +2,7 @@ import { a, useSprings } from "@react-spring/web"
 import { useGesture } from "@use-gesture/react"
 import { useRef } from "react"
 import { springConfig } from "../../../angry-ducko-config"
-import { useMediaStore } from "../../../porject-media-store"
+import { useMediaStore } from "../../../state/porject-media-store"
 import { useMediaQuery } from "../../../use-media-hook"
 import "./ProjectReel.css"
 

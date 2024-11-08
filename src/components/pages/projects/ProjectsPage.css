@@ -4,19 +4,16 @@
   padding-bottom: 0;
   height: 100%;
 
-  .wrap-all {
-    display: grid;
-    grid-template-rows: min-content 1fr 50%;
-    height: 100%;
-  }
+  display: grid;
+  grid-template-rows: min-content 1fr 50%;
 
   .controls-wrapper {
     display: flex;
     flex-direction: column;
     justify-content: end;
     grid-row: 2/2;
+    padding-bottom: var(--distance-m);
 
-    padding-bottom: var(--distance-s);
     button.hide {
       place-self: center;
       opacity: 0.4;
