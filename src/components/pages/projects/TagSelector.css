@@ -3,6 +3,8 @@
   padding: var(--distance-l) var(--distance-l) 0 var(--distance-l);
   display: grid;
   grid-template-columns: auto 1fr;
+  overflow: hidden;
+  height: 100%;
 
   .header {
     place-self: start;
@@ -17,11 +19,11 @@
 
   .tags {
     display: flex;
-    flex-direction: column;
     flex-wrap: wrap;
-    align-items: start;
-    gap: var(--distance-m);
-    overflow-y: scroll;
+    align-content: start;
+    gap: var(--distance-m) var(--distance-l);
+    overflow: scroll;
+    padding-bottom: var(--distance-l);
 
     button {
       transition: font-weight var(--animation-duration-s) ease-in-out;

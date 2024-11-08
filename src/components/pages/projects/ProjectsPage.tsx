@@ -8,29 +8,19 @@ import "./ProjectsPage.css"
 import { TagSelector } from "./TagSelector"
 
 export const ProjectsPage = () => {
-  const [showPlayer, setShowPlayer] = useState(true)
+  const [playerVisible, setPlayerVisible] = useState(false)
 
-  const togglePlayer = () => setShowPlayer((show) => !show)
+  const togglePlayer = () => setPlayerVisible((show) => !show)
 
-  useEffect(() => {
-    // setShowPlayer(false)
-  }, [])
-
-  const playerStyle = {
-    opacity: 0
-  }
-
-  const transitionPlayer = useTransition(showPlayer, {
-    from: playerStyle,
-    enter: {
-      opacity: 1
-    },
-    leave: playerStyle,
+  const transitionPlayer = useTransition(playerVisible, {
+    from: { opacity: 0 },
+    enter: { opacity: 1 },
+    leave: { opacity: 0 },
     ...springConfig
   })
 
   const { translateY } = useSpring({
-    translateY: showPlayer ? "50%" : "0%",
+    translateY: playerVisible ? "50%" : "0%",
     ...springConfig
   })
 
@@ -39,18 +29,16 @@ export const ProjectsPage = () => {
       <a.div className="wrap-all" style={{ translateY }}>
         {transitionPlayer((style, show) =>
           show ? (
-            <>
-              <a.div className="controls-wrapper" style={{ ...style }}>
-                <button
-                  className="ri-arrow-up-wide-line"
-                  onClick={togglePlayer}
-                />
-                <MediaControls />
-              </a.div>
-            </>
+            <a.div className="controls-wrapper" style={{ ...style }}>
+              <MediaControls />
+              <button
+                className="hide ri-arrow-up-wide-line"
+                onClick={togglePlayer}
+              />
+            </a.div>
           ) : (
             <a.div className="content" style={{ ...style }}>
-              <SelectionElements />
+              <SelectionElements onHide={togglePlayer} />
             </a.div>
           )
         )}
@@ -59,7 +47,11 @@ export const ProjectsPage = () => {
   )
 }
 
-export const SelectionElements = () => {
+type SelectionElementsProps = {
+  onHide: () => void
+}
+
+export const SelectionElements = ({ onHide }: SelectionElementsProps) => {
   const [showFilter, setShowFilter] = useState(false)
   const { selectedTag } = useMediaStore()
   const toggleFilter = () => setShowFilter((show) => !show)
@@ -91,14 +83,12 @@ export const SelectionElements = () => {
     <>
       <h1>
         <span>Projects</span>
-        {true && (
-          <button className="hide">
-            <span className="ri-play-large-fill" />
-            <span className="ri-pause-large-line" />
-          </button>
-        )}
+        <button className="hide" onClick={onHide}>
+          <span className="ri-play-large-fill" />
+          <span className="ri-pause-large-line" />
+        </button>
         <button
-          className={"filter ri-filter-2-fill " + (showFilter ? "open" : "")}
+          className={"filter ri-filter-2-fill " + (showFilter ? "active" : "")}
           onClick={toggleFilter}
         />
       </h1>
