@@ -12,6 +12,7 @@ export const ProjectsPage = () => {
   const [playerVisible, setPlayerVisible] = useState(false)
   const togglePlayer = () => setPlayerVisible((show) => !show)
   const { setActiveSzene } = useSzeneState()
+  const { selectedProject } = useMediaStore()
 
   useEffect(() => {
     if (playerVisible) {
@@ -29,7 +30,7 @@ export const ProjectsPage = () => {
   })
 
   const { translateY } = useSpring({
-    translateY: playerVisible ? "50%" : "0%",
+    translateY: playerVisible ? "0%" : "-50%",
     ...springConfig
   })
 
@@ -37,13 +38,19 @@ export const ProjectsPage = () => {
     <a.div className="page-wrapper projects" style={{ translateY }}>
       {transitionPlayer((style, show) =>
         show ? (
-          <a.div className="controls-wrapper" style={{ ...style }}>
-            <MediaControls />
-            <button
-              className="hide ri-arrow-up-wide-line"
-              onClick={togglePlayer}
-            />
-          </a.div>
+          <>
+            <a.div className="controls-wrapper" style={{ ...style }}>
+              <div className="now-playing">
+                <h1>{selectedProject.name}</h1>
+                <span>{selectedProject.tag}</span>
+              </div>
+              <MediaControls />
+              <button
+                className="hide ri-arrow-up-wide-line"
+                onClick={togglePlayer}
+              />
+            </a.div>
+          </>
         ) : (
           <a.div className="content" style={{ ...style }}>
             <SelectionElements onHide={togglePlayer} />

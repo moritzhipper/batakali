@@ -5,7 +5,7 @@ import { Project } from "../types"
 type MediaStore = {
   isPlaying: boolean
   isRepeating: boolean
-  selectedProject: Project | null
+  selectedProject: Project
   projectList: Project[]
   selectedTag: string | null
   selectProject: (name: string) => void
@@ -16,7 +16,7 @@ type MediaStore = {
 
 export const useMediaStore = create<MediaStore>((set) => ({
   isPlaying: false,
-  selectedProject: null,
+  selectedProject: projectList[0],
   projectList: projectList,
   selectedTag: null,
   isRepeating: false,
