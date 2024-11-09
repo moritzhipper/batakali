@@ -1,0 +1,8 @@
+.page-wrapper.welcome {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  place-items: center;
+  a {
+    grid-row: 3/3;
+  }
+}
