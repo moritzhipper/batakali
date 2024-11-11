@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from "react"
-import { useMediaStore } from "../../state/porject-media-store"
+import { useMediaStore } from "../../state/audioState"
 
 /**
  * Listens to mediastate and plays and computes the loudness of the current audio file
  *
  * @returns loudness of the current audio file normalized to 0-1
  */
-export const useAudioGainAnalyzer = () => {
+export const useAudioGain = () => {
   const [audioLoudness, setAudioLoudness] = useState(0)
   const audioContextRef = useRef<AudioContext>()
   const analyzerRef = useRef<AnalyserNode>()
@@ -44,7 +44,7 @@ export const useAudioGainAnalyzer = () => {
   }
 
   useEffect(() => {
-    // do only once. Do after userinteraction to accomondate browsers security policies
+    // do only once after user interaction to accomondate browsers security policies
     if (!isAudioContextInitialized && isPlaying) {
       console.log("audio context initialized")
       setupAdudioContext()

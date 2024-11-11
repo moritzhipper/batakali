@@ -1,6 +1,6 @@
 .tag-selector-wrapper {
   box-sizing: border-box;
-  padding: var(--distance-l) var(--distance-l) 0 var(--distance-l);
+  padding: var(--distance-l) var(--distance-xl) 0 var(--distance-l);
   display: grid;
   grid-template-columns: auto 1fr;
   overflow: hidden;
@@ -8,8 +8,7 @@
 
   .header {
     place-self: start;
-    margin-top: var(--distance-s);
-    margin-right: var(--distance-m);
+    margin: var(--distance-s) var(--distance-m) 0 0;
     opacity: 0.4;
     font-size: var(--font-size-xl);
     writing-mode: vertical-rl;
@@ -23,7 +22,6 @@
     align-content: start;
     gap: var(--distance-m) var(--distance-l);
     overflow: scroll;
-    padding-bottom: var(--distance-l);
 
     button {
       transition: font-weight var(--animation-duration-s) ease-in-out;

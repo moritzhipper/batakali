@@ -1,14 +1,14 @@
-import { MediaStore } from "./porject-media-store"
+import { AudioState } from "./audioState"
 
 export const selectProjectByName = (
   name: string,
-  state: MediaStore
-): MediaStore => ({
+  state: AudioState
+): AudioState => ({
   ...state,
   selectedProject: state.projectList.find((project) => project.name === name)!
 })
 
-export const prioritizeByTag = (tag: string, state: MediaStore): MediaStore => {
+export const prioritizeByTag = (tag: string, state: AudioState): AudioState => {
   const prioritizedProjects = [
     ...state.projectList.filter((project) => project.tag === tag),
     ...state.projectList.filter((project) => project.tag !== tag)
@@ -21,7 +21,7 @@ export const prioritizeByTag = (tag: string, state: MediaStore): MediaStore => {
   }
 }
 
-export const selectNextProject = (state: MediaStore): MediaStore => {
+export const selectNextProject = (state: AudioState): AudioState => {
   const index = getSelectedProjectIndex(state)
   const hasNextProejct = index < state.projectList.length - 1
   const nextProject = hasNextProejct
@@ -34,7 +34,7 @@ export const selectNextProject = (state: MediaStore): MediaStore => {
   }
 }
 
-export const selectPreviousProject = (state: MediaStore): MediaStore => {
+export const selectPreviousProject = (state: AudioState): AudioState => {
   const index = getSelectedProjectIndex(state)
   const hasPreviousProject = index !== 0
   const previousProject = hasPreviousProject
@@ -47,7 +47,7 @@ export const selectPreviousProject = (state: MediaStore): MediaStore => {
   }
 }
 
-const getSelectedProjectIndex = (state: MediaStore) =>
+const getSelectedProjectIndex = (state: AudioState): number =>
   state.projectList.findIndex(
     (project) => project.name === state.selectedProject.name
   )

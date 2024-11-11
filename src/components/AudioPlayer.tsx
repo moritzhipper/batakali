@@ -1,15 +1,18 @@
-import { useCallback, useEffect, useRef } from "react"
-import { useMediaStore } from "../state/porject-media-store"
+import { useCallback, useEffect } from "react"
+import { useMediaStore } from "../state/audioState"
 
+/**
+ * This component listens to current mediaState and
+ * interacts with the HTML audio element accordingly
+ *
+ * @returns null
+ */
 export const AudioPlayer = () => {
-  const { isPlaying, isLooping, selectedProject, audio, pause, selectNext } =
+  const { isPlaying, isLooping, selectedProject, audio, selectNext } =
     useMediaStore()
-  const timeoutRef = useRef()
 
   audio.onended = useCallback(() => {
-    if (!isLooping) {
-      selectNext()
-    }
+    if (!isLooping) selectNext()
   }, [])
 
   useEffect(() => {
@@ -17,9 +20,7 @@ export const AudioPlayer = () => {
     audio.src = selectedProject.fileName
     audio.load()
 
-    if (isPlaying) {
-      audio.play()
-    }
+    if (isPlaying) audio.play()
   }, [selectedProject])
 
   useEffect(() => {
@@ -32,8 +33,6 @@ export const AudioPlayer = () => {
 
   useEffect(() => {
     audio.loop = isLooping
-
-    if (timeoutRef.current) clearTimeout(timeoutRef.current)
   }, [isLooping])
 
   useEffect(() => {

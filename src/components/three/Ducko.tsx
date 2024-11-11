@@ -15,7 +15,7 @@ import feather from "../../assets/images/feather.png"
 import shard1 from "../../assets/images/shard1.png"
 import shard2 from "../../assets/images/shard2.png"
 import { DuckoConfig } from "../../types"
-import { useAudioGainAnalyzer } from "./use-kick-analyzer"
+import { useAudioGain } from "./useAudioGain"
 import { getRandomPositionInSphereWithXBias, randomInt } from "./utils"
 
 type Props = {
@@ -26,7 +26,7 @@ export const Ducko = memo(({ duckoConfig }: Props) => {
   const { animateFloating, shardsVisible } = duckoConfig
 
   const shardRef = useRef<Group>(null)
-  const audioImpactRef = useAudioGainAnalyzer()
+  const audioImpactRef = useAudioGain()
 
   const duckTexture = useMemo(() => useLoader(TextureLoader, duck), [])
   const textures = useMemo(
@@ -93,7 +93,7 @@ export const Ducko = memo(({ duckoConfig }: Props) => {
   useFrame((_, delta) => {
     if (shardsVisible) {
       showShards()
-      shardRef.current.rotateY(delta / 20)
+      shardRef.current.rotateY(delta / 50)
     } else {
       hideShards()
     }
@@ -111,7 +111,7 @@ export const Ducko = memo(({ duckoConfig }: Props) => {
         />
       </Float>
       <group ref={shardRef}>
-        <Float>{shardList}</Float>
+        <Float rotationIntensity={0.3}>{shardList}</Float>
       </group>
     </>
   )

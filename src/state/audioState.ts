@@ -7,9 +7,9 @@ import {
   selectNextProject,
   selectPreviousProject,
   selectProjectByName
-} from "./reducer"
+} from "./audioStateReducer"
 
-export type MediaStore = {
+export type AudioState = {
   isPlaying: boolean
   isLooping: boolean
   selectedProject: Project
@@ -35,7 +35,7 @@ const initialState = {
   audio: new Audio(projectList[0].fileName)
 }
 
-export const useMediaStore = create<MediaStore>()(
+export const useMediaStore = create<AudioState>()(
   devtools((set, get) => ({
     ...initialState,
     selectProject: (name: string) =>

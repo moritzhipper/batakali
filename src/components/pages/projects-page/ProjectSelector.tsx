@@ -4,7 +4,6 @@ import { useRef } from "react"
 import { springConfig } from "../../../angry-ducko-config"
 import { projectList } from "../../../project-list"
 import { useMediaQuery } from "../../../use-media-hook"
-import { PlaySVG } from "../../media-controls/svg/PlaySVG"
 import "./ProjectSelector.css"
 
 export const ProjectSelector = () => {
@@ -107,9 +106,7 @@ export const ProjectSelector = () => {
             >
               <a.div className="content" style={{ opacity: opacityContent }}>
                 <div className="name">{projectList[i].name}</div>
-                <button>
-                  <PlaySVG />
-                </button>
+                <button className="ri-play-large-fill ri-s" />
                 <div className="tag">{projectList[i].tag}</div>
               </a.div>
             </a.div>

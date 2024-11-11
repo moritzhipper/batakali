@@ -5,7 +5,7 @@ import { AboutPage } from "./components/pages/AboutPage"
 import { DuckoPage } from "./components/pages/DuckoPage"
 import { ImprintPage } from "./components/pages/ImprintPage"
 import { PrivacyPage } from "./components/pages/PrivacyPage"
-import { ProjectsPage } from "./components/pages/projects/ProjectsPage"
+import { ProjectsPage } from "./components/pages/projects-page/ProjectsPage"
 import { WelcomePage } from "./components/pages/WelcomePage"
 import { ThreeWrapper } from "./components/three/ThreeWrapper"
 

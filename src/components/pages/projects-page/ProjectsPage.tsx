@@ -1,8 +1,8 @@
 import { a, useSpring, useTransition } from "@react-spring/web"
 import { useEffect, useState } from "react"
 import { springConfig } from "../../../angry-ducko-config"
-import { useMediaStore } from "../../../state/porject-media-store"
-import { useSzeneState } from "../../../state/szene-state"
+import { useMediaStore } from "../../../state/audioState"
+import { useSzeneState } from "../../../state/szeneState"
 import { MediaControls } from "../../media-controls/MediaControls"
 import { ProjectReel } from "./ProjectReel"
 import "./ProjectsPage.css"
@@ -42,7 +42,7 @@ export const ProjectsPage = () => {
             <a.div className="controls-wrapper" style={{ ...style }}>
               <div className="now-playing">
                 <h1>{selectedProject.name}</h1>
-                <span>{selectedProject.tag}</span>
+                <span className="text-shadow">{selectedProject.tag}</span>
               </div>
               <MediaControls />
               <button
