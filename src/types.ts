@@ -20,5 +20,5 @@ export type DuckoSzeneConfig = {
 export type Project = {
   name: string
   tag: string
-  fileName?: string
+  fileName: string
 }

@@ -1,7 +1,7 @@
 import { Canvas } from "@react-three/fiber"
 import { useEffect } from "react"
 import { useLocation } from "react-router-dom"
-import { useSzeneState } from "../../state/szene-state"
+import { useSzeneState } from "../../state/szeneState"
 import { CameraDolly } from "./CameraDolly"
 import { Ducko } from "./Ducko"
 import "./ThreeWrapper.css"

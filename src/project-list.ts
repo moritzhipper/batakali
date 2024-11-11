@@ -16,10 +16,34 @@ export const projectList: Project[] = [
     tag: "boombap",
     fileName: "fresh.mp3"
   },
-  { name: "born into this", tag: "rnb" },
-  { name: "no name", tag: "synthwave" },
-  { name: "run", tag: "hardtechno" },
-  { name: "water", tag: "boombap" },
-  { name: "ded", tag: "ambient" },
-  { name: "sleep", tag: "rnb" }
+  {
+    name: "born into this",
+    tag: "rnb",
+    fileName: ""
+  },
+  {
+    name: "no name",
+    tag: "synthwave",
+    fileName: ""
+  },
+  {
+    name: "run",
+    tag: "hardtechno",
+    fileName: ""
+  },
+  {
+    name: "water",
+    tag: "boombap",
+    fileName: ""
+  },
+  {
+    name: "ded",
+    tag: "ambient",
+    fileName: ""
+  },
+  {
+    name: "sleep",
+    tag: "rnb",
+    fileName: ""
+  }
 ]

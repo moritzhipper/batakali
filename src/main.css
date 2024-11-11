@@ -1,5 +1,4 @@
 @import "./style/variables";
-@import "./style/page-wrapper";
 @import "./style/layout";
 @import "./style/remixicon";
 
@@ -32,9 +31,12 @@ body {
     }
   }
 }
+
 h1,
 button,
-p {
+p,
+a,
+.text-shadow {
   text-shadow: 1px 1px 3px var(--accent-3);
 }
 
@@ -80,6 +82,7 @@ button {
 }
 
 .page-wrapper {
+  box-sizing: border-box;
   height: 100%;
 }
 

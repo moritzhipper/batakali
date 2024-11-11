@@ -1,10 +1,15 @@
 # ToDo
 
+## MediaStore
+
 - Beleuchtung sichtbar machen
-- wenn play: shards pulsieren im beat (wenns geht, sogar in sync mit tatsäclichem audio)
 - wenn nur duckopage, dann langsame kamerafahrt and ducko heran und um ducko herum?
 
-### Project selector
+## SzeneCOnfig
+
+- parameter 'darken' für textlastige seiten hinzufügen -> macht szene dunkler
+
+## Project selector
 
 - nur die items animieren, die sichtbar sind, für alle anderen return getStyle standardwerte
 - auf desktop beide nebeneinander, auf mobile filterbutton
@@ -12,17 +17,14 @@
   -pagestyles per module und mixin (postcss kann das)
 - farbe: wichtige elemente weiß, nicht so wichtige grau
 
-- archivpage: kein play, nur download und infos
-- wenn media player sichtbar -> oben aktuell spielenden titel einblenden
+## Archivpage
 
-### Audio Service
+- archivpage: kein play, nur download und infos, sortiert nach genres
 
-- alle selektierbaren dateien
-- play setzt aktiven track und spielt direkt
+## Audio Service
+
 - check: rerender of ducko only when selected inputs change -> no rerender when route changes
 - rerendering of ducko checken
-
-### Duck Page
 
 ## Style
 

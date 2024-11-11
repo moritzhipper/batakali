@@ -1,9 +1,9 @@
 import { useMemo } from "react"
-import { useMediaStore } from "../../../state/porject-media-store"
+import { useAduioStore } from "../../../state/audioState"
 import "./TagSelector.css"
 
 export const TagSelector = () => {
-  const { projectList, selectedTag, selectTag } = useMediaStore()
+  const { projectList, selectedTag, selectTag } = useAduioStore()
 
   const tagList = useMemo(
     () => [...new Set(projectList.map((project) => project.tag))].sort(),
