@@ -1,7 +1,12 @@
 # ToDo
 
+## MediaStore
+
+- aktuelles Projekt selektieren togglet play state von audio
+- projekt skippen selektiert anderes projekt, ohne play state zu togglen
+- in dem hook für audioimpactanalyzer wirklich nur den impact analyzen, play und skip in store abarbeiten?
+
 - Beleuchtung sichtbar machen
-- wenn play: shards pulsieren im beat (wenns geht, sogar in sync mit tatsäclichem audio)
 - wenn nur duckopage, dann langsame kamerafahrt and ducko heran und um ducko herum?
 
 ### Project selector

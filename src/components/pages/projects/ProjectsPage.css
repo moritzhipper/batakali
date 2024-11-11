@@ -18,6 +18,7 @@
       gap: var(--distance-s);
       margin-bottom: auto;
       span {
+        font-size: var(--font-size-l);
         opacity: 0.6;
       }
     }

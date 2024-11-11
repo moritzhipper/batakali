@@ -15,7 +15,7 @@ import feather from "../../assets/images/feather.png"
 import shard1 from "../../assets/images/shard1.png"
 import shard2 from "../../assets/images/shard2.png"
 import { DuckoConfig } from "../../types"
-import { useAudioImpactAnalyzer } from "./use-kick-analyzer"
+import { useAudioGainAnalyzer } from "./use-kick-analyzer"
 import { getRandomPositionInSphereWithXBias, randomInt } from "./utils"
 
 type Props = {
@@ -27,7 +27,7 @@ export const Ducko = memo(({ duckoConfig }: Props) => {
 
   const shardRef = useRef<Group>(null)
 
-  const audioImpactRef = useAudioImpactAnalyzer()
+  const audioImpactRef = useAudioGainAnalyzer()
 
   const duckTexture = useMemo(() => useLoader(TextureLoader, duck), [])
   const textures = useMemo(

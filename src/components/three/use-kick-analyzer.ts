@@ -1,54 +1,82 @@
 import { useEffect, useRef, useState } from "react"
 import { useMediaStore } from "../../state/porject-media-store"
 
-export const useAudioImpactAnalyzer = () => {
-  const [audioData, setAudioData] = useState(0)
+/**
+ * Listens to mediastate and plays and computes the loudness of the current audio file
+ *
+ * @returns loudness of the current audio file normalized to 0-1
+ */
+export const useAudioGainAnalyzer = () => {
+  const [audioLoudness, setAudioLoudness] = useState(0)
   const audioContextRef = useRef<AudioContext>()
   const analyzerRef = useRef<AnalyserNode>()
   const sourceRef = useRef<MediaElementAudioSourceNode>()
   const animationFrameIdRef = useRef<number>()
+  const bufferLengthRef = useRef<number>()
+  const dataArrayRef = useRef<Uint8Array>()
+  const audioRef = useRef<HTMLAudioElement>()
+  const [audioContextIsInitialized, setAudioContextIsInitialized] =
+    useState(false)
 
-  const { selectedProject } = useMediaStore()
+  const { isPlaying, selectedProject } = useMediaStore()
 
-  // hook outputs, when loudness exceeds this threshold
-  const fftSize = 32
-
+  // computes audio gain from current audioFrame bands and normalizes them to 0-1
   const getLoudness = (bands: Uint8Array) =>
     bands.reduce((sum, value) => sum + value, 0) / bands.length / 255
 
-  useEffect(() => {
-    // initialize audio
-    if (!selectedProject || !selectedProject.fileName) return
-    const audio = new Audio(selectedProject.fileName)
+  const tick = () => {
+    console.log("ticking")
+    analyzerRef.current!.getByteFrequencyData(dataArrayRef.current!)
+    setAudioLoudness(getLoudness(dataArrayRef.current!))
+    animationFrameIdRef.current = requestAnimationFrame(tick)
+  }
+
+  const setupAdudioContext = () => {
     audioContextRef.current = new AudioContext()
     analyzerRef.current = audioContextRef.current.createAnalyser()
-    sourceRef.current = audioContextRef.current.createMediaElementSource(audio)
-    sourceRef.current.connect(analyzerRef.current)
+    analyzerRef.current.fftSize = 32
+    bufferLengthRef.current = analyzerRef.current.frequencyBinCount
+    dataArrayRef.current = new Uint8Array(bufferLengthRef.current!)
+    console.log("audio context initialized")
+  }
 
-    // configure analyzer
-    analyzerRef.current.fftSize = fftSize
-    analyzerRef.current.connect(audioContextRef.current.destination)
+  const connectToNewAudioRef = () => {
+    audioRef.current = new Audio(selectedProject.fileName)
+    sourceRef.current = audioContextRef.current!.createMediaElementSource(
+      audioRef.current!
+    )
+    sourceRef.current.connect(analyzerRef.current!)
+    analyzerRef.current!.connect(audioContextRef.current!.destination)
+    console.log("connected to new audio ref")
+  }
 
-    const bufferLength = analyzerRef.current.frequencyBinCount
-    let dataArray = new Uint8Array(bufferLength)
+  // do only once? -> need to rtewire some deps on prjectchange
+  useEffect(() => {
+    // setupAdudioContext()
+  }, [])
 
-    // compute audio impact
-    const tick = () => {
-      analyzerRef.current?.getByteFrequencyData(dataArray)
-      setAudioData(getLoudness(dataArray))
-      animationFrameIdRef.current = requestAnimationFrame(tick)
+  useEffect(() => {
+    if (selectedProject.fileName) {
+      connectToNewAudioRef()
     }
-
-    audio.play()
-
-    tick()
-
-    return () => {
-      cancelAnimationFrame(animationFrameIdRef.current!)
-      audio.pause()
-      audioContextRef.current?.close()
-    }
+    console.log(selectedProject.fileName)
   }, [selectedProject])
 
-  return audioData
+  // setup audio only once. reuse on audiochange
+  useEffect(() => {
+    if (!audioContextIsInitialized) {
+      setupAdudioContext()
+      setAudioContextIsInitialized(true)
+    }
+    if (isPlaying) {
+      audioRef.current?.play()
+      tick()
+    } else {
+      audioRef.current?.pause()
+      cancelAnimationFrame(animationFrameIdRef.current!)
+      setAudioLoudness(0)
+    }
+  }, [isPlaying])
+
+  return audioLoudness
 }
