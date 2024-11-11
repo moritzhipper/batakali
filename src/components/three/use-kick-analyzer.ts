@@ -18,15 +18,15 @@ export const useAudioGainAnalyzer = () => {
 
   const { isPlaying, selectedProject } = useMediaStore()
 
-  // computes audio gain from current audioFrame bands and normalizes them to 0-1
+  // computes audio gain from current animationFrames bands and normalizes them to 0-1
   const getLoudness = (bands: Uint8Array) =>
     bands.reduce((sum, value) => sum + value, 0) / bands.length / 255
 
-  const tick = () => {
+  const loadAnimationFrame = () => {
     console.log("ticking")
     analyzerRef.current!.getByteFrequencyData(dataArrayRef.current!)
     setAudioLoudness(getLoudness(dataArrayRef.current!))
-    animationFrameIdRef.current = requestAnimationFrame(tick)
+    animationFrameIdRef.current = requestAnimationFrame(loadAnimationFrame)
   }
 
   const setupAdudioContext = () => {
@@ -34,11 +34,11 @@ export const useAudioGainAnalyzer = () => {
     analyzerRef.current.fftSize = 32
     bufferLengthRef.current = analyzerRef.current.frequencyBinCount
     dataArrayRef.current = new Uint8Array(bufferLengthRef.current)
-    sourceRef.current = audioContextRef.current!.createMediaElementSource(
+    sourceRef.current = audioContextRef.current.createMediaElementSource(
       audioRef.current
     )
     sourceRef.current.connect(analyzerRef.current)
-    analyzerRef.current!.connect(audioContextRef.current.destination)
+    analyzerRef.current.connect(audioContextRef.current.destination)
     console.log("audio context initialized")
   }
 
@@ -49,6 +49,7 @@ export const useAudioGainAnalyzer = () => {
     if (isPlaying) {
       audioRef.current.play()
     }
+
     console.log("connected to new audio ref: ", selectedProject.fileName)
   }
 
@@ -61,11 +62,10 @@ export const useAudioGainAnalyzer = () => {
     connectToNewAudioFile(selectedProject.fileName)
   }, [selectedProject])
 
-  // setup audio only once. reuse on audiochange
   useEffect(() => {
     if (isPlaying) {
       audioRef.current.play()
-      tick()
+      loadAnimationFrame()
     } else {
       audioRef.current.pause()
       cancelAnimationFrame(animationFrameIdRef.current!)
