@@ -8,13 +8,13 @@ import { useMediaStore } from "../../state/porject-media-store"
  */
 export const useAudioGainAnalyzer = () => {
   const [audioLoudness, setAudioLoudness] = useState(0)
-  const audioContextRef = useRef<AudioContext>()
+  const audioContextRef = useRef<AudioContext>(new AudioContext())
   const analyzerRef = useRef<AnalyserNode>()
   const sourceRef = useRef<MediaElementAudioSourceNode>()
   const animationFrameIdRef = useRef<number>()
   const bufferLengthRef = useRef<number>()
   const dataArrayRef = useRef<Uint8Array>()
-  const audioRef = useRef<HTMLAudioElement | null>()
+  const audioRef = useRef<HTMLAudioElement>(new Audio())
 
   const { isPlaying, selectedProject } = useMediaStore()
 
@@ -30,12 +30,10 @@ export const useAudioGainAnalyzer = () => {
   }
 
   const setupAdudioContext = () => {
-    audioContextRef.current = new AudioContext()
     analyzerRef.current = audioContextRef.current.createAnalyser()
     analyzerRef.current.fftSize = 32
     bufferLengthRef.current = analyzerRef.current.frequencyBinCount
     dataArrayRef.current = new Uint8Array(bufferLengthRef.current)
-    audioRef.current = new Audio()
     sourceRef.current = audioContextRef.current!.createMediaElementSource(
       audioRef.current
     )
@@ -44,29 +42,32 @@ export const useAudioGainAnalyzer = () => {
     console.log("audio context initialized")
   }
 
-  const connectToNewAudioRef = (src: string) => {
-    audioRef.current!.pause()
-    audioRef.current!.src = src
-    audioRef.current!.load()
+  const connectToNewAudioFile = (src: string) => {
+    audioRef.current.pause()
+    audioRef.current.src = src
+    audioRef.current.load()
+    if (isPlaying) {
+      audioRef.current.play()
+    }
     console.log("connected to new audio ref: ", selectedProject.fileName)
   }
 
-  // do only once? -> need to rtewire some deps on prjectchange
+  // do only once on app init
   useEffect(() => {
     setupAdudioContext()
   }, [])
 
   useEffect(() => {
-    connectToNewAudioRef(selectedProject.fileName)
+    connectToNewAudioFile(selectedProject.fileName)
   }, [selectedProject])
 
   // setup audio only once. reuse on audiochange
   useEffect(() => {
     if (isPlaying) {
-      audioRef.current?.play()
+      audioRef.current.play()
       tick()
     } else {
-      audioRef.current?.pause()
+      audioRef.current.pause()
       cancelAnimationFrame(animationFrameIdRef.current!)
       setAudioLoudness(0)
     }
