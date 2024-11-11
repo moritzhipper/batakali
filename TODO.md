@@ -8,14 +8,18 @@
 ## SzeneCOnfig
 
 - parameter 'darken' für textlastige seiten hinzufügen -> macht szene dunkler
+- irgendwie sicherstellen, dass über und unter der überschrift auf allen viewports gleich viel platz ist
 
 ## Project selector
 
+- nur viewports.css oder den hook nutzen?
 - nur die items animieren, die sichtbar sind, für alle anderen return getStyle standardwerte
 - auf desktop beide nebeneinander, auf mobile filterbutton
   -text shadow styles konsolidieren
   -pagestyles per module und mixin (postcss kann das)
 - farbe: wichtige elemente weiß, nicht so wichtige grau
+
+- auf mobiil impressum und datenschutz umdrehen, oben logus, unten nebeneinander links. line dazwischen
 
 ## Archivpage
 
@@ -25,6 +29,10 @@
 
 - check: rerender of ducko only when selected inputs change -> no rerender when route changes
 - rerendering of ducko checken
+
+## Happy ducko
+
+- modus mit quietscheente, herzen und positiven emojis
 
 ## Style
 

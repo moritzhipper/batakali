@@ -1,0 +1,45 @@
+@import "../../style/viewports.css";
+
+.page-wrapper.archive {
+  .grid-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+
+    h2 {
+      font-size: var(--font-size-l);
+      margin-bottom: var(--distance-s);
+    }
+
+    .projects-wrapper {
+      display: grid;
+
+      .project-wrapper {
+        /* padding: var(--distance-s); */
+      }
+    }
+  }
+}
+
+.page-wrapper.archive {
+  @media (--viewport-s) {
+    .grid-wrapper {
+      gap: var(--distance-m);
+
+      .projects-wrapper {
+        grid-template-columns: 1fr;
+        gap: var(--distance-s);
+      }
+    }
+  }
+  @media (--viewport-m) {
+    .grid-wrapper {
+      gap: var(--distance-l);
+      .projects-wrapper {
+        grid-template-columns: repeat(2, 1fr);
+
+        .project-wrapper {
+        }
+      }
+    }
+  }
+}
