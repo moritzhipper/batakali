@@ -15,7 +15,7 @@ import feather from "../../assets/images/feather.png"
 import shard1 from "../../assets/images/shard1.png"
 import shard2 from "../../assets/images/shard2.png"
 import { DuckoConfig } from "../../types"
-import { useAudioGain } from "./useAudioGain"
+import { useAudioGain } from "./useAudioGainHook"
 import { getRandomPositionInSphereWithXBias, randomInt } from "./utils"
 
 type Props = {

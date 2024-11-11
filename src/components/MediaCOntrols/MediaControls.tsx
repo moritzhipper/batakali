@@ -1,4 +1,4 @@
-import { useMediaStore } from "../../state/audioState"
+import { useAduioStore } from "../../state/audioState"
 import "./MediaControls.css"
 export const MediaControls = () => {
   const {
@@ -10,7 +10,7 @@ export const MediaControls = () => {
     skip,
     selectNext,
     selectPrevious
-  } = useMediaStore()
+  } = useAduioStore()
 
   const classPlay = `${
     isPlaying ? "ri-pause-large-line" : "ri-play-large-fill"

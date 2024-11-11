@@ -1,7 +1,7 @@
 import { a, useTransition } from "@react-spring/web"
 import { useEffect, useState } from "react"
 import { Link, useLocation } from "react-router-dom"
-import { springConfig } from "../../angry-ducko-config"
+import { springConfig } from "../../duckoSzeneConfig"
 import "./NavBarMobile.css"
 
 export const NavBarMobile = () => {
@@ -81,8 +81,8 @@ export const NavBarMobile = () => {
                   <Link className="page" to="/projects">
                     projects
                   </Link>
-                  <Link className="page" to="/duck">
-                    ducko
+                  <Link className="page" to="/archive">
+                    archive
                   </Link>
                   <Link className="page" to="/about">
                     about

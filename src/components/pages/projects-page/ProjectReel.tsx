@@ -1,13 +1,13 @@
 import { a, useSprings } from "@react-spring/web"
 import { useGesture } from "@use-gesture/react"
 import { useRef } from "react"
-import { springConfig } from "../../../angry-ducko-config"
-import { useMediaStore } from "../../../state/audioState"
-import { useMediaQuery } from "../../../use-media-hook"
+import { springConfig } from "../../../duckoSzeneConfig"
+import { useAduioStore } from "../../../state/audioState"
+import { useMediaQuery } from "../../../useMediaHook"
 import "./ProjectReel.css"
 
 export const ProjectReel = () => {
-  const { projectList, selectProject } = useMediaStore()
+  const { projectList, selectProject } = useAduioStore()
 
   const isMobile = useMediaQuery("(max-width: 700px)")
   const projectCount = projectList.length

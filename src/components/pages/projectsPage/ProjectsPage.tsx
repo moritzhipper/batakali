@@ -5,7 +5,7 @@ import { useAduioStore } from "../../../state/audioState"
 import { useSzeneState } from "../../../state/szeneState"
 import { MediaControls } from "../../media-controls/MediaControls"
 import { ProjectReel } from "./ProjectReel"
-import "./ProjectsPageWrapper.css"
+import "./ProjectsPage.css"
 import { TagSelector } from "./TagSelector"
 
 export const ProjectsPage = () => {
@@ -38,17 +38,19 @@ export const ProjectsPage = () => {
     <a.div className="page-wrapper projects" style={{ translateY }}>
       {transitionPlayer((style, show) =>
         show ? (
-          <a.div className="controls-wrapper" style={{ ...style }}>
-            <div className="now-playing">
-              <h1>{selectedProject.name}</h1>
-              <span className="text-shadow">{selectedProject.tag}</span>
-            </div>
-            <MediaControls />
-            <button
-              className="hide ri-arrow-up-wide-line"
-              onClick={togglePlayer}
-            />
-          </a.div>
+          <>
+            <a.div className="controls-wrapper" style={{ ...style }}>
+              <div className="now-playing">
+                <h1>{selectedProject.name}</h1>
+                <span className="text-shadow">{selectedProject.tag}</span>
+              </div>
+              <MediaControls />
+              <button
+                className="hide ri-arrow-up-wide-line"
+                onClick={togglePlayer}
+              />
+            </a.div>
+          </>
         ) : (
           <a.div className="content" style={{ ...style }}>
             <SelectionElements onHide={togglePlayer} />

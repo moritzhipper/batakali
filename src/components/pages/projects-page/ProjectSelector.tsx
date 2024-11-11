@@ -1,9 +1,9 @@
 import { a, useSprings } from "@react-spring/web"
 import { useGesture } from "@use-gesture/react"
 import { useRef } from "react"
-import { springConfig } from "../../../angry-ducko-config"
+import { springConfig } from "../../../duckoSzeneConfig"
 import { projectList } from "../../../project-list"
-import { useMediaQuery } from "../../../use-media-hook"
+import { useMediaQuery } from "../../../useMediaHook"
 import "./ProjectSelector.css"
 
 export const ProjectSelector = () => {

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react"
-import { useMediaStore } from "../../state/audioState"
+import { useAduioStore } from "../../state/audioState"
 
 /**
  * Listens to mediastate and plays and computes the loudness of the current audio file
@@ -17,7 +17,7 @@ export const useAudioGain = () => {
   const [isAudioContextInitialized, setAudioContextInitialized] =
     useState(false)
 
-  const { isPlaying, audio } = useMediaStore()
+  const { isPlaying, audio } = useAduioStore()
 
   // computes audio gain from current animationFrames bands and normalizes them to 0-1
   const getLoudness = (bands: Uint8Array) =>

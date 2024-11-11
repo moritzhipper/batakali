@@ -1,5 +1,5 @@
 import { useCallback, useEffect } from "react"
-import { useMediaStore } from "../state/audioState"
+import { useAduioStore } from "../state/audioState"
 
 /**
  * This component listens to current mediaState and
@@ -9,7 +9,7 @@ import { useMediaStore } from "../state/audioState"
  */
 export const AudioPlayer = () => {
   const { isPlaying, isLooping, selectedProject, audio, selectNext } =
-    useMediaStore()
+    useAduioStore()
 
   audio.onended = useCallback(() => {
     if (!isLooping) selectNext()
