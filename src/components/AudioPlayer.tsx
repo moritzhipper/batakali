@@ -2,21 +2,13 @@ import { useCallback, useEffect, useRef } from "react"
 import { useMediaStore } from "../state/porject-media-store"
 
 export const AudioPlayer = () => {
-  const {
-    isPlaying,
-    isLooping,
-    selectedProject,
-    audio,
-    pause,
-    skipProject: selectNextProject
-  } = useMediaStore()
+  const { isPlaying, isLooping, selectedProject, audio, pause, selectNext } =
+    useMediaStore()
   const timeoutRef = useRef()
 
   audio.onended = useCallback(() => {
     if (!isLooping) {
-      pause()
-    }
-    {
+      selectNext()
     }
   }, [])
 

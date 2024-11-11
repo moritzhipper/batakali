@@ -26,7 +26,6 @@ export const Ducko = memo(({ duckoConfig }: Props) => {
   const { animateFloating, shardsVisible } = duckoConfig
 
   const shardRef = useRef<Group>(null)
-
   const audioImpactRef = useAudioGainAnalyzer()
 
   const duckTexture = useMemo(() => useLoader(TextureLoader, duck), [])
@@ -55,9 +54,8 @@ export const Ducko = memo(({ duckoConfig }: Props) => {
   const minSize = new Vector3(0.7, 0.5, 0.7)
   const center = new Vector3(0, 0, 0)
 
-  const getOpacityFromDistanceToCenter = (positionObj: Vector3) => {
-    return 1 - positionObj.distanceTo(center) / 14
-  }
+  const getOpacityFromDistanceToCenter = (positionObj: Vector3) =>
+    1 - positionObj.distanceTo(center) / 14
 
   const showShards = () => {
     shardRef.current.scale.lerpVectors(
