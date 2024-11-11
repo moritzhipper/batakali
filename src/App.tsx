@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom"
+import { AudioPlayer } from "./components/AudioPlayer"
 import { NavBarWrapper } from "./components/nav-bar/NavBarWrapper"
 import { AboutPage } from "./components/pages/AboutPage"
 import { DuckoPage } from "./components/pages/DuckoPage"
@@ -11,6 +12,8 @@ import { ThreeWrapper } from "./components/three/ThreeWrapper"
 function App() {
   return (
     <>
+      <AudioPlayer />
+
       <ThreeWrapper />
       <main>
         <NavBarWrapper />
