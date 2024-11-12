@@ -21,7 +21,9 @@ export const ArchivPage = () => {
             <div className="projects-wrapper">
               {projectList.map((project) => (
                 <div key={project.name} className="project-wrapper">
-                  {project.name}
+                  <p className="name">{project.name}</p>
+                  <button className="ri-share-fill ri-m" />
+                  <button className="ri-download-fill ri-m" />
                 </div>
               ))}
             </div>

@@ -1,43 +1,38 @@
 @import "../../style/viewports.css";
 
 .page-wrapper.archive {
+  overflow-y: auto;
+  h1 {
+    position: sticky;
+    top: 0;
+  }
   .grid-wrapper {
     display: grid;
     grid-template-columns: 1fr;
+    gap: var(--distance-l);
 
     h2 {
-      font-size: var(--font-size-l);
-      margin-bottom: var(--distance-s);
+      font-weight: bold;
+      font-size: var(--font-size-m);
+      padding: 0 0 var(--distance-s) var(--distance-s);
     }
 
     .projects-wrapper {
       display: grid;
-
-      .project-wrapper {
-        /* padding: var(--distance-s); */
-      }
-    }
-  }
-}
-
-.page-wrapper.archive {
-  @media (--viewport-s) {
-    .grid-wrapper {
       gap: var(--distance-m);
-
-      .projects-wrapper {
-        grid-template-columns: 1fr;
+      .project-wrapper {
+        min-height: 42px;
+        border-radius: var(--radius-s);
+        display: flex;
         gap: var(--distance-s);
-      }
-    }
-  }
-  @media (--viewport-m) {
-    .grid-wrapper {
-      gap: var(--distance-l);
-      .projects-wrapper {
-        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+        padding: var(--distance-m);
+        border: 1px solid var(--accent-2);
+        border-width: 1px 1px 1px 12px;
+        background-color: rgb(from var(--accent-3) r g b / 0.9);
 
-        .project-wrapper {
+        .name {
+          margin-right: auto;
         }
       }
     }

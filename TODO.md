@@ -20,6 +20,8 @@
 - farbe: wichtige elemente weiß, nicht so wichtige grau
 
 - auf mobiil impressum und datenschutz umdrehen, oben logus, unten nebeneinander links. line dazwischen
+- archive klick verlinkt zu projekt im player
+- pagewrapper seitenabstand auch dynamisch (einfach alle abstände dynamisch)
 
 ## Archivpage
 
