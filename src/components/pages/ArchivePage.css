@@ -38,3 +38,11 @@
     }
   }
 }
+
+@media (--viewport-m) {
+  .page-wrapper.archive {
+    .grid-wrapper {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+}
