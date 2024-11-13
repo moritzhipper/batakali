@@ -50,7 +50,8 @@ h1 {
   font-family: "BattleContinues";
   text-align: center;
   font-size: 2.5em;
-  margin: var(--distance-s) 0 var(--distance-m);
+  padding: 56px;
+  margin: 0;
 }
 h2 {
   font-weight: 400;
@@ -94,6 +95,7 @@ button {
 .page-wrapper {
   box-sizing: border-box;
   height: 100%;
+  padding-top: 0;
 }
 
 @keyframes fadeIn {

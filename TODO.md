@@ -22,6 +22,7 @@
 - auf mobiil impressum und datenschutz umdrehen, oben logus, unten nebeneinander links. line dazwischen
 - archive klick verlinkt zu projekt im player
 - pagewrapper seitenabstand auch dynamisch (einfach alle abstände dynamisch)
+- scrollbar ganz rechts (auf archivpage und überall)
 
 ## Archivpage
 

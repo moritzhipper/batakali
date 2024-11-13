@@ -17,6 +17,9 @@
       align-items: center;
       gap: var(--distance-s);
       margin-bottom: auto;
+      h1 {
+        padding-bottom: var(--distance-s);
+      }
       span {
         font-size: var(--font-size-l);
         opacity: 0.6;
@@ -59,6 +62,7 @@
     h1 {
       position: relative;
       align-self: center;
+      padding: 0;
       margin-bottom: var(--distance-s);
       z-index: 100;
 
