@@ -25,6 +25,7 @@ body {
   #root {
     display: flex;
     justify-content: center;
+    overflow-y: auto;
     height: 100dvh;
     main {
       width: 1200px;
@@ -94,7 +95,6 @@ button {
 
 .page-wrapper {
   box-sizing: border-box;
-  height: 100%;
   padding-top: 0;
 }
 

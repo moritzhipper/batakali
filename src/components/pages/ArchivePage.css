@@ -1,7 +1,7 @@
 @import "../../style/viewports.css";
 
 .page-wrapper.archive {
-  overflow-y: auto;
+  /* overflow-y: auto; */
   h1 {
     position: sticky;
     top: 0;
