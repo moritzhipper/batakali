@@ -35,6 +35,7 @@
 
 ## Style
 
+- nur dark mode und quietscheenten mode. nicht den prefers selektor nutzen, nur aktiv gesetzte klasse
 - styledateien aufräumen in style ordner
 - alle schriften und links bewusst stylen
 

@@ -40,10 +40,12 @@ export const ArchivPage = () => {
 
 const sortIntoTagBuckets = (projectList: Project[]): ProjectsByTag[] => {
   const tags = projectList.map((p) => p.tag)
-  const uniqueTags = Array.from(new Set(tags))
+  const uniqueTags = Array.from(new Set(tags)).sort()
 
   return uniqueTags.map((tag) => ({
     tag,
-    projectList: projectList.filter((p) => p.tag === tag)
+    projectList: projectList.filter((p) => p.tag === tag).sort(nameComp)
   }))
 }
+
+const nameComp = (a: Project, b: Project) => a.name.localeCompare(b.name)
