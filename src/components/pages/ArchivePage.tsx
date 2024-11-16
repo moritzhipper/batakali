@@ -13,7 +13,7 @@ export const ArchivPage = () => {
 
   return (
     <div className="page-wrapper archive">
-      <h1>Archive</h1>
+      <h1 className="sticky">Archive</h1>
       <div className="grid-wrapper">
         {projectsByTag.map(({ tag, projectList }) => (
           <div className="section-wrapper" key={tag}>

@@ -3,9 +3,10 @@ import "./AboutPage.css"
 export const AboutPage = () => {
   return (
     <div className="page-wrapper about">
-      <h1>About</h1>
+      <h1 className="sticky">About</h1>
       <div className="content">
         <section>
+          <h2>... the Music</h2>
           <p>
             <strong>
               Through this website, I share my music with the world.
@@ -33,7 +34,7 @@ export const AboutPage = () => {
         </section>
 
         <section className="technical-info">
-          <h2>About the Website</h2>
+          <h2>... the Website</h2>
           <p>
             This website a fun project of mine built in part with{" "}
             <strong>React</strong> and <strong>three.js</strong>.

@@ -1,3 +1,4 @@
+import { Project } from "../types"
 import { AudioState } from "./audioState"
 
 export const selectProjectByName = (
@@ -5,7 +6,16 @@ export const selectProjectByName = (
   state: AudioState
 ): AudioState => ({
   ...state,
-  selectedProject: state.projectList.find((project) => project.name === name)!
+  selectedProject: getProjectByName(name, state)
+})
+
+export const selectAndPlayProjectByName = (
+  name: string,
+  state: AudioState
+): AudioState => ({
+  ...state,
+  selectedProject: getProjectByName(name, state),
+  isPlaying: true
 })
 
 export const prioritizeByTag = (tag: string, state: AudioState): AudioState => {
@@ -51,3 +61,6 @@ const getSelectedProjectIndex = (state: AudioState): number =>
   state.projectList.findIndex(
     (project) => project.name === state.selectedProject.name
   )
+
+const getProjectByName = (name: string, state: AudioState): Project =>
+  state.projectList.find((project) => project.name === name)!

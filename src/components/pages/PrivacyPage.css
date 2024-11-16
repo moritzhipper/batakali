@@ -1,8 +1,4 @@
 .page-wrapper.privacy {
-  h1 {
-    position: sticky;
-    top: 0;
-  }
   .content {
     display: flex;
     flex-direction: column;

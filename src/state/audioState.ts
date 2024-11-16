@@ -4,6 +4,7 @@ import { projectList } from "../project-list"
 import { Project } from "../types"
 import {
   prioritizeByTag,
+  selectAndPlayProjectByName,
   selectNextProject,
   selectPreviousProject,
   selectProjectByName
@@ -17,6 +18,7 @@ export type AudioState = {
   audio: HTMLAudioElement
   selectedTag: string | null
   selectProject: (name: string) => void
+  selectAndPlayProject: (name: string) => void
   selectTag: (tag: string) => void
   togglePlay: () => void
   toggleLoop: () => void
@@ -40,6 +42,8 @@ export const useAduioStore = create<AudioState>()(
     ...initialState,
     selectProject: (name: string) =>
       set((state) => selectProjectByName(name, state)),
+    selectAndPlayProject: (name: string) =>
+      set((state) => selectAndPlayProjectByName(name, state)),
     selectTag: (tag: string) => set((state) => prioritizeByTag(tag, state)),
     togglePlay: () =>
       set((state) => ({ ...state, isPlaying: !state.isPlaying })),
@@ -51,5 +55,3 @@ export const useAduioStore = create<AudioState>()(
     selectPrevious: () => set((state) => selectPreviousProject(state))
   }))
 )
-
-

@@ -7,7 +7,7 @@ import { useMediaQuery } from "../../../useMediaHook"
 import "./ProjectReel.css"
 
 export const ProjectReel = () => {
-  const { projectList, selectProject } = useAduioStore()
+  const { projectList, selectProject, togglePlay } = useAduioStore()
 
   const isMobile = useMediaQuery("(max-width: 700px)")
   const projectCount = projectList.length
@@ -86,6 +86,11 @@ export const ProjectReel = () => {
     onWheelEnd: () => snap()
   })
 
+  const playProject = (name: string) => {
+    selectProject(name)
+    togglePlay()
+  }
+
   return (
     <>
       <div className="project-reel-wrapper" {...bind()}>
@@ -113,7 +118,7 @@ export const ProjectReel = () => {
                   <div className="tag">{projectList[i].tag}</div>
                 </div>
                 <button
-                  onClick={() => selectProject(projectList[i].name)}
+                  onClick={() => playProject(projectList[i].name)}
                   className="ri-play-large-fill play"
                 />
                 <div className="buttons">
