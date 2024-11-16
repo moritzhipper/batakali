@@ -98,3 +98,6 @@
 .ri-arrow-down-wide-line:before {
   content: "\f492";
 }
+.ri-share-line:before {
+  content: "\f0fe";
+}

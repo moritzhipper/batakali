@@ -53,6 +53,7 @@ export const ProjectReel = () => {
       rotateZ: getPercentByDistance(offsetX, 3) * 5,
       opacityContent: 1 - getPercentByDistance(offsetX, 1),
       opacityBody: hideBody ? 0 : 1,
+      zIndex: hideBody ? -1 : 1,
       pointerEvents
     }
   }
@@ -107,11 +108,22 @@ export const ProjectReel = () => {
               onFocus={() => focusCard(i)}
             >
               <a.div className="content" style={{ opacity: opacityContent }}>
-                <div className="name">{projectList[i].name}</div>
-                <button onClick={() => selectProject(projectList[i].name)}>
-                  <span className="ri-play-large-fill ri-l" />
-                </button>
-                <div className="tag">{projectList[i].tag}</div>
+                <div className="info">
+                  <div className="name">{projectList[i].name}</div>
+                  <div className="tag">{projectList[i].tag}</div>
+                </div>
+                <button
+                  onClick={() => selectProject(projectList[i].name)}
+                  className="ri-play-large-fill play"
+                />
+                <div className="buttons">
+                  <a
+                    download
+                    href={projectList[i].fileName}
+                    className="ri-download-line"
+                  />
+                  <button className="ri-share-line" />
+                </div>
               </a.div>
             </a.div>
           )

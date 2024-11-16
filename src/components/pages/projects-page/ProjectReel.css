@@ -25,7 +25,8 @@
     .content {
       height: 100%;
       box-sizing: border-box;
-      padding: var(--distance-m) calc(var(--distance-m) + var(--distance-s));
+      padding: var(--distance-m);
+      padding-left: calc(var(--distance-m) + var(--distance-s));
       display: flex;
       justify-content: space-between;
       flex-direction: column;
@@ -33,17 +34,27 @@
       user-select: none;
       cursor: grab;
 
-      .name {
-        align-self: start;
+      .info {
+        .name {
+          font-weight: bold;
+        }
+        .tag {
+          margin-top: var(--distance-xs);
+          opacity: 0.5;
+        }
       }
 
-      .tag {
+      .buttons {
         align-self: end;
+        display: flex;
+        gap: var(--distance-s);
+        align-items: center;
+        opacity: 0.5;
       }
 
-      button {
+      button.play {
+        font-size: 50px;
         align-self: center;
-        color: var(--accent-1);
       }
     }
   }
