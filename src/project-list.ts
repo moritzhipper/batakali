@@ -17,6 +17,16 @@ export const projectList: Project[] = [
     fileName: "fresh.mp3"
   },
   {
+    name: "mutter",
+    tag: "boombap",
+    fileName: "nuhu.mp3"
+  },
+  {
+    name: "yeeee",
+    tag: "boombap",
+    fileName: "nuhu.mp3"
+  },
+  {
     name: "born into this",
     tag: "rnb",
     fileName: ""

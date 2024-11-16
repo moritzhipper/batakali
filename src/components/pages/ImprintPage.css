@@ -1,0 +1,8 @@
+.page-wrapper.imprint {
+  display: flex;
+  flex-direction: column;
+
+  .contact {
+    margin-top: var(--distance-m);
+  }
+}

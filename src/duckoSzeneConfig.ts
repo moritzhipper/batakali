@@ -41,7 +41,7 @@ export const duckoSzenes: Record<string, DeepPartial<DuckoSzeneConfig>> = {
       lookAt: [0, 0, 0]
     }
   },
-  "/imprint": {
+  "/privacy": {
     ducko: {
       shardsVisible: false
     },
@@ -50,7 +50,7 @@ export const duckoSzenes: Record<string, DeepPartial<DuckoSzeneConfig>> = {
       lookAt: [0, 0, 0]
     }
   },
-  "/privacy": {
+  "/imprint": {
     ducko: {
       shardsVisible: false
     },

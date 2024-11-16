@@ -1,14 +1,21 @@
 .page-wrapper.projects {
-  height: 100%;
   padding-left: 0;
   padding-right: 0;
   padding-bottom: 0;
-  position: relative;
+  height: 100%;
+  overflow: hidden;
 
-  /* this is relevant for the anomations to work */
-  height: 200%;
-  display: grid;
-  grid-template-rows: repeat(3, 25%);
+  /* 
+    This is relevant for the anomations to work 
+    The swipe wrapper is double the size of the screen. depending on which view is active, the focus will be set on the upper or lower half. 
+    The upper half contains the media controls, the lower half the project selector.  
+  */
+  .swipe-wrapper {
+    position: relative;
+    height: 200%;
+    display: grid;
+    grid-template-rows: repeat(3, 25%);
+  }
 
   .controls-wrapper {
     .now-playing {
@@ -17,6 +24,9 @@
       align-items: center;
       gap: var(--distance-s);
       margin-bottom: auto;
+      h1 {
+        padding-bottom: var(--distance-s);
+      }
       span {
         font-size: var(--font-size-l);
         opacity: 0.6;
@@ -59,6 +69,7 @@
     h1 {
       position: relative;
       align-self: center;
+      padding: 0;
       margin-bottom: var(--distance-s);
       z-index: 100;
 

@@ -35,27 +35,29 @@ export const ProjectsPage = () => {
   })
 
   return (
-    <a.div className="page-wrapper projects" style={{ translateY }}>
-      {transitionPlayer((style, show) =>
-        show ? (
-          <a.div className="controls-wrapper" style={{ ...style }}>
-            <div className="now-playing">
-              <h1>{selectedProject.name}</h1>
-              <span className="text-shadow">{selectedProject.tag}</span>
-            </div>
-            <MediaControls />
-            <button
-              className="hide ri-arrow-up-wide-line"
-              onClick={togglePlayer}
-            />
-          </a.div>
-        ) : (
-          <a.div className="content" style={{ ...style }}>
-            <SelectionElements onHide={togglePlayer} />
-          </a.div>
-        )
-      )}
-    </a.div>
+    <div className="page-wrapper projects">
+      <a.div className="swipe-wrapper" style={{ translateY }}>
+        {transitionPlayer((style, show) =>
+          show ? (
+            <a.div className="controls-wrapper" style={{ ...style }}>
+              <div className="now-playing">
+                <h1>{selectedProject.name}</h1>
+                <span className="text-shadow">{selectedProject.tag}</span>
+              </div>
+              <MediaControls />
+              <button
+                className="hide ri-arrow-up-wide-line"
+                onClick={togglePlayer}
+              />
+            </a.div>
+          ) : (
+            <a.div className="content" style={{ ...style }}>
+              <SelectionElements onHide={togglePlayer} />
+            </a.div>
+          )
+        )}
+      </a.div>
+    </div>
   )
 }
 

@@ -1,0 +1,48 @@
+@import "../../style/viewports.css";
+
+.page-wrapper.archive {
+  h1 {
+    position: sticky;
+    top: 0;
+  }
+  .grid-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--distance-l);
+
+    h2 {
+      font-weight: bold;
+      font-size: var(--font-size-m);
+      padding: 0 0 var(--distance-s) var(--distance-s);
+    }
+
+    .projects-wrapper {
+      display: grid;
+      gap: var(--distance-m);
+      .project-wrapper {
+        min-height: 42px;
+        border-radius: var(--radius-s);
+        display: flex;
+        gap: var(--distance-s);
+        align-items: center;
+        padding: var(--distance-m);
+        border: 1px solid var(--accent-2);
+        border-width: 1px 1px 1px 12px;
+        background-color: rgb(from var(--accent-3) r g b / 0.9);
+
+        .name {
+          margin-right: auto;
+        }
+      }
+    }
+  }
+}
+
+@media (--viewport-m) {
+  .page-wrapper.archive {
+    .grid-wrapper {
+      gap: var(--distance-xl);
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+}

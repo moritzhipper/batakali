@@ -1,0 +1,40 @@
+.page-wrapper.privacy {
+  h1 {
+    position: sticky;
+    top: 0;
+  }
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--distance-m);
+
+    h2 {
+      margin-top: var(--distance-m);
+    }
+
+    hr {
+      width: 100%;
+      border-width: 0;
+      border-bottom: 1px solid var(--accent-2);
+    }
+
+    ul {
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--distance-s);
+
+      li {
+        list-style: none;
+        padding: var(--distance-2xs) var(--distance-s);
+        border-radius: var(--radius-m);
+        background-color: var(--accent-2);
+      }
+    }
+
+    .address {
+      font-style: italic;
+      padding-left: var(--distance-m);
+    }
+  }
+}

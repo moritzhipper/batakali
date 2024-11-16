@@ -25,6 +25,7 @@ body {
   #root {
     display: flex;
     justify-content: center;
+    overflow-y: auto;
     height: 100dvh;
     main {
       width: 1200px;
@@ -32,7 +33,15 @@ body {
   }
 }
 
-h1,
+h2,
+p {
+  margin: 0;
+}
+p {
+  line-height: 1.7;
+}
+
+h2,
 button,
 p,
 a,
@@ -44,7 +53,14 @@ h1 {
   font-family: "BattleContinues";
   text-align: center;
   font-size: 2.5em;
+  padding: 56px;
   margin: 0;
+  text-shadow: 1px 1px 5px var(--accent-3);
+}
+
+h2 {
+  font-weight: 400;
+  color: var(--accent-1);
 }
 
 a {
@@ -59,7 +75,7 @@ button {
   padding: 0;
   font-weight: bold;
   cursor: pointer;
-  color: var(--accent-0);
+  color: var(--accent-1);
 
   &:disabled {
     cursor: initial;
@@ -83,7 +99,7 @@ button {
 
 .page-wrapper {
   box-sizing: border-box;
-  height: 100%;
+  padding-top: 0;
 }
 
 @keyframes fadeIn {

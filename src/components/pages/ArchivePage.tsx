@@ -1,5 +1,6 @@
 import { useAduioStore } from "../../state/audioState"
 import { Project } from "../../types"
+import "./ArchivePage.css"
 
 type ProjectsByTag = {
   tag: string
@@ -12,11 +13,27 @@ export const ArchivPage = () => {
 
   return (
     <div className="page-wrapper archive">
-      {projectsByTag.map(({ tag, projectList }) => (
-        <div className="tag-wrapper" key={tag}>
-          <h2>{tag}</h2>
-        </div>
-      ))}
+      <h1>Archive</h1>
+      <div className="grid-wrapper">
+        {projectsByTag.map(({ tag, projectList }) => (
+          <div className="section-wrapper" key={tag}>
+            <h2>{tag}</h2>
+            <div className="projects-wrapper">
+              {projectList.map((project) => (
+                <div key={project.name} className="project-wrapper">
+                  <p className="name">{project.name}</p>
+                  <button className="ri-share-fill ri-m" />
+                  <a
+                    download
+                    href={project.fileName}
+                    className="ri-download-fill ri-m"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   )
 }
