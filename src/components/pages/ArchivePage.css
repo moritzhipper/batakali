@@ -1,7 +1,6 @@
 @import "../../style/viewports.css";
 
 .page-wrapper.archive {
-  /* overflow-y: auto; */
   h1 {
     position: sticky;
     top: 0;
@@ -42,6 +41,7 @@
 @media (--viewport-m) {
   .page-wrapper.archive {
     .grid-wrapper {
+      gap: var(--distance-xl);
       grid-template-columns: 1fr 1fr;
     }
   }
