@@ -11,7 +11,6 @@
     gap: var(--distance-l);
 
     h2 {
-      font-weight: bold;
       font-size: var(--font-size-m);
       padding: 0 0 var(--distance-s) var(--distance-s);
     }
@@ -40,8 +39,7 @@
 
 @media (--viewport-m) {
   .page-wrapper.archive {
-    .grid-wrapper {
-      gap: var(--distance-xl);
+    .projects-wrapper {
       grid-template-columns: 1fr 1fr;
     }
   }

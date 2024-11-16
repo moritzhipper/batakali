@@ -1,50 +1,39 @@
-# React + TypeScript + Vite
+# 🐥 Angry Ducko
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a website for sharing music with the world, integrating smooth 3D animations to create an interactive experience keeping the user active and interested.
 
-Currently, two official plugins are available:
+## 🌐 Technical Details
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The website leverages cutting-edge tools and libraries for both functionality and design.
 
-## Expanding the ESLint configuration
+### Built With:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **React**
+- **Vite**
+- **three.js**
 
-- Configure the top-level `parserOptions` property like this:
+### Special Thanks
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+A huge shoutout to the [Poimandres](https://pmnd.rs/) developer collective for providing these fantastic libraries:
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+- [@react-three/fiber](https://www.npmjs.com/package/@react-three/fiber): A React renderer for three.js.
+- [@react-spring](https://www.npmjs.com/package/@react-spring/web): Smooth animations for both web and 3D environments.
+- [zustand](https://www.npmjs.com/package/zustand): Simplified state management.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## 🎶 About the Music
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+Through this website, I share my music with the world. Making music is primarily a hobby for me, so everything is free of charge.
+
+### Terms of Use
+
+The only condition is that you mention me in your releases on Instagram, either in a **post, reel, or comment**.
+
+### What You Can Do:
+
+- Listen to my projects
+- Play them (publicly and privately)
+- Remix them
+- Sample them
+- Share them unchanged or with modifications
+
+**Enjoy and have fun!**

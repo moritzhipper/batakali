@@ -7,7 +7,7 @@ import {
   selectNextProject,
   selectPreviousProject,
   selectProjectByName
-} from "./audioStateReducer"
+} from "./audioStateReducers"
 
 export type AudioState = {
   isPlaying: boolean
@@ -51,3 +51,5 @@ export const useAduioStore = create<AudioState>()(
     selectPrevious: () => set((state) => selectPreviousProject(state))
   }))
 )
+
+
