@@ -21,12 +21,8 @@
 
 - auf mobiil impressum und datenschutz umdrehen, oben logus, unten nebeneinander links. line dazwischen
 - archive klick verlinkt zu projekt im player
-- pagewrapper seitenabstand auch dynamisch (einfach alle abstände dynamisch)
-- scrollbar ganz rechts (auf archivpage und überall)
 
 ## Archivpage
-
-- archivpage: kein play, nur download und infos, sortiert nach genres
 
 ## Audio Service
 
@@ -39,10 +35,8 @@
 
 ## Style
 
+- styledateien aufräumen in style ordner
 - alle schriften und links bewusst stylen
-- irgendwie accent colors durchsichtig machen für blur effekte
-- besseres font pairing
-- page-wrapper-style.css entfernens
 
 ## Anforderung bild
 

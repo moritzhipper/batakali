@@ -23,7 +23,11 @@ export const ArchivPage = () => {
                 <div key={project.name} className="project-wrapper">
                   <p className="name">{project.name}</p>
                   <button className="ri-share-fill ri-m" />
-                  <button className="ri-download-fill ri-m" />
+                  <a
+                    download
+                    href={project.fileName}
+                    className="ri-download-fill ri-m"
+                  />
                 </div>
               ))}
             </div>
