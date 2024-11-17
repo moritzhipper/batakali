@@ -37,7 +37,7 @@ const initialState = {
   audio: new Audio(projectList[0].fileName)
 }
 
-export const useAduioStore = create<AudioState>()(
+export const useAudioStore = create<AudioState>()(
   devtools((set, get) => ({
     ...initialState,
     selectProject: (name: string) =>

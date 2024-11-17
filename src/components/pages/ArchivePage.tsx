@@ -1,4 +1,4 @@
-import { useAduioStore } from "../../state/audioState"
+import { useAudioStore } from "../../state/audioState"
 import { Project } from "../../types"
 import "./ArchivePage.css"
 
@@ -8,7 +8,7 @@ type ProjectsByTag = {
 }
 
 export const ArchivPage = () => {
-  const { projectList } = useAduioStore()
+  const { projectList } = useAudioStore()
   const projectsByTag = sortIntoTagBuckets(projectList)
 
   return (

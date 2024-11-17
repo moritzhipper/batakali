@@ -2,12 +2,14 @@ import { a, useSprings } from "@react-spring/web"
 import { useGesture } from "@use-gesture/react"
 import { useRef } from "react"
 import { springConfig } from "../../../duckoSzeneConfig"
-import { useAduioStore } from "../../../state/audioState"
+import { useAudioStore } from "../../../state/audioState"
+import { Project } from "../../../types"
 import { useMediaQuery } from "../../../useMediaHook"
 import "./ProjectReel.css"
 
 export const ProjectReel = () => {
-  const { projectList, selectProject, togglePlay } = useAduioStore()
+  const { projectList, selectProject, togglePlay, isPlaying, selectedProject } =
+    useAudioStore()
 
   const isMobile = useMediaQuery("(max-width: 700px)")
   const projectCount = projectList.length
@@ -88,8 +90,11 @@ export const ProjectReel = () => {
 
   const playProject = (name: string) => {
     selectProject(name)
-    togglePlay()
+    if (!isPlaying) togglePlay()
   }
+
+  const checkIfPlaying = (name: string) =>
+    name === selectedProject.name && isPlaying
 
   return (
     <>
@@ -113,26 +118,43 @@ export const ProjectReel = () => {
               onFocus={() => focusCard(i)}
             >
               <a.div className="content" style={{ opacity: opacityContent }}>
-                <div className="info">
-                  <div className="name">{projectList[i].name}</div>
-                  <div className="tag">{projectList[i].tag}</div>
-                </div>
-                <button
-                  onClick={() => playProject(projectList[i].name)}
-                  className="ri-play-large-fill play"
+                <ProjectCard
+                  project={projectList[i]}
+                  isPlaying={checkIfPlaying(projectList[i].name)}
+                  playProject={playProject}
                 />
-                <div className="buttons">
-                  <a
-                    download
-                    href={projectList[i].fileName}
-                    className="ri-download-line"
-                  />
-                  <button className="ri-share-line" />
-                </div>
               </a.div>
             </a.div>
           )
         )}
+      </div>
+    </>
+  )
+}
+
+type ProjectCardProps = {
+  project: Project
+  isPlaying: boolean
+  playProject: (name: string) => void
+}
+const ProjectCard = ({ project, isPlaying, playProject }: ProjectCardProps) => {
+  const playPauseClass = `${
+    isPlaying ? "ri-pause-large-line" : "ri-play-large-fill"
+  } ri-l play`
+
+  return (
+    <>
+      <div className="info">
+        <div className="name">{project.name}</div>
+        <div className="tag">{project.tag}</div>
+      </div>
+      <button
+        onClick={() => playProject(project.name)}
+        className={playPauseClass}
+      />
+      <div className="buttons">
+        <a download href={project.fileName} className="ri-download-line" />
+        <button className="ri-share-line" />
       </div>
     </>
   )
