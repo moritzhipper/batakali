@@ -63,4 +63,5 @@ const getSelectedProjectIndex = (state: AudioState): number =>
   )
 
 const getProjectByName = (name: string, state: AudioState): Project =>
-  state.projectList.find((project) => project.name === name)!
+  state.projectList.find((project) => project.name === name) ??
+  state.projectList[0]

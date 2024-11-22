@@ -20,8 +20,12 @@ export const ProjectReel = () => {
   const dragScale = isMobile ? 0.4 : 1
   const wheelScale = 0.2
 
-  const currentIndex = useRef(0)
-  const currentScrollPos = useRef(0)
+  const currentIndex = useRef(
+    getProjectIndex(projectList, selectedProject.name)
+  )
+  const currentScrollPos = useRef(currentIndex.current * itemOffset * -1)
+
+  // used to calculate scroll position relative to selected card
   const getTrueScrollPos = (offset: number) => offset + currentScrollPos.current
 
   // returns percentage of offset between 0 and maxDistance
@@ -76,6 +80,7 @@ export const ProjectReel = () => {
   const focusCard = (i: number): void => {
     currentIndex.current = i
     currentScrollPos.current = currentIndex.current * itemOffset * -1
+
     api.start((i) => getStyle(i, 0))
   }
 
@@ -92,7 +97,7 @@ export const ProjectReel = () => {
   })
 
   const playProject = (name: string) => {
-    alert("implement")
+    selectProject(name)
   }
 
   const checkIfPlaying = (name: string) =>
@@ -157,4 +162,9 @@ const ProjectCard = ({ project, isPlaying, playProject }: ProjectCardProps) => {
       </div>
     </>
   )
+}
+
+const getProjectIndex = (projectList: Project[], name: string) => {
+  if (!projectList.some((project) => project.name === name)) return 0
+  return projectList.findIndex((project) => project.name === name)
 }

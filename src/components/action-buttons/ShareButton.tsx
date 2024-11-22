@@ -14,7 +14,6 @@ export const ShareButton = ({ projectName, className, ...props }: Props) => {
     } else {
       navigator.clipboard.writeText(shareUrl.toString())
     }
-    console.log(shareUrl.toString())
   }
 
   return <button onClick={share} className={classes} {...props} />

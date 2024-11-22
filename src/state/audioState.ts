@@ -28,13 +28,21 @@ export type AudioState = {
   selectPrevious: () => void
 }
 
+const getProjectFromSearchParam = (): Project | undefined => {
+  const searchParams = new URLSearchParams(window.location.search)
+  const sharedProjectName = searchParams.get("project")
+  return projectList.find((project) => project.name === sharedProjectName)
+}
+
+const initialProject = getProjectFromSearchParam() ?? projectList[0]
+
 const initialState = {
   isPlaying: false,
-  selectedProject: projectList[0],
+  selectedProject: initialProject,
   projectList: projectList,
   selectedTag: null,
   isLooping: false,
-  audio: new Audio(projectList[0].fileName)
+  audio: new Audio(initialProject.fileName)
 }
 
 export const useAudioStore = create<AudioState>()(
