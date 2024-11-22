@@ -1,5 +1,4 @@
-import { useLayoutEffect } from "react"
-import { Route, Routes, useNavigate, useSearchParams } from "react-router-dom"
+import { Route, Routes } from "react-router-dom"
 import { AudioPlayer } from "./components/AudioPlayer"
 import { NavBarWrapper } from "./components/nav-bar/NavBarWrapper"
 import { AboutPage } from "./components/pages/AboutPage"
@@ -11,15 +10,6 @@ import { WelcomePage } from "./components/pages/WelcomePage"
 import { ThreeWrapper } from "./components/three/ThreeWrapper"
 
 function App() {
-  const navigate = useNavigate()
-  const [searchParams] = useSearchParams()
-
-  useLayoutEffect(() => {
-    if (searchParams.get("project")) {
-      navigate(`/projects`)
-    }
-  }, [])
-
   return (
     <>
       <AudioPlayer />

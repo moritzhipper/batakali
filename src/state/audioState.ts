@@ -34,7 +34,7 @@ const getProjectFromSearchParam = (): Project | undefined => {
   return projectList.find((project) => project.name === sharedProjectName)
 }
 
-const initialProject = getProjectFromSearchParam() ?? projectList[0]
+const initialProject = projectList[0]
 
 const initialState = {
   isPlaying: false,

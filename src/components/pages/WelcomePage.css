@@ -3,7 +3,48 @@
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
   place-items: center;
+
+  .header,
   a {
-    grid-row: 3/3;
+    /* border: 1px solid var(--accent-2); */
+  }
+
+  .header {
+    h1 {
+      padding: 0;
+    }
+    span {
+      font-size: var(--font-size-l);
+      color: var(--accent-1);
+      opacity: 0.5;
+      margin-top: var(--distance-s);
+    }
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  a {
+    grid-row: 3;
+    &.default {
+      font-size: var(--font-size-xl);
+      /* font-weight: 300; */
+    }
+
+    &.shared {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .cto {
+        font-weight: 300;
+        opacity: 0.5;
+        font-size: var(--font-size-xl);
+        padding-bottom: var(--distance-m);
+      }
+      .name {
+        font-size: var(--font-size-2xl);
+      }
+    }
   }
 }

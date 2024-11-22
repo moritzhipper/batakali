@@ -5,7 +5,7 @@ type Props = {
 } & HTMLAttributes<HTMLButtonElement>
 export const ShareButton = ({ projectName, className, ...props }: Props) => {
   const classes = `ri-share-line ${className || ""}`
-  const shareUrl = new URL(window.location.href)
+  const shareUrl = new URL(window.location.origin)
   shareUrl.searchParams.set("project", projectName)
 
   const share = () => {
