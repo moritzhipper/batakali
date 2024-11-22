@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom"
 import { useAudioStore } from "../../state/audioState"
 import { Project } from "../../types"
 import { DownloadLink } from "../action-buttons/DownloadLink"
@@ -10,8 +11,14 @@ type ProjectsByTag = {
 }
 
 export const ArchivPage = () => {
-  const { projectList } = useAudioStore()
+  const { projectList, selectProject } = useAudioStore()
   const projectsByTag = sortIntoTagBuckets(projectList)
+  const navigate = useNavigate()
+
+  const openProject = (name: string) => {
+    selectProject(name)
+    navigate(`/projects`)
+  }
 
   return (
     <div className="page-wrapper archive">
@@ -23,7 +30,12 @@ export const ArchivPage = () => {
             <div className="projects-wrapper">
               {projectList.map((project) => (
                 <div key={project.name} className="project-wrapper">
-                  <p className="name">{project.name}</p>
+                  <button
+                    className="name"
+                    onClick={() => openProject(project.name)}
+                  >
+                    {project.name}
+                  </button>
                   <ShareButton projectName={project.name} />
                   <DownloadLink filePath={project.fileName} />
                 </div>

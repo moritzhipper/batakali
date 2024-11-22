@@ -26,6 +26,12 @@
         background-color: rgb(from var(--accent-3) r g b / 0.9);
 
         .name {
+          height: 100%;
+          width: 100%;
+          text-align: left;
+          font-size: var(--font-size-m);
+          color: var(--accent-0);
+          font-weight: normal;
           margin-right: auto;
         }
       }
