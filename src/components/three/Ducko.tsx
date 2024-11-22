@@ -16,35 +16,27 @@ type Props = {
   duckoConfig: DuckoConfig
 }
 
+const shardConfigList: ShardGeneratorConfig[] = [
+  { amount: 10, height: 1.5, innerRadius: 5, outerRadius: 6 },
+  { amount: 20, height: 0.9, innerRadius: 5, outerRadius: 7 },
+  { amount: 30, height: 0.7, innerRadius: 6, outerRadius: 9 },
+  { amount: 80, height: 0.5, innerRadius: 9, outerRadius: 20 }
+]
+
 export const Ducko = memo(({ duckoConfig }: Props) => {
   const { animateFloating, shardsVisible } = duckoConfig
 
-  const shardRef = useRef<Group>(null)
+  const shardRef = useRef<Group>(null!)
   const audioImpactRef = useAudioGain()
 
   const duckTexture = useMemo(() => useLoader(TextureLoader, duck), [])
   const textures = useMemo(
-    () => [
-      useLoader(TextureLoader, feather),
-      useLoader(TextureLoader, shard1),
-      useLoader(TextureLoader, shard2)
-    ],
+    () => useLoader(TextureLoader, [feather, shard1, shard2]),
     []
   )
 
-  const shardGeneratorConfig: ShardGeneratorConfig[] = [
-    { amount: 10, height: 1.5, innerRadius: 5, outerRadius: 6 },
-    { amount: 30, height: 0.9, innerRadius: 5, outerRadius: 7 },
-    { amount: 30, height: 0.7, innerRadius: 6, outerRadius: 9 },
-    { amount: 80, height: 0.5, innerRadius: 9, outerRadius: 20 }
-  ]
-
   const shardList = useMemo(
-    () =>
-      generateRandomShards({
-        configList: shardGeneratorConfig,
-        textures
-      }),
+    () => generateRandomShards(shardConfigList, textures),
     []
   )
 
@@ -55,7 +47,7 @@ export const Ducko = memo(({ duckoConfig }: Props) => {
   const center = new Vector3(0, 0, 0)
 
   const getOpacityFromDistanceToCenter = (positionObj: Vector3) =>
-    1 - positionObj.distanceTo(center) / 14
+    0.8 - positionObj.distanceTo(center) / 20
 
   const showShards = () => {
     shardRef.current.scale.lerpVectors(
@@ -118,15 +110,10 @@ type ShardGeneratorConfig = {
   outerRadius: number
 }
 
-type RandomShardGeneratorFunctionInput = {
-  configList: ShardGeneratorConfig[]
+const generateRandomShards = (
+  configList: ShardGeneratorConfig[],
   textures: Texture[]
-}
-
-const generateRandomShards = ({
-  configList,
-  textures
-}: RandomShardGeneratorFunctionInput): JSX.Element[] => {
+): JSX.Element[] => {
   const sprites = []
 
   for (const { amount, height, innerRadius, outerRadius } of configList) {
