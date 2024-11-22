@@ -37,9 +37,10 @@
       .info {
         .name {
           font-weight: bold;
+          font-size: var(--font-size-l);
         }
         .tag {
-          margin-top: var(--distance-xs);
+          margin-top: var(--distance-s);
           opacity: 0.5;
         }
       }

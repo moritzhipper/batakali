@@ -5,6 +5,9 @@ import { springConfig } from "../../../duckoSzeneConfig"
 import { useAudioStore } from "../../../state/audioState"
 import { Project } from "../../../types"
 import { useMediaQuery } from "../../../useMediaHook"
+import { DownloadLink } from "../../action-buttons/DownloadLink"
+import { PlayPauseButton } from "../../action-buttons/PlayPauseButton"
+import { ShareButton } from "../../action-buttons/ShareButton"
 import "./ProjectReel.css"
 
 export const ProjectReel = () => {
@@ -89,8 +92,7 @@ export const ProjectReel = () => {
   })
 
   const playProject = (name: string) => {
-    selectProject(name)
-    if (!isPlaying) togglePlay()
+    alert("implement")
   }
 
   const checkIfPlaying = (name: string) =>
@@ -138,23 +140,20 @@ type ProjectCardProps = {
   playProject: (name: string) => void
 }
 const ProjectCard = ({ project, isPlaying, playProject }: ProjectCardProps) => {
-  const playPauseClass = `${
-    isPlaying ? "ri-pause-large-line" : "ri-play-large-fill"
-  } ri-l play`
-
   return (
     <>
       <div className="info">
         <div className="name">{project.name}</div>
         <div className="tag">{project.tag}</div>
       </div>
-      <button
+      <PlayPauseButton
+        isPlaying={isPlaying}
         onClick={() => playProject(project.name)}
-        className={playPauseClass}
+        className="play"
       />
       <div className="buttons">
-        <a download href={project.fileName} className="ri-download-line" />
-        <button className="ri-share-line" />
+        <DownloadLink filePath={project.fileName} />
+        <ShareButton projectName={project.name} />
       </div>
     </>
   )

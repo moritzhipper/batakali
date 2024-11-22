@@ -1,5 +1,7 @@
 import { useAudioStore } from "../../state/audioState"
 import { Project } from "../../types"
+import { DownloadLink } from "../action-buttons/DownloadLink"
+import { ShareButton } from "../action-buttons/ShareButton"
 import "./ArchivePage.css"
 
 type ProjectsByTag = {
@@ -22,12 +24,8 @@ export const ArchivPage = () => {
               {projectList.map((project) => (
                 <div key={project.name} className="project-wrapper">
                   <p className="name">{project.name}</p>
-                  <button className="ri-share-line" />
-                  <a
-                    download
-                    href={project.fileName}
-                    className="ri-download-line"
-                  />
+                  <ShareButton projectName={project.name} />
+                  <DownloadLink filePath={project.fileName} />
                 </div>
               ))}
             </div>

@@ -1,20 +1,14 @@
 import { Float } from "@react-three/drei"
 import { useFrame, useLoader } from "@react-three/fiber"
 import { memo, useMemo, useRef } from "react"
-import {
-  DoubleSide,
-  Group,
-  SpriteMaterial,
-  Texture,
-  TextureLoader,
-  Vector3
-} from "three"
+import { Group, Texture, TextureLoader, Vector3 } from "three"
 import { lerp } from "three/src/math/MathUtils.js"
 import duck from "../../assets/images/duck.png"
 import feather from "../../assets/images/feather.png"
 import shard1 from "../../assets/images/shard1.png"
 import shard2 from "../../assets/images/shard2.png"
 import { DuckoConfig } from "../../types"
+import { ImageElement } from "./Shard"
 import { useAudioGain } from "./useAudioGainHook"
 import { getRandomPositionInSphereWithXBias, randomInt } from "./utils"
 
@@ -102,13 +96,7 @@ export const Ducko = memo(({ duckoConfig }: Props) => {
   return (
     <>
       <Float enabled={animateFloating}>
-        <ImageElement
-          texture={duckTexture}
-          x={0}
-          y={0}
-          rotation={0}
-          height={5.5}
-        />
+        <ImageElement texture={duckTexture} height={5.5} />
       </Float>
       <group ref={shardRef}>
         <Float rotationIntensity={0.3}>{shardList}</Float>
@@ -116,66 +104,6 @@ export const Ducko = memo(({ duckoConfig }: Props) => {
     </>
   )
 })
-
-type ImageProps = {
-  texture: Texture
-  x: number
-  y: number
-  height: number
-  rotation?: number
-}
-
-const ImageElement = ({ texture, x, y, height, rotation }: ImageProps) => {
-  // either sets rotation from input or rotates it pointing to the center
-  const actualRotation = rotation ?? Math.atan2(y, x) + 3 * (Math.PI / 2)
-  const imageWidth = texture.image.width
-  const imageHeight = texture.image.height
-
-  const scaledWidth = (imageWidth / imageHeight) * height
-
-  return (
-    <mesh
-      scale={[scaledWidth, height, 1]}
-      position={[x, y, 0]}
-      rotation={[0, 0, actualRotation]}
-    >
-      <planeGeometry args={[1, 1]} />
-      <meshStandardMaterial
-        map={texture}
-        transparent
-        side={DoubleSide}
-        alphaToCoverage={true}
-      />
-    </mesh>
-  )
-}
-
-type SpriteProps = {
-  texture: Texture
-  position: Vector3
-  height: number
-}
-
-const SpriteElement = ({ texture, position, height }: SpriteProps) => {
-  const imageWidth = texture.image.width
-  const imageHeight = texture.image.height
-  const scaledWidth = (imageWidth / imageHeight) * height
-
-  const spreteMat = new SpriteMaterial({
-    map: texture,
-    opacity: 0,
-    alphaToCoverage: true,
-    side: DoubleSide
-  })
-
-  return (
-    <sprite
-      scale={[scaledWidth, height, 1]}
-      position={position}
-      material={spreteMat}
-    />
-  )
-}
 
 const generateRandomSpriteElements = (
   amount: number,
@@ -195,10 +123,11 @@ const generateRandomSpriteElements = (
     const randomTexture = textures[randomInt(0, textures.length)]
 
     sprites.push(
-      <SpriteElement
+      <ImageElement
         position={randomPos}
         height={height}
         texture={randomTexture}
+        asSprite
       />
     )
   }
