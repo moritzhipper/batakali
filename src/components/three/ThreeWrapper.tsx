@@ -15,7 +15,7 @@ export const ThreeWrapper = () => {
   }, [pathname])
 
   return (
-    <div className="three-wrapper">
+    <div className={`three-wrapper ${activeSzene.ducko.dim ? "dim" : ""}`}>
       <Canvas>
         <fog attach="fog" args={["white", 0, 25]} />
         <CameraDolly cameraConfig={activeSzene.camera} />

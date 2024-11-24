@@ -5,4 +5,10 @@
   top: 0;
   left: 0;
   z-index: -1;
+  transition: opacity var(--animation-duration-m) ease-in-out;
+  opacity: 1;
+
+  &.dim {
+    opacity: 0.5;
+  }
 }

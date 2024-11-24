@@ -10,6 +10,7 @@ export type CameraConfig = {
 export type DuckoConfig = {
   shardsVisible: boolean
   animateFloating: boolean
+  dim: boolean
 }
 
 export type DuckoSzeneConfig = {
