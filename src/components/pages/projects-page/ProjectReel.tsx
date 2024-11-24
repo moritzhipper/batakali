@@ -2,12 +2,17 @@ import { a, useSprings } from "@react-spring/web"
 import { useGesture } from "@use-gesture/react"
 import { useRef } from "react"
 import { springConfig } from "../../../duckoSzeneConfig"
-import { useAduioStore } from "../../../state/audioState"
+import { useAudioStore } from "../../../state/audioState"
+import { Project } from "../../../types"
 import { useMediaQuery } from "../../../useMediaHook"
+import { DownloadLink } from "../../action-buttons/DownloadLink"
+import { PlayPauseButton } from "../../action-buttons/PlayPauseButton"
+import { ShareButton } from "../../action-buttons/ShareButton"
 import "./ProjectReel.css"
 
 export const ProjectReel = () => {
-  const { projectList, selectProject } = useAduioStore()
+  const { projectList, selectProject, togglePlay, isPlaying, selectedProject } =
+    useAudioStore()
 
   const isMobile = useMediaQuery("(max-width: 700px)")
   const projectCount = projectList.length
@@ -15,8 +20,12 @@ export const ProjectReel = () => {
   const dragScale = isMobile ? 0.4 : 1
   const wheelScale = 0.2
 
-  const currentIndex = useRef(0)
-  const currentScrollPos = useRef(0)
+  const currentIndex = useRef(
+    getProjectIndex(projectList, selectedProject.name)
+  )
+  const currentScrollPos = useRef(currentIndex.current * itemOffset * -1)
+
+  // used to calculate scroll position relative to selected card
   const getTrueScrollPos = (offset: number) => offset + currentScrollPos.current
 
   // returns percentage of offset between 0 and maxDistance
@@ -53,6 +62,7 @@ export const ProjectReel = () => {
       rotateZ: getPercentByDistance(offsetX, 3) * 5,
       opacityContent: 1 - getPercentByDistance(offsetX, 1),
       opacityBody: hideBody ? 0 : 1,
+      zIndex: hideBody ? -1 : 1,
       pointerEvents
     }
   }
@@ -70,6 +80,7 @@ export const ProjectReel = () => {
   const focusCard = (i: number): void => {
     currentIndex.current = i
     currentScrollPos.current = currentIndex.current * itemOffset * -1
+
     api.start((i) => getStyle(i, 0))
   }
 
@@ -84,6 +95,13 @@ export const ProjectReel = () => {
     onWheel: (state) => scroll(state.movement[1] * wheelScale),
     onWheelEnd: () => snap()
   })
+
+  const playProject = (name: string) => {
+    selectProject(name)
+  }
+
+  const checkIfPlaying = (name: string) =>
+    name === selectedProject.name && isPlaying
 
   return (
     <>
@@ -107,11 +125,11 @@ export const ProjectReel = () => {
               onFocus={() => focusCard(i)}
             >
               <a.div className="content" style={{ opacity: opacityContent }}>
-                <div className="name">{projectList[i].name}</div>
-                <button onClick={() => selectProject(projectList[i].name)}>
-                  <span className="ri-play-large-fill ri-l" />
-                </button>
-                <div className="tag">{projectList[i].tag}</div>
+                <ProjectCard
+                  project={projectList[i]}
+                  isPlaying={checkIfPlaying(projectList[i].name)}
+                  playProject={playProject}
+                />
               </a.div>
             </a.div>
           )
@@ -119,4 +137,34 @@ export const ProjectReel = () => {
       </div>
     </>
   )
+}
+
+type ProjectCardProps = {
+  project: Project
+  isPlaying: boolean
+  playProject: (name: string) => void
+}
+const ProjectCard = ({ project, isPlaying, playProject }: ProjectCardProps) => {
+  return (
+    <>
+      <div className="info">
+        <div className="name">{project.name}</div>
+        <div className="tag">{project.tag}</div>
+      </div>
+      <PlayPauseButton
+        isPlaying={isPlaying}
+        onClick={() => playProject(project.name)}
+        className="play"
+      />
+      <div className="buttons">
+        <DownloadLink filePath={project.fileName} />
+        <ShareButton projectName={project.name} />
+      </div>
+    </>
+  )
+}
+
+const getProjectIndex = (projectList: Project[], name: string) => {
+  if (!projectList.some((project) => project.name === name)) return 0
+  return projectList.findIndex((project) => project.name === name)
 }

@@ -1,17 +1,12 @@
 @import "../../style/viewports.css";
 
 .page-wrapper.archive {
-  h1 {
-    position: sticky;
-    top: 0;
-  }
   .grid-wrapper {
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--distance-l);
 
     h2 {
-      font-weight: bold;
       font-size: var(--font-size-m);
       padding: 0 0 var(--distance-s) var(--distance-s);
     }
@@ -31,6 +26,12 @@
         background-color: rgb(from var(--accent-3) r g b / 0.9);
 
         .name {
+          height: 100%;
+          width: 100%;
+          text-align: left;
+          font-size: var(--font-size-m);
+          color: var(--accent-0);
+          font-weight: normal;
           margin-right: auto;
         }
       }
@@ -40,8 +41,7 @@
 
 @media (--viewport-m) {
   .page-wrapper.archive {
-    .grid-wrapper {
-      gap: var(--distance-xl);
+    .projects-wrapper {
       grid-template-columns: 1fr 1fr;
     }
   }

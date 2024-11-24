@@ -3,7 +3,7 @@ import "./PrivacyPage.css"
 export const PrivacyPage = () => {
   return (
     <div className="page-wrapper privacy">
-      <h1>Datenschutz</h1>
+      <h1 className="sticky">Datenschutz</h1>
       <div className="content">
         <p>This section is german because it is required by german law.</p>
         <hr />

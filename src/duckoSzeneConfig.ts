@@ -7,10 +7,11 @@ export const duckoSzenes: Record<string, DeepPartial<DuckoSzeneConfig>> = {
   "/": {
     ducko: {
       shardsVisible: false,
-      animateFloating: false
+      animateFloating: false,
+      dim: true
     },
     camera: {
-      position: [0, 0, 10],
+      position: [-1, -1, 4],
       lookAt: [0, 0, 0]
     }
   },
@@ -22,7 +23,8 @@ export const duckoSzenes: Record<string, DeepPartial<DuckoSzeneConfig>> = {
   },
   "/about": {
     ducko: {
-      shardsVisible: false
+      shardsVisible: false,
+      dim: true
     },
     camera: {
       position: [-2, 1, 3],
@@ -33,17 +35,21 @@ export const duckoSzenes: Record<string, DeepPartial<DuckoSzeneConfig>> = {
     camera: {
       position: [1, -3, 5],
       lookAt: [-1, 0, 0]
+    },
+    ducko: {
+      dim: true
     }
   },
   duck: {
     camera: {
-      position: [0, 0, 12],
+      position: [-3, -2, 6],
       lookAt: [0, 0, 0]
     }
   },
   "/privacy": {
     ducko: {
-      shardsVisible: false
+      shardsVisible: false,
+      dim: true
     },
     camera: {
       position: [-2, -2, 5],
@@ -52,7 +58,8 @@ export const duckoSzenes: Record<string, DeepPartial<DuckoSzeneConfig>> = {
   },
   "/imprint": {
     ducko: {
-      shardsVisible: false
+      shardsVisible: false,
+      dim: true
     },
     camera: {
       position: [2, -2, 5],

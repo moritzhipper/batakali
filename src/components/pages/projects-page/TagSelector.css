@@ -21,7 +21,7 @@
     flex-wrap: wrap;
     align-content: start;
     gap: var(--distance-m) var(--distance-l);
-    overflow: scroll;
+    overflow: auto;
 
     button {
       transition: font-weight var(--animation-duration-s) ease-in-out;

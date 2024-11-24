@@ -1,0 +1,25 @@
+.page-wrapper.about {
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--distance-m);
+
+    ul {
+      margin: 0;
+      li {
+        margin-bottom: var(--distance-s);
+      }
+    }
+    p.big {
+      font-weight: bold;
+      font-size: var(--font-size-l);
+    }
+
+    &.technical-info {
+      margin-top: var(--distance-l);
+      a {
+        font-weight: bold;
+      }
+    }
+  }
+}

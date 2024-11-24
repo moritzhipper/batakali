@@ -7,11 +7,16 @@
 
 ## SzeneCOnfig
 
+- shard mit key versehen
 - parameter 'darken' für textlastige seiten hinzufügen -> macht szene dunkler
 - irgendwie sicherstellen, dass über und unter der überschrift auf allen viewports gleich viel platz ist
+- playerview und projectview auslagern? macht eigentlich voll sinn
+- in projectreel getStyle for mobil und desktop differenzieren
 
 ## Project selector
 
+- project card oder medicontrols consolidieren? download und share sonst drei mal umgesetzt
+- ig account verlinken
 - nur viewports.css oder den hook nutzen?
 - nur die items animieren, die sichtbar sind, für alle anderen return getStyle standardwerte
 - auf desktop beide nebeneinander, auf mobile filterbutton
@@ -35,6 +40,7 @@
 
 ## Style
 
+- nur dark mode und quietscheenten mode. nicht den prefers selektor nutzen, nur aktiv gesetzte klasse
 - styledateien aufräumen in style ordner
 - alle schriften und links bewusst stylen
 

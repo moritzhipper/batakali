@@ -1,50 +1,49 @@
 import { Float } from "@react-three/drei"
 import { useFrame, useLoader } from "@react-three/fiber"
 import { memo, useMemo, useRef } from "react"
-import {
-  DoubleSide,
-  Group,
-  SpriteMaterial,
-  Texture,
-  TextureLoader,
-  Vector3
-} from "three"
+import { Group, Texture, TextureLoader, Vector3 } from "three"
 import { lerp } from "three/src/math/MathUtils.js"
-import duck from "../../assets/images/duck.png"
-import feather from "../../assets/images/feather.png"
-import shard1 from "../../assets/images/shard1.png"
-import shard2 from "../../assets/images/shard2.png"
+import duck from "../../assets/images/angry/duck.png"
+import feather from "../../assets/images/angry/feather.png"
+import shard1 from "../../assets/images/angry/shard1.png"
+import shard2 from "../../assets/images/angry/shard2.png"
+import heart1 from "../../assets/images/cutesy/heart.png"
+import heart2 from "../../assets/images/cutesy/purple_heart.png"
+
 import { DuckoConfig } from "../../types"
+import { ImageElement } from "./Shard"
 import { useAudioGain } from "./useAudioGainHook"
 import { getRandomPositionInSphereWithXBias, randomInt } from "./utils"
 
 type Props = {
   duckoConfig: DuckoConfig
+  isCute?: boolean
 }
 
-export const Ducko = memo(({ duckoConfig }: Props) => {
+const shardConfigList: ShardGeneratorConfig[] = [
+  { amount: 10, height: 1.5, innerRadius: 5, outerRadius: 6 },
+  { amount: 20, height: 0.9, innerRadius: 5, outerRadius: 7 },
+  { amount: 30, height: 0.7, innerRadius: 6, outerRadius: 9 },
+  { amount: 80, height: 0.5, innerRadius: 9, outerRadius: 20 }
+]
+
+export const Ducko = memo(({ duckoConfig, isCute = false }: Props) => {
   const { animateFloating, shardsVisible } = duckoConfig
 
-  const shardRef = useRef<Group>(null)
+  const shardRef = useRef<Group>(null!)
   const audioImpactRef = useAudioGain()
 
   const duckTexture = useMemo(() => useLoader(TextureLoader, duck), [])
   const textures = useMemo(
-    () => [
-      useLoader(TextureLoader, feather),
-      useLoader(TextureLoader, shard1),
-      useLoader(TextureLoader, shard2)
-    ],
-    []
+    () =>
+      isCute
+        ? useLoader(TextureLoader, [heart1, heart2])
+        : useLoader(TextureLoader, [feather, shard1, shard2]),
+    [isCute]
   )
 
   const shardList = useMemo(
-    () => [
-      ...generateRandomSpriteElements(10, 1.5, textures, 5, 6),
-      ...generateRandomSpriteElements(30, 0.9, textures, 5, 7),
-      ...generateRandomSpriteElements(30, 0.7, textures, 6, 9),
-      ...generateRandomSpriteElements(80, 0.5, textures, 9, 20)
-    ],
+    () => generateRandomShards(shardConfigList, textures),
     []
   )
 
@@ -55,7 +54,7 @@ export const Ducko = memo(({ duckoConfig }: Props) => {
   const center = new Vector3(0, 0, 0)
 
   const getOpacityFromDistanceToCenter = (positionObj: Vector3) =>
-    1 - positionObj.distanceTo(center) / 14
+    0.8 - positionObj.distanceTo(center) / 20
 
   const showShards = () => {
     shardRef.current.scale.lerpVectors(
@@ -102,13 +101,7 @@ export const Ducko = memo(({ duckoConfig }: Props) => {
   return (
     <>
       <Float enabled={animateFloating}>
-        <ImageElement
-          texture={duckTexture}
-          x={0}
-          y={0}
-          rotation={0}
-          height={5.5}
-        />
+        <ImageElement texture={duckTexture} height={5.5} />
       </Float>
       <group ref={shardRef}>
         <Float rotationIntensity={0.3}>{shardList}</Float>
@@ -117,90 +110,38 @@ export const Ducko = memo(({ duckoConfig }: Props) => {
   )
 })
 
-type ImageProps = {
-  texture: Texture
-  x: number
-  y: number
+type ShardGeneratorConfig = {
   height: number
-  rotation?: number
-}
-
-const ImageElement = ({ texture, x, y, height, rotation }: ImageProps) => {
-  // either sets rotation from input or rotates it pointing to the center
-  const actualRotation = rotation ?? Math.atan2(y, x) + 3 * (Math.PI / 2)
-  const imageWidth = texture.image.width
-  const imageHeight = texture.image.height
-
-  const scaledWidth = (imageWidth / imageHeight) * height
-
-  return (
-    <mesh
-      scale={[scaledWidth, height, 1]}
-      position={[x, y, 0]}
-      rotation={[0, 0, actualRotation]}
-    >
-      <planeGeometry args={[1, 1]} />
-      <meshStandardMaterial
-        map={texture}
-        transparent
-        side={DoubleSide}
-        alphaToCoverage={true}
-      />
-    </mesh>
-  )
-}
-
-type SpriteProps = {
-  texture: Texture
-  position: Vector3
-  height: number
-}
-
-const SpriteElement = ({ texture, position, height }: SpriteProps) => {
-  const imageWidth = texture.image.width
-  const imageHeight = texture.image.height
-  const scaledWidth = (imageWidth / imageHeight) * height
-
-  const spreteMat = new SpriteMaterial({
-    map: texture,
-    opacity: 0,
-    alphaToCoverage: true,
-    side: DoubleSide
-  })
-
-  return (
-    <sprite
-      scale={[scaledWidth, height, 1]}
-      position={position}
-      material={spreteMat}
-    />
-  )
-}
-
-const generateRandomSpriteElements = (
-  amount: number,
-  height: number,
-  textures: Texture[],
-  innerRadius: number,
+  amount: number
+  innerRadius: number
   outerRadius: number
+}
+
+const generateRandomShards = (
+  configList: ShardGeneratorConfig[],
+  textures: Texture[]
 ): JSX.Element[] => {
   const sprites = []
 
-  for (let i = 0; i < amount; i++) {
-    const randomPos = getRandomPositionInSphereWithXBias(
-      innerRadius,
-      outerRadius,
-      0.65
-    )
-    const randomTexture = textures[randomInt(0, textures.length)]
+  for (const { amount, height, innerRadius, outerRadius } of configList) {
+    for (let i = 0; i < amount; i++) {
+      const randomPos = getRandomPositionInSphereWithXBias(
+        innerRadius,
+        outerRadius,
+        0.65
+      )
+      const randomTexture = textures[randomInt(0, textures.length)]
 
-    sprites.push(
-      <SpriteElement
-        position={randomPos}
-        height={height}
-        texture={randomTexture}
-      />
-    )
+      sprites.push(
+        <ImageElement
+          position={randomPos}
+          height={height}
+          texture={randomTexture}
+          asSprite
+          key={sprites.length}
+        />
+      )
+    }
   }
 
   return sprites

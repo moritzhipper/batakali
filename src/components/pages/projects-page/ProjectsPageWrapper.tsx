@@ -1,7 +1,7 @@
 import { a, useSpring, useTransition } from "@react-spring/web"
 import { useEffect, useState } from "react"
 import { springConfig } from "../../../duckoSzeneConfig"
-import { useAduioStore } from "../../../state/audioState"
+import { useAudioStore } from "../../../state/audioState"
 import { useSzeneState } from "../../../state/szeneState"
 import { MediaControls } from "../../media-controls/MediaControls"
 import { ProjectReel } from "./ProjectReel"
@@ -12,7 +12,7 @@ export const ProjectsPage = () => {
   const [playerVisible, setPlayerVisible] = useState(false)
   const togglePlayer = () => setPlayerVisible((show) => !show)
   const { setActiveSzene } = useSzeneState()
-  const { selectedProject } = useAduioStore()
+  const { selectedProject, selectProject } = useAudioStore()
 
   useEffect(() => {
     if (playerVisible) {
@@ -67,7 +67,7 @@ type SelectionElementsProps = {
 
 export const SelectionElements = ({ onHide }: SelectionElementsProps) => {
   const [showFilter, setShowFilter] = useState(false)
-  const { selectedTag } = useAduioStore()
+  const { selectedTag } = useAudioStore()
   const toggleFilter = () => setShowFilter((show) => !show)
 
   useEffect(() => {

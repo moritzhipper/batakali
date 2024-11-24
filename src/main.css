@@ -53,13 +53,20 @@ h1 {
   font-family: "BattleContinues";
   text-align: center;
   font-size: 2.5em;
-  padding: 56px;
+  padding: 56px 16px;
   margin: 0;
-  text-shadow: 1px 1px 5px var(--accent-3);
+  text-shadow:
+    1px 1px 3px var(--accent-3),
+    2px 2px 10px var(--accent-3);
+
+  &.sticky {
+    position: sticky;
+    top: 0;
+  }
 }
 
 h2 {
-  font-weight: 400;
+  font-weight: bold;
   color: var(--accent-1);
 }
 

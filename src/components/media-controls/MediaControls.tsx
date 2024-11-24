@@ -1,4 +1,7 @@
-import { useAduioStore } from "../../state/audioState"
+import { useAudioStore } from "../../state/audioState"
+import { DownloadLink } from "../action-buttons/DownloadLink"
+import { LoopButton } from "../action-buttons/LoopButton"
+import { PlayPauseButton } from "../action-buttons/PlayPauseButton"
 import "./MediaControls.css"
 export const MediaControls = () => {
   const {
@@ -10,29 +13,21 @@ export const MediaControls = () => {
     skip,
     selectNext,
     selectPrevious
-  } = useAduioStore()
-
-  const classPlay = `${
-    isPlaying ? "ri-pause-large-line" : "ri-play-large-fill"
-  } ri-l`
-
-  const classRepeat = `${
-    isLooping ? "ri-repeat-one-line" : "ri-repeat-2-line"
-  } ri-s`
+  } = useAudioStore()
 
   return (
     <div className="media-controls-wrapper">
-      <a
-        className="ri-download-line ri-s"
-        href={selectedProject.fileName}
-        download
-      />
+      <DownloadLink filePath={selectedProject.fileName} className="ri-s" />
       <button className="ri-skip-back-line" onClick={selectPrevious} />
       <button className="ri-replay-10-line" onClick={() => skip(-10)} />
-      <button className={classPlay} onClick={togglePlay} />
+      <PlayPauseButton
+        isPlaying={isPlaying}
+        onClick={togglePlay}
+        className="ri-l"
+      />
       <button className="ri-forward-10-line" onClick={() => skip(10)} />
       <button className="ri-skip-forward-line" onClick={selectNext} />
-      <button className={classRepeat} onClick={toggleLoop} />
+      <LoopButton isLooping={isLooping} onClick={toggleLoop} className="ri-s" />
     </div>
   )
 }
