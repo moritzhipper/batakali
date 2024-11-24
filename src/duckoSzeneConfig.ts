@@ -10,7 +10,7 @@ export const duckoSzenes: Record<string, DeepPartial<DuckoSzeneConfig>> = {
       animateFloating: false
     },
     camera: {
-      position: [0, 0, 10],
+      position: [-1, -1, 4],
       lookAt: [0, 0, 0]
     }
   },
