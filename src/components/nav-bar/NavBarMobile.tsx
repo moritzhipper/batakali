@@ -13,7 +13,7 @@ export const NavBarMobile = () => {
     setOpen(false)
   }, [location])
 
-  const transGoalHome = "translate(30px, 30px) scale(1.4)"
+  const transGoalHome = "translate(20px, 10px) scale(1.2)"
   const transitionHome = useTransition(open, {
     initial: {
       opacity: 1

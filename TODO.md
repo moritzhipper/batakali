@@ -15,6 +15,7 @@
 
 ## Project selector
 
+- scrollstate der liste immer merken. nur element anscrollen, wenn tag selektiert wird oder beat geteilt wird
 - project card oder medicontrols consolidieren? download und share sonst drei mal umgesetzt
 - ig account verlinken
 - nur viewports.css oder den hook nutzen?

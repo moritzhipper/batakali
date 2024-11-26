@@ -1,4 +1,4 @@
-import { config } from "@react-spring/three"
+import { config } from "@react-spring/core"
 import { DeepPartial, DuckoSzeneConfig } from "./types"
 
 export const springConfig = { config: config.gentle }

@@ -17,7 +17,7 @@ import { getRandomPositionInSphereWithXBias, randomInt } from "./utils"
 
 type Props = {
   duckoConfig: DuckoConfig
-  isCute?: boolean
+  isCute: boolean
 }
 
 const shardConfigList: ShardGeneratorConfig[] = [

@@ -24,6 +24,7 @@
     overflow: auto;
 
     button {
+      color: var(--accent-0);
       transition: font-weight var(--animation-duration-s) ease-in-out;
       margin: 0;
       padding: 0;

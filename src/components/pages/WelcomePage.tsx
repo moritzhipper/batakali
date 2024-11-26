@@ -34,7 +34,7 @@ export const WelcomePage = () => {
           <p className="cta">check it out</p>
         </Link>
       ) : (
-        <Link className="default" to="/projects">
+        <Link className="cta" to="/projects">
           check out projects
         </Link>
       )}
