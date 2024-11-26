@@ -30,6 +30,7 @@
   --animation-duration-s: 0.2s;
   --animation-duration-m: 0.3s;
   --animation-duration-l: 0.6s;
+  --animation-duration-xl: 0.9s;
 
   .github-logo {
     height: 1em;

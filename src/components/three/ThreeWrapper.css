@@ -5,7 +5,8 @@
   top: 0;
   left: 0;
   z-index: -1;
-  transition: opacity var(--animation-duration-m) ease-in-out;
+  transition: opacity var(--animation-duration-l) ease-in-out;
+  transition-delay: var(--animation-durations-l);
   opacity: 1;
 
   &.dim {

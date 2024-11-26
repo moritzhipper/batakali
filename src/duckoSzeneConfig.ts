@@ -17,7 +17,7 @@ export const duckoSzenes: Record<string, DeepPartial<DuckoSzeneConfig>> = {
   },
   "/projects": {
     camera: {
-      position: [0, -3, 10],
+      position: [-2, -3, 10],
       lookAt: [0, -2, 0]
     }
   },

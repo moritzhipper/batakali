@@ -24,6 +24,7 @@
 
   a {
     grid-row: 3;
+
     &.default {
       font-size: var(--font-size-2xl);
       font-weight: 300;

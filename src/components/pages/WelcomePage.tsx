@@ -25,7 +25,7 @@ export const WelcomePage = () => {
   return (
     <div className="page-wrapper welcome">
       <div className="header">
-        <h1>Angry Ducko</h1>
+        <h1 className="big-ducko-print">Angry Ducko</h1>
         <p className="normal"> vibes and tunes</p>
       </div>
       {shareMode ? (
