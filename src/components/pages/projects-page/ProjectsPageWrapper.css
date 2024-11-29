@@ -6,7 +6,7 @@
   overflow: hidden;
 
   /* 
-    This is relevant for the anomations to work 
+    This is relevant for the animations to work 
     The swipe wrapper is double the size of the screen. depending on which view is active, the focus will be set on the upper or lower half. 
     The upper half contains the media controls, the lower half the project selector.  
   */

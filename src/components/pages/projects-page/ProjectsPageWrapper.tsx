@@ -12,7 +12,7 @@ export const ProjectsPage = () => {
   const [playerVisible, setPlayerVisible] = useState(false)
   const togglePlayer = () => setPlayerVisible((show) => !show)
   const { setActiveSzene } = useSzeneState()
-  const { selectedProject, selectProject } = useAudioStore()
+  const { selectedProject } = useAudioStore()
 
   useEffect(() => {
     if (playerVisible) {

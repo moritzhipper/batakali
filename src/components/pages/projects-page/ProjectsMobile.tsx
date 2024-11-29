@@ -4,9 +4,9 @@ import { useRef } from "react"
 import { springConfig } from "../../../duckoSzeneConfig"
 import { projectList } from "../../../project-list"
 import { useMediaQuery } from "../../../useMediaHook"
-import "./ProjectSelector.css"
+import "./ProjectsMobile.css"
 
-export const ProjectSelector = () => {
+export const ProjectsMobile = () => {
   const isMobile = useMediaQuery("(max-width: 700px)")
   const projectCount = projectList.length
   const itemOffset = isMobile ? 40 : 80
