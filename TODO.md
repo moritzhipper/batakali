@@ -7,6 +7,7 @@
 
 ## SzeneCOnfig
 
+- is playing state abhängig machen von play state des media elements über useCallback
 - shard mit key versehen
 - parameter 'darken' für textlastige seiten hinzufügen -> macht szene dunkler
 - irgendwie sicherstellen, dass über und unter der überschrift auf allen viewports gleich viel platz ist

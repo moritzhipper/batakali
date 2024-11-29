@@ -11,7 +11,7 @@ const defaultSzene: DuckoSzeneConfig = {
   ducko: {
     shardsVisible: true,
     animateFloating: true,
-    dim: false
+    dim: true
   },
   camera: {
     position: [0, 0, 10],
