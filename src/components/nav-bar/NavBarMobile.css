@@ -70,31 +70,29 @@
       .bottom {
         width: 100%;
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
         margin-top: auto;
 
         .me,
         .legal {
           display: flex;
-          padding: 0 var(--distance-s);
+          justify-content: center;
           opacity: 0.5;
-          a {
-            font-weight: 400;
-          }
+          padding: var(--distance-s);
         }
 
         .me {
-          gap: var(--distance-s);
           align-items: center;
-          justify-content: end;
-          border-right: 1px solid var(--accent-2);
-          font-size: var(--font-size-2xl);
+          a {
+            font-size: var(--font-size-2xl);
+          }
         }
 
         .legal {
-          gap: var(--distance-xs);
+          border-top: 1px solid var(--accent-2);
+          justify-self: center;
 
-          flex-direction: column;
+          gap: var(--distance-s);
         }
       }
     }

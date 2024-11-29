@@ -90,11 +90,14 @@ export const NavBarMobile = () => {
 
                   <div className="bottom">
                     <div className="me">
-                      <a href="https://moritzhipper.me">🌐</a>
                       <a
-                        className="github-logo "
+                        className="ri-global-line"
+                        href="https://moritzhipper.me"
+                      />
+                      <a
+                        className="ri-github-line"
                         href="https://github.com/moritzhipper/angry-ducko"
-                      ></a>
+                      />
                     </div>
                     <div className="legal">
                       <Link to="/imprint">impressum</Link>

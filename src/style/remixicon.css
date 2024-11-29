@@ -32,6 +32,7 @@
   margin-left: 3px;
   content: "\f508";
 }
+
 .ri-pause-large-line:before {
   content: "\f507";
 }
@@ -98,6 +99,27 @@
 .ri-arrow-down-wide-line:before {
   content: "\f492";
 }
+.ri-speed-mini-fill:before {
+  content: "\f178";
+}
+.ri-volume-up-fill:before {
+  content: "\f2a1";
+}
+.ri-play-circle-fill:before {
+  content: "\f008";
+}
+.ri-pause-circle-fill:before {
+  content: "\efd5";
+}
 .ri-share-line:before {
   content: "\f0fe";
+}
+.ri-github-line:before {
+  content: "\edcb";
+}
+.ri-global-line:before {
+  content: "\edcf";
+}
+.ri-global-fill:before {
+  content: "\edce";
 }
