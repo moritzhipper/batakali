@@ -1,7 +1,7 @@
-import { useAudioStore } from "../../state/audioState"
-import { DownloadLink } from "../action-buttons/DownloadLink"
-import { LoopButton } from "../action-buttons/LoopButton"
-import { PlayPauseButton } from "../action-buttons/PlayPauseButton"
+import { useAudioStore } from "../../../state/audioState"
+import { DownloadLink } from "../../action-buttons/DownloadLink"
+import { LoopButton } from "../../action-buttons/LoopButton"
+import { PlayPauseButton } from "../../action-buttons/PlayPauseButton"
 import "./MediaControls.css"
 
 type Props = {
