@@ -93,10 +93,12 @@ export const NavBarMobile = () => {
                       <a
                         className="ri-global-line"
                         href="https://moritzhipper.me"
+                        target="_blank"
                       />
                       <a
                         className="ri-github-line"
                         href="https://github.com/moritzhipper/angry-ducko"
+                        target="_blank"
                       />
                     </div>
                     <div className="legal">

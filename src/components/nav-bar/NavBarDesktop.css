@@ -21,11 +21,14 @@
     font-weight: 400;
   }
 
-  a:not(.home, .me) {
-    padding-bottom: 4px;
-  }
-
   .impressum {
     margin-left: auto;
+  }
+
+  a.me,
+  a.github {
+    &::before {
+      font-size: var(--font-size-xl);
+    }
   }
 }

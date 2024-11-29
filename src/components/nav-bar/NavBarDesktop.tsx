@@ -23,14 +23,17 @@ export const NavBarDesktop = () => {
       <Link className="legal" to="/privacy">
         datenschutz
       </Link>
-      <a className="me" target="_blank" href="https://moritzhipper.me">
-        🌐
-      </a>
+
       <a
-        className="github-logo me"
+        className="ri-global-line me"
+        href="https://moritzhipper.me"
         target="_blank"
+      />
+      <a
+        className="ri-github-line github"
         href="https://github.com/moritzhipper/angry-ducko"
-      ></a>
+        target="_blank"
+      />
     </div>
   )
 }
