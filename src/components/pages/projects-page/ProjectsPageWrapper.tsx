@@ -27,7 +27,7 @@ export const ProjectsPage = () => {
   })
 
   const { translateY } = useSpring({
-    translateY: playerVisible ? "0%" : "-50%",
+    translateY: playerVisible ? "0%" : "-25%",
     ...springConfig
   })
 
