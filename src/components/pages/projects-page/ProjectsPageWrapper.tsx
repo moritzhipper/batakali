@@ -40,7 +40,7 @@ export const ProjectsPage = () => {
               <MediaControls onHide={togglePlayer} />
             </a.div>
           ) : (
-            <a.div className="content" style={{ ...style }}>
+            <a.div className="projects-wrapper" style={{ ...style }}>
               <ProjectsViewMobile onHide={togglePlayer} />
             </a.div>
           )

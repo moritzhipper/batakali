@@ -1,0 +1,50 @@
+.projects-view-mobile {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  .selector-wrapper {
+    position: relative;
+    flex: 1;
+    .project-selector {
+      aspect-ratio: 1;
+      position: absolute;
+      box-sizing: border-box;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+  }
+
+  h1 {
+    position: relative;
+    align-self: center;
+    padding: 0;
+    margin-bottom: var(--distance-s);
+    z-index: 100;
+
+    button {
+      position: absolute;
+      scale: 1;
+      opacity: 0.5;
+      transition: opacity var(--animation-duration-s);
+      bottom: 0;
+
+      &.hide {
+        span {
+          font-size: 21px;
+        }
+        transform: translate(-35px, 15px) rotate(25deg);
+        left: 0;
+      }
+      &.filter {
+        right: 0;
+        transform: translate(28px, 20px) rotate(30deg);
+      }
+
+      &.active {
+        opacity: 1;
+      }
+    }
+  }
+}

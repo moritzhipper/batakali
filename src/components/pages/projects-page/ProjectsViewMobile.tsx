@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import { springConfig } from "../../../duckoSzeneConfig"
 import { useAudioStore } from "../../../state/audioState"
 import { ProjectReel } from "./ProjectReel"
+import "./ProjectsViewMobile.css"
 import { TagSelector } from "./TagSelector"
 
 type Props = {
@@ -38,7 +39,7 @@ export const ProjectsViewMobile = ({ onHide }: Props) => {
   })
 
   return (
-    <>
+    <div className="projects-view-mobile">
       <h1>
         <span>Projects</span>
         <button className="hide" onClick={onHide}>
@@ -57,6 +58,6 @@ export const ProjectsViewMobile = ({ onHide }: Props) => {
           </a.div>
         ))}
       </div>
-    </>
+    </div>
   )
 }
