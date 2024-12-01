@@ -16,8 +16,7 @@
 - SelectionElements auslagern in 'Mobile ProjectSelector'. Neu anlegen: Desktop Project selector
 - diesen fehler fixen: WebGL warning: drawElementsInstanced: Drawing to a destination rect smaller than the viewport rect. (This warning will only be given once)
 - scrollstate der liste immer merken. nur element anscrollen, wenn tag selektiert wird oder beat geteilt wird
-- project card oder medicontrols consolidieren? download und share sonst drei mal umgesetzt
-- ig account verlinken
+  2- ig account verlinken
 - nur viewports.css oder den hook nutzen?
 - nur die items animieren, die sichtbar sind, für alle anderen return getStyle standardwerte
 - auf desktop beide nebeneinander, auf mobile filterbutton
