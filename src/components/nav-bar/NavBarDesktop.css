@@ -18,15 +18,16 @@
 
   a:not(.home) {
     font-size: var(--font-size-l);
-    font-weight: 400;
   }
 
   .impressum {
     margin-left: auto;
   }
 
-  a.me {
-    &::before {
+  .me {
+    display: flex;
+    gap: var(--distance-xs);
+    a {
       font-size: var(--font-size-xl);
     }
   }

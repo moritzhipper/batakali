@@ -16,7 +16,6 @@ export const NavBarDesktop = () => {
       <Link className="page" to="/about">
         about
       </Link>
-
       <Link className="legal impressum" to="/imprint">
         impressum
       </Link>
@@ -24,21 +23,23 @@ export const NavBarDesktop = () => {
         datenschutz
       </Link>
 
-      <a
-        className="ri-global-line me"
-        href="https://moritzhipper.me"
-        target="_blank"
-      />
-      <a
-        className="ri-github-line me"
-        href="https://github.com/moritzhipper/angry-ducko"
-        target="_blank"
-      />
-      <a
-        className="ri-instagram-line me"
-        href="https://github.com/moritzhipper/angry-ducko"
-        target="_blank"
-      />
+      <div className="me">
+        <a
+          className="ri-global-line"
+          href="https://moritzhipper.me"
+          target="_blank"
+        />
+        <a
+          className="ri-github-line"
+          href="https://github.com/moritzhipper/angry-ducko"
+          target="_blank"
+        />
+        <a
+          className="ri-instagram-line"
+          href="https://github.com/moritzhipper/angry-ducko"
+          target="_blank"
+        />
+      </div>
     </div>
   )
 }
