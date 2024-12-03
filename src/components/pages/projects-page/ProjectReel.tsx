@@ -1,6 +1,6 @@
 import { a, useSprings } from "@react-spring/web"
 import { useGesture } from "@use-gesture/react"
-import { useRef } from "react"
+import { useRef, useState } from "react"
 import { springConfig } from "../../../duckoSzeneConfig"
 import { useAudioStore } from "../../../state/audioState"
 import { Project } from "../../../types"
@@ -16,20 +16,25 @@ export const ProjectReel = () => {
 
   const isMobile = useMediaQuery("(max-width: 700px)")
   const projectCount = projectList.length
-  const itemOffset = isMobile ? 40 : 120
+  const itemOffset = isMobile ? 50 : 150
   const dragScale = isMobile ? 0.4 : 1
   const wheelScale = 0.2
 
-  const currentIndex = useRef(
+  const [currI, setCurrentIndex] = useState(
     getProjectIndex(projectList, selectedProject.name)
   )
-  const currentScrollPos = useRef(currentIndex.current * itemOffset * -1)
+
+  const currentScrollPos = useRef(currI * itemOffset * -1)
 
   // used to calculate scroll position relative to selected card
   const getTrueScrollPos = (offset: number) => offset + currentScrollPos.current
 
   // returns percentage of offset between 0 and maxDistance
   const getPercentByDistance = (offset: number, maxDistance: number) =>
+    offset / (itemOffset * maxDistance)
+
+  // returns percentage of offset between 0 and maxDistance, only returning positive values
+  const getAbsPercentByDistance = (offset: number, maxDistance: number) =>
     Math.abs(offset / (itemOffset * maxDistance))
 
   // maps scroll position to index
@@ -40,52 +45,51 @@ export const ProjectReel = () => {
 
   // return distance between current index and index
   const getRelativeOffsetForCurrentIndex = (index: number) =>
-    (index - currentIndex.current) * itemOffset
+    (index - currI) * itemOffset
 
   // returns style object for each project index
-  const getStyle = (i: number, offset: number) => {
+  const calcStyle = (i: number, offset: number) => {
     let offsetX = i * itemOffset + getTrueScrollPos(offset)
 
     // prohibit scroll on first last list item
     if (
-      (currentIndex.current === projectCount - 1 && offset < 0) ||
-      (currentIndex.current === 0 && offset > 0)
+      (currI === projectCount - 1 && offset < 0) ||
+      (currI === 0 && offset > 0)
     ) {
       offsetX = getRelativeOffsetForCurrentIndex(i)
     }
 
-    const pointerEvents = currentIndex.current !== i ? "none" : "all"
-    const hideBody = currentIndex.current > i || currentIndex.current < i - 2
     return {
       x: offsetX,
-      scale: 1 - getPercentByDistance(offsetX, 7),
+      scale: 1 - getAbsPercentByDistance(offsetX, 7),
       rotateZ: getPercentByDistance(offsetX, 3) * 5,
-      opacityContent: 1 - getPercentByDistance(offsetX, 1),
-      opacityBody: hideBody ? 0 : 1,
-      zIndex: hideBody ? -1 : 1,
-      pointerEvents
+      rotateY: getPercentByDistance(offsetX, 2) * 20,
+      opacityContent: 1 - getAbsPercentByDistance(offsetX, 1),
+      opacityBody: 1 - getAbsPercentByDistance(offsetX, 3)
     }
   }
 
   const scroll = (offset: number): void => {
-    currentIndex.current = toIndex(getTrueScrollPos(offset) / itemOffset)
-    api.start((i) => getStyle(i, offset))
+    const newI = toIndex(getTrueScrollPos(offset) / itemOffset)
+    if (newI !== currI) setCurrentIndex(newI)
+
+    api.start((i) => calcStyle(i, offset))
   }
 
   const snap = (): void => {
-    currentScrollPos.current = currentIndex.current * itemOffset * -1
-    api.start((i) => getStyle(i, 0))
+    currentScrollPos.current = currI * itemOffset * -1
+    api.start((i) => calcStyle(i, 0))
   }
 
   const focusCard = (i: number): void => {
-    currentIndex.current = i
-    currentScrollPos.current = currentIndex.current * itemOffset * -1
+    currentScrollPos.current = i * itemOffset * -1
+    setCurrentIndex(i)
 
-    api.start((i) => getStyle(i, 0))
+    api.start((i) => calcStyle(i, 0))
   }
 
   const [props, api] = useSprings(projectCount, (i) => ({
-    ...getStyle(i, 0),
+    ...calcStyle(i, 0),
     ...springConfig
   }))
 
@@ -104,38 +108,34 @@ export const ProjectReel = () => {
     name === selectedProject.name && isPlaying
 
   return (
-    <>
-      <div className="project-reel-wrapper" {...bind()}>
-        {props.map(
-          (
-            { x, scale, rotateZ, opacityBody, opacityContent, pointerEvents },
-            i
-          ) => (
-            <a.div
-              className="project"
-              style={{
-                x,
-                scale,
-                rotateZ,
-                opacity: opacityBody,
-                zIndex: projectCount - i,
-                pointerEvents
-              }}
-              key={i}
-              onFocus={() => focusCard(i)}
-            >
-              <a.div className="content" style={{ opacity: opacityContent }}>
-                <ProjectCard
-                  project={projectList[i]}
-                  isPlaying={checkIfPlaying(projectList[i].name)}
-                  playProject={playProject}
-                />
-              </a.div>
+    <div className="project-reel-wrapper" {...bind()}>
+      {props.map(
+        ({ x, scale, rotateZ, opacityBody, opacityContent, rotateY }, i) => (
+          <a.div
+            className="project"
+            style={{
+              x,
+              scale,
+              rotateZ,
+              rotateY,
+              opacity: opacityBody,
+              zIndex: currI === i ? 10 : -1,
+              pointerEvents: currI === i ? "all" : "none"
+            }}
+            key={i}
+            onFocus={() => focusCard(i)}
+          >
+            <a.div className="content" style={{ opacity: opacityContent }}>
+              <ProjectCard
+                project={projectList[i]}
+                isPlaying={checkIfPlaying(projectList[i].name)}
+                playProject={playProject}
+              />
             </a.div>
-          )
-        )}
-      </div>
-    </>
+          </a.div>
+        )
+      )}
+    </div>
   )
 }
 
