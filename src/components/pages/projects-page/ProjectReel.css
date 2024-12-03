@@ -21,6 +21,7 @@
     border: solid var(--accent-2);
     border-width: 1px 1px 1px 12px;
     overflow: hidden;
+    background-color: var(--accent-3);
 
     .content {
       height: 100%;
@@ -30,7 +31,6 @@
       display: flex;
       justify-content: space-between;
       flex-direction: column;
-      background-color: var(--accent-3);
       user-select: none;
       cursor: grab;
 

@@ -16,7 +16,7 @@ export const ProjectReel = () => {
 
   const isMobile = useMediaQuery("(max-width: 700px)")
   const projectCount = projectList.length
-  const itemOffset = isMobile ? 40 : 80
+  const itemOffset = isMobile ? 40 : 120
   const dragScale = isMobile ? 0.4 : 1
   const wheelScale = 0.2
 
