@@ -100,6 +100,11 @@ export const NavBarMobile = () => {
                         href="https://github.com/moritzhipper/angry-ducko"
                         target="_blank"
                       />
+                      <a
+                        className="ri-instagram-line"
+                        href="https://github.com/moritzhipper/angry-ducko"
+                        target="_blank"
+                      />
                     </div>
                     <div className="legal">
                       <Link to="/imprint">impressum</Link>

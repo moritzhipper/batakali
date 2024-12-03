@@ -30,7 +30,12 @@ export const NavBarDesktop = () => {
         target="_blank"
       />
       <a
-        className="ri-github-line github"
+        className="ri-github-line me"
+        href="https://github.com/moritzhipper/angry-ducko"
+        target="_blank"
+      />
+      <a
+        className="ri-instagram-line me"
         href="https://github.com/moritzhipper/angry-ducko"
         target="_blank"
       />
