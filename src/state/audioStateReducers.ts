@@ -28,7 +28,8 @@ export const prioritizeByTag = (tag: string, state: AudioState): AudioState => {
   return {
     ...state,
     selectedTag: tag,
-    projectList: prioritizedProjects
+    projectList: prioritizedProjects,
+    focusedProjectName: prioritizedProjects[0].name
   }
 }
 
