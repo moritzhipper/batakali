@@ -10,8 +10,6 @@
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   color-scheme: light dark;
-  display: flex;
-  justify-content: center;
 }
 
 body {

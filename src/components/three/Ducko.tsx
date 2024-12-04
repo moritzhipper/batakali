@@ -7,7 +7,7 @@ import duck from "../../assets/images/angry/duck.png"
 import feather from "../../assets/images/angry/feather.png"
 import shard1 from "../../assets/images/angry/shard1.png"
 import shard2 from "../../assets/images/angry/shard2.png"
-import chick from "../../assets/images/cutesy/hatched_chick.png"
+import chick from "../../assets/images/cutesy/duck_teeth.png"
 import heart1 from "../../assets/images/cutesy/heart.png"
 import heart2 from "../../assets/images/cutesy/purple_heart.png"
 
@@ -30,7 +30,6 @@ const shardConfigList: ShardGeneratorConfig[] = [
 
 export const Ducko = memo(({ duckoConfig, isCute = true }: Props) => {
   const { animateFloating, shardsVisible } = duckoConfig
-
   const shardRef = useRef<Group>(null!)
   const audioImpactRef = useAudioGain()
 
