@@ -14,11 +14,13 @@ export type AudioState = {
   isPlaying: boolean
   isLooping: boolean
   selectedProject: Project
+  focusedProjectName: string
   projectList: Project[]
   audio: HTMLAudioElement
   selectedTag: string | null
   selectProject: (name: string) => void
   selectAndPlayProject: (name: string) => void
+  focusProject: (name: string) => void
   selectTag: (tag: string) => void
   togglePlay: () => void
   toggleLoop: () => void
@@ -28,17 +30,12 @@ export type AudioState = {
   selectPrevious: () => void
 }
 
-const getProjectFromSearchParam = (): Project | undefined => {
-  const searchParams = new URLSearchParams(window.location.search)
-  const sharedProjectName = searchParams.get("project")
-  return projectList.find((project) => project.name === sharedProjectName)
-}
-
 const initialProject = projectList[0]
 
 const initialState = {
   isPlaying: false,
   selectedProject: initialProject,
+  focusedProjectName: initialProject.name,
   projectList: projectList,
   selectedTag: null,
   isLooping: false,
@@ -53,6 +50,8 @@ export const useAudioStore = create<AudioState>()(
     selectAndPlayProject: (name: string) =>
       set((state) => selectAndPlayProjectByName(name, state)),
     selectTag: (tag: string) => set((state) => prioritizeByTag(tag, state)),
+    focusProject: (name: string) =>
+      set((state) => ({ ...state, focusedProjectName: name })),
     togglePlay: () =>
       set((state) => ({ ...state, isPlaying: !state.isPlaying })),
     toggleLoop: () =>

@@ -1,6 +1,6 @@
 import { a, useSprings } from "@react-spring/web"
 import { useGesture } from "@use-gesture/react"
-import { useRef, useState } from "react"
+import { useRef } from "react"
 import { springConfig } from "../../../duckoSzeneConfig"
 import { useAudioStore } from "../../../state/audioState"
 import { Project } from "../../../types"
@@ -11,8 +11,14 @@ import { ShareButton } from "../../action-buttons/ShareButton"
 import "./ProjectReel.css"
 
 export const ProjectReel = () => {
-  const { projectList, selectProject, togglePlay, isPlaying, selectedProject } =
-    useAudioStore()
+  const {
+    projectList,
+    selectProject,
+    togglePlay,
+    isPlaying,
+    focusProject,
+    focusedProjectName
+  } = useAudioStore()
 
   const isMobile = useMediaQuery("(max-width: 700px)")
   const projectCount = projectList.length
@@ -20,9 +26,7 @@ export const ProjectReel = () => {
   const dragScale = isMobile ? 0.4 : 1
   const wheelScale = 0.2
 
-  const [currI, setCurrentIndex] = useState(
-    getProjectIndex(projectList, selectedProject.name)
-  )
+  const currI = getProjectIndex(projectList, focusedProjectName)
 
   const currentScrollPos = useRef(currI * itemOffset * -1)
 
@@ -71,7 +75,7 @@ export const ProjectReel = () => {
 
   const scroll = (offset: number): void => {
     const newI = toIndex(getTrueScrollPos(offset) / itemOffset)
-    if (newI !== currI) setCurrentIndex(newI)
+    if (newI !== currI) focusProject(projectList[newI].name)
 
     api.start((i) => calcStyle(i, offset))
   }
@@ -83,7 +87,7 @@ export const ProjectReel = () => {
 
   const focusCard = (i: number): void => {
     currentScrollPos.current = i * itemOffset * -1
-    setCurrentIndex(i)
+    focusProject(projectList[i].name)
 
     api.start((i) => calcStyle(i, 0))
   }
@@ -105,7 +109,7 @@ export const ProjectReel = () => {
   }
 
   const checkIfPlaying = (name: string) =>
-    name === selectedProject.name && isPlaying
+    name === focusedProjectName && isPlaying
 
   return (
     <div className="project-reel-wrapper" {...bind()}>

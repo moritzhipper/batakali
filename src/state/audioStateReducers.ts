@@ -6,7 +6,8 @@ export const selectProjectByName = (
   state: AudioState
 ): AudioState => ({
   ...state,
-  selectedProject: getProjectByName(name, state)
+  selectedProject: getProjectByName(name, state),
+  focusedProjectName: name
 })
 
 export const selectAndPlayProjectByName = (
@@ -56,6 +57,11 @@ export const selectPreviousProject = (state: AudioState): AudioState => {
     selectedProject: previousProject
   }
 }
+
+export const focusProjectByName = (
+  name: string,
+  state: AudioState
+): AudioState => ({ ...state, fu })
 
 const getSelectedProjectIndex = (state: AudioState): number =>
   state.projectList.findIndex(
