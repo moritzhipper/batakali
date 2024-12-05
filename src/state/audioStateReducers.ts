@@ -7,7 +7,7 @@ export const selectProjectByName = (
 ): AudioState => ({
   ...state,
   selectedProject: getProjectByName(name, state),
-  focusedProjectName: name
+  reelFocusProject: name
 })
 
 export const selectAndPlayProjectByName = (
@@ -29,7 +29,7 @@ export const prioritizeByTag = (tag: string, state: AudioState): AudioState => {
     ...state,
     selectedTag: tag,
     projectList: prioritizedProjects,
-    focusedProjectName: prioritizedProjects[0].name
+    reelFocusProject: prioritizedProjects[0].name
   }
 }
 

@@ -16,8 +16,8 @@ export const ProjectReel = () => {
     selectProject,
     togglePlay,
     isPlaying,
-    focusProject,
-    focusedProjectName
+    setReelFocusProject,
+    reelFocusProject
   } = useAudioStore()
 
   const isMobile = useMediaQuery("(max-width: 700px)")
@@ -26,7 +26,7 @@ export const ProjectReel = () => {
   const dragScale = isMobile ? 0.4 : 1
   const wheelScale = 0.2
 
-  const currI = getProjectIndex(projectList, focusedProjectName)
+  const currI = getProjectIndex(projectList, reelFocusProject)
 
   const currentScrollPos = useRef(currI * itemOffset * -1)
 
@@ -74,7 +74,7 @@ export const ProjectReel = () => {
 
   const scroll = (offset: number): void => {
     const newI = toIndex(getTrueScrollPos(offset) / itemOffset)
-    if (newI !== currI) focusProject(projectList[newI].name)
+    if (newI !== currI) setReelFocusProject(projectList[newI].name)
 
     api.start((i) => calcStyle(i, offset))
   }
@@ -86,7 +86,7 @@ export const ProjectReel = () => {
 
   const focusCard = (i: number): void => {
     currentScrollPos.current = i * itemOffset * -1
-    focusProject(projectList[i].name)
+    setReelFocusProject(projectList[i].name)
 
     api.start((i) => calcStyle(i, 0))
   }
@@ -108,20 +108,18 @@ export const ProjectReel = () => {
   }
 
   const checkIfPlaying = (name: string) =>
-    name === focusedProjectName && isPlaying
+    name === reelFocusProject && isPlaying
 
   return (
     <div className="project-reel-wrapper" {...bind()}>
       {props.map(({ x, scale, rotateZ, opacityBody, opacityContent }, i) => (
         <a.div
-          className="project"
+          className={`project ${currI === i ? "focus" : ""}`}
           style={{
             x,
             scale,
             rotateZ,
-            opacity: opacityBody,
-            zIndex: currI === i ? 10 : -1,
-            pointerEvents: currI === i ? "all" : "none"
+            opacity: opacityBody
           }}
           key={i}
           onFocus={() => focusCard(i)}

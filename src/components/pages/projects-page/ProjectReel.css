@@ -9,19 +9,24 @@
 
   .project {
     --dimension: calc(100% - var(--distance-l) * 2);
-
     position: absolute;
     height: var(--dimension);
-    object-fit: cover;
-
     aspect-ratio: 1;
-    max-width: var(--dimension);
     box-sizing: border-box;
     border-radius: var(--radius-s);
     border: solid var(--accent-2);
     border-width: 2px 1px 1px 12px;
-    overflow: hidden;
     background-color: var(--accent-3);
+
+    &:not(.focus) {
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    &.focus {
+      pointer-events: all;
+      z-index: 10;
+    }
 
     .content {
       height: 100%;

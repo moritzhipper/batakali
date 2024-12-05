@@ -14,13 +14,13 @@ export type AudioState = {
   isPlaying: boolean
   isLooping: boolean
   selectedProject: Project
-  focusedProjectName: string
+  reelFocusProject: string
   projectList: Project[]
   audio: HTMLAudioElement
   selectedTag: string | null
   selectProject: (name: string) => void
   selectAndPlayProject: (name: string) => void
-  focusProject: (name: string) => void
+  setReelFocusProject: (name: string) => void
   selectTag: (tag: string) => void
   togglePlay: () => void
   toggleLoop: () => void
@@ -50,8 +50,8 @@ export const useAudioStore = create<AudioState>()(
     selectAndPlayProject: (name: string) =>
       set((state) => selectAndPlayProjectByName(name, state)),
     selectTag: (tag: string) => set((state) => prioritizeByTag(tag, state)),
-    focusProject: (name: string) =>
-      set((state) => ({ ...state, focusedProjectName: name })),
+    setReelFocusProject: (name: string) =>
+      set((state) => ({ ...state, reelFocusProject: name })),
     togglePlay: () =>
       set((state) => ({ ...state, isPlaying: !state.isPlaying })),
     toggleLoop: () =>
