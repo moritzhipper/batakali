@@ -19,7 +19,7 @@
     box-sizing: border-box;
     border-radius: var(--radius-s);
     border: solid var(--accent-2);
-    border-width: 1px 1px 1px 12px;
+    border-width: 2px 1px 1px 12px;
     overflow: hidden;
     background-color: var(--accent-3);
 
