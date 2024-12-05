@@ -12,6 +12,8 @@
 
 ## Project selector
 
+- reels optimieren -> class anstatt z-index und userinteract in template
+- scroll logik so optimieren wie die tage probiert, aber dieses mal mit der store action
 - projectReels -> useMedia hook ablösen durch input. Parentseite nutzt hook schon
 - SelectionElements auslagern in 'Mobile ProjectSelector'. Neu anlegen: Desktop Project selector
 - diesen fehler fixen: WebGL warning: drawElementsInstanced: Drawing to a destination rect smaller than the viewport rect. (This warning will only be given once)

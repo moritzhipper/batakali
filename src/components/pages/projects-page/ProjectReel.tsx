@@ -22,7 +22,7 @@ export const ProjectReel = () => {
 
   const isMobile = useMediaQuery("(max-width: 700px)")
   const projectCount = projectList.length
-  const itemOffset = isMobile ? 50 : 150
+  const itemOffset = isMobile ? 45 : 150
   const dragScale = isMobile ? 0.4 : 1
   const wheelScale = 0.2
 
@@ -67,7 +67,6 @@ export const ProjectReel = () => {
       x: offsetX,
       scale: 1 - getAbsPercentByDistance(offsetX, 7),
       rotateZ: getPercentByDistance(offsetX, 3) * 5,
-      rotateY: getPercentByDistance(offsetX, 2) * 20,
       opacityContent: 1 - getAbsPercentByDistance(offsetX, 1),
       opacityBody: 1 - getAbsPercentByDistance(offsetX, 3)
     }
@@ -113,32 +112,29 @@ export const ProjectReel = () => {
 
   return (
     <div className="project-reel-wrapper" {...bind()}>
-      {props.map(
-        ({ x, scale, rotateZ, opacityBody, opacityContent, rotateY }, i) => (
-          <a.div
-            className="project"
-            style={{
-              x,
-              scale,
-              rotateZ,
-              rotateY,
-              opacity: opacityBody,
-              zIndex: currI === i ? 10 : -1,
-              pointerEvents: currI === i ? "all" : "none"
-            }}
-            key={i}
-            onFocus={() => focusCard(i)}
-          >
-            <a.div className="content" style={{ opacity: opacityContent }}>
-              <ProjectCard
-                project={projectList[i]}
-                isPlaying={checkIfPlaying(projectList[i].name)}
-                playProject={playProject}
-              />
-            </a.div>
+      {props.map(({ x, scale, rotateZ, opacityBody, opacityContent }, i) => (
+        <a.div
+          className="project"
+          style={{
+            x,
+            scale,
+            rotateZ,
+            opacity: opacityBody,
+            zIndex: currI === i ? 10 : -1,
+            pointerEvents: currI === i ? "all" : "none"
+          }}
+          key={i}
+          onFocus={() => focusCard(i)}
+        >
+          <a.div className="content" style={{ opacity: opacityContent }}>
+            <ProjectCard
+              project={projectList[i]}
+              isPlaying={checkIfPlaying(projectList[i].name)}
+              playProject={playProject}
+            />
           </a.div>
-        )
-      )}
+        </a.div>
+      ))}
     </div>
   )
 }
