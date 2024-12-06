@@ -45,7 +45,7 @@
   .page-wrapper.archive {
     .projects-wrapper {
       grid-template-columns: 1fr 1fr;
-      border-top: 1px solid rgb(from var(--accent-2) r g b / 0.6);
+      border-top: 2px solid rgb(from var(--accent-2) r g b / 0.6);
       padding: var(--distance-s);
 
       border-radius: var(--radius-l) 0;
