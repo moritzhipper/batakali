@@ -57,6 +57,7 @@
       }
 
       button.play {
+        justify-self: center;
         font-size: 70px;
       }
     }
