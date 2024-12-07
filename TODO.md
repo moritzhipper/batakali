@@ -7,30 +7,18 @@
 
 ## SzeneCOnfig
 
-- Proejct selector aufräumen -> playerview und projectview auslagern? macht eigentlich voll sinn
-- in projectreel getStyle for mobil und desktop differenzieren
+- Proejct selector aufräumen
+- current scroll position cleanen -> ganze logik consolidieren
 
 ## Project selector
 
-- reels optimieren -> class anstatt z-index und userinteract in template
 - scroll logik so optimieren wie die tage probiert, aber dieses mal mit der store action
-- projectReels -> useMedia hook ablösen durch input. Parentseite nutzt hook schon
-- SelectionElements auslagern in 'Mobile ProjectSelector'. Neu anlegen: Desktop Project selector
-- diesen fehler fixen: WebGL warning: drawElementsInstanced: Drawing to a destination rect smaller than the viewport rect. (This warning will only be given once)
-- scrollstate der liste immer merken. nur element anscrollen, wenn tag selektiert wird oder beat geteilt wird
-  2- ig account verlinken
-- nur viewports.css oder den hook nutzen?
+- ig account verlinken
 - nur die items animieren, die sichtbar sind, für alle anderen return getStyle standardwerte
-- auf desktop beide nebeneinander, auf mobile filterbutton
-- farbe: wichtige elemente weiß, nicht so wichtige grau
-
-## Archivpage
 
 ## Audio Service
 
 - is playing state abhängig machen von play state des media elements über useCallback
-- check: rerender of ducko only when selected inputs change -> no rerender when route changes
-- rerendering of ducko checken
 
 ## Happy ducko
 
