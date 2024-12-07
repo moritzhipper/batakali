@@ -66,9 +66,16 @@
     .tags {
       border-radius: var(--radius-m);
       border-top: 2px solid var(--accent-2);
-      padding-top: var(--distance-m);
+      padding: var(--distance-m);
+      margin: 0 var(--distance-l);
       max-width: 720px;
       justify-content: center;
+
+      background: linear-gradient(
+        180deg,
+        rgb(from var(--accent-3) r g b / 0.8) 0%,
+        rgba(0, 0, 0, 0) 100%
+      );
     }
   }
 }
