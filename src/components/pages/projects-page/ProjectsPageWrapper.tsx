@@ -3,8 +3,8 @@ import { useEffect, useState } from "react"
 import { springConfig } from "../../../duckoSzeneConfig"
 import { useSzeneState } from "../../../state/szeneState"
 import { MediaControls } from "./MediaControls"
+import { ProjectSelectorView } from "./ProjectSelectorView"
 import "./ProjectsPageWrapper.css"
-import { ProjectSelector } from "./ProjectSelector"
 
 export const ProjectsPage = () => {
   const [playerVisible, setPlayerVisible] = useState(false)
@@ -41,7 +41,7 @@ export const ProjectsPage = () => {
             </a.div>
           ) : (
             <a.div className="projects-wrapper" style={{ ...style }}>
-              <ProjectSelector onHide={togglePlayer} />
+              <ProjectSelectorView onHide={togglePlayer} />
             </a.div>
           )
         )}

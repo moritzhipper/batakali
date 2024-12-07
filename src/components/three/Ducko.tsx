@@ -28,7 +28,7 @@ const shardConfigList: ShardGeneratorConfig[] = [
   { amount: 80, height: 0.5, innerRadius: 9, outerRadius: 20 }
 ]
 
-export const Ducko = memo(({ duckoConfig, isCute = true }: Props) => {
+export const Ducko = memo(({ duckoConfig, isCute = false }: Props) => {
   const { animateFloating, shardsVisible } = duckoConfig
   const shardRef = useRef<Group>(null!)
   const audioImpactRef = useAudioGain()
