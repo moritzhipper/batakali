@@ -125,7 +125,7 @@ export const ProjectReel = () => {
           onFocus={() => focusCard(i)}
         >
           <a.div className="content" style={{ opacity: opacityContent }}>
-            <ProjectCard
+            <ProjectCardContent
               project={projectList[i]}
               isPlaying={checkIfPlaying(projectList[i].name)}
               playProject={playProject}
@@ -142,7 +142,11 @@ type ProjectCardProps = {
   isPlaying: boolean
   playProject: (name: string) => void
 }
-const ProjectCard = ({ project, isPlaying, playProject }: ProjectCardProps) => {
+const ProjectCardContent = ({
+  project,
+  isPlaying,
+  playProject
+}: ProjectCardProps) => {
   return (
     <>
       <div className="info">

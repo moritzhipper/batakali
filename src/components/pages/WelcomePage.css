@@ -3,10 +3,34 @@
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
   place-items: center;
+  overflow: hidden;
 
-  p.normal {
+  .header,
+  .checkout {
+    position: relative;
+    justify-content: center;
+
+    &::after {
+      position: absolute;
+      content: "";
+      z-index: -1;
+      background-color: var(--accent-3);
+      width: 400%;
+      height: 300%;
+      filter: blur(100px);
+    }
+  }
+  p {
     opacity: 0.7;
-    font-size: var(--font-size-l);
+  }
+
+  .header::after {
+    translate: 0 -20%;
+    border-radius: 25% 25% 50% 50%;
+  }
+
+  .checkout::after {
+    border-radius: 50%;
   }
 
   .header {
@@ -17,42 +41,37 @@
 
     h1 {
       padding: 0;
+      font-size: var(--font-size-4xl);
     }
     p {
       margin-top: var(--distance-xs);
-      font-weight: 400;
+      font-size: var(--font-size-xl);
     }
   }
-
-  a {
+  .checkout {
     grid-row: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-    &.default {
-      font-size: var(--font-size-2xl);
+    .cta {
       font-weight: 300;
-    }
 
-    &.shared {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      &:not(.shared) {
+        font-size: var(--font-size-2xl);
+      }
+      &.shared {
+        font-size: var(--font-size-3xl);
+      }
+
+      /* shine animation */
+      mask-image: linear-gradient(-75deg, #000 10%, #0007 15%, #000 20%);
+      mask-size: 200%;
+      mask-position: 200%;
+      animation: shine 6s linear infinite;
+      animation-delay: 3s;
     }
   }
-
-  .cta {
-    font-weight: 300;
-    font-size: var(--font-size-2xl);
-
-    /* shine animation */
-    mask-image: linear-gradient(-75deg, #000 10%, #0007 15%, #000 20%);
-    mask-size: 200%;
-    mask-position: 200%;
-    animation: shine 6s linear infinite;
-    animation-delay: 3s;
-  }
-}
-
-.test {
 }
 
 @keyframes shine {
