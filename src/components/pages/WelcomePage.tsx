@@ -29,7 +29,7 @@ export const WelcomePage = () => {
         <p> vibes and tunes</p>
       </div>
       <div className="checkout">
-        {shareMode ? (
+        {!shareMode ? (
           <>
             <p>a track was shared with you</p>
             <Link className="cta shared" to="/projects">
