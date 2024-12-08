@@ -1,5 +1,5 @@
 import { config } from "@react-spring/core"
-import { DeepPartial, DuckoSzeneConfig } from "./types"
+import { DeepPartial, DuckoSpriteConfig, DuckoSzeneConfig } from "./types"
 
 export const springConfig = { config: config.gentle }
 
@@ -66,4 +66,20 @@ export const duckoSzenes: Record<string, DeepPartial<DuckoSzeneConfig>> = {
       lookAt: [0, 0, 0]
     }
   }
+}
+
+const importImage = (path: string): string => {
+  // need to create the fullPath const to circumvent vite bug that
+  // arises when using template literals directly in URL constructor
+  const fullPath = `./assets/images/${path}.png`
+  return new URL(fullPath, import.meta.url).href
+}
+
+export const duckSpritesPainty: DuckoSpriteConfig = {
+  ducko: importImage("painty/duck"),
+  shards: [
+    importImage("painty/bling"),
+    importImage("painty/heart_1"),
+    importImage("painty/heart_2")
+  ]
 }

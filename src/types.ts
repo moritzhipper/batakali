@@ -18,6 +18,11 @@ export type DuckoSzeneConfig = {
   camera: CameraConfig
 }
 
+export type DuckoSpriteConfig = {
+  ducko: string
+  shards: string[]
+}
+
 export type Project = {
   name: string
   tag: string
