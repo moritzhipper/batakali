@@ -17,7 +17,6 @@ export const ThreeWrapper = () => {
   return (
     <div className={`three-wrapper ${activeSzene.ducko.dim ? "dim" : ""}`}>
       <Canvas>
-        <fog attach="fog" args={["white", 0, 25]} />
         <CameraDolly cameraConfig={activeSzene.camera} />
         <pointLight position={[3, 4, 3]} intensity={100} color={"white"} />
         <Ducko duckoConfig={activeSzene.ducko} />

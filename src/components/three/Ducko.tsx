@@ -2,12 +2,13 @@ import { Float } from "@react-three/drei"
 import { useFrame, useLoader } from "@react-three/fiber"
 import { memo, useEffect, useMemo, useRef } from "react"
 import { Group, Texture, TextureLoader, Vector3 } from "three"
-import { lerp } from "three/src/math/MathUtils.js"
+import { lerp, MathUtils } from "three/src/math/MathUtils.js"
 
 import { duckoSpritesAngry } from "../../config/szeneConfig"
 import { useAudioStore } from "../../state/audioState"
 import { DuckoConfig } from "../../types"
 import { ImageElement } from "./Shard"
+import { TagName } from "./TagName"
 import { useAudioGain } from "./useAudioGainHook"
 import { getRandomPositionInSphereWithXBias, randomInt } from "./utils"
 
@@ -28,6 +29,8 @@ export const Ducko = memo(({ duckoConfig }: Props) => {
   const szeneRef = useRef<Group>(null!)
   const audioImpactRef = useAudioGain()
 
+  const isInitialRender = useRef(true)
+
   // hier automatismus einbauen, der andere duckos erlaubt
   const { selectedProject } = useAudioStore()
   const { ducko, shards } = duckoSpritesAngry
@@ -39,33 +42,29 @@ export const Ducko = memo(({ duckoConfig }: Props) => {
     []
   )
 
-  const turnSzeneAway = () => {
-    szeneRef.current.rotation.y = Math.PI / 3
-    szeneRef.current.traverse((child) => {
-      if (child.isMesh || child.isSprite) {
-        child.material.opacity = 0
-      }
-    })
-  }
-
   useEffect(() => {
-    turnSzeneAway()
+    if (isInitialRender.current) {
+      isInitialRender.current = false
+      return
+    }
+    hideDucko()
   }, [selectedProject.tag])
 
   // animate ducko szenechange -> Smaller is slower
-  const lerpSpeedShow = 0.07
-  const lerpSpeedHide = 0.17
+  const lerpSpeedShowShards = 0.07
+  const lerpSpeedHideShards = 0.17
+  const lerpSpeedRevealDucko = 0.03
   const minSize = new Vector3(0.7, 0.5, 0.7)
   const center = new Vector3(0, 0, 0)
 
   const getOpacityFromDistanceToCenter = (positionObj: Vector3) =>
     0.8 - positionObj.distanceTo(center) / 20
 
-  const showShards = () => {
+  const lerpRevealShards = () => {
     shardRef.current.scale.lerpVectors(
       shardRef.current.scale,
       getScalar(1 + audioImpactRef * 0.15),
-      lerpSpeedShow
+      lerpSpeedShowShards
     )
 
     shardRef.current.traverse((child) => {
@@ -73,7 +72,7 @@ export const Ducko = memo(({ duckoConfig }: Props) => {
         child.material.opacity = lerp(
           child.material.opacity,
           getOpacityFromDistanceToCenter(child.position),
-          lerpSpeedShow
+          lerpSpeedShowShards
         )
       }
     })
@@ -83,25 +82,52 @@ export const Ducko = memo(({ duckoConfig }: Props) => {
     shardRef.current.scale.lerpVectors(
       shardRef.current.scale,
       minSize,
-      lerpSpeedHide
+      lerpSpeedHideShards
     )
     shardRef.current.traverse((child) => {
       if (child.isSprite) {
-        child.material.opacity = lerp(child.material.opacity, 0, lerpSpeedHide)
+        child.material.opacity = lerp(
+          child.material.opacity,
+          0,
+          lerpSpeedHideShards
+        )
       }
     })
   }
 
-  const turnSzeneToViewer = (delta: number) => {
+  const hideDucko = () => {
+    szeneRef.current.rotation.y = (Math.PI / 3) * 1
+    szeneRef.current.traverse((child) => {
+      if (child.isMesh || child.isSprite) {
+        child.material.opacity = 0
+      }
+      if (child.userData.isTag) {
+        child.scale.set(0.2, 0.2, 0.2)
+      }
+    })
+  }
+
+  const lerpRevealDucko = () => {
     szeneRef.current.rotation.y = lerp(
       szeneRef.current.rotation.y,
       0,
-      lerpSpeedShow
+      lerpSpeedRevealDucko
     )
 
     szeneRef.current.traverse((child) => {
       if (child.isMesh) {
-        child.material.opacity = lerp(child.material.opacity, 1, lerpSpeedShow)
+        child.material.opacity = MathUtils.lerp(
+          child.material.opacity,
+          1,
+          lerpSpeedRevealDucko
+        )
+      }
+      if (child.userData.isTag) {
+        child.scale.lerpVectors(
+          child.scale,
+          getScalar(0.5),
+          lerpSpeedShowShards
+        )
       }
     })
   }
@@ -110,19 +136,18 @@ export const Ducko = memo(({ duckoConfig }: Props) => {
 
   useFrame((_, delta) => {
     if (shardsVisible) {
-      showShards()
+      lerpRevealShards()
       shardRef.current.rotateY(delta / 50)
     } else {
       hideShards()
     }
-
-    turnSzeneToViewer(delta)
+    lerpRevealDucko()
 
     if (animateFloating) {
       szeneRef.current.scale.lerpVectors(
         szeneRef.current.scale,
         getScalar(1 - audioImpactRef * 0.05),
-        lerpSpeedShow
+        lerpSpeedShowShards
       )
     }
   })
@@ -131,6 +156,7 @@ export const Ducko = memo(({ duckoConfig }: Props) => {
     <>
       <group ref={szeneRef}>
         <Float enabled={animateFloating}>
+          <TagName text={selectedProject.tag} />
           <ImageElement texture={duckTexture} height={5.5} />
         </Float>
         <group ref={shardRef}>
