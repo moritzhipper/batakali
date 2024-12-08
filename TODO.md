@@ -14,20 +14,16 @@
 
 - scroll logik so optimieren wie die tage probiert, aber dieses mal mit der store action
 - ig account verlinken
-- nur die items animieren, die sichtbar sind, für alle anderen return getStyle standardwerte
+- auch 3d ente erlauben?
 
 ## Audio Service
 
 - is playing state abhängig machen von play state des media elements über useCallback
 
-## Happy ducko
-
 ## Style
 
-- modus mit quietscheente, herzen und positiven emojis
 - nur dark mode und quietscheenten mode. nicht den prefers selektor nutzen, nur aktiv gesetzte klasse
 - styledateien aufräumen in style ordner
-- alle schriften und links bewusst stylen
 
 ## Anforderung bild
 

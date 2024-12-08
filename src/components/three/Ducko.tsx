@@ -4,7 +4,7 @@ import { memo, useMemo, useRef } from "react"
 import { Group, Texture, TextureLoader, Vector3 } from "three"
 import { lerp } from "three/src/math/MathUtils.js"
 
-import { duckSpritesPainty } from "../../config/szeneConfig"
+import { duckoSpritesAngry } from "../../config/szeneConfig"
 import { DuckoConfig } from "../../types"
 import { ImageElement } from "./Shard"
 import { useAudioGain } from "./useAudioGainHook"
@@ -26,7 +26,8 @@ export const Ducko = memo(({ duckoConfig }: Props) => {
   const shardRef = useRef<Group>(null!)
   const audioImpactRef = useAudioGain()
 
-  const { ducko, shards } = duckSpritesPainty
+  // hier automatismus einbauen, der andere duckos erlaubt
+  const { ducko, shards } = duckoSpritesAngry
 
   const duckTexture = useMemo(() => useLoader(TextureLoader, ducko), [])
   const textures = useMemo(() => useLoader(TextureLoader, shards), [])

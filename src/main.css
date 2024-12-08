@@ -43,6 +43,7 @@ h2,
 button,
 p,
 a,
+li,
 .text-shadow {
   text-shadow:
     1px 1px 3px var(--accent-3),
