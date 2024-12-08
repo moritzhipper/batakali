@@ -4,8 +4,12 @@ import { useAudioStore } from "../../state/audioState"
 import "./WelcomePage.css"
 
 export const WelcomePage = () => {
-  const { projectList, selectProject, selectTag, selectedProject } =
-    useAudioStore()
+  const {
+    projectList,
+    setSelectedProject: selectProject,
+    selectTag,
+    selectedProject
+  } = useAudioStore()
   const [searchParams] = useSearchParams()
   const sharedProjectName = searchParams.get("project")
   const [shareMode, setShareMode] = useState(false)

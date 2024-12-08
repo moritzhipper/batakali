@@ -18,13 +18,14 @@ export type AudioState = {
   projectList: Project[]
   audio: HTMLAudioElement
   selectedTag: string | null
-  selectProject: (name: string) => void
+  setSelectedProject: (name: string) => void
   selectAndPlayProject: (name: string) => void
   setReelFocusProject: (name: string) => void
   selectTag: (tag: string) => void
   togglePlay: () => void
-  toggleLoop: () => void
   pause: () => void
+  play: () => void
+  toggleLoop: () => void
   skip: (time: number) => void
   selectNext: () => void
   selectPrevious: () => void
@@ -46,7 +47,7 @@ const initialState = {
 export const useAudioStore = create<AudioState>()(
   devtools((set, get) => ({
     ...initialState,
-    selectProject: (name: string) =>
+    setSelectedProject: (name: string) =>
       set((state) => selectProjectByName(name, state)),
     selectAndPlayProject: (name: string) =>
       set((state) => selectAndPlayProjectByName(name, state)),
@@ -58,6 +59,7 @@ export const useAudioStore = create<AudioState>()(
     toggleLoop: () =>
       set((state) => ({ ...state, isLooping: !state.isLooping })),
     pause: () => set((state) => ({ ...state, isPlaying: false })),
+    play: () => set((state) => ({ ...state, isPlaying: true })),
     skip: (time) => (get().audio.currentTime += time),
     selectNext: () => set((state) => selectNextProject(state)),
     selectPrevious: () => set((state) => selectPreviousProject(state))

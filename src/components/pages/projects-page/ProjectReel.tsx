@@ -13,7 +13,9 @@ import "./ProjectReel.css"
 export const ProjectReel = () => {
   const {
     projectList,
-    selectProject,
+    setSelectedProject,
+    selectedProject,
+    play,
     togglePlay,
     isPlaying,
     setReelFocusProject,
@@ -104,11 +106,16 @@ export const ProjectReel = () => {
   })
 
   const playProject = (name: string) => {
-    selectProject(name)
+    if (selectedProject.name === name) {
+      togglePlay()
+    } else {
+      setSelectedProject(name)
+      play()
+    }
   }
 
   const checkIfPlaying = (name: string) =>
-    name === reelFocusProject && isPlaying
+    name === selectedProject.name && isPlaying
 
   return (
     <div className="project-reel-wrapper" {...bind()}>

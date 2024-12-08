@@ -2,61 +2,57 @@
 
 ## MediaStore
 
-- Beleuchtung sichtbar machen
-- wenn nur duckopage, dann langsame kamerafahrt and ducko heran und um ducko herum?
+- Make lighting visible.
+- If only DuckoPage, then a slow camera movement towards Ducko and around it.
 
-## SzeneCOnfig
+## SceneConfig
 
-- Proejct selector aufräumen
-- current scroll position cleanen -> ganze logik consolidieren
+- Clean up the Project Selector.
+- Clean current scroll position -> consolidate the entire logic.
 
-## Project selector
+## Project Selector
 
-- scroll logik so optimieren wie die tage probiert, aber dieses mal mit der store action
-- ig account verlinken
-- auch 3d ente erlauben?
+- Optimize scroll logic as attempted recently, but this time using the store action.
+- Link the IG account.
+- Allow 3D duck as well?
 
-## Audio Service
+## Styles
 
-- is playing state abhängig machen von play state des media elements über useCallback
+- Clean up style files and move them to the styles folder.
 
-## Style
+## Image Requirements
 
-- nur dark mode und quietscheenten mode. nicht den prefers selektor nutzen, nur aktiv gesetzte klasse
-- styledateien aufräumen in style ordner
+### Duck
 
-## Anforderung bild
+- Angry duck looking directly at the viewer.
+- Head centered, looking straight into the camera.
+- Wings on the left and right are of "equal width."
 
-### Ente
+### Drawing Background
 
-- abgefuckte Ente, die den Betrachter anschaut
-- ihr kopf direkt in der mitte, sie shaut direkt in die kamera
-- ihre flügel rechts / links sind 'gleich breit'
-
-### Hintergrund der Zeichnung
-
-- nicht gefüllt
-- keinen schatten
-- und nur die Farbe des Blattes, sodass die Zeichnungen per Software freistellbar sind
+- Not filled.
+- No shadows.
+- Only the color of the paper, so the drawings can be made transparent via software.
 
 ### Shards
 
-- Auf separatem Blatt
-- ungefähr 5 verschiedene (die wrden dann programmatisch verfielfacht und platziert)
-- keine spezifische Ausrichtung
-- format: manche höher als lang, manche länger als hoch, manche ungefähr gleich hoch wie lang
-- typen: glassplitter, steinsplitter, zerfledderte federn, andere splittertypen
+- On a separate sheet.
+- Approximately 5 different shards (to be programmatically duplicated and placed).
+- No specific orientation.
+- Format: some taller than wide, some wider than tall, some roughly square.
+- Types: glass shards, stone shards, tattered feathers, other types of shards.
 
 ## Optimization
 
-- restrict framerate?
-- don set transparency in useFrame
+- Restrict framerate?
+- Do not set transparency in `useFrame`.
 
 ## Notes
 
-- Making sprite transparent: remove alphaTest, set color to 0xffffff, set transparent to true
-  - Problem arising: when overlapping with mesh, a weird rectangle is shown where the transparent sprite would be
+- Making sprite transparent:
+  - Remove `alphaTest`, set color to `0xffffff`, set `transparent` to `true`.
+  - Problem: When overlapping with a mesh, a strange rectangle appears where the transparent sprite would be.
 
-## icons from here
+## Icons
 
-https://remixicon.com/
+- Icons from here: [Remix Icon](https://remixicon.com/)
