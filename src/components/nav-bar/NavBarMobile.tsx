@@ -1,7 +1,7 @@
 import { a, useTransition } from "@react-spring/web"
 import { useEffect, useState } from "react"
 import { Link, useLocation } from "react-router-dom"
-import { springConfig } from "../../duckoSzeneConfig"
+import { springConfig } from "../../config/szeneConfig"
 import "./NavBarMobile.css"
 
 export const NavBarMobile = () => {
@@ -97,6 +97,11 @@ export const NavBarMobile = () => {
                       />
                       <a
                         className="ri-github-line"
+                        href="https://github.com/moritzhipper/angry-ducko"
+                        target="_blank"
+                      />
+                      <a
+                        className="ri-instagram-line"
                         href="https://github.com/moritzhipper/angry-ducko"
                         target="_blank"
                       />

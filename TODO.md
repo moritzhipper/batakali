@@ -1,77 +1,53 @@
 # ToDo
 
-## MediaStore
+## SceneConfig
 
-- Beleuchtung sichtbar machen
-- wenn nur duckopage, dann langsame kamerafahrt and ducko heran und um ducko herum?
+- Remove mist?
+- Make lighting visible.
+- If only DuckoPage, then a slow camera movement towards Ducko and around it.
 
-## SzeneCOnfig
+## Project Selector
 
-- Proejct selector aufräumen -> playerview und projectview auslagern? macht eigentlich voll sinn
-- in projectreel getStyle for mobil und desktop differenzieren
+- Link the IG account.
+- Allow 3D duck as well?
 
-## Project selector
+## Styles
 
-- projectReels -> useMedia hook ablösen durch input. Parentseite nutzt hook schon
-- SelectionElements auslagern in 'Mobile ProjectSelector'. Neu anlegen: Desktop Project selector
-- diesen fehler fixen: WebGL warning: drawElementsInstanced: Drawing to a destination rect smaller than the viewport rect. (This warning will only be given once)
-- scrollstate der liste immer merken. nur element anscrollen, wenn tag selektiert wird oder beat geteilt wird
-- project card oder medicontrols consolidieren? download und share sonst drei mal umgesetzt
-- ig account verlinken
-- nur viewports.css oder den hook nutzen?
-- nur die items animieren, die sichtbar sind, für alle anderen return getStyle standardwerte
-- auf desktop beide nebeneinander, auf mobile filterbutton
-- farbe: wichtige elemente weiß, nicht so wichtige grau
+- Clean up style files and move them to the styles folder.
 
-## Archivpage
+## Image Requirements
 
-## Audio Service
+### Duck
 
-- is playing state abhängig machen von play state des media elements über useCallback
-- check: rerender of ducko only when selected inputs change -> no rerender when route changes
-- rerendering of ducko checken
+- Angry duck looking directly at the viewer.
+- Head centered, looking straight into the camera.
+- Wings on the left and right are of "equal width."
 
-## Happy ducko
+### Drawing Background
 
-## Style
-
-- modus mit quietscheente, herzen und positiven emojis
-- nur dark mode und quietscheenten mode. nicht den prefers selektor nutzen, nur aktiv gesetzte klasse
-- styledateien aufräumen in style ordner
-- alle schriften und links bewusst stylen
-
-## Anforderung bild
-
-### Ente
-
-- abgefuckte Ente, die den Betrachter anschaut
-- ihr kopf direkt in der mitte, sie shaut direkt in die kamera
-- ihre flügel rechts / links sind 'gleich breit'
-
-### Hintergrund der Zeichnung
-
-- nicht gefüllt
-- keinen schatten
-- und nur die Farbe des Blattes, sodass die Zeichnungen per Software freistellbar sind
+- Not filled.
+- No shadows.
+- Only the color of the paper, so the drawings can be made transparent via software.
 
 ### Shards
 
-- Auf separatem Blatt
-- ungefähr 5 verschiedene (die wrden dann programmatisch verfielfacht und platziert)
-- keine spezifische Ausrichtung
-- format: manche höher als lang, manche länger als hoch, manche ungefähr gleich hoch wie lang
-- typen: glassplitter, steinsplitter, zerfledderte federn, andere splittertypen
+- On a separate sheet.
+- Approximately 5 different shards (to be programmatically duplicated and placed).
+- No specific orientation.
+- Format: some taller than wide, some wider than tall, some roughly square.
+- Types: glass shards, stone shards, tattered feathers, other types of shards.
 
 ## Optimization
 
-- restrict framerate?
-- don set transparency in useFrame
+- Restrict framerate?
+- Do not set transparency in `useFrame`.
 
 ## Notes
 
-- Making sprite transparent: remove alphaTest, set color to 0xffffff, set transparent to true
-  - Problem arising: when overlapping with mesh, a weird rectangle is shown where the transparent sprite would be
+- Making sprite transparent:
+  - Remove `alphaTest`, set color to `0xffffff`, set `transparent` to `true`.
+  - Problem: When overlapping with a mesh, a strange rectangle appears where the transparent sprite would be.
 
-## icons from here
+## Icons
 
-https://remixicon.com/
+- Icons from here: [Remix Icon](https://remixicon.com/)

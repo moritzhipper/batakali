@@ -123,3 +123,9 @@
 .ri-global-fill:before {
   content: "\edce";
 }
+.ri-instagram-line:before {
+  content: "\ee66";
+}
+.ri-instagram-fill:before {
+  content: "\ee65";
+}

@@ -10,8 +10,6 @@
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   color-scheme: light dark;
-  display: flex;
-  justify-content: center;
 }
 
 body {
@@ -45,6 +43,7 @@ h2,
 button,
 p,
 a,
+li,
 .text-shadow {
   text-shadow:
     1px 1px 3px var(--accent-3),

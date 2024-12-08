@@ -4,10 +4,10 @@
   --base-2: #aaa;
   --base-3: #ddd;
 
-  --accent-0: var(--base-0);
-  --accent-1: var(--base-1);
-  --accent-2: var(--base-2);
-  --accent-3: var(--base-3);
+  --accent-0: var(--base-3);
+  --accent-1: var(--base-2);
+  --accent-2: var(--base-1);
+  --accent-3: var(--base-0);
 
   --distance-2xs: 2px;
   --distance-xs: 4px;
@@ -26,31 +26,10 @@
   --font-size-xl: 1.4em;
   --font-size-2xl: 2em;
   --font-size-3xl: 2.8em;
+  --font-size-4xl: 3.2em;
 
   --animation-duration-s: 0.2s;
   --animation-duration-m: 0.3s;
   --animation-duration-l: 0.6s;
   --animation-duration-xl: 0.9s;
-
-  .github-logo {
-    height: 1em;
-    content: url("../assets/github-mark/github-mark.svg");
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --accent-0: var(--base-3);
-    --accent-1: var(--base-2);
-    --accent-2: var(--base-1);
-    --accent-3: var(--base-0);
-
-    canvas {
-      filter: brightness(0.6);
-    }
-
-    .github-logo {
-      content: url("../assets/github-mark/github-mark-white.svg");
-    }
-  }
 }

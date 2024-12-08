@@ -3,13 +3,8 @@ import { useFrame, useLoader } from "@react-three/fiber"
 import { memo, useMemo, useRef } from "react"
 import { Group, Texture, TextureLoader, Vector3 } from "three"
 import { lerp } from "three/src/math/MathUtils.js"
-import duck from "../../assets/images/angry/duck.png"
-import feather from "../../assets/images/angry/feather.png"
-import shard1 from "../../assets/images/angry/shard1.png"
-import shard2 from "../../assets/images/angry/shard2.png"
-import heart1 from "../../assets/images/cutesy/heart.png"
-import heart2 from "../../assets/images/cutesy/purple_heart.png"
 
+import { duckoSpritesAngry } from "../../config/szeneConfig"
 import { DuckoConfig } from "../../types"
 import { ImageElement } from "./Shard"
 import { useAudioGain } from "./useAudioGainHook"
@@ -17,7 +12,6 @@ import { getRandomPositionInSphereWithXBias, randomInt } from "./utils"
 
 type Props = {
   duckoConfig: DuckoConfig
-  isCute: boolean
 }
 
 const shardConfigList: ShardGeneratorConfig[] = [
@@ -27,20 +21,16 @@ const shardConfigList: ShardGeneratorConfig[] = [
   { amount: 80, height: 0.5, innerRadius: 9, outerRadius: 20 }
 ]
 
-export const Ducko = memo(({ duckoConfig, isCute = false }: Props) => {
+export const Ducko = memo(({ duckoConfig }: Props) => {
   const { animateFloating, shardsVisible } = duckoConfig
-
   const shardRef = useRef<Group>(null!)
   const audioImpactRef = useAudioGain()
 
-  const duckTexture = useMemo(() => useLoader(TextureLoader, duck), [])
-  const textures = useMemo(
-    () =>
-      isCute
-        ? useLoader(TextureLoader, [heart1, heart2])
-        : useLoader(TextureLoader, [feather, shard1, shard2]),
-    [isCute]
-  )
+  // hier automatismus einbauen, der andere duckos erlaubt
+  const { ducko, shards } = duckoSpritesAngry
+
+  const duckTexture = useMemo(() => useLoader(TextureLoader, ducko), [])
+  const textures = useMemo(() => useLoader(TextureLoader, shards), [])
 
   const shardList = useMemo(
     () => generateRandomShards(shardConfigList, textures),

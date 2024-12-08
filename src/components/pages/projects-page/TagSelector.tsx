@@ -12,7 +12,7 @@ export const TagSelector = () => {
 
   return (
     <div className="tag-selector-wrapper">
-      <div className="header">sort by tag</div>
+      <h2 className="header">sort by tag</h2>
       <div className="tags">
         {tagList.map((tag) => (
           <button

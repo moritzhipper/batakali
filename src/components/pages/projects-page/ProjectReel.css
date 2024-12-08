@@ -9,28 +9,32 @@
 
   .project {
     --dimension: calc(100% - var(--distance-l) * 2);
-
     position: absolute;
     height: var(--dimension);
-    object-fit: cover;
-
     aspect-ratio: 1;
-    max-width: var(--dimension);
     box-sizing: border-box;
     border-radius: var(--radius-s);
     border: solid var(--accent-2);
-    border-width: 1px 1px 1px 12px;
-    overflow: hidden;
+    border-width: 2px 1px 1px 12px;
+    background-color: var(--accent-3);
+
+    &:not(.focus) {
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    &.focus {
+      pointer-events: all;
+      z-index: 10;
+    }
 
     .content {
       height: 100%;
       box-sizing: border-box;
       padding: var(--distance-m);
       padding-left: calc(var(--distance-m) + var(--distance-s));
-      display: flex;
-      justify-content: space-between;
-      flex-direction: column;
-      background-color: var(--accent-3);
+      display: grid;
+      grid-template-rows: 1fr 1fr 1fr;
       user-select: none;
       cursor: grab;
 
@@ -40,22 +44,21 @@
           font-size: var(--font-size-l);
         }
         .tag {
-          margin-top: var(--distance-s);
+          margin-top: var(--distance-xs);
           opacity: 0.5;
         }
       }
 
       .buttons {
-        align-self: end;
+        place-self: end;
         display: flex;
         gap: var(--distance-s);
-        align-items: center;
         opacity: 0.5;
       }
 
       button.play {
-        font-size: 50px;
-        align-self: center;
+        justify-self: center;
+        font-size: 70px;
       }
     }
   }

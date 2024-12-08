@@ -1,16 +1,16 @@
 import { a, useTransition } from "@react-spring/web"
 import { useEffect, useState } from "react"
-import { springConfig } from "../../../duckoSzeneConfig"
+import { springConfig } from "../../../config/szeneConfig"
 import { useAudioStore } from "../../../state/audioState"
 import { ProjectReel } from "./ProjectReel"
-import "./ProjectsViewMobile.css"
+import "./ProjectSelectorView.css"
 import { TagSelector } from "./TagSelector"
 
 type Props = {
   onHide: () => void
 }
 
-export const ProjectsViewMobile = ({ onHide }: Props) => {
+export const ProjectSelectorView = ({ onHide }: Props) => {
   const [showFilter, setShowFilter] = useState(false)
   const { selectedTag } = useAudioStore()
   const toggleFilter = () => setShowFilter((show) => !show)
@@ -39,7 +39,7 @@ export const ProjectsViewMobile = ({ onHide }: Props) => {
   })
 
   return (
-    <div className="projects-view-mobile">
+    <div className="project-selector-view">
       <h1>
         <span>Projects</span>
         <button className="hide" onClick={onHide}>

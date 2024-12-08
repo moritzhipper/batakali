@@ -1,5 +1,5 @@
 import { create } from "zustand"
-import { duckoSzenes } from "../duckoSzeneConfig"
+import { duckoSzenes } from "../config/szeneConfig"
 import { DuckoSzeneConfig } from "../types"
 
 type SzeneState = {

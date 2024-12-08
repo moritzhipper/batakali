@@ -1,31 +1,23 @@
+@import "../../../style/viewports.css";
+
 .tag-selector-wrapper {
   box-sizing: border-box;
-  padding: var(--distance-l) var(--distance-xl) 0 var(--distance-l);
-  display: grid;
-  grid-template-columns: auto 1fr;
   overflow: hidden;
   height: 100%;
 
   .header {
-    place-self: start;
-    margin: var(--distance-s) var(--distance-m) 0 0;
-    opacity: 0.4;
+    color: var(--accent-1);
+
     font-size: var(--font-size-xl);
-    writing-mode: vertical-rl;
-    text-orientation: sideways;
-    rotate: -180deg;
   }
 
   .tags {
     display: flex;
     flex-wrap: wrap;
-    align-content: start;
     gap: var(--distance-m) var(--distance-l);
-    overflow: auto;
 
     button {
       color: var(--accent-0);
-      transition: font-weight var(--animation-duration-s) ease-in-out;
       margin: 0;
       padding: 0;
       font-size: var(--font-size-xl);
@@ -33,6 +25,57 @@
       &.selected {
         font-weight: bold;
       }
+    }
+  }
+}
+
+@media (--viewport-s) {
+  .tag-selector-wrapper {
+    display: grid;
+
+    grid-template-columns: auto 1fr;
+    padding: var(--distance-l) var(--distance-xl) 0 var(--distance-l);
+
+    .header {
+      opacity: 0.6;
+      place-self: start;
+      margin: var(--distance-s) var(--distance-m) 0 0;
+      writing-mode: vertical-rl;
+      text-orientation: sideways;
+      rotate: -180deg;
+    }
+    .tags {
+      overflow: auto;
+
+      align-content: start;
+    }
+  }
+}
+
+@media (--viewport-m) {
+  .tag-selector-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+
+    .header {
+      font-weight: bold;
+      margin: var(--distance-m) 0 var(--distance-m) 0;
+    }
+    .tags {
+      border-radius: var(--radius-m);
+      border-top: 2px solid var(--accent-2);
+      padding: var(--distance-m);
+      margin: 0 var(--distance-l);
+      max-width: 720px;
+      justify-content: center;
+
+      background: linear-gradient(
+        180deg,
+        rgb(from var(--accent-3) r g b / 0.8) 0%,
+        rgba(0, 0, 0, 0) 100%
+      );
     }
   }
 }

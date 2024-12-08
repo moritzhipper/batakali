@@ -4,8 +4,12 @@ import { useAudioStore } from "../../state/audioState"
 import "./WelcomePage.css"
 
 export const WelcomePage = () => {
-  const { projectList, selectProject, selectTag, selectedProject } =
-    useAudioStore()
+  const {
+    projectList,
+    setSelectedProject: selectProject,
+    selectTag,
+    selectedProject
+  } = useAudioStore()
   const [searchParams] = useSearchParams()
   const sharedProjectName = searchParams.get("project")
   const [shareMode, setShareMode] = useState(false)
@@ -26,18 +30,22 @@ export const WelcomePage = () => {
     <div className="page-wrapper welcome">
       <div className="header">
         <h1 className="big-ducko-print">Angry Ducko</h1>
-        <p className="normal"> vibes and tunes</p>
+        <p> vibes and tunes</p>
       </div>
-      {shareMode ? (
-        <Link className="shared" to="/projects">
-          <p className="normal">a track was shared with you</p>
-          <p className="cta">check it out</p>
-        </Link>
-      ) : (
-        <Link className="cta" to="/projects">
-          check out projects
-        </Link>
-      )}
+      <div className="checkout">
+        {shareMode ? (
+          <>
+            <p>a track was shared with you</p>
+            <Link className="cta shared" to="/projects">
+              check it out
+            </Link>
+          </>
+        ) : (
+          <Link className="cta" to="/projects">
+            check out projects
+          </Link>
+        )}
+      </div>
     </div>
   )
 }

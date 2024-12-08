@@ -6,7 +6,8 @@ export const selectProjectByName = (
   state: AudioState
 ): AudioState => ({
   ...state,
-  selectedProject: getProjectByName(name, state)
+  selectedProject: getProjectByName(name, state),
+  reelFocusProject: name
 })
 
 export const selectAndPlayProjectByName = (
@@ -27,7 +28,8 @@ export const prioritizeByTag = (tag: string, state: AudioState): AudioState => {
   return {
     ...state,
     selectedTag: tag,
-    projectList: prioritizedProjects
+    projectList: prioritizedProjects,
+    reelFocusProject: prioritizedProjects[0].name
   }
 }
 
@@ -56,6 +58,11 @@ export const selectPreviousProject = (state: AudioState): AudioState => {
     selectedProject: previousProject
   }
 }
+
+export const focusProjectByName = (
+  name: string,
+  state: AudioState
+): AudioState => ({ ...state, fu })
 
 const getSelectedProjectIndex = (state: AudioState): number =>
   state.projectList.findIndex(

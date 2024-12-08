@@ -11,12 +11,12 @@ type ProjectsByTag = {
 }
 
 export const ArchivPage = () => {
-  const { projectList, selectProject } = useAudioStore()
+  const { projectList, setReelFocusProject } = useAudioStore()
   const projectsByTag = sortIntoTagBuckets(projectList)
   const navigate = useNavigate()
 
   const openProject = (name: string) => {
-    selectProject(name)
+    setReelFocusProject(name)
     navigate(`/projects`)
   }
 

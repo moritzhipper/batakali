@@ -1,5 +1,6 @@
 import { config } from "@react-spring/core"
-import { DeepPartial, DuckoSzeneConfig } from "./types"
+import { DeepPartial, DuckoSpriteConfig, DuckoSzeneConfig } from "../types"
+import { buildSpriteConfig } from "./utils"
 
 export const springConfig = { config: config.gentle }
 
@@ -67,3 +68,21 @@ export const duckoSzenes: Record<string, DeepPartial<DuckoSzeneConfig>> = {
     }
   }
 }
+
+export const duckSpritesPainty: DuckoSpriteConfig = buildSpriteConfig(
+  "painty",
+  "duck",
+  ["bling", "heart_1", "heart_2"]
+)
+
+export const duckSpritesCreepy: DuckoSpriteConfig = buildSpriteConfig(
+  "creepy",
+  "duck_teeth",
+  ["heart", "purple_heart"]
+)
+
+export const duckoSpritesAngry: DuckoSpriteConfig = buildSpriteConfig(
+  "angry",
+  "duck",
+  ["feather", "shard1", "shard2"]
+)
