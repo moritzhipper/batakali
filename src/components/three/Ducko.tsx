@@ -2,7 +2,7 @@ import { Float } from "@react-three/drei"
 import { useFrame, useLoader } from "@react-three/fiber"
 import { memo, useEffect, useMemo, useRef } from "react"
 import { Group, Texture, TextureLoader, Vector3 } from "three"
-import { lerp, MathUtils } from "three/src/math/MathUtils.js"
+import { lerp } from "three/src/math/MathUtils.js"
 
 import { duckoSpritesAngry } from "../../config/szeneConfig"
 import { useAudioStore } from "../../state/audioState"
@@ -26,6 +26,7 @@ const shardConfigList: ShardGeneratorConfig[] = [
 export const Ducko = memo(({ duckoConfig }: Props) => {
   const { animateFloating, shardsVisible } = duckoConfig
   const shardRef = useRef<Group>(null!)
+  const duckRef = useRef<Group>(null!)
   const szeneRef = useRef<Group>(null!)
   const audioImpactRef = useAudioGain()
 
@@ -72,7 +73,7 @@ export const Ducko = memo(({ duckoConfig }: Props) => {
         child.material.opacity = lerp(
           child.material.opacity,
           getOpacityFromDistanceToCenter(child.position),
-          lerpSpeedShowShards
+          lerpSpeedShowShards / 2
         )
       }
     })
@@ -97,14 +98,8 @@ export const Ducko = memo(({ duckoConfig }: Props) => {
 
   const hideDucko = () => {
     szeneRef.current.rotation.y = (Math.PI / 3) * 1
-    szeneRef.current.traverse((child) => {
-      if (child.isMesh || child.isSprite) {
-        child.material.opacity = 0
-      }
-      if (child.userData.isTag) {
-        child.scale.set(0.2, 0.2, 0.2)
-      }
-    })
+    setGroupOpToZero(duckRef.current)
+    setGroupOpToZero(shardRef.current)
   }
 
   const lerpRevealDucko = () => {
@@ -113,20 +108,12 @@ export const Ducko = memo(({ duckoConfig }: Props) => {
       0,
       lerpSpeedRevealDucko
     )
-
-    szeneRef.current.traverse((child) => {
+    duckRef.current.traverse((child) => {
       if (child.isMesh) {
-        child.material.opacity = MathUtils.lerp(
+        child.material.opacity = lerp(
           child.material.opacity,
           1,
           lerpSpeedRevealDucko
-        )
-      }
-      if (child.userData.isTag) {
-        child.scale.lerpVectors(
-          child.scale,
-          getScalar(0.5),
-          lerpSpeedShowShards
         )
       }
     })
@@ -144,7 +131,7 @@ export const Ducko = memo(({ duckoConfig }: Props) => {
     lerpRevealDucko()
 
     if (animateFloating) {
-      szeneRef.current.scale.lerpVectors(
+      duckRef.current.scale.lerpVectors(
         szeneRef.current.scale,
         getScalar(1 - audioImpactRef * 0.05),
         lerpSpeedShowShards
@@ -157,11 +144,13 @@ export const Ducko = memo(({ duckoConfig }: Props) => {
       <group ref={szeneRef}>
         <Float enabled={animateFloating}>
           <TagName text={selectedProject.tag} />
-          <ImageElement texture={duckTexture} height={5.5} />
+          <group ref={duckRef}>
+            <ImageElement texture={duckTexture} height={5.5} />
+          </group>
         </Float>
-        <group ref={shardRef}>
-          <Float rotationIntensity={0.3}>{shardList}</Float>
-        </group>
+        <Float rotationIntensity={0.3}>
+          <group ref={shardRef}>{shardList}</group>
+        </Float>
       </group>
     </>
   )
@@ -202,4 +191,12 @@ const generateRandomShards = (
   }
 
   return sprites
+}
+
+const setGroupOpToZero = (group: Group) => {
+  group.traverse((child) => {
+    if (child.isMesh || child.isSprite) {
+      child.material.opacity = 0
+    }
+  })
 }
