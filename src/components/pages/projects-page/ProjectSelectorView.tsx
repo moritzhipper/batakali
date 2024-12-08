@@ -1,6 +1,6 @@
 import { a, useTransition } from "@react-spring/web"
 import { useEffect, useState } from "react"
-import { springConfig } from "../../../duckoSzeneConfig"
+import { springConfig } from "../../../config/szeneConfig"
 import { useAudioStore } from "../../../state/audioState"
 import { ProjectReel } from "./ProjectReel"
 import "./ProjectSelectorView.css"

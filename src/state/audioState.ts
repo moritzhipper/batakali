@@ -1,6 +1,6 @@
 import { create } from "zustand"
 import { devtools } from "zustand/middleware"
-import { projectList } from "../project-list"
+import { projectList } from "../config/projectList"
 import { Project } from "../types"
 import {
   prioritizeByTag,
@@ -36,6 +36,7 @@ const initialState = {
   isPlaying: false,
   selectedProject: initialProject,
   focusedProjectName: initialProject.name,
+  reelFocusProject: initialProject.name,
   projectList: projectList,
   selectedTag: null,
   isLooping: false,

@@ -1,7 +1,7 @@
 import { a, useSprings } from "@react-spring/web"
 import { useGesture } from "@use-gesture/react"
 import { useRef } from "react"
-import { springConfig } from "../../../duckoSzeneConfig"
+import { springConfig } from "../../../config/szeneConfig"
 import { useAudioStore } from "../../../state/audioState"
 import { Project } from "../../../types"
 import { useMediaQuery } from "../../../useMediaHook"

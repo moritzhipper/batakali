@@ -5,6 +5,11 @@
   place-items: center;
   overflow: hidden;
 
+  p {
+    opacity: 0.7;
+  }
+
+  /* fake shadow */
   .header,
   .checkout {
     position: relative;
@@ -14,24 +19,22 @@
       position: absolute;
       content: "";
       z-index: -1;
-      background-color: var(--accent-3);
-      width: 300%;
-      height: 300%;
-      filter: blur(80px);
+      background-color: black;
+      opacity: 0.5;
+      width: 150%;
+      height: 200%;
     }
-  }
-  p {
-    opacity: 0.7;
   }
 
   .header::after {
-    opacity: 0.9;
-    translate: 0 -10%;
+    filter: blur(60px);
     border-radius: 25% 25% 50% 50%;
   }
 
   .checkout::after {
-    border-radius: 50%;
+    filter: blur(40px);
+    border-radius: 25%;
+    translate: 0 5%;
   }
 
   .header {
