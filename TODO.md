@@ -1,18 +1,13 @@
 # ToDo
 
-## MediaStore
+## SceneConfig
 
+- Remove mist?
 - Make lighting visible.
 - If only DuckoPage, then a slow camera movement towards Ducko and around it.
 
-## SceneConfig
-
-- Clean up the Project Selector.
-- Clean current scroll position -> consolidate the entire logic.
-
 ## Project Selector
 
-- Optimize scroll logic as attempted recently, but this time using the store action.
 - Link the IG account.
 - Allow 3D duck as well?
 

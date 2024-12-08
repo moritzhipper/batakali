@@ -28,9 +28,9 @@ export const ProjectReel = () => {
   const dragScale = isMobile ? 0.4 : 1
   const wheelScale = 0.2
 
-  const currI = getProjectIndex(projectList, reelFocusProject)
+  const foxusIndex = getProjectIndex(projectList, reelFocusProject)
 
-  const currentScrollPos = useRef(currI * itemOffset * -1)
+  const currentScrollPos = useRef(foxusIndex * itemOffset * -1)
 
   // used to calculate scroll position relative to selected card
   const getTrueScrollPos = (offset: number) => offset + currentScrollPos.current
@@ -51,7 +51,7 @@ export const ProjectReel = () => {
 
   // return distance between current index and index
   const getRelativeOffsetForCurrentIndex = (index: number) =>
-    (index - currI) * itemOffset
+    (index - foxusIndex) * itemOffset
 
   // returns style object for each project index
   const calcStyle = (i: number, offset: number) => {
@@ -59,8 +59,8 @@ export const ProjectReel = () => {
 
     // prohibit scroll on first last list item
     if (
-      (currI === projectCount - 1 && offset < 0) ||
-      (currI === 0 && offset > 0)
+      (foxusIndex === projectCount - 1 && offset < 0) ||
+      (foxusIndex === 0 && offset > 0)
     ) {
       offsetX = getRelativeOffsetForCurrentIndex(i)
     }
@@ -76,13 +76,13 @@ export const ProjectReel = () => {
 
   const scroll = (offset: number): void => {
     const newI = toIndex(getTrueScrollPos(offset) / itemOffset)
-    if (newI !== currI) setReelFocusProject(projectList[newI].name)
+    if (newI !== foxusIndex) setReelFocusProject(projectList[newI].name)
 
     api.start((i) => calcStyle(i, offset))
   }
 
   const snap = (): void => {
-    currentScrollPos.current = currI * itemOffset * -1
+    currentScrollPos.current = foxusIndex * itemOffset * -1
     api.start((i) => calcStyle(i, 0))
   }
 
@@ -121,7 +121,7 @@ export const ProjectReel = () => {
     <div className="project-reel-wrapper" {...bind()}>
       {props.map(({ x, scale, rotateZ, opacityBody, opacityContent }, i) => (
         <a.div
-          className={`project ${currI === i ? "focus" : ""}`}
+          className={`project ${foxusIndex === i ? "focus" : ""}`}
           style={{
             x,
             scale,
