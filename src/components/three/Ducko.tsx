@@ -97,7 +97,7 @@ export const Ducko = memo(({ duckoConfig }: Props) => {
   }
 
   const hideDucko = () => {
-    szeneRef.current.rotation.y = (Math.PI / 3) * 1
+    szeneRef.current.rotation.y = (Math.PI / 2) * -1
     setGroupOpToZero(duckRef.current)
     setGroupOpToZero(shardRef.current)
   }
