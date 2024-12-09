@@ -18,7 +18,7 @@ export const TagName = ({ text }: Props) => {
   const lettersMoreThanThree = Math.max(0, text.length - 3)
 
   const scaleFactor = 1 - 0.02 * lettersMoreThanThree
-  const scrollWidthMobile = 0.7 + lettersMoreThanThree * 0.25
+  const scrollWidthMobile = 0.7 + lettersMoreThanThree * 0.3
   const scrollWidth = isMobile ? scrollWidthMobile : 0.4
 
   const configIn = { config: { tension: 20, friction: 10 } }
@@ -79,9 +79,9 @@ type AnimTagWrapperProps = {
 
 const AnimTagWrapper = ({ opacity, scale, x, text }: AnimTagWrapperProps) => {
   return (
-    <group scale={scale} position={[x, -0.5, 1]} userData={{ isTag: true }}>
+    <group scale={scale} position={[x, -0.9, 1]}>
       <Center cacheKey={text}>
-        <Text3D font={font} scale={1}>
+        <Text3D font={font}>
           <meshStandardMaterial
             color={"silver"}
             transparent={true}

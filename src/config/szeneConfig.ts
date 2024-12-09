@@ -81,7 +81,7 @@ export const duckSpritesCreepy: DuckoSpriteConfig = buildSpriteConfig(
   ["heart", "purple_heart"]
 )
 
-export const duckoSpritesAngry: DuckoSpriteConfig = buildSpriteConfig(
+export const duckSpritesAngry: DuckoSpriteConfig = buildSpriteConfig(
   "angry",
   "duck",
   ["feather", "shard1", "shard2"]
