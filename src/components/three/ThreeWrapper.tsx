@@ -5,6 +5,7 @@ import { useSzeneState } from "../../state/szeneState"
 import { CameraDolly } from "./CameraDolly"
 import { Ducko } from "./Ducko"
 import "./ThreeWrapper.css"
+import { Environment } from "@react-three/drei"
 
 export const ThreeWrapper = () => {
   const { activeSzene, setActiveSzene } = useSzeneState()
@@ -19,6 +20,7 @@ export const ThreeWrapper = () => {
       <Canvas>
         <CameraDolly cameraConfig={activeSzene.camera} />
         <pointLight position={[3, 4, 3]} intensity={100} color={"white"} />
+        <Environment preset="night" backgroundBlurriness={0.3} />
         <Ducko duckoConfig={activeSzene.ducko} />
       </Canvas>
     </div>

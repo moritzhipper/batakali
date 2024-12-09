@@ -1,6 +1,6 @@
-import { a, easings, useSpring, useSpringValue } from "@react-spring/three"
+import { a, useSpring, useSpringValue } from "@react-spring/three"
 import { Center, Text3D } from "@react-three/drei"
-import { useEffect, useMemo } from "react"
+import { useMemo, useRef } from "react"
 import { useMediaQuery } from "../../useMediaHook"
 import font from "./tbc_font.json"
 
@@ -9,63 +9,64 @@ type Props = {
 }
 
 export const TagName = ({ text }: Props) => {
+  const timeOutRef = useRef<number>(null!)
+  const AnimatedText = useMemo(() => a(AnimTagWrapper), [text])
   const isMobile = useMediaQuery("(max-width: 700px)")
   const animationTimeOut = 1000
-  const animationTime = isMobile ? 6000 : 6000
+  const animationTime = isMobile ? 7000 : 5000
 
   const lettersMoreThanThree = Math.max(0, text.length - 3)
 
-  const scaleFactorMobile = 1 - 0.02 * lettersMoreThanThree
-  const scaleFactor = isMobile ? scaleFactorMobile : 1
-
-  const scrollWidthMobile = lettersMoreThanThree * 0.25
+  const scaleFactor = 1 - 0.02 * lettersMoreThanThree
+  const scrollWidthMobile = 0.7 + lettersMoreThanThree * 0.25
   const scrollWidth = isMobile ? scrollWidthMobile : 0.4
-
-  console.log(scrollWidth)
 
   const configIn = { config: { tension: 20, friction: 10 } }
   const configOut = {
-    config: { duration: animationTimeOut, easings: easings.easeOutQuart }
+    config: { duration: animationTimeOut }
   }
-  const configVerySlow = {
-    config: { duration: animationTime }
-  }
+  const configVerySlow = { config: { duration: animationTime } }
 
   const scrollValues = {
     from: {
-      x: scrollWidth
+      x: scrollWidth,
+      scale: 0
     },
     to: {
-      x: scrollWidth * -1
+      x: scrollWidth * -1,
+      scale: scaleFactor
     }
   }
 
   const opacity = useSpringValue(0)
   const scale = useSpringValue(0.3)
-  const [props, api] = useSpring(configVerySlow, [scrollValues])
+  const [scrollProps, api] = useSpring({ ...scrollValues, ...configVerySlow }, [
+    scrollValues
+  ])
 
-  api.stop()
-  const AnimatedText = useMemo(() => a(AnimTagWrapper), [text])
+  // use useMemo instead of useEffect to avoid the useEffect being called on every render
 
-  useEffect(() => {
-    opacity.reset()
+  useMemo(() => {
+    clearTimeout(timeOutRef.current)
     scale.reset()
+    opacity.reset()
+
     api.start(scrollValues)
-    opacity.start(1, configOut)
+    opacity.start(1, configIn)
     scale.start(scaleFactor, configIn)
 
-    const timeOut = setTimeout(() => {
+    timeOutRef.current = setTimeout(() => {
       opacity.start(0, configOut)
-      // x.start(scrollWidth * -1.5, springConfig)
     }, animationTime - animationTimeOut)
-
-    return () => {
-      clearTimeout(timeOut)
-    }
   }, [text])
 
   return (
-    <AnimatedText opacity={opacity} scale={scale} text={text} x={props.x} />
+    <AnimatedText
+      opacity={opacity}
+      scale={scale}
+      text={text}
+      x={scrollProps.x}
+    />
   )
 }
 
@@ -78,15 +79,17 @@ type AnimTagWrapperProps = {
 
 const AnimTagWrapper = ({ opacity, scale, x, text }: AnimTagWrapperProps) => {
   return (
-    <group scale={scale} position={[x, 0, 0.8]} userData={{ isTag: true }}>
+    <group scale={scale} position={[x, -0.5, 1]} userData={{ isTag: true }}>
       <Center cacheKey={text}>
-        <Text3D font={font} scale={0.8}>
-          {text}
+        <Text3D font={font} scale={1}>
           <meshStandardMaterial
-            color={"white"}
+            color={"silver"}
             transparent={true}
             opacity={opacity}
+            metalness={0.9}
+            roughness={0}
           />
+          {text}
         </Text3D>
       </Center>
     </group>

@@ -4,7 +4,7 @@ import { memo, useEffect, useMemo, useRef } from "react"
 import { Group, Texture, TextureLoader, Vector3 } from "three"
 import { lerp } from "three/src/math/MathUtils.js"
 
-import { duckoSpritesAngry } from "../../config/szeneConfig"
+import { duckSpritesCreepy } from "../../config/szeneConfig"
 import { useAudioStore } from "../../state/audioState"
 import { DuckoConfig } from "../../types"
 import { ImageElement } from "./Shard"
@@ -34,7 +34,7 @@ export const Ducko = memo(({ duckoConfig }: Props) => {
 
   // hier automatismus einbauen, der andere duckos erlaubt
   const { selectedProject } = useAudioStore()
-  const { ducko, shards } = duckoSpritesAngry
+  const { ducko, shards } = duckSpritesCreepy
 
   const duckTexture = useMemo(() => useLoader(TextureLoader, ducko), [])
   const textures = useMemo(() => useLoader(TextureLoader, shards), [])
@@ -97,7 +97,7 @@ export const Ducko = memo(({ duckoConfig }: Props) => {
   }
 
   const hideDucko = () => {
-    szeneRef.current.rotation.y = (Math.PI / 2) * -1
+    szeneRef.current.rotation.y = (Math.PI / 3) * -1
     setGroupOpToZero(duckRef.current)
     setGroupOpToZero(shardRef.current)
   }
@@ -129,14 +129,6 @@ export const Ducko = memo(({ duckoConfig }: Props) => {
       hideShards()
     }
     lerpRevealDucko()
-
-    if (animateFloating) {
-      duckRef.current.scale.lerpVectors(
-        szeneRef.current.scale,
-        getScalar(1 - audioImpactRef * 0.05),
-        lerpSpeedShowShards
-      )
-    }
   })
 
   return (
