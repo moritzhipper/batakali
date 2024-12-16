@@ -1,3 +1,5 @@
+@import "../../../style/viewports.css";
+
 .media-controls-wrapper {
   height: 100%;
   display: flex;
@@ -26,15 +28,17 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
-    gap: var(--distance-xs);
 
     button.play {
+      font-size: 72px;
       color: var(--accent-0);
     }
     button:not(.play),
     a {
       color: var(--accent-1);
+    }
+    button.skip {
+      font-size: 40px;
     }
   }
   button.hide {
@@ -42,6 +46,28 @@
     opacity: 0.4;
     font-size: 40px;
     line-height: 30px;
-    margin: var(--distance-m);
+    margin: var(--distance-l) 0 var(--distance-m) 0;
+  }
+}
+
+@media (--viewport-s) {
+  .media-controls-wrapper .controls {
+    padding: 0 var(--distance-xl) 0 var(--distance-xl);
+    justify-content: space-between;
+  }
+}
+
+@media (--viewport-m) {
+  .media-controls-wrapper .controls {
+    justify-content: center;
+    gap: var(--distance-m);
+
+    padding: 0 var(--distance-xl) var(--distance-s) var(--distance-xl);
+
+    button.play {
+      /* margin: 0 var(--distance-m); */
+    }
+
+    /* justify-content: space-between; */
   }
 }

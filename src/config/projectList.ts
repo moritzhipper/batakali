@@ -2,58 +2,94 @@ import { Project } from "../types"
 
 export const projectList: Project[] = [
   {
-    name: "happy hardcore",
-    tag: "happy hardcore",
-    fileName: "happy_hardcore.mp3"
+    name: "aliens",
+    tag: "boombap",
+    fileName: "aliens.mp3"
   },
   {
-    name: "because of this",
+    name: "beautiful",
+    tag: "boombap",
+    fileName: "beautiful.mp3"
+  },
+  {
+    name: "because",
     tag: "trance",
     fileName: "because.mp3"
   },
   {
-    name: "fresh",
-    tag: "boombap",
-    fileName: "fresh.mp3"
+    name: "burry a body",
+    tag: "hiphop",
+    fileName: "burry_a_body.mp3"
   },
+  {
+    name: "cloud",
+    tag: "hiphop",
+    fileName: "cloud.mp3"
+  },
+  {
+    name: "destroy",
+    tag: "hiphop",
+    fileName: "destroy.mp3"
+  },
+  {
+    name: "d o w",
+    tag: "hiphop",
+    fileName: "destroyer_of_worlds.mp3"
+  },
+  {
+    name: "guitar 1",
+    tag: "boombap",
+    fileName: ""
+  },
+  {
+    name: "heist",
+    tag: "hiphop",
+    fileName: "heist.mp3"
+  },
+  {
+    name: "ice",
+    tag: "boombap",
+    fileName: "ice.mp3"
+  },
+  {
+    name: "missing u",
+    tag: "boombap",
+    fileName: "missing_u.mp3"
+  },
+
   {
     name: "mutter",
     tag: "boombap",
-    fileName: "nuhu.mp3"
+    fileName: "mutter.mp3"
   },
   {
-    name: "yeeee",
+    name: "nothing inside",
+    tag: "hiphop",
+    fileName: "nothing_inside.mp3"
+  },
+  {
+    name: "spring",
+    tag: "minimal techno",
+    fileName: "spring.mp3"
+  },
+  {
+    name: "steam",
     tag: "boombap",
-    fileName: "nuhu.mp3"
+    fileName: "steam.mp3"
   },
   {
-    name: "born into this",
-    tag: "rnb",
-    fileName: ""
+    name: "stormy",
+    tag: "hiphop",
+    fileName: "stormy.mp3"
   },
   {
-    name: "no name",
+    name: "days lost",
     tag: "synthwave",
-    fileName: ""
+    fileName: "days_lost.mp3"
   },
   {
-    name: "run",
-    tag: "hardtechno",
-    fileName: ""
-  },
-  {
-    name: "water",
-    tag: "boombap",
-    fileName: ""
-  },
-  {
-    name: "ded",
-    tag: "ambient",
-    fileName: ""
-  },
-  {
-    name: "sleep",
-    tag: "rnb",
-    fileName: ""
+    name: "war",
+    tag: "hiphop",
+    fileName: "war.mp3"
   }
 ]

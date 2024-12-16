@@ -26,13 +26,13 @@
   }
 
   .header::after {
-    opacity: 0.7;
+    opacity: 0.5;
     filter: blur(60px);
     border-radius: 25% 25% 50% 50%;
   }
 
   .checkout::after {
-    opacity: 0.4;
+    opacity: 0.2;
 
     filter: blur(40px);
     border-radius: 25%;

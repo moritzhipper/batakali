@@ -14,6 +14,19 @@
 ## Styles
 
 - Clean up style files and move them to the styles folder.
+- textshadow als page klasse, sodass texte auf untergründen keine shadows haben
+
+## Ducko Szene
+
+- duckoconfig wie folg
+  - tags für identifizierung
+  - assets für styling
+  - wenn selected tag changed, dann die drehung per animation. die opacity per useframe wegen performance
+  - ducko als komponente auslagern
+  - shards auch auslagern -> duckwrapper mit inhalten
+  - drehung von gruppe mit ducko und shards animieren über spring?
+- text ausblenden, wenn durch animiert um bugs zu vermeiden
+- three wrapper 100vh, dann duck centeren mit 100dvh
 
 ## Image Requirements
 
