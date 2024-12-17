@@ -10,7 +10,6 @@ type SzeneState = {
 const defaultSzene: DuckoSzeneConfig = {
   ducko: {
     shardsVisible: true,
-    animateFloating: true,
     dim: true
   },
   camera: {

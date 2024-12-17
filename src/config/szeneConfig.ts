@@ -8,7 +8,6 @@ export const duckoSzenes: Record<string, DeepPartial<DuckoSzeneConfig>> = {
   "/": {
     ducko: {
       shardsVisible: false,
-      animateFloating: false,
       dim: false
     },
     camera: {

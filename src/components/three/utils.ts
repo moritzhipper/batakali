@@ -1,25 +1,5 @@
-import { Vector3 } from "three"
-
-export const getRandomSprites = (
-  innerRadius: number,
-  outerRadius: number,
-  amount: number
-) => {
-  let sprites = []
-
-  for (let i = 0; i < amount; i++) {
-    const randomPos = getRandomPositionInCircleLeaveInner(
-      outerRadius,
-      innerRadius
-    )
-    sprites.push({
-      ...randomPos,
-      rotation: 0,
-      type: ["shard1", "shard2", "feather"][randomInt(0, 3)]
-    })
-  }
-  return sprites
-}
+import { Group, Vector3 } from "three"
+import { lerp } from "three/src/math/MathUtils.js"
 
 export const randomFloat = (min: number, max: number) => {
   const randomNumber = Math.random() * (max - min) + min
@@ -28,22 +8,6 @@ export const randomFloat = (min: number, max: number) => {
 
 export const randomInt = (min: number, max: number) =>
   Math.floor(Math.random() * (max - min)) + min
-
-const getRandomPositionInCircleLeaveInner = (
-  outerRadius: number,
-  innerRadius: number
-) => {
-  const angle = Math.random() * 2 * Math.PI
-
-  const distance = Math.sqrt(
-    Math.random() * (outerRadius ** 2 - innerRadius ** 2) + innerRadius ** 2
-  )
-
-  const x = distance * Math.cos(angle)
-  const y = distance * Math.sin(angle)
-
-  return { x, y }
-}
 
 /**
  * Generates a random position inside a sphere with a bias towards the X-axis.
@@ -72,4 +36,60 @@ export const getRandomPositionInSphereWithXBias = (
   y *= yBias
 
   return new Vector3(x, y, z)
+}
+
+const getScalar = (scalar: number) => new Vector3(scalar, scalar, scalar)
+const minSize = new Vector3(0.7, 0.5, 0.7)
+const center = new Vector3(0, 0, 0)
+
+const getOpacityFromDistanceToCenter = (positionObj: Vector3) =>
+  0.8 - positionObj.distanceTo(center) / 20
+
+export const animateShardsHidden = (group: Group) => {
+  group.scale.lerpVectors(group.scale, minSize, 0.17)
+  group.traverse((child) => {
+    if (child.isSprite) {
+      child.material.opacity = lerp(child.material.opacity, 0, 0.17)
+    }
+  })
+}
+
+export const animateShardsVisible = (group: Group, delta: number) => {
+  group.rotateY(delta / 50)
+
+  group.traverse((child) => {
+    if (child.isSprite) {
+      child.material.opacity = lerp(
+        child.material.opacity,
+        getOpacityFromDistanceToCenter(child.position),
+        0.03
+      )
+    }
+  })
+}
+
+export const turnSzeneAway = (group: Group) => {
+  group.rotation.y = Math.PI / -2
+
+  group.traverse((child) => {
+    if (child.isMesh || child.isSprite) {
+      child.material.opacity = 0
+    }
+  })
+}
+
+export const animateSzeneVisible = (
+  rotateGroup: Group,
+  animateOpacityGroup: Group
+) => {
+  rotateGroup.rotation.y = lerp(rotateGroup.rotation.y, 0, 0.03)
+  animateOpacityGroup.traverse((child) => {
+    if (child.isMesh) {
+      child.material.opacity = lerp(child.material.opacity, 1, 0.03)
+    }
+  })
+}
+
+export const animateAmpImpact = (group: Group, amp: number) => {
+  group.scale.lerpVectors(group.scale, getScalar(1 + amp), 0.15)
 }

@@ -8,14 +8,14 @@ type Props = {
   images: string[]
 } & GroupProps
 
-export const ShardGroup = ({ images, ...props }: Props) => {
-  const textures = useMemo(() => useLoader(TextureLoader, images), [images])
+export const Shards = ({ images }: Props) => {
+  const textures = useLoader(TextureLoader, images)
   const shards = useMemo(
     () => generateRandomShards(shardConfigList, textures),
     [textures]
   )
 
-  return <group {...props}>{shards}</group>
+  return shards
 }
 
 const shardConfigList: ShardGeneratorConfig[] = [
