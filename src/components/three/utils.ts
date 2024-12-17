@@ -39,14 +39,14 @@ export const getRandomPositionInSphereWithXBias = (
 }
 
 const getScalar = (scalar: number) => new Vector3(scalar, scalar, scalar)
-const minSize = new Vector3(0.7, 0.5, 0.7)
-const center = new Vector3(0, 0, 0)
+const minSize = getScalar(0.5)
+const center = getScalar(0)
 
 const getOpacityFromDistanceToCenter = (positionObj: Vector3) =>
   0.8 - positionObj.distanceTo(center) / 20
 
 export const animateShardsHidden = (group: Group) => {
-  group.scale.lerpVectors(group.scale, minSize, 0.17)
+  group.scale.lerpVectors(group.scale, minSize, 0.15)
   group.traverse((child) => {
     if (child.isSprite) {
       child.material.opacity = lerp(child.material.opacity, 0, 0.17)
@@ -55,7 +55,7 @@ export const animateShardsHidden = (group: Group) => {
 }
 
 export const animateShardsVisible = (group: Group, delta: number) => {
-  group.rotateY(delta / 50)
+  group.rotateY(delta / 40)
 
   group.traverse((child) => {
     if (child.isSprite) {
@@ -69,8 +69,7 @@ export const animateShardsVisible = (group: Group, delta: number) => {
 }
 
 export const turnSzeneAway = (group: Group) => {
-  group.rotation.y = Math.PI / -2
-
+  group.rotation.y = Math.PI / -2.5
   group.traverse((child) => {
     if (child.isMesh || child.isSprite) {
       child.material.opacity = 0

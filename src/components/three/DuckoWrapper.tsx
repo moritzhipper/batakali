@@ -38,19 +38,19 @@ export const DuckoWrapper = ({ duckoConfig }: Props) => {
   const duckTexture = useMemo(() => useLoader(TextureLoader, ducko), [])
 
   useEffect(() => {
-    if (isInitialRender.current) {
+    if (!isInitialRender.current) {
+      turnSzeneAway(szeneRef.current)
+    } else {
       isInitialRender.current = false
-      return
     }
-    turnSzeneAway(szeneRef.current)
   }, [selectedProject.tag])
 
   useFrame((_, delta) => {
     animateSzeneVisible(szeneRef.current, duckRef.current)
-    animateAmpImpact(shardRef.current, audioImpactRef * 0.15)
     animateAmpImpact(duckRef.current, audioImpactRef * -0.05)
 
     if (shardsVisible) {
+      animateAmpImpact(shardRef.current, audioImpactRef * 0.15)
       animateShardsVisible(shardRef.current, delta)
     } else {
       animateShardsHidden(shardRef.current)
