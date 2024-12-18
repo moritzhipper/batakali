@@ -69,7 +69,7 @@ export const animateShardsVisible = (group: Group, delta: number) => {
 }
 
 export const turnSzeneAway = (group: Group) => {
-  group.rotation.y = Math.PI / -2.5
+  group.rotation.y = Math.PI / -2
   group.traverse((child) => {
     if (child.isMesh || child.isSprite) {
       child.material.opacity = 0

@@ -1,6 +1,6 @@
-import { a, useSpring, useSpringValue } from "@react-spring/three"
+import { a, easings, useSpring } from "@react-spring/three"
 import { Center, Text3D } from "@react-three/drei"
-import { useMemo, useRef } from "react"
+import { useMemo } from "react"
 import { useMediaQuery } from "../../useMediaHook"
 import font from "./tbc_font.json"
 
@@ -9,63 +9,60 @@ type Props = {
 }
 
 export const TagName = ({ text }: Props) => {
-  const timeOutRef = useRef<number>(null!)
   const AnimatedText = useMemo(() => a(AnimTagWrapper), [text])
   const isMobile = useMediaQuery("(max-width: 700px)")
-  const animationTimeOut = 1000
-  const animationTime = isMobile ? 7000 : 5000
 
   const lettersMoreThanThree = Math.max(0, text.length - 3)
 
   const scaleFactor = 1 - 0.02 * lettersMoreThanThree
-  const scrollWidthMobile = 0.7 + lettersMoreThanThree * 0.3
+  const scrollWidthMobile = 0.7 + lettersMoreThanThree * 0.2
   const scrollWidth = isMobile ? scrollWidthMobile : 0.4
 
-  const configIn = { config: { tension: 20, friction: 10 } }
-  const configOut = {
-    config: { duration: animationTimeOut }
-  }
-  const configVerySlow = { config: { duration: animationTime } }
+  const configIn = { duration: 1000, easing: easings.linear }
+  const configFly = { duration: 4000, easing: easings.linear }
 
   const scrollValues = {
     from: {
       x: scrollWidth,
-      scale: 0
+      scale: 0,
+      opacity: 0
     },
-    to: {
-      x: scrollWidth * -1,
-      scale: scaleFactor
-    }
+    to: [
+      {
+        x: scrollWidth,
+        scale: scaleFactor,
+        opacity: 1,
+        config: configIn
+      },
+      {
+        x: scrollWidth * -1,
+        scale: scaleFactor,
+        opacity: 1,
+        config: configFly
+      },
+      {
+        x: scrollWidth * -1.5,
+        opacity: 0,
+        config: configIn
+      }
+    ]
   }
 
-  const opacity = useSpringValue(0)
-  const scale = useSpringValue(0.3)
-  const [scrollProps, api] = useSpring({ ...scrollValues, ...configVerySlow }, [
-    scrollValues
-  ])
+  const [scrollProps, api] = useSpring({ ...scrollValues }, [])
 
   // use useMemo instead of useEffect to avoid the useEffect being called on every render
 
   useMemo(() => {
-    clearTimeout(timeOutRef.current)
-    scale.reset()
-    opacity.reset()
-
     api.start(scrollValues)
-    opacity.start(1, configIn)
-    scale.start(scaleFactor, configIn)
-
-    timeOutRef.current = setTimeout(() => {
-      opacity.start(0, configOut)
-    }, animationTime - animationTimeOut)
   }, [text])
 
   return (
     <AnimatedText
-      opacity={opacity}
-      scale={scale}
-      text={text}
+      opacity={scrollProps.opacity}
+      scale={scrollProps.scale}
       x={scrollProps.x}
+      y={scrollProps.y}
+      text={text}
     />
   )
 }

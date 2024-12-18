@@ -29,13 +29,13 @@ export const MediaControls = ({ onHide }: Props) => {
       <div className="controls">
         <DownloadLink filePath={selectedProject.fileName} className="ri-s" />
         <button className="ri-replay-10-line" onClick={() => skip(-10)} />
-        <button className="ri-skip-back-line skip" onClick={selectPrevious} />
+        <button className="ri-skip-back-fill skip" onClick={selectPrevious} />
         <PlayPauseButton
           isPlaying={isPlaying}
           onClick={togglePlay}
           className="play"
         />
-        <button className="ri-skip-forward-line skip" onClick={selectNext} />
+        <button className="ri-skip-forward-fill skip" onClick={selectNext} />
         <button className="ri-forward-10-line " onClick={() => skip(10)} />
         <LoopButton
           isLooping={isLooping}
