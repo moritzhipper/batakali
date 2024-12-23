@@ -80,7 +80,7 @@ const AnimTagWrapper = ({ opacity, scale, x, text }: AnimTagWrapperProps) => {
       <Center cacheKey={text}>
         <Text3D font={font}>
           <meshStandardMaterial
-            color={"white"}
+            color={"#999"}
             transparent={true}
             opacity={opacity}
             metalness={0.9}

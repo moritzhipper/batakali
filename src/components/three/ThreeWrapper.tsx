@@ -2,6 +2,7 @@ import { Environment } from "@react-three/drei"
 import { Canvas } from "@react-three/fiber"
 import { useEffect } from "react"
 import { useLocation } from "react-router-dom"
+import bwTexture from "../../assets/bw_environment_texture.jpg"
 import { useSzeneState } from "../../state/szeneState"
 import { CameraDolly } from "./CameraDolly"
 import { DuckoWrapper } from "./DuckoWrapper"
@@ -20,7 +21,7 @@ export const ThreeWrapper = () => {
       <Canvas>
         <CameraDolly cameraConfig={activeSzene.camera} />
         <pointLight position={[3, 4, 3]} intensity={100} color={"white"} />
-        <Environment preset="night" backgroundBlurriness={0.3} />
+        <Environment files={bwTexture} />
         <DuckoWrapper duckoConfig={activeSzene.ducko} />
       </Canvas>
     </div>
