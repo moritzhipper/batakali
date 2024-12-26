@@ -61,7 +61,6 @@ export const TagName = ({ text }: Props) => {
       opacity={scrollProps.opacity}
       scale={scrollProps.scale}
       x={scrollProps.x}
-      y={scrollProps.y}
       text={text}
     />
   )

@@ -1,7 +1,7 @@
 import { GroupProps, useLoader } from "@react-three/fiber"
 import { useMemo } from "react"
 import { Texture, TextureLoader } from "three"
-import { ImageElement } from "./Shard"
+import { ImageElement } from "./ImageElement"
 import { getRandomPositionInSphereWithXBias, randomInt } from "./utils"
 
 type Props = {
