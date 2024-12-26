@@ -7,7 +7,7 @@ export const springConfig = { config: config.gentle }
 export const duckoSzenes: Record<string, DeepPartial<DuckoSzeneConfig>> = {
   "/": {
     ducko: {
-      shardsVisible: false,
+      showShards: false,
       dim: false
     },
     camera: {
@@ -41,7 +41,7 @@ export const duckoSzenes: Record<string, DeepPartial<DuckoSzeneConfig>> = {
   },
   "/about": {
     ducko: {
-      shardsVisible: false
+      showShards: false
     },
     camera: {
       position: [1, -0.5, 3],
@@ -50,7 +50,7 @@ export const duckoSzenes: Record<string, DeepPartial<DuckoSzeneConfig>> = {
   },
   "/privacy": {
     ducko: {
-      shardsVisible: false
+      showShards: false
     },
     camera: {
       position: [-2, -2, 5],
@@ -59,7 +59,7 @@ export const duckoSzenes: Record<string, DeepPartial<DuckoSzeneConfig>> = {
   },
   "/imprint": {
     ducko: {
-      shardsVisible: false
+      showShards: false
     },
     camera: {
       position: [2, -2, 5],

@@ -24,7 +24,7 @@ export const TagName = ({ text }: Props) => {
   const scrollValues = {
     from: {
       x: scrollWidth,
-      scale: 0,
+      scale: 0.2,
       opacity: 0
     },
     to: [
@@ -51,7 +51,6 @@ export const TagName = ({ text }: Props) => {
   const [scrollProps, api] = useSpring({ ...scrollValues }, [])
 
   // use useMemo instead of useEffect to avoid the useEffect being called on every render
-
   useMemo(() => {
     api.start(scrollValues)
   }, [text])
@@ -75,7 +74,7 @@ type AnimTagWrapperProps = {
 
 const AnimTagWrapper = ({ opacity, scale, x, text }: AnimTagWrapperProps) => {
   return (
-    <group scale={scale} position={[x, -0.9, 1]}>
+    <group scale={scale} position={[x, -1, 1]}>
       <Center cacheKey={text}>
         <Text3D font={font}>
           <meshStandardMaterial

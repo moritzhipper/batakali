@@ -38,6 +38,7 @@ const PlaneImage = ({ texture, position, scale }: ImageProps) => (
       side={DoubleSide}
       alphaToCoverage
       transparent
+      opacity={0}
     />
   </mesh>
 )

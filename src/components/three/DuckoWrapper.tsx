@@ -1,10 +1,9 @@
 import { Float } from "@react-three/drei"
 import { useFrame, useLoader } from "@react-three/fiber"
-import { useEffect, useMemo, useRef } from "react"
+import { useEffect, useMemo, useRef, useState } from "react"
 import { Group, TextureLoader } from "three"
 
 import { duckSpritesAngry } from "../../config/szeneConfig"
-import { useAudioStore } from "../../state/audioState"
 import { DuckoConfig } from "../../types"
 import { ImageElement } from "./ImageElement"
 import { Shards } from "./Shards"
@@ -20,36 +19,33 @@ import {
 
 type Props = {
   duckoConfig: DuckoConfig
+  text: string
 }
 
-export const DuckoWrapper = ({ duckoConfig }: Props) => {
-  const { shardsVisible } = duckoConfig
+export const DuckoWrapper = ({ duckoConfig, text }: Props) => {
+  const { showShards } = duckoConfig
   const shardRef = useRef<Group>(null!)
   const duckRef = useRef<Group>(null!)
   const szeneRef = useRef<Group>(null!)
   const audioImpactRef = useAudioGain()
 
-  const isInitialRender = useRef(true)
-
   // hier automatismus einbauen, der andere duckos erlaubt
-  const { selectedProject } = useAudioStore()
   const { ducko, shards } = useMemo(() => duckSpritesAngry, [duckoConfig])
-
   const duckTexture = useMemo(() => useLoader(TextureLoader, ducko), [])
 
+  const [visibleText, setVisibleText] = useState("")
   useEffect(() => {
-    if (!isInitialRender.current) {
+    if (showShards) {
+      setVisibleText(text)
       turnSzeneAway(szeneRef.current)
-    } else {
-      isInitialRender.current = false
     }
-  }, [selectedProject.tag])
+  }, [text])
 
   useFrame((_, delta) => {
     animateSzeneVisible(szeneRef.current, duckRef.current)
     animateAmpImpact(duckRef.current, audioImpactRef * -0.05)
 
-    if (shardsVisible) {
+    if (showShards) {
       animateAmpImpact(shardRef.current, audioImpactRef * 0.15)
       animateShardsVisible(shardRef.current, delta)
     } else {
@@ -60,14 +56,14 @@ export const DuckoWrapper = ({ duckoConfig }: Props) => {
   return (
     <group ref={szeneRef}>
       <Float speed={0.2}>
-        <TagName text={selectedProject.tag} />
+        <TagName text={visibleText} />
         <group ref={duckRef}>
           <ImageElement texture={duckTexture} height={5.5} />
         </group>
       </Float>
       <Float rotationIntensity={0.3}>
         <group ref={shardRef}>
-          <Shards images={shards} visible={shardsVisible} />
+          <Shards images={shards} visible={showShards} />
         </group>
       </Float>
     </group>

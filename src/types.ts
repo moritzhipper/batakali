@@ -8,7 +8,7 @@ export type CameraConfig = {
 }
 
 export type DuckoConfig = {
-  shardsVisible: boolean
+  showShards: boolean
   dim: boolean
 }
 

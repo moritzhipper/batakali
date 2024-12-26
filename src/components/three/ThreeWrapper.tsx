@@ -3,6 +3,7 @@ import { Canvas } from "@react-three/fiber"
 import { useEffect } from "react"
 import { useLocation } from "react-router-dom"
 import bwTexture from "../../assets/bw_environment_texture.jpg"
+import { useAudioStore } from "../../state/audioState"
 import { useSzeneState } from "../../state/szeneState"
 import { CameraDolly } from "./CameraDolly"
 import { DuckoWrapper } from "./DuckoWrapper"
@@ -11,10 +12,9 @@ import "./ThreeWrapper.css"
 export const ThreeWrapper = () => {
   const { activeSzene, setActiveSzene } = useSzeneState()
   const { pathname } = useLocation()
+  const { selectedProject } = useAudioStore()
 
-  useEffect(() => {
-    setActiveSzene(pathname)
-  }, [pathname])
+  useEffect(() => setActiveSzene(pathname), [pathname])
 
   return (
     <div className={`three-wrapper ${activeSzene.ducko.dim ? "dim" : ""}`}>
@@ -22,7 +22,10 @@ export const ThreeWrapper = () => {
         <CameraDolly cameraConfig={activeSzene.camera} />
         <pointLight position={[3, 4, 3]} intensity={100} color={"white"} />
         <Environment files={bwTexture} />
-        <DuckoWrapper duckoConfig={activeSzene.ducko} />
+        <DuckoWrapper
+          duckoConfig={activeSzene.ducko}
+          text={selectedProject.tag}
+        />
       </Canvas>
     </div>
   )
