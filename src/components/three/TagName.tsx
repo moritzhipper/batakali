@@ -89,7 +89,7 @@ const AnimTagWrapper = ({ opacity, scale, x, text }: AnimTagWrapperProps) => {
             transparent={true}
             opacity={opacity}
             metalness={1}
-            roughness={0.15}
+            roughness={0.17}
           />
           {text}
         </Text3D>
