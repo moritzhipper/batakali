@@ -6,9 +6,10 @@ import font from "./tbc_font.json"
 
 type Props = {
   text: string
+  color: string
 }
 
-export const TagName = ({ text }: Props) => {
+export const TagName = ({ text, color }: Props) => {
   const AnimatedText = useMemo(() => a(AnimTagWrapper), [text])
   const isMobile = useMediaQuery("(max-width: 700px)")
 
@@ -61,6 +62,7 @@ export const TagName = ({ text }: Props) => {
       scale={scrollProps.scale}
       x={scrollProps.x}
       text={text}
+      color={color}
     />
   )
 }
@@ -70,9 +72,16 @@ type AnimTagWrapperProps = {
   scale: number
   x: number
   text: string
+  color: string
 }
 
-const AnimTagWrapper = ({ opacity, scale, x, text }: AnimTagWrapperProps) => {
+const AnimTagWrapper = ({
+  opacity,
+  scale,
+  x,
+  text,
+  color
+}: AnimTagWrapperProps) => {
   return (
     <group scale={scale} position={[x, -1, 1]}>
       <Center cacheKey={text}>
@@ -85,7 +94,7 @@ const AnimTagWrapper = ({ opacity, scale, x, text }: AnimTagWrapperProps) => {
           curveSegments={10}
         >
           <meshStandardMaterial
-            color={"#eee"}
+            color={color}
             transparent={true}
             opacity={opacity}
             metalness={1}

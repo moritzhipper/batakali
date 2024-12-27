@@ -1,1 +1,1 @@
-import { DuckoSpriteConfig } from "../types"
+

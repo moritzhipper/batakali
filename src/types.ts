@@ -2,11 +2,13 @@ export type DeepPartial<T> = {
   [P in keyof T]?: T[P] extends object ? DeepPartial<T[P]> : T[P]
 }
 
+// configure camera
 export type CameraConfig = {
   position: number[]
   lookAt: number[]
 }
 
+// configure what is shown in the szene
 export type DuckoConfig = {
   showShards: boolean
   dim: boolean
@@ -17,12 +19,13 @@ export type DuckoSzeneConfig = {
   camera: CameraConfig
 }
 
-export type DuckoSpriteConfig = {
+// configure sprites and color per musical tag
+export type DuckoTagConfig = {
+  tag: string
+  color: string
   ducko: string
   shards: string[]
 }
-
-export type DuckoTagConfig = DuckoSpriteConfig & { tag: string }
 
 export type Project = {
   name: string

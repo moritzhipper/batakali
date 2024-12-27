@@ -57,7 +57,7 @@ export const DuckoWrapper = ({ showShards, tagConfig }: Props) => {
   return (
     <group ref={szeneRef}>
       <Float speed={0.2}>
-        <TagName text={visibleText} />
+        <TagName text={visibleText} color={tagConfig.color} />
         <group ref={duckRef}>
           <ImageElement texture={duckTexture} height={5.5} />
         </group>

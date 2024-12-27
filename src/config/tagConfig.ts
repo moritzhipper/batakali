@@ -1,4 +1,12 @@
-import { DuckoSpriteConfig, DuckoTagConfig } from "../types"
+import { DuckoTagConfig } from "../types"
+
+type CreateTagConfigInput = {
+  tag: string
+  color: string
+  folder: string
+  fileDuck: string
+  filesShards: string[]
+}
 
 // helper functions
 const importImage = (path: string): string => {
@@ -8,45 +16,51 @@ const importImage = (path: string): string => {
   return new URL(fullPath, import.meta.url).href
 }
 
-export const buildSpriteConfig = (
-  folder: string,
-  fileDuck: string,
-  filesShards: string[]
-): DuckoSpriteConfig => ({
+export const createTagConfig = ({
+  tag,
+  color,
+  folder,
+  fileDuck,
+  filesShards
+}: CreateTagConfigInput): DuckoTagConfig => ({
+  tag,
+  color,
   ducko: importImage(`${folder}/${fileDuck}`),
   shards: filesShards.map((file) => importImage(`${folder}/${file}`))
 })
 
 // config
-const duckSpritesPainty: DuckoSpriteConfig = buildSpriteConfig(
-  "painty",
-  "duck",
-  ["bling", "heart_1", "heart_2"]
-)
+const configMinimal: DuckoTagConfig = createTagConfig({
+  tag: "minimal techno",
+  color: "#f00",
+  folder: "painty",
+  fileDuck: "duck",
+  filesShards: ["bling", "heart_1", "heart_2"]
+})
 
-const duckSpritesCreepy: DuckoSpriteConfig = buildSpriteConfig(
-  "creepy",
-  "duck_teeth",
-  ["heart", "purple_heart"]
-)
+const configHardTechno: DuckoTagConfig = createTagConfig({
+  tag: "hiphop",
+  color: "#0f0",
+  folder: "creepy",
+  fileDuck: "duck_teeth",
+  filesShards: ["heart", "purple_heart"]
+})
 
-const duckSpritesAngry: DuckoSpriteConfig = buildSpriteConfig("angry", "duck", [
-  "feather",
-  "shard1",
-  "shard2"
-])
+const configDefault: DuckoTagConfig = createTagConfig({
+  tag: "default",
+  color: "#fff",
+  folder: "angry",
+  fileDuck: "duck",
+  filesShards: ["feather", "shard1", "shard2"]
+})
 
-const duckSpritesRecord: Record<string, DuckoSpriteConfig> = {
-  "minimal techno": duckSpritesPainty,
-  hardtechno: duckSpritesCreepy,
-  default: duckSpritesAngry
-}
+const allSpriteConfigs = [configMinimal, configHardTechno]
 
 export const getSpritesByTag = (tag: string): DuckoTagConfig => {
-  const relevantSzene = duckSpritesRecord[tag] || duckSpritesRecord.default
-
-  return {
-    ...relevantSzene,
-    tag
-  }
+  return (
+    allSpriteConfigs.find((conf) => conf.tag === tag) || {
+      ...configDefault,
+      tag
+    }
+  )
 }

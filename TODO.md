@@ -9,6 +9,7 @@
 - -> eigenen hintergrund fur environment wählen, sonst lädt die site erst, sobald der backround von github geladen wurde
 - routen und tags per enum
 - diese record mappings irgendwie consolidieren
+- shared track not preselected on enter
 
 ## Project Selector
 
