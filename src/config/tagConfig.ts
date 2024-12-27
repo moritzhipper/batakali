@@ -65,6 +65,14 @@ const configTrance: DuckoTagConfig = createTagConfig({
   filesShards: ["metal", "screw", "synth_1"]
 })
 
+const configHardTechno: DuckoTagConfig = createTagConfig({
+  tag: "hiphop",
+  color: "#ccc",
+  folder: "hard-techno",
+  fileDuck: "duck",
+  filesShards: ["shard_1", "shard_2", "shard_3", "shard_4"]
+})
+
 const configDefault: DuckoTagConfig = createTagConfig({
   tag: "default",
   color: "#fff",
@@ -73,7 +81,7 @@ const configDefault: DuckoTagConfig = createTagConfig({
   filesShards: ["feather", "shard1", "shard2"]
 })
 
-const allSpriteConfigs = [configMinimal, techno, configTrance]
+const allSpriteConfigs = [configMinimal, techno, configTrance, configHardTechno]
 
 export const getSpritesByTag = (tag: string): DuckoTagConfig => {
   return (
