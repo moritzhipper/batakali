@@ -76,9 +76,9 @@ const AnimTagWrapper = ({ opacity, scale, x, text }: AnimTagWrapperProps) => {
   return (
     <group scale={scale} position={[x, -1, 1]}>
       <Center cacheKey={text}>
-        <Text3D font={font}>
+        <Text3D font={font} bevelThickness={0.03} bevelSize={0.01} bevelEnabled>
           <meshStandardMaterial
-            color={"#999"}
+            color={"#fff"}
             transparent={true}
             opacity={opacity}
             metalness={0.9}

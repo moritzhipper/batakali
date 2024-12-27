@@ -23,7 +23,7 @@ export const ThreeWrapper = () => {
         <pointLight position={[3, 4, 3]} intensity={100} color={"white"} />
         <Environment files={bwTexture} />
         <DuckoWrapper
-          duckoConfig={activeSzene.ducko}
+          showShards={activeSzene.ducko.showShards}
           text={selectedProject.tag}
         />
       </Canvas>

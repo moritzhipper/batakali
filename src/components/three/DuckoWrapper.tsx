@@ -4,7 +4,6 @@ import { useEffect, useMemo, useRef, useState } from "react"
 import { Group, TextureLoader } from "three"
 
 import { duckSpritesAngry } from "../../config/szeneConfig"
-import { DuckoConfig } from "../../types"
 import { ImageElement } from "./ImageElement"
 import { Shards } from "./Shards"
 import { TagName } from "./TagName"
@@ -18,19 +17,18 @@ import {
 } from "./utils"
 
 type Props = {
-  duckoConfig: DuckoConfig
+  showShards: boolean
   text: string
 }
 
-export const DuckoWrapper = ({ duckoConfig, text }: Props) => {
-  const { showShards } = duckoConfig
+export const DuckoWrapper = ({ showShards, text }: Props) => {
   const shardRef = useRef<Group>(null!)
   const duckRef = useRef<Group>(null!)
   const szeneRef = useRef<Group>(null!)
   const audioImpactRef = useAudioGain()
 
   // hier automatismus einbauen, der andere duckos erlaubt
-  const { ducko, shards } = useMemo(() => duckSpritesAngry, [duckoConfig])
+  const { ducko, shards } = useMemo(() => duckSpritesAngry, [showShards])
   const duckTexture = useMemo(() => useLoader(TextureLoader, ducko), [])
 
   const [visibleText, setVisibleText] = useState("")
