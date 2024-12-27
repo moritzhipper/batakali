@@ -32,6 +32,8 @@
   - drehung von gruppe mit ducko und shards animieren über spring?
 - text ausblenden, wenn durch animiert um bugs zu vermeiden
 - three wrapper 100vh, dann duck centeren mit 100dvh
+- images ordner aufräumen
+- aus bildern den unsichtbaren rand oben und unten entfernen, um gleicher zu positionieren
 
 ## Image Requirements
 

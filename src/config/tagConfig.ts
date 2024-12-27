@@ -1,7 +1,6 @@
 import { DuckoTagConfig } from "../types"
 
 type CreateTagConfigInput = {
-  tag: string
   color: string
   folder: string
   fileDuck: string
@@ -17,13 +16,11 @@ const importImage = (path: string): string => {
 }
 
 export const createTagConfig = ({
-  tag,
   color,
   folder,
   fileDuck,
   filesShards
 }: CreateTagConfigInput): DuckoTagConfig => ({
-  tag,
   color,
   ducko: importImage(`${folder}/${fileDuck}`),
   shards: filesShards.map((file) => importImage(`${folder}/${file}`))
@@ -33,61 +30,63 @@ export const createTagConfig = ({
  * synthwave x
  * minimal techno x
  * boombap x
- * hiphop
+ * hardcore techno x
  * trance
- * hardcore techno
+ * hiphop
  *
  *
  */
 
 // config
-const configMinimal: DuckoTagConfig = createTagConfig({
-  tag: "boombap",
+const paintyDucko: DuckoTagConfig = createTagConfig({
   color: "#f5a8ec",
   folder: "painty",
   fileDuck: "duck_bg",
   filesShards: ["bling", "heart_1", "heart_2"]
 })
 
-const techno: DuckoTagConfig = createTagConfig({
-  tag: "minimal techno",
+const teethDucko: DuckoTagConfig = createTagConfig({
   color: "#516112",
-  folder: "techno",
+  folder: "teeth",
   fileDuck: "duck_less_teeth",
   filesShards: ["heart", "purple_heart"]
 })
 
-const configTrance: DuckoTagConfig = createTagConfig({
-  tag: "synthwave",
+const futureDucko: DuckoTagConfig = createTagConfig({
   color: "#fff",
   folder: "future",
   fileDuck: "future_duck",
   filesShards: ["metal", "screw", "synth_1"]
 })
 
-const configHardTechno: DuckoTagConfig = createTagConfig({
-  tag: "hiphop",
+const rockyDucko: DuckoTagConfig = createTagConfig({
   color: "#ccc",
-  folder: "hard-techno",
+  folder: "rocky",
   fileDuck: "duck",
   filesShards: ["shard_1", "shard_2", "shard_3", "shard_4"]
 })
 
-const configDefault: DuckoTagConfig = createTagConfig({
-  tag: "default",
+const defaultDucko: DuckoTagConfig = createTagConfig({
   color: "#fff",
-  folder: "angry",
+  folder: "default",
   fileDuck: "duck",
   filesShards: ["feather", "shard1", "shard2"]
 })
 
-const allSpriteConfigs = [configMinimal, techno, configTrance, configHardTechno]
+const duckoSpritesRecord: Record<string, DuckoTagConfig> = {
+  boombap: paintyDucko,
+  synthwave: futureDucko,
+  trance: teethDucko,
+  "hard techno": rockyDucko
+}
 
-export const getSpritesByTag = (tag: string): DuckoTagConfig => {
-  return (
-    allSpriteConfigs.find((conf) => conf.tag === tag) || {
-      ...configDefault,
-      tag
-    }
-  )
+export const getSpritesByTag = (
+  tag: string
+): DuckoTagConfig & { tag: string } => {
+  const config = duckoSpritesRecord[tag] || defaultDucko
+
+  return {
+    ...config,
+    tag
+  }
 }

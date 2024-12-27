@@ -21,7 +21,6 @@ export type DuckoSzeneConfig = {
 
 // configure sprites and color per musical tag
 export type DuckoTagConfig = {
-  tag: string
   color: string
   ducko: string
   shards: string[]
