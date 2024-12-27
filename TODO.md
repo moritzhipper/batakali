@@ -7,6 +7,8 @@
 - If only DuckoPage, then a slow camera movement towards Ducko and around it.
 - clouds unten, um szene spannender zu machen?
 - -> eigenen hintergrund fur environment wählen, sonst lädt die site erst, sobald der backround von github geladen wurde
+- routen und tags per enum
+- diese record mappings irgendwie consolidieren
 
 ## Project Selector
 

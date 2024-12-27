@@ -74,7 +74,7 @@ type AnimTagWrapperProps = {
 
 const AnimTagWrapper = ({ opacity, scale, x, text }: AnimTagWrapperProps) => {
   return (
-    <group scale={scale} position={[x, -1.4, 1]}>
+    <group scale={scale} position={[x, -1, 1]}>
       <Center cacheKey={text}>
         <Text3D
           font={font}
@@ -85,7 +85,7 @@ const AnimTagWrapper = ({ opacity, scale, x, text }: AnimTagWrapperProps) => {
           curveSegments={10}
         >
           <meshStandardMaterial
-            color={"#aaa"}
+            color={"#eee"}
             transparent={true}
             opacity={opacity}
             metalness={1}

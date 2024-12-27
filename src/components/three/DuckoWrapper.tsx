@@ -3,7 +3,7 @@ import { useFrame, useLoader } from "@react-three/fiber"
 import { useEffect, useMemo, useRef, useState } from "react"
 import { Group, TextureLoader } from "three"
 
-import { duckSpritesAngry } from "../../config/szeneConfig"
+import { DuckoTagConfig } from "../../types"
 import { ImageElement } from "./ImageElement"
 import { Shards } from "./Shards"
 import { TagName } from "./TagName"
@@ -18,26 +18,29 @@ import {
 
 type Props = {
   showShards: boolean
-  text: string
+  tagConfig: DuckoTagConfig
 }
 
-export const DuckoWrapper = ({ showShards, text }: Props) => {
+export const DuckoWrapper = ({ showShards, tagConfig }: Props) => {
   const shardRef = useRef<Group>(null!)
   const duckRef = useRef<Group>(null!)
   const szeneRef = useRef<Group>(null!)
   const audioImpactRef = useAudioGain()
 
   // hier automatismus einbauen, der andere duckos erlaubt
-  const { ducko, shards } = useMemo(() => duckSpritesAngry, [showShards])
-  const duckTexture = useMemo(() => useLoader(TextureLoader, ducko), [])
+  const { ducko, shards, tag } = tagConfig
+  const duckTexture = useMemo(
+    () => useLoader(TextureLoader, ducko),
+    [tagConfig]
+  )
 
   const [visibleText, setVisibleText] = useState("")
   useEffect(() => {
     if (showShards) {
-      setVisibleText(text)
+      setVisibleText(tag)
       turnSzeneAway(szeneRef.current)
     }
-  }, [text])
+  }, [tag])
 
   useFrame((_, delta) => {
     animateSzeneVisible(szeneRef.current, duckRef.current)

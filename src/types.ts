@@ -22,6 +22,8 @@ export type DuckoSpriteConfig = {
   shards: string[]
 }
 
+export type DuckoTagConfig = DuckoSpriteConfig & { tag: string }
+
 export type Project = {
   name: string
   tag: string

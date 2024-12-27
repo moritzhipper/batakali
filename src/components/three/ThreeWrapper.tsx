@@ -1,8 +1,9 @@
 import { Environment } from "@react-three/drei"
 import { Canvas } from "@react-three/fiber"
-import { useEffect } from "react"
+import { useEffect, useMemo } from "react"
 import { useLocation } from "react-router-dom"
 import bwTexture from "../../assets/bw_environment_texture.jpg"
+import { getSpritesByTag } from "../../config/tagConfig"
 import { useAudioStore } from "../../state/audioState"
 import { useSzeneState } from "../../state/szeneState"
 import { CameraDolly } from "./CameraDolly"
@@ -14,6 +15,10 @@ export const ThreeWrapper = () => {
   const { pathname } = useLocation()
   const { selectedProject } = useAudioStore()
 
+  const spriteConfig = useMemo(
+    () => getSpritesByTag(selectedProject.tag),
+    [selectedProject.tag]
+  )
   useEffect(() => setActiveSzene(pathname), [pathname])
 
   return (
@@ -24,7 +29,7 @@ export const ThreeWrapper = () => {
         <Environment files={bwTexture} />
         <DuckoWrapper
           showShards={activeSzene.ducko.showShards}
-          text={selectedProject.tag}
+          tagConfig={spriteConfig}
         />
       </Canvas>
     </div>

@@ -1,10 +1,12 @@
 import { config } from "@react-spring/core"
-import { DeepPartial, DuckoSpriteConfig, DuckoSzeneConfig } from "../types"
-import { buildSpriteConfig } from "./utils"
+import { DeepPartial, DuckoSzeneConfig } from "../types"
 
 export const springConfig = { config: config.gentle }
 
-export const duckoSzenes: Record<string, DeepPartial<DuckoSzeneConfig>> = {
+export const duckoSzenesRecord: Record<
+  string,
+  DeepPartial<DuckoSzeneConfig>
+> = {
   "/": {
     ducko: {
       showShards: false,
@@ -68,20 +70,29 @@ export const duckoSzenes: Record<string, DeepPartial<DuckoSzeneConfig>> = {
   }
 }
 
-export const duckSpritesPainty: DuckoSpriteConfig = buildSpriteConfig(
-  "painty",
-  "duck",
-  ["bling", "heart_1", "heart_2"]
-)
+const defaultSzene: DuckoSzeneConfig = {
+  ducko: {
+    showShards: true,
+    dim: true
+  },
+  camera: {
+    position: [0, 0, 10],
+    lookAt: [0, 0, 0]
+  }
+}
 
-export const duckSpritesCreepy: DuckoSpriteConfig = buildSpriteConfig(
-  "creepy",
-  "duck_teeth",
-  ["heart", "purple_heart"]
-)
+export const getConfigByName = (name?: string): DuckoSzeneConfig => {
+  if (!name) return defaultSzene
 
-export const duckSpritesAngry: DuckoSpriteConfig = buildSpriteConfig(
-  "angry",
-  "duck",
-  ["feather", "shard1", "shard2"]
-)
+  const relevantSzene = duckoSzenesRecord[name]
+  return {
+    ducko: {
+      ...defaultSzene.ducko,
+      ...relevantSzene.ducko
+    },
+    camera: {
+      ...defaultSzene.camera,
+      ...relevantSzene.camera
+    }
+  } as DuckoSzeneConfig
+}
