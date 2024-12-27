@@ -83,7 +83,7 @@ const AnimTagWrapper = ({
   color
 }: AnimTagWrapperProps) => {
   return (
-    <group scale={scale} position={[x, -1, 1]}>
+    <group scale={scale} position={[x, -1.2, 1]}>
       <Center cacheKey={text}>
         <Text3D
           font={font}

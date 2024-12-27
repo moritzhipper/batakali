@@ -29,21 +29,40 @@ export const createTagConfig = ({
   shards: filesShards.map((file) => importImage(`${folder}/${file}`))
 })
 
+/**
+ * synthwave x
+ * minimal techno x
+ * boombap x
+ * hiphop
+ * trance
+ * hardcore techno
+ *
+ *
+ */
+
 // config
 const configMinimal: DuckoTagConfig = createTagConfig({
-  tag: "minimal techno",
-  color: "#f00",
+  tag: "boombap",
+  color: "#f5a8ec",
   folder: "painty",
-  fileDuck: "duck",
+  fileDuck: "duck_bg",
   filesShards: ["bling", "heart_1", "heart_2"]
 })
 
-const configHardTechno: DuckoTagConfig = createTagConfig({
-  tag: "hiphop",
-  color: "#0f0",
-  folder: "creepy",
-  fileDuck: "duck_teeth",
+const techno: DuckoTagConfig = createTagConfig({
+  tag: "minimal techno",
+  color: "#516112",
+  folder: "techno",
+  fileDuck: "duck_less_teeth",
   filesShards: ["heart", "purple_heart"]
+})
+
+const configTrance: DuckoTagConfig = createTagConfig({
+  tag: "synthwave",
+  color: "#fff",
+  folder: "future",
+  fileDuck: "future_duck",
+  filesShards: ["metal", "screw", "synth_1"]
 })
 
 const configDefault: DuckoTagConfig = createTagConfig({
@@ -54,7 +73,7 @@ const configDefault: DuckoTagConfig = createTagConfig({
   filesShards: ["feather", "shard1", "shard2"]
 })
 
-const allSpriteConfigs = [configMinimal, configHardTechno]
+const allSpriteConfigs = [configMinimal, techno, configTrance]
 
 export const getSpritesByTag = (tag: string): DuckoTagConfig => {
   return (

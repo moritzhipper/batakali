@@ -19,7 +19,7 @@ export const duckoSzenesRecord: Record<
   },
   "/projects": {
     camera: {
-      position: [-2, -3, 10],
+      position: [-2, -4, 10],
       lookAt: [0, -2, 0]
     },
     ducko: {
