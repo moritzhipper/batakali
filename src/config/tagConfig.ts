@@ -76,24 +76,13 @@ const defaultDucko: DuckoTagConfig = createTagConfig({
   filesShards: ["feather", "shard1", "shard2"]
 })
 
-/**
- * synthwave x
- * trance x
- * hard techno x
- * hiphop x
- * boombap x
- * minimal techno
- *
- *
- */
-
 const duckoSpritesRecord: Record<string, DuckoTagConfig> = {
   synthwave: futureDucko,
   trance: paintyDucko,
   "hard techno": rockyDucko,
   hiphop: teethDucko,
   boombap: naturalDucko,
-  "minimal techno": minimalDucko
+  minimal: minimalDucko
 }
 
 export const getSpritesByTag = (

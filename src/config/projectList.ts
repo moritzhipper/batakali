@@ -69,7 +69,7 @@ export const projectList: Project[] = [
   },
   {
     name: "spring",
-    tag: "minimal techno",
+    tag: "minimal",
     fileName: "spring.mp3"
   },
   {
