@@ -26,17 +26,6 @@ export const createTagConfig = ({
   shards: filesShards.map((file) => importImage(`${folder}/${file}`))
 })
 
-/**
- * synthwave x
- * minimal techno x
- * boombap x
- * hardcore techno x
- * trance
- * hiphop
- *
- *
- */
-
 // config
 const paintyDucko: DuckoTagConfig = createTagConfig({
   color: "#f5a8ec",
@@ -66,6 +55,20 @@ const rockyDucko: DuckoTagConfig = createTagConfig({
   filesShards: ["shard_1", "shard_2", "shard_3", "shard_4"]
 })
 
+const naturalDucko: DuckoTagConfig = createTagConfig({
+  color: "#66bf9b",
+  folder: "natural",
+  fileDuck: "duck",
+  filesShards: ["leaf", "leaf_2", "stick"]
+})
+
+const minimalDucko: DuckoTagConfig = createTagConfig({
+  color: "#19aeff",
+  folder: "minimal",
+  fileDuck: "duck_9",
+  filesShards: ["heart_1", "heart_2", "heart_3"]
+})
+
 const defaultDucko: DuckoTagConfig = createTagConfig({
   color: "#fff",
   folder: "default",
@@ -73,11 +76,24 @@ const defaultDucko: DuckoTagConfig = createTagConfig({
   filesShards: ["feather", "shard1", "shard2"]
 })
 
+/**
+ * synthwave x
+ * trance x
+ * hard techno x
+ * hiphop x
+ * boombap x
+ * minimal techno
+ *
+ *
+ */
+
 const duckoSpritesRecord: Record<string, DuckoTagConfig> = {
-  boombap: paintyDucko,
   synthwave: futureDucko,
-  trance: teethDucko,
-  "hard techno": rockyDucko
+  trance: paintyDucko,
+  "hard techno": rockyDucko,
+  hiphop: teethDucko,
+  boombap: naturalDucko,
+  "minimal techno": minimalDucko
 }
 
 export const getSpritesByTag = (

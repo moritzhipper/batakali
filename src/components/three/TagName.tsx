@@ -19,7 +19,7 @@ export const TagName = ({ text, color }: Props) => {
   const scrollWidthMobile = 0.7 + lettersMoreThanThree * 0.2
   const scrollWidth = isMobile ? scrollWidthMobile : 0.4
 
-  const configIn = { duration: 1000, easing: easings.linear }
+  const configIn = { duration: 1300, easing: easings.linear }
   const configFly = { duration: 8000, easing: easings.linear }
 
   const scrollValues = {
@@ -83,7 +83,7 @@ const AnimTagWrapper = ({
   color
 }: AnimTagWrapperProps) => {
   return (
-    <group scale={scale} position={[x, -1.2, 1]}>
+    <group scale={scale} position={[x, -1, 1]}>
       <Center cacheKey={text}>
         <Text3D
           font={font}
