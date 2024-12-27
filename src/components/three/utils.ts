@@ -70,6 +70,7 @@ export const animateShardsVisible = (group: Group, delta: number) => {
 
 export const turnSzeneAway = (group: Group) => {
   group.rotation.y = Math.PI / -2
+  group.position.y = -0.5
   group.traverse((child) => {
     if (child.isMesh || child.isSprite) {
       child.material.opacity = 0
@@ -81,6 +82,8 @@ export const animateSzeneVisible = (
   rotateGroup: Group,
   animateOpacityGroup: Group
 ) => {
+  rotateGroup.position.y = lerp(rotateGroup.position.y, 0, 0.06)
+
   rotateGroup.rotation.y = lerp(rotateGroup.rotation.y, 0, 0.03)
   animateOpacityGroup.traverse((child) => {
     if (child.isMesh) {

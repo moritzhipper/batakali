@@ -20,12 +20,12 @@ export const TagName = ({ text, color }: Props) => {
   const scrollWidth = isMobile ? scrollWidthMobile : 0.4
 
   const configIn = { duration: 1000, easing: easings.linear }
-  const configFly = { duration: 4000, easing: easings.linear }
+  const configFly = { duration: 8000, easing: easings.linear }
 
   const scrollValues = {
     from: {
       x: scrollWidth,
-      scale: 0.2,
+      scale: 0.5,
       opacity: 0
     },
     to: [
