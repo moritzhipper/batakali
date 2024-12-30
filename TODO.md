@@ -2,14 +2,10 @@
 
 ## SceneConfig
 
-- Remove mist?
-- Make lighting visible.
-- If only DuckoPage, then a slow camera movement towards Ducko and around it.
-- clouds unten, um szene spannender zu machen?
-- -> eigenen hintergrund fur environment wählen, sonst lädt die site erst, sobald der backround von github geladen wurde
-- routen und tags per enum
-- diese record mappings irgendwie consolidieren
+- routen und tags per enum?
 - shared track not preselected on enter
+- projekte nach filter selektion falsche styles
+- kurzer shardwisch bei szenechange?
 
 ## Project Selector
 
@@ -23,16 +19,6 @@
 
 ## Ducko Szene
 
-- duckoconfig wie folg
-  - tags für identifizierung
-  - assets für styling
-  - wenn selected tag changed, dann die drehung per animation. die opacity per useframe wegen performance
-  - ducko als komponente auslagern
-  - shards auch auslagern -> duckwrapper mit inhalten
-  - drehung von gruppe mit ducko und shards animieren über spring?
-- text ausblenden, wenn durch animiert um bugs zu vermeiden
-- three wrapper 100vh, dann duck centeren mit 100dvh
-- images ordner aufräumen
 - aus bildern den unsichtbaren rand oben und unten entfernen, um gleicher zu positionieren
 
 ## Image Requirements

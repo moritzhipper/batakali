@@ -85,9 +85,7 @@ const duckoSpritesRecord: Record<string, DuckoTagConfig> = {
   minimal: minimalDucko
 }
 
-export const getSpritesByTag = (
-  tag: string
-): DuckoTagConfig & { tag: string } => {
+export const getSpritesByTag = (tag: string): DuckoTagConfig => {
   const config = duckoSpritesRecord[tag] || defaultDucko
 
   return {

@@ -24,6 +24,7 @@ export type DuckoTagConfig = {
   color: string
   ducko: string
   shards: string[]
+  tag?: string
 }
 
 export type Project = {

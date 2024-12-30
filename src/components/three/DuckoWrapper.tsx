@@ -27,7 +27,6 @@ export const DuckoWrapper = ({ showShards, tagConfig }: Props) => {
   const szeneRef = useRef<Group>(null!)
   const audioImpactRef = useAudioGain()
 
-  // hier automatismus einbauen, der andere duckos erlaubt
   const { ducko, shards, tag } = tagConfig
   const duckTexture = useMemo(
     () => useLoader(TextureLoader, ducko),
@@ -35,9 +34,10 @@ export const DuckoWrapper = ({ showShards, tagConfig }: Props) => {
   )
 
   const [visibleText, setVisibleText] = useState("")
+
   useEffect(() => {
     if (showShards) {
-      setVisibleText(tag)
+      setVisibleText(tag!)
       turnSzeneAway(szeneRef.current)
     }
   }, [tag])
