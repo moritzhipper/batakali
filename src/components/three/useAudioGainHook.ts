@@ -24,8 +24,8 @@ export const useAudioGain = () => {
     bands.reduce((sum, value) => sum + value, 0) / bands.length / 255
 
   const loadAnimationFrame = () => {
-    console.log("ticking")
     analyzerRef.current!.getByteFrequencyData(dataArrayRef.current!)
+    // console.log(dataArrayRef.current?.length)
     setAudioLoudness(getLoudness(dataArrayRef.current!))
     animationFrameIdRef.current = requestAnimationFrame(loadAnimationFrame)
   }
@@ -46,7 +46,6 @@ export const useAudioGain = () => {
   useEffect(() => {
     // do only once after user interaction to accomondate browsers security policies
     if (!isAudioContextInitialized && isPlaying) {
-      console.log("audio context initialized")
       setupAdudioContext()
     }
     if (isPlaying) {

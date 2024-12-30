@@ -17,7 +17,7 @@ export const AudioPlayer = () => {
 
   useEffect(() => {
     audio.pause()
-    audio.src = selectedProject.fileName
+    audio.src = `projects/${selectedProject.fileName}`
     audio.load()
 
     if (isPlaying) audio.play()

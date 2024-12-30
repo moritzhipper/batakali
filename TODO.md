@@ -2,9 +2,10 @@
 
 ## SceneConfig
 
-- Remove mist?
-- Make lighting visible.
-- If only DuckoPage, then a slow camera movement towards Ducko and around it.
+- routen und tags per enum?
+- shared track not preselected on enter
+- projekte nach filter selektion falsche styles
+- kurzer shardwisch bei szenechange?
 
 ## Project Selector
 
@@ -14,6 +15,11 @@
 ## Styles
 
 - Clean up style files and move them to the styles folder.
+- textshadow als page klasse, sodass texte auf untergründen keine shadows haben
+
+## Ducko Szene
+
+- aus bildern den unsichtbaren rand oben und unten entfernen, um gleicher zu positionieren
 
 ## Image Requirements
 
