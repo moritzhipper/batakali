@@ -39,6 +39,9 @@ export const duckoSzenesRecord: Record<
     camera: {
       position: [1, -2, 5],
       lookAt: [-1, 0, 0]
+    },
+    ducko: {
+      showShards: false
     }
   },
   "/about": {
