@@ -66,7 +66,7 @@
     .tags {
       border-radius: var(--radius-m);
       border-top: 2px solid var(--accent-2);
-      padding: var(--distance-m);
+      padding: var(--distance-m) var(--distance-l);
       margin: 0 var(--distance-l);
       max-width: 720px;
       justify-content: center;

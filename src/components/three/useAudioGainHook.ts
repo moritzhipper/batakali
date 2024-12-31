@@ -25,7 +25,6 @@ export const useAudioGain = () => {
 
   const loadAnimationFrame = () => {
     analyzerRef.current!.getByteFrequencyData(dataArrayRef.current!)
-    // console.log(dataArrayRef.current?.length)
     setAudioLoudness(getLoudness(dataArrayRef.current!))
     animationFrameIdRef.current = requestAnimationFrame(loadAnimationFrame)
   }

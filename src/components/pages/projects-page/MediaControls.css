@@ -61,13 +61,6 @@
   .media-controls-wrapper .controls {
     justify-content: center;
     gap: var(--distance-m);
-
     padding: 0 var(--distance-xl) var(--distance-s) var(--distance-xl);
-
-    button.play {
-      /* margin: 0 var(--distance-m); */
-    }
-
-    /* justify-content: space-between; */
   }
 }

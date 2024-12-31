@@ -49,7 +49,7 @@ export const TagName = ({ text, color }: Props) => {
     ]
   }
 
-  const [scrollProps, api] = useSpring({ ...scrollValues }, [])
+  const [scrollProps, api] = useSpring(scrollValues, [])
 
   // use useMemo instead of useEffect to avoid the useEffect being called on every render
   useMemo(() => {
