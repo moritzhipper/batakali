@@ -1,0 +1,25 @@
+.share-button-wrapper {
+  position: relative;
+
+  .copied-to-clipboard {
+    position: absolute;
+    background-color: var(--accent-1);
+    padding: var(--distance-xs) var(--distance-s);
+    color: var(--accent-3);
+    border-radius: var(--radius-m);
+    transform: translate(-100%, -100%);
+    text-align: center;
+    animation: appear 0.3s;
+  }
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    scale: 0.9;
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}

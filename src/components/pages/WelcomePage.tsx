@@ -23,7 +23,7 @@ export const WelcomePage = () => {
   return (
     <div className="page-wrapper welcome">
       <div className="header">
-        <h1 className="big-ducko-print">Angry Ducko</h1>
+        <h1 className="big-ducko-print">batakali</h1>
         <p> vibes and tunes</p>
       </div>
       <div className="checkout">
