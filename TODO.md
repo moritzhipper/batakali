@@ -1,5 +1,8 @@
 # ToDo
 
+- share-button: per css ::before erfolgs und fehlermeldungklasse setzen
+- filter setzen und zurück auf dings gehen komisch
+
 ## SceneConfig
 
 - routen und tags per enum?
