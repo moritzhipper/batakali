@@ -64,6 +64,7 @@
       display: block;
       box-sizing: border-box;
       transition-delay: 5s;
+      filter: drop-shadow(0 1px 4px rgb(0 0 0 / 0.7));
       animation: pulse 6s infinite;
     }
 

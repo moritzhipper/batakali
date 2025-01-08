@@ -2,6 +2,7 @@
 
 - share-button: per css ::before erfolgs und fehlermeldungklasse setzen
 - filter setzen und zurück auf dings gehen komisch
+- scrollwheel scrolling oder smartphone swiping und schnelles filter setzen führt zu kaputter view
 
 ## SceneConfig
 
