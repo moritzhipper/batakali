@@ -21,24 +21,23 @@
       position: absolute;
       content: "";
       z-index: -1;
-      background-color: var(--accent-3);
-      width: 150%;
+      background-color: black;
+      width: 200%;
       height: 200%;
     }
   }
 
   .header::after {
-    opacity: 0.5;
-    filter: blur(60px);
-    border-radius: 25% 25% 50% 50%;
+    opacity: 0.7;
+    filter: blur(50px);
+    border-radius: 50%;
   }
 
   .checkout::after {
-    opacity: 0.2;
+    opacity: 1;
 
-    filter: blur(40px);
-    border-radius: 25%;
-    translate: 0 5%;
+    filter: blur(50px);
+    border-radius: 50%;
   }
 
   .header {
@@ -46,13 +45,13 @@
     flex-direction: column;
     align-items: center;
     grid-row: 2;
+    font-family: "BattleContinues";
 
     h1 {
       padding: 0;
     }
     p {
-      margin-top: var(--distance-xs);
-      font-size: var(--font-size-xl);
+      font-size: var(--font-size-2xl);
     }
   }
   .checkout {
@@ -60,6 +59,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    img {
+      display: block;
+      box-sizing: border-box;
+      transition-delay: 5s;
+      animation: pulse 6s infinite;
+    }
 
     .cta {
       font-weight: 300;
@@ -70,39 +76,40 @@
       &.shared {
         font-size: var(--font-size-3xl);
       }
-
-      /* shine animation */
-      mask-image: linear-gradient(-75deg, #000 10%, #0007 15%, #000 20%);
-      mask-size: 200%;
-      mask-position: 200%;
-      animation: shine 6s linear infinite;
-      animation-delay: 3s;
     }
   }
   @media (--viewport-m) {
-    .header {
-      h1 {
-        font-size: 120px;
-      }
-      p {
-        font-size: var(--font-size-2xl);
-      }
+    h1 {
+      font-size: 120px;
+    }
+    img {
+      width: 80px;
     }
   }
   @media (--viewport-s) {
-    .header {
-      h1 {
-        font-size: 80px;
-      }
+    h1 {
+      font-size: 80px;
+    }
+    img {
+      width: 60px;
     }
   }
 }
 
-@keyframes shine {
-  from {
-    mask-position: 200%;
+@keyframes pulse {
+  80% {
+    scale: 1;
   }
-  to {
-    mask-position: 0%;
+  85% {
+    scale: 1.1;
+  }
+  90% {
+    scale: 1;
+  }
+  95% {
+    scale: 1.1;
+  }
+  100% {
+    scale: 1;
   }
 }

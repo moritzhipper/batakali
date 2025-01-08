@@ -52,7 +52,7 @@
 
 @media (--viewport-s) {
   .media-controls-wrapper .controls {
-    padding: 0 var(--distance-xl) 0 var(--distance-xl);
+    padding: 0 var(--distance-l);
     justify-content: space-between;
   }
 }

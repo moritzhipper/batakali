@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { Link, useSearchParams } from "react-router-dom"
 import { useAudioStore } from "../../state/audioState"
+import start from "./../../assets/start.svg"
 import "./WelcomePage.css"
 
 export const WelcomePage = () => {
@@ -24,7 +25,7 @@ export const WelcomePage = () => {
     <div className="page-wrapper welcome">
       <div className="header">
         <h1 className="big-ducko-print">batakali</h1>
-        <p> vibes and tunes</p>
+        <p>vibes and tunes</p>
       </div>
       <div className="checkout">
         {shareMode ? (
@@ -36,7 +37,7 @@ export const WelcomePage = () => {
           </>
         ) : (
           <Link className="cta" to="/projects">
-            check out projects
+            <img src={start} />
           </Link>
         )}
       </div>

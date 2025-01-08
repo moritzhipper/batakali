@@ -5,7 +5,7 @@ export const NavBarDesktop = () => {
   return (
     <div className="navbar-wrapper desktop delayed-fade-in">
       <Link className="home" to="/">
-        AD
+        batakali
       </Link>
       <Link className="page" to="/projects">
         projects
