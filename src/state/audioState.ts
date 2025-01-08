@@ -7,7 +7,8 @@ import {
   selectAndPlayProjectByName,
   selectNextProject,
   selectPreviousProject,
-  selectProjectByName
+  selectProjectByName,
+  setProjectEverywhere
 } from "./audioStateReducers"
 
 export type AudioState = {
@@ -21,6 +22,7 @@ export type AudioState = {
   setSelectedProject: (name: string) => void
   selectAndPlayProject: (name: string) => void
   setReelFocusProject: (name: string) => void
+  setProjectEverywhere: (name: string) => void
   selectTag: (tag: string) => void
   togglePlay: () => void
   pause: () => void
@@ -54,6 +56,8 @@ export const useAudioStore = create<AudioState>()(
     selectTag: (tag: string) => set((state) => prioritizeByTag(tag, state)),
     setReelFocusProject: (name: string) =>
       set((state) => ({ ...state, reelFocusProject: name })),
+    setProjectEverywhere: (name: string) =>
+      set((state) => setProjectEverywhere(name, state)),
     togglePlay: () =>
       set((state) => ({ ...state, isPlaying: !state.isPlaying })),
     toggleLoop: () =>

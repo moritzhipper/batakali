@@ -58,7 +58,7 @@ export const NavBarMobile = () => {
             {!open && (
               <a.div style={style}>
                 <Link to="/" className="home small">
-                  AD
+                  bk
                 </Link>
               </a.div>
             )}
@@ -76,7 +76,7 @@ export const NavBarMobile = () => {
                   style={{ transform: style.transform }}
                 >
                   <Link className="big-ducko-print" to="/">
-                    Angry Ducko
+                    batakali
                   </Link>
                   <Link className="page" to="/projects">
                     projects

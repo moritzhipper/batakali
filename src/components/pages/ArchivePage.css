@@ -16,12 +16,11 @@
       gap: var(--distance-m);
 
       .project-wrapper {
-        min-height: 42px;
+        padding-right: var(--distance-m);
         border-radius: var(--radius-s);
         display: flex;
         gap: var(--distance-s);
         align-items: center;
-        padding: var(--distance-m);
         border: 1px solid var(--accent-2);
         border-width: 1px 1px 1px 12px;
 
@@ -35,6 +34,7 @@
           color: var(--accent-0);
           font-weight: normal;
           margin-right: auto;
+          padding: var(--distance-l) var(--distance-m);
         }
       }
     }
@@ -43,11 +43,26 @@
 
 @media (--viewport-m) {
   .page-wrapper.archive {
+    .grid-wrapper {
+      gap: var(--distance-xl);
+    }
     .projects-wrapper {
       grid-template-columns: 1fr 1fr;
-      border-top: 2px solid rgb(from var(--accent-2) r g b / 0.6);
-      padding: var(--distance-s);
-      border-radius: var(--radius-l) 0;
+
+      .project-wrapper {
+        transition:
+          scale 0.2s,
+          background-color 0.2s;
+      }
+
+      .project-wrapper:is(:hover, :focus-within, :focus) {
+        background-color: rgb(from var(--accent-2) r g b / 0.4);
+        scale: 0.97;
+
+        button.name {
+          font-weight: bold;
+        }
+      }
     }
   }
 }

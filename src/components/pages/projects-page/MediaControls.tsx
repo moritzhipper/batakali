@@ -24,7 +24,6 @@ export const MediaControls = ({ onHide }: Props) => {
     <div className="media-controls-wrapper">
       <div className="now-playing">
         <h1>{selectedProject.name}</h1>
-        <span className="text-shadow">{selectedProject.tag}</span>
       </div>
       <div className="controls">
         <DownloadLink filePath={selectedProject.fileName} className="ri-s" />

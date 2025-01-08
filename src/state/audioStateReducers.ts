@@ -20,10 +20,7 @@ export const selectAndPlayProjectByName = (
 })
 
 export const prioritizeByTag = (tag: string, state: AudioState): AudioState => {
-  const prioritizedProjects = [
-    ...state.projectList.filter((project) => project.tag === tag),
-    ...state.projectList.filter((project) => project.tag !== tag)
-  ]
+  const prioritizedProjects = sortProjectListByTag(state.projectList, tag)
 
   return {
     ...state,
@@ -59,11 +56,34 @@ export const selectPreviousProject = (state: AudioState): AudioState => {
   }
 }
 
-export const focusProjectByName = (
+export const setProjectEverywhere = (
   name: string,
   state: AudioState
-): AudioState => ({ ...state, fu })
+): AudioState => {
+  const project = state.projectList.find((project) => project.name === name)
+  if (!project) return state
 
+  const tag = project.tag
+  const sortedProjects = sortProjectListByTag(state.projectList, tag)
+
+  // moves target project to the front of the list
+  sortedProjects.unshift(
+    sortedProjects.splice(
+      sortedProjects.findIndex((p) => p.name === project.name),
+      1
+    )[0]
+  )
+
+  return {
+    ...state,
+    selectedProject: project,
+    reelFocusProject: project.name,
+    selectedTag: project.tag,
+    projectList: sortedProjects
+  }
+}
+
+// helper functions
 const getSelectedProjectIndex = (state: AudioState): number =>
   state.projectList.findIndex(
     (project) => project.name === state.selectedProject.name
@@ -72,3 +92,8 @@ const getSelectedProjectIndex = (state: AudioState): number =>
 const getProjectByName = (name: string, state: AudioState): Project =>
   state.projectList.find((project) => project.name === name) ??
   state.projectList[0]
+
+const sortProjectListByTag = (projects: Project[], tag: string): Project[] => [
+  ...projects.filter((project) => project.tag === tag),
+  ...projects.filter((project) => project.tag !== tag)
+]
