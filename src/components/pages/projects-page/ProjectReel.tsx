@@ -1,6 +1,6 @@
 import { a, useSprings } from "@react-spring/web"
 import { useGesture } from "@use-gesture/react"
-import { useRef } from "react"
+import { useEffect, useRef } from "react"
 import { springConfig } from "../../../config/szeneConfig"
 import { useAudioStore } from "../../../state/audioState"
 import { Project } from "../../../types"
@@ -19,7 +19,8 @@ export const ProjectReel = () => {
     togglePlay,
     isPlaying,
     setReelFocusProject,
-    reelFocusProject
+    reelFocusProject,
+    selectedTag
   } = useAudioStore()
 
   const isMobile = useMediaQuery("(max-width: 700px)")
@@ -29,8 +30,11 @@ export const ProjectReel = () => {
   const wheelScale = 0.2
 
   const focusIndex = getProjectIndex(projectList, reelFocusProject)
-
   const currentScrollPos = useRef(focusIndex * itemOffset * -1)
+
+  useEffect(() => {
+    focusCard(focusIndex)
+  }, [selectedTag])
 
   // used to calculate scroll position relative to selected card
   const getTrueScrollPos = (offset: number) => offset + currentScrollPos.current
