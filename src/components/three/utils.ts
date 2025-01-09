@@ -80,14 +80,15 @@ export const turnSzeneAway = (group: Group) => {
 
 export const animateSzeneVisible = (
   rotateGroup: Group,
-  animateOpacityGroup: Group
+  animateOpacityGroup: Group,
+  delta: number
 ) => {
-  rotateGroup.position.y = lerp(rotateGroup.position.y, 0, 0.06)
+  rotateGroup.position.y = lerp(rotateGroup.position.y, 0, 0.06 + delta)
 
-  rotateGroup.rotation.y = lerp(rotateGroup.rotation.y, 0, 0.03)
+  rotateGroup.rotation.y = lerp(rotateGroup.rotation.y, 0, 0.03 + delta)
   animateOpacityGroup.traverse((child) => {
     if (child.isMesh) {
-      child.material.opacity = lerp(child.material.opacity, 1, 0.03)
+      child.material.opacity = lerp(child.material.opacity, 1, 0.03 + delta)
     }
   })
 }

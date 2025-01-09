@@ -43,7 +43,7 @@ export const DuckoWrapper = ({ showShards, tagConfig }: Props) => {
   }, [tag])
 
   useFrame((_, delta) => {
-    animateSzeneVisible(szeneRef.current, duckRef.current)
+    animateSzeneVisible(szeneRef.current, duckRef.current, delta)
     animateAmpImpact(duckRef.current, audioImpactRef * -0.05)
 
     if (showShards) {
