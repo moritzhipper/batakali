@@ -46,7 +46,7 @@
     opacity: 0.4;
     font-size: 40px;
     line-height: 30px;
-    margin: var(--distance-l) 0 var(--distance-m) 0;
+    margin: var(--distance-l) 0;
   }
 }
 

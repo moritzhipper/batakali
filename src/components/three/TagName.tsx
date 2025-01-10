@@ -15,12 +15,13 @@ export const TagName = ({ text, color }: Props) => {
 
   const lettersMoreThanThree = Math.max(0, text.length - 3)
 
-  const scaleFactor = 1 - 0.02 * lettersMoreThanThree
+  const scaleFactor = 1.4 - 0.02 * lettersMoreThanThree
   const scrollWidthMobile = 0.7 + lettersMoreThanThree * 0.2
   const scrollWidth = isMobile ? scrollWidthMobile : 0.4
 
-  const configIn = { duration: 1000, easing: easings.linear }
-  const configFly = { duration: 7000, easing: easings.linear }
+  const configIn = { duration: 700, easing: easings.linear }
+  const configFly = { duration: 4000, easing: easings.linear }
+  const configOut = { duration: 1000, easing: easings.linear }
 
   const scrollValues = {
     from: {
@@ -30,7 +31,7 @@ export const TagName = ({ text, color }: Props) => {
     },
     to: [
       {
-        x: scrollWidth,
+        x: scrollWidth * 1.5,
         scale: scaleFactor,
         opacity: 1,
         config: configIn
@@ -44,7 +45,7 @@ export const TagName = ({ text, color }: Props) => {
       {
         x: scrollWidth * -1.5,
         opacity: 0,
-        config: configIn
+        config: configOut
       }
     ]
   }
@@ -83,7 +84,7 @@ const AnimTagWrapper = ({
   color
 }: AnimTagWrapperProps) => {
   return (
-    <group scale={scale} position={[x, -1, 1]}>
+    <group scale={scale} position={[x, -1.2, 1]}>
       <Center cacheKey={text}>
         <Text3D
           font={font}

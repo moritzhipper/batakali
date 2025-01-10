@@ -46,8 +46,8 @@ a,
 li,
 .text-shadow {
   text-shadow:
-    1px 1px 3px var(--accent-3),
-    1px 1px 10px var(--accent-3);
+    1px 1px 10px rgb(0 0 0 / 0.2),
+    1px 1px 20px rgb(0 0 0 / 0.2);
 }
 
 h1 {

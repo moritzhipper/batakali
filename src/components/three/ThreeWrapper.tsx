@@ -1,8 +1,7 @@
-import { Cloud, Clouds, Environment } from "@react-three/drei"
+import { Environment } from "@react-three/drei"
 import { Canvas } from "@react-three/fiber"
 import { useEffect, useMemo } from "react"
 import { useLocation } from "react-router-dom"
-import { MeshBasicMaterial } from "three"
 import bwTexture from "../../assets/bw_environment_texture.jpg"
 import { getSpritesByTag } from "../../config/tagConfig"
 import { useAudioStore } from "../../state/audioState"
@@ -20,6 +19,7 @@ export const ThreeWrapper = () => {
     () => getSpritesByTag(selectedProject.tag),
     [selectedProject.tag]
   )
+
   useEffect(() => setActiveSzene(pathname), [pathname])
 
   return (
