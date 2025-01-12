@@ -1,28 +1,6 @@
 # ToDo
 
-- filter setzen und zurück auf dings gehen komisch
-- scrollwheel scrolling oder smartphone swiping und schnelles filter setzen führt zu kaputter view
-
-## SceneConfig
-
-- routen und tags per enum?
-- shared track not preselected on enter
-- projekte nach filter selektion falsche styles
-- kurzer shardwisch bei szenechange?
-
-## Project Selector
-
 - Link the IG account.
-- Allow 3D duck as well?
-
-## Styles
-
-- Clean up style files and move them to the styles folder.
-- textshadow als page klasse, sodass texte auf untergründen keine shadows haben
-
-## Ducko Szene
-
-- aus bildern den unsichtbaren rand oben und unten entfernen, um gleicher zu positionieren
 
 ## Image Requirements
 

@@ -29,7 +29,7 @@ export const duckoSzenesRecord: Record<
   duck: {
     camera: {
       position: [-2, -2, 8],
-      lookAt: [0, -0.5, 0]
+      lookAt: [0, -0.3, 0]
     },
     ducko: {
       dim: false

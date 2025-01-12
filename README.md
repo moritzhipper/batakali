@@ -1,4 +1,4 @@
-# 🐥 Angry Ducko
+# batakali
 
 This is a website for sharing music with the world, integrating smooth 3D animations to create an interactive experience keeping the user active and interested.
 

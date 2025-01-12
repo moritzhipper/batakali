@@ -34,6 +34,7 @@
       translate: 0 -5px;
     }
     margin-top: auto;
+    opacity: 0.6;
   }
   .interaction.center {
     justify-content: space-between;
@@ -54,10 +55,6 @@
     }
   }
 
-  .hide,
-  .download,
-  share {
-  }
   button.hide {
     opacity: 0.4;
     place-self: center;
@@ -69,7 +66,7 @@
 
 @media (--viewport-s) {
   .media-controls-wrapper .interaction.center {
-    padding: var(--distance-m) var(--distance-l) var(--distance-l);
+    padding: 0 var(--distance-l) var(--distance-l);
     justify-content: space-between;
   }
 }
@@ -79,6 +76,6 @@
     justify-content: center;
     gap: var(--distance-xl);
 
-    padding: var(--distance-s) var(--distance-xl) var(--distance-l);
+    padding: var(--distance-m) var(--distance-xl) var(--distance-l);
   }
 }
