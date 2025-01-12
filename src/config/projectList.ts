@@ -39,12 +39,7 @@ export const projectList: Project[] = [
   {
     name: "guitar 1",
     tag: "boombap",
-    fileName: ""
-  },
-  {
-    name: "heist",
-    tag: "hiphop",
-    fileName: "heist.mp3"
+    fileName: "guitar_1.mp3"
   },
   {
     name: "ice",
@@ -69,7 +64,7 @@ export const projectList: Project[] = [
   },
   {
     name: "spring",
-    tag: "minimal",
+    tag: "techno",
     fileName: "spring.mp3"
   },
   {

@@ -3,6 +3,7 @@ import { useAudioStore } from "../../../state/audioState"
 import { DownloadLink } from "../../action-buttons/DownloadLink"
 import { LoopButton } from "../../action-buttons/LoopButton"
 import { PlayPauseButton } from "../../action-buttons/PlayPauseButton"
+import { ShareButton } from "../../action-buttons/ShareButton"
 import "./MediaControls.css"
 
 type Props = {
@@ -47,8 +48,19 @@ export const MediaControls = ({ onHide }: Props) => {
       <a.div style={{ ...props }} className="now-playing">
         <h1>{selectedProject.name}</h1>
       </a.div>
-      <div className="controls">
-        <DownloadLink filePath={selectedProject.fileName} className="ri-s" />
+      <div className="interaction top">
+        <DownloadLink filePath={selectedProject.fileName} />
+        <LoopButton
+          isLooping={isLooping}
+          onClick={toggleLoop}
+          className="loop"
+        />
+        <ShareButton
+          projectName={selectedProject.name}
+          className="share shadow-small"
+        />
+      </div>
+      <div className="interaction center">
         <button className="ri-replay-10-line" onClick={() => skip(-10)} />
         <button className="ri-skip-back-fill skip" onClick={previous} />
         <PlayPauseButton
@@ -58,11 +70,6 @@ export const MediaControls = ({ onHide }: Props) => {
         />
         <button className="ri-skip-forward-fill skip" onClick={next} />
         <button className="ri-forward-10-line " onClick={() => skip(10)} />
-        <LoopButton
-          isLooping={isLooping}
-          onClick={toggleLoop}
-          className="ri-s"
-        />
       </div>
       <button className="hide ri-arrow-up-wide-line" onClick={onHide} />
     </div>

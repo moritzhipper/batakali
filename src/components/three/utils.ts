@@ -69,7 +69,7 @@ export const animateShardsVisible = (group: Group, delta: number) => {
 }
 
 export const turnSzeneAway = (group: Group) => {
-  group.rotation.y = Math.PI / -2
+  group.rotation.y = Math.PI / 2
   group.position.y = -6
   group.traverse((child) => {
     if (child.isMesh || child.isSprite) {
@@ -84,7 +84,6 @@ export const animateSzeneVisible = (
   delta: number
 ) => {
   rotateGroup.position.y = lerp(rotateGroup.position.y, 0, 0.06 + delta)
-
   rotateGroup.rotation.y = lerp(rotateGroup.rotation.y, 0, 0.03 + delta)
   animateOpacityGroup.traverse((child) => {
     if (child.isMesh) {

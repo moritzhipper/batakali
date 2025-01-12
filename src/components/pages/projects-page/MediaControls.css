@@ -23,12 +23,27 @@
     }
   }
 
-  .controls {
+  .interaction.top {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding: var(--distance-s) 0;
+    gap: var(--distance-l);
+
+    .loop {
+      translate: 0 -5px;
+    }
     margin-top: auto;
+  }
+  .interaction.center {
+    justify-content: space-between;
     display: flex;
     flex-direction: row;
     align-items: center;
 
+    button.skip {
+      font-size: 36px;
+    }
     button.play {
       font-size: 72px;
       color: var(--accent-0);
@@ -37,30 +52,33 @@
     a {
       color: var(--accent-1);
     }
-    button.skip {
-      font-size: 40px;
-    }
+  }
+
+  .hide,
+  .download,
+  share {
   }
   button.hide {
-    place-self: center;
     opacity: 0.4;
-    font-size: 40px;
+    place-self: center;
+    font-size: 48px;
     line-height: 30px;
-    margin: var(--distance-l) 0;
+    margin-bottom: var(--distance-l);
   }
 }
 
 @media (--viewport-s) {
-  .media-controls-wrapper .controls {
-    padding: 0 var(--distance-l);
+  .media-controls-wrapper .interaction.center {
+    padding: var(--distance-m) var(--distance-l) var(--distance-l);
     justify-content: space-between;
   }
 }
 
 @media (--viewport-m) {
-  .media-controls-wrapper .controls {
+  .media-controls-wrapper .interaction.center {
     justify-content: center;
-    gap: var(--distance-m);
-    padding: 0 var(--distance-xl) var(--distance-s) var(--distance-xl);
+    gap: var(--distance-xl);
+
+    padding: var(--distance-s) var(--distance-xl) var(--distance-l);
   }
 }

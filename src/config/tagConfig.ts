@@ -62,7 +62,7 @@ const naturalDucko: DuckoTagConfig = createTagConfig({
   filesShards: ["leaf", "leaf_2", "stick"]
 })
 
-const minimalDucko: DuckoTagConfig = createTagConfig({
+const technoDucko: DuckoTagConfig = createTagConfig({
   color: "#19aeff",
   folder: "minimal",
   fileDuck: "duck_9",
@@ -82,7 +82,7 @@ const duckoSpritesRecord: Record<string, DuckoTagConfig> = {
   "hard techno": rockyDucko,
   hiphop: teethDucko,
   boombap: naturalDucko,
-  minimal: minimalDucko
+  techno: technoDucko
 }
 
 export const getSpritesByTag = (tag: string): DuckoTagConfig => {
