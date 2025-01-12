@@ -17,7 +17,7 @@ export const TagName = ({ text, color }: Props) => {
 
   const scaleFactor = 1.4 - 0.02 * lettersMoreThanThree
   const scrollWidthMobile = 0.7 + lettersMoreThanThree * 0.2
-  const scrollWidth = isMobile ? scrollWidthMobile : 0.4
+  const scrollWidth = isMobile ? scrollWidthMobile : 0.1
 
   const configIn = { duration: 700, easing: easings.linear }
   const configFly = { duration: 4000, easing: easings.linear }
