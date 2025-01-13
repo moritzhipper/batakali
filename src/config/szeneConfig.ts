@@ -58,7 +58,7 @@ export const duckoSzenesRecord: Record<
       showShards: false
     },
     camera: {
-      position: [-2, -2, 5],
+      position: [-1, -2, 5],
       lookAt: [0, 0, 0]
     }
   },
@@ -67,7 +67,7 @@ export const duckoSzenesRecord: Record<
       showShards: false
     },
     camera: {
-      position: [2, -2, 5],
+      position: [1, -2, 5],
       lookAt: [0, 0, 0]
     }
   }

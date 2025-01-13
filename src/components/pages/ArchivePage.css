@@ -50,14 +50,11 @@
       grid-template-columns: 1fr 1fr;
 
       .project-wrapper {
-        transition:
-          scale 0.2s,
-          background-color 0.2s;
+        transition: background-color 0.1s;
       }
 
       .project-wrapper:is(:hover, :focus-within, :focus) {
         background-color: rgb(from var(--accent-2) r g b / 0.4);
-        scale: 0.97;
 
         button.name {
           font-weight: bold;

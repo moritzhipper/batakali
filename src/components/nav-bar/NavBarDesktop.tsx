@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom"
+import { links } from "../../config/links"
 import "./NavBarDesktop.css"
 
 export const NavBarDesktop = () => {
@@ -24,19 +25,11 @@ export const NavBarDesktop = () => {
       </Link>
 
       <div className="me">
-        <a
-          className="ri-global-line"
-          href="https://moritzhipper.me"
-          target="_blank"
-        />
-        <a
-          className="ri-github-line"
-          href="https://github.com/moritzhipper/angry-ducko"
-          target="_blank"
-        />
+        <a className="ri-global-line" href={links.homepage} target="_blank" />
+        <a className="ri-github-line" href={links.github} target="_blank" />
         <a
           className="ri-instagram-line"
-          href="https://github.com/moritzhipper/angry-ducko"
+          href={links.instagram}
           target="_blank"
         />
       </div>

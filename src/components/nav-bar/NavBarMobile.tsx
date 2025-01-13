@@ -1,6 +1,7 @@
 import { a, useTransition } from "@react-spring/web"
 import { useEffect, useState } from "react"
 import { Link, useLocation } from "react-router-dom"
+import { links } from "../../config/links"
 import { springConfig } from "../../config/szeneConfig"
 import "./NavBarMobile.css"
 
@@ -92,17 +93,17 @@ export const NavBarMobile = () => {
                     <div className="me">
                       <a
                         className="ri-global-line"
-                        href="https://moritzhipper.me"
+                        href={links.homepage}
                         target="_blank"
                       />
                       <a
                         className="ri-github-line"
-                        href="https://github.com/moritzhipper/angry-ducko"
+                        href={links.github}
                         target="_blank"
                       />
                       <a
                         className="ri-instagram-line"
-                        href="https://github.com/moritzhipper/angry-ducko"
+                        href={links.instagram}
                         target="_blank"
                       />
                     </div>

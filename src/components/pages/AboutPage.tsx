@@ -1,3 +1,4 @@
+import { links } from "../../config/links"
 import "./AboutPage.css"
 
 export const AboutPage = () => {
@@ -6,19 +7,19 @@ export const AboutPage = () => {
       <h1 className="sticky">About</h1>
       <div className="content">
         <section>
-          <h2>... the Music</h2>
+          <h2>Music</h2>
           <p>
             <strong>
-              Through this website, I share my music with the world.
+              Through this website, I share my music with the you.
             </strong>
           </p>
           <p>
             Since making music is primarily a hobby for me, everything you find
-            here is free.
+            here is free to use and share.
           </p>
           <p>You are allowed to:</p>
           <ul>
-            <li>listen to my projects</li>
+            <li>listen to the projects</li>
             <li>play the projects in public and private</li>
             <li>remix the projects</li>
             <li>sample the projects</li>
@@ -27,14 +28,15 @@ export const AboutPage = () => {
           </ul>
 
           <p>
-            The only condition is that you mention me in your releases on
-            Instagram either in a <strong>post, reel, or comment</strong>.
+            The only condition is that you mention me in your release posts on{" "}
+            <a href={links.instagram}>Instagram</a> either in a
+            <strong>post, reel, or comment</strong>.
           </p>
           <p className="big">Have fun!</p>
         </section>
 
         <section className="technical-info">
-          <h2>... the Website</h2>
+          <h2>Website</h2>
           <p>
             This website a fun project of mine built in part with{" "}
             <strong>React</strong> and <strong>three.js</strong>.
