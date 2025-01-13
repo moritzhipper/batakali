@@ -84,18 +84,18 @@ const defaultSzene: DuckoSzeneConfig = {
   }
 }
 
-export const getConfigByName = (name?: string): DuckoSzeneConfig => {
-  if (!name) return defaultSzene
+export const getConfigByName = (name: string): DuckoSzeneConfig => {
+  const szene = duckoSzenesRecord[name]
+  if (!szene) return defaultSzene
 
-  const relevantSzene = duckoSzenesRecord[name]
   return {
     ducko: {
       ...defaultSzene.ducko,
-      ...relevantSzene.ducko
+      ...szene.ducko
     },
     camera: {
       ...defaultSzene.camera,
-      ...relevantSzene.camera
+      ...szene.camera
     }
   } as DuckoSzeneConfig
 }

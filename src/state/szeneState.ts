@@ -8,6 +8,6 @@ type SzeneState = {
 }
 
 export const useSzeneState = create<SzeneState>((set) => ({
-  activeSzene: getConfigByName(),
+  activeSzene: getConfigByName("default"),
   setActiveSzene: (name: string) => set({ activeSzene: getConfigByName(name) })
 }))
