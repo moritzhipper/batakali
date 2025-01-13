@@ -20,7 +20,9 @@ export const ThreeWrapper = () => {
     [selectedProject.tag]
   )
 
-  useEffect(() => setActiveSzene(pathname), [pathname])
+  useEffect(() => {
+    if (pathname) setActiveSzene(pathname)
+  }, [pathname])
 
   return (
     <div className={`three-wrapper ${activeSzene.ducko.dim ? "dim" : ""}`}>

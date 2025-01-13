@@ -7,7 +7,8 @@
   src: url(./assets/fonts/TheBattleCont.ttf) format("truetype");
 }
 
-:root {
+:root,
+button {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   color-scheme: light dark;
 }

@@ -16,11 +16,6 @@
     h1 {
       padding-bottom: var(--distance-s);
     }
-
-    span {
-      font-size: var(--font-size-l);
-      opacity: 0.6;
-    }
   }
 
   .interaction.top {
@@ -29,12 +24,19 @@
     justify-content: center;
     padding: var(--distance-s) 0;
     gap: var(--distance-l);
+    margin-top: auto;
+
+    button,
+    a {
+      opacity: 0.6;
+    }
 
     .loop {
-      translate: 0 -5px;
+      translate: 0 -10px;
+      &.looping {
+        opacity: 1;
+      }
     }
-    margin-top: auto;
-    opacity: 0.6;
   }
   .interaction.center {
     justify-content: space-between;
@@ -66,7 +68,8 @@
 
 @media (--viewport-s) {
   .media-controls-wrapper .interaction.center {
-    padding: 0 var(--distance-l) var(--distance-l);
+    padding: var(--distance-s) var(--distance-xl) var(--distance-l)
+      var(--distance-xl);
     justify-content: space-between;
   }
 }

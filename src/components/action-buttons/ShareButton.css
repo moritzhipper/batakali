@@ -1,25 +1,37 @@
-.share-button-wrapper {
+.share-button {
   position: relative;
 
-  .copied-to-clipboard {
+  &.copied:after {
+    font-family: Inter, system-ui;
+    content: "copied to clipboard";
+    font-size: 16px;
     position: absolute;
+    top: -60px;
+    left: -90px;
+    width: 90px;
+    text-align: center;
     background-color: var(--accent-1);
-    padding: var(--distance-xs) var(--distance-s);
+    padding: 6px 4px;
     color: var(--accent-3);
     border-radius: var(--radius-m);
-    transform: translate(-100%, -100%);
-    text-align: center;
-    animation: appear 0.3s;
+    animation: appear 3s both;
+    transform-origin: bottom center;
   }
 }
 
 @keyframes appear {
-  from {
+  0% {
     opacity: 0;
-    scale: 0.9;
+    transform: translate(10px, 10px) scale(0.9);
   }
-  to {
+
+  10%,
+  80% {
+    transform: none;
     opacity: 1;
     scale: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }

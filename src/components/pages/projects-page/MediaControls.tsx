@@ -1,4 +1,5 @@
 import { a, easings, useSpring } from "@react-spring/web"
+import { useEffect } from "react"
 import { useAudioStore } from "../../../state/audioState"
 import { DownloadLink } from "../../action-buttons/DownloadLink"
 import { LoopButton } from "../../action-buttons/LoopButton"
@@ -31,17 +32,13 @@ export const MediaControls = ({ onHide }: Props) => {
     }
   }
 
-  const next = () => {
-    selectNext()
+  useEffect(() => {
     api.start(transition)
-  }
+  }, [selectedProject.name])
 
-  const previous = () => {
-    selectPrevious()
-    api.start(transition)
-  }
+  const [props, api] = useSpring({}, [])
 
-  const [props, api] = useSpring(transition, [])
+  const loopClasses = "loop" + (isLooping ? " looping" : "")
 
   return (
     <div className="media-controls-wrapper">
@@ -53,7 +50,7 @@ export const MediaControls = ({ onHide }: Props) => {
         <LoopButton
           isLooping={isLooping}
           onClick={toggleLoop}
-          className="loop"
+          className={loopClasses}
         />
         <ShareButton
           projectName={selectedProject.name}
@@ -62,13 +59,13 @@ export const MediaControls = ({ onHide }: Props) => {
       </div>
       <div className="interaction center">
         <button className="ri-replay-10-line" onClick={() => skip(-10)} />
-        <button className="ri-skip-back-fill skip" onClick={previous} />
+        <button className="ri-skip-back-fill skip" onClick={selectPrevious} />
         <PlayPauseButton
           isPlaying={isPlaying}
           onClick={togglePlay}
           className="play"
         />
-        <button className="ri-skip-forward-fill skip" onClick={next} />
+        <button className="ri-skip-forward-fill skip" onClick={selectNext} />
         <button className="ri-forward-10-line " onClick={() => skip(10)} />
       </div>
       <button className="hide ri-arrow-up-wide-line" onClick={onHide} />

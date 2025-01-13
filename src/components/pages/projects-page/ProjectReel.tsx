@@ -26,7 +26,7 @@ export const ProjectReel = () => {
   const isMobile = useMediaQuery("(max-width: 700px)")
   const projectCount = projectList.length
   const itemOffset = isMobile ? 45 : 150
-  const dragScale = isMobile ? 0.4 : 1
+  const dragScale = isMobile ? 0.9 : 1
   const wheelScale = 0.2
 
   const focusIndex = getProjectIndex(projectList, reelFocusProject)

@@ -1,6 +1,9 @@
 # ToDo
 
 - Link the IG account.
+- repeat fat when selected
+- make player swipeable
+- prohibit name trans on fadein
 
 ## Image Requirements
 
