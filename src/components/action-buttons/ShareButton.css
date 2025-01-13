@@ -16,6 +16,7 @@
     border-radius: var(--radius-m);
     animation: appear 3s both;
     transform-origin: bottom center;
+    box-shadow: 2px 2px 8px -4px var(--accent-3);
   }
 }
 

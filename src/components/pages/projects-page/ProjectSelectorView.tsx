@@ -12,7 +12,7 @@ type Props = {
 
 export const ProjectSelectorView = ({ onHide }: Props) => {
   const [showFilter, setShowFilter] = useState(false)
-  const { selectedTag } = useAudioStore()
+  const { selectedTag, isPlaying } = useAudioStore()
   const toggleFilter = () => setShowFilter((show) => !show)
 
   useEffect(() => {
@@ -42,7 +42,10 @@ export const ProjectSelectorView = ({ onHide }: Props) => {
     <div className="project-selector-view">
       <h1>
         <span>Projects</span>
-        <button className="hide" onClick={onHide}>
+        <button
+          className={"hide " + (isPlaying ? "active" : "")}
+          onClick={onHide}
+        >
           <span className="ri-play-large-fill" />
           <span className="ri-pause-large-line" />
         </button>

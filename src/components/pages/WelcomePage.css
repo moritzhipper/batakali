@@ -98,21 +98,3 @@
     }
   }
 }
-
-@keyframes pulse {
-  80% {
-    scale: 1;
-  }
-  85% {
-    scale: 1.1;
-  }
-  90% {
-    scale: 1;
-  }
-  95% {
-    scale: 1.1;
-  }
-  100% {
-    scale: 1;
-  }
-}
