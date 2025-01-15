@@ -6,5 +6,7 @@ type Props = {
 export const DownloadLink = ({ filePath, className, ...props }: Props) => {
   const classes = `ri-download-line ${className || ""}`
 
-  return <a href={filePath} download className={classes} {...props} />
+  return (
+    <a href={"/projects/" + filePath} download className={classes} {...props} />
+  )
 }
