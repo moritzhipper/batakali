@@ -15,6 +15,7 @@
 
     h1 {
       padding-bottom: var(--distance-s);
+      user-select: none;
     }
   }
 

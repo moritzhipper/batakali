@@ -22,8 +22,7 @@ export const ProjectsPage = () => {
 
     return {
       translateY: realPerc + "%",
-      opacityPlayer: 1 + realPerc / 25,
-      opacityContent: 1 - realPerc / 25
+      opacityPlayer: 1 + realPerc / 25
     }
   }
 
@@ -40,7 +39,7 @@ export const ProjectsPage = () => {
     api.start(calcStyle(0))
   }, [playerVisible])
 
-  const [{ translateY, opacityContent, opacityPlayer }, api] = useSpring(
+  const [{ translateY, opacityPlayer }, api] = useSpring(
     { ...calcStyle(0), ...springConfig },
     []
   )
@@ -84,13 +83,9 @@ export const ProjectsPage = () => {
         {...bind()}
         style={{ translateY: translateY }}
       >
-        <a.div
-          className="projects-wrapper"
-          style={{ opacity: opacityContent }}
-          onFocus={hidePlayer}
-        >
+        <div className="projects-wrapper" onFocus={hidePlayer}>
           <ProjectSelectorView onHide={togglePlayer} />
-        </a.div>
+        </div>
         <a.div
           className={"controls-wrapper" + pointerEventsClass}
           style={{ opacity: opacityPlayer }}

@@ -9,9 +9,7 @@ export const AboutPage = () => {
         <section>
           <h2>Music</h2>
           <p>
-            <strong>
-              Through this website, I share my music with the you.
-            </strong>
+            <strong>Through this website, I share my music with you.</strong>
           </p>
           <p>
             Since making music is primarily a hobby for me, everything you find
