@@ -1,6 +1,7 @@
-# batakali
+# batakali.com
 
 This is a website for sharing music with the world, integrating smooth 3D animations to create an interactive experience keeping the user active and interested.
+
 
 <div>
 <img src="./assets-readme/player_desktop.png" height="300px" />
